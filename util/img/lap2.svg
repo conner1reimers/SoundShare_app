@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<svg xmlns="http://www.w3.org/2000/svg" id="Flat" height="512px" viewBox="0 0 512 512" width="512px" class="">
+
+<filter id="displacementFilter">
+			<feTurbulence type="turbulence" 
+			baseFrequency=".009" numOctaves=
+			"20" result="turbulence" />
+            
+            <feDisplacementMap in2="turbulence" in="
+            SourceGraphic" scale="80" xChannelSelector="R" 
+            yChannelSelector="G" result="disp" />
+
+            <feGaussianBlur in="SourceGraphic" 
+                stdDeviation=".51" result="blr" />
+            
+
+            <feComposite in="blr" in2="disp" operator="in" result="comp" />
+            
+             
+
+</filter>
+
+<g ><path filter="url(#displacementFilter)" d="m320 160h-16v-16a48 48 0 0 0 -96 0v16h-16v-16a64 64 0 0 1 128 0z" fill="#546e7a" data-original="#546E7A" class="" style="fill:#6E8791" data-old_color="#546e7a"/><path d="m196 136h12a0 0 0 0 1 0 0v40a0 0 0 0 1 0 0h-12a20 20 0 0 1 -20-20 20 20 0 0 1 20-20z" fill="#36474f" data-original="#36474F" class="" style="fill:#637E89" data-old_color="#36474f"/><path d="m324 136h12a0 0 0 0 1 0 0v40a0 0 0 0 1 0 0h-12a20 20 0 0 1 -20-20 20 20 0 0 1 20-20z" fill="#36474f" transform="matrix(-1 0 0 -1 640 312.001)" data-original="#36474F" class="" style="fill:#637E89" data-old_color="#36474f"/><path d="m64 392h16a16 16 0 0 1 16 16v16a0 0 0 0 1 0 0h-48a0 0 0 0 1 0 0v-16a16 16 0 0 1 16-16z" fill="#546e7a" data-original="#546E7A" class="" style="fill:#6E8791" data-old_color="#546e7a"/><path d="m48 440h416v56h-416z" filter="url(#displacementFilter)" fill="#8c6239" data-original="#8C6239" class="active-path" style="fill:#CE665C" data-old_color="#8c6239"/><path d="m24 416h464v32h-464z" fill="#603813" data-original="#603813" class="" style="fill:#191E23" data-old_color="#603813"/><circle cx="256" cy="160" fill="#f4cda5" r="48" data-original="#F4CDA5" class="" style="fill:#A09488" data-old_color="#f4cda5"/><path d="m200 208h112a32 32 0 0 1 32 32v32a0 0 0 0 1 0 0h-176a0 0 0 0 1 0 0v-32a32 32 0 0 1 32-32z" fill="#8c6239" data-original="#8C6239" class="active-path" style="fill:#CE665C" data-old_color="#8c6239"/><path d="m368 416h-224l-16-160h256z" fill="#b0bec5" data-original="#B0BEC5" class="" style="fill:#374957" data-old_color="#b0bec5"/><circle cx="256" cy="336" fill="#f5f5f5" r="24" data-original="#F5F5F5" class=""/><g fill="#bbdefb"><path d="m61.47 40.41a8 8 0 0 0 -5.47 7.59v57.376a24 24 0 1 0 16 22.624v-74.234l42.53-14.176-5.06-15.18zm-13.47 95.59a8 8 0 1 1 8-8 8.009 8.009 0 0 1 -8 8z" data-original="#BBDEFB" class="" filter="url(#displacementFilter)" style="fill:#EFE1E6" data-old_color="#BBDEFB"/><path d="m485.006 17.76a7.993 7.993 0 0 0 -6.741-1.569l-72 16a8 8 0 0 0 -6.265 7.809v57.376a24 24 0 1 0 16 22.624v-73.583l56-12.444v47.4a24 24 0 1 0 16 22.627v-80a8 8 0 0 0 -2.994-6.24zm-93.006 110.24a8 8 0 1 1 8-8 8.009 8.009 0 0 1 -8 8zm72-16a8 8 0 1 1 8-8 8.009 8.009 0 0 1 -8 8z" data-original="#BBDEFB" class="" filter="url(#displacementFilter)" style="fill:#EFE1E6" data-old_color="#BBDEFB"/></g></g> </svg>

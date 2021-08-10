@@ -1,0 +1,1320 @@
+.main-browse {
+  grid-row: 2/5;
+  @include heightWidth100;
+  position: relative;
+  top: 0.5rem;
+  display: grid;
+  grid-template-columns: 100%;
+  grid-template-rows: 10vh min-content;
+  padding: 5rem 0;
+
+  @media screen and (min-width: $bp-large) {
+    grid-template-columns: 5% 90% 5%;
+
+  }
+
+  @media screen and (min-width: $bp-largest) {
+    grid-template-columns: 9% 82% 9%;
+  }
+
+  @media screen and (max-height: 700px) {
+    grid-template-rows: 100px min-content;
+  }
+
+  &--headingSection {
+    grid-column: 1/3;
+    grid-row: 1/2;
+    @include flexcenter;
+    margin: 0.8vh 0vw;
+    position: relative;
+    width: 100vw;
+    height: 13vh;
+    min-height: 98px;
+    background-color: rgba(67, 72, 73, 0.288);
+    justify-self: start;
+
+    @media screen and (max-width: 500px) {
+      max-height: 75px;
+    }
+    &::before {
+      @include beforeTrick;
+      background-image: url("../../util/img/pic.svg");
+      background-size: 5%;
+      opacity: 0.2;
+      filter: brightness(2) contrast(0.12);
+      @media screen and (max-width: $bp-large) {
+        background-size: 20%;
+      }
+      @media screen and (max-width: $bp-med) {
+        background-size: 25%;
+      }
+      @media screen and (max-width: 400px) {
+        background-size: 28%;
+      }
+      @media screen and (max-width: 350px) {
+        background-size: 35%;
+      }
+      // background-size: 200px;
+      
+     
+    }
+
+    &--head {
+      button {
+        box-shadow: none;
+      }
+    }
+
+    button {
+      background: none;
+      box-shadow: none;
+    }
+
+    @media screen and (min-width: $bp-large) {
+      grid-column: 1/3;
+    }
+    h1 {
+      text-transform: uppercase;
+      letter-spacing: 0.45rem;
+      font-size: 2rem;
+      pointer-events: none;
+      color: $color-white-2;
+      font-family: $font-1;
+      white-space: nowrap;
+      @media screen and (max-width: 1099px) {
+        font-size: 3rem;
+      }
+      @media screen and (max-width: 375px) {
+        font-size: 2.8rem;
+      }
+      @media screen and (max-width: 350px) {
+        font-size: 2.6rem;
+      }
+      @media screen and (max-width: 320px) {
+        font-size: 2.4rem;
+      }
+    }
+  }
+
+  //Load more option--- then make it bigger
+  &--chartSection {
+    grid-column: 1/2;
+    grid-row: 2/4;
+    @include flexcenter;
+    @include heightWidth100;
+    position: relative;
+    top: 6.5vh;
+    min-height: 1000px;
+
+    @media screen and (min-width: $bp-large) {
+      grid-column: 2/3;
+    }
+
+    &--listContain {
+      @include flexcenter;
+      flex-direction: column;
+      position: relative;
+      @include heightWidth100;
+      display: inline;
+      min-height: 996px;
+    }
+
+    &--head {
+      @include flexcenter;
+      flex-direction: column;
+      position: relative;
+      top: 0;
+      left: 0;
+      &--text {
+        font-family: $font-3;
+        font-size: 5rem;
+        font-weight: 600;
+        line-height: 1.3;
+        letter-spacing: 3px;
+      }
+      &--undertext {
+        font-size: 1.15rem;
+        line-height: 1.5;
+        letter-spacing: 1px;
+      }
+      &--dropdown {
+        position: relative;
+        top: 1.11rem;
+
+        &--wrapper {
+          z-index: 1;
+          position: relative;
+          display: inline-block;
+          vertical-align: top;
+          text-align: left;
+          @include heightWidth100;
+        }
+
+        position: relative;
+        @include heightWidth100;
+        @include flexcenter;
+
+        &--container {
+          transition: all 0.2s;
+          width: 13%;
+          height: 34px;
+          min-width: 224px;
+          max-width: 358px;
+          box-shadow: rgba(0, 0, 0, 0.2) 0px 0px 0px;
+          position: absolute;
+          transform: translateX(-5px);
+          background-size: 0.1%;
+          background-repeat: no-repeat;
+          border: 2px solid #e3e7eb8e;
+          cursor: pointer;
+          user-select: none;
+          line-height: 1;
+          white-space: nowrap;
+
+          @media screen and (max-width: $bp-med) {
+            width: 23%;
+          }
+          @media screen and (max-width: 570px) {
+            width: 40%;
+          }
+          
+          @media screen and (min-width: $bp-large) {
+            width: 22%;
+          }
+
+          @media screen and (min-width: $bp-superLarge) {
+            width: 15%;
+          }
+          @media screen and (max-width: 375px) {
+            min-width: 140px;
+          }
+
+          &--item {
+            border-left: 2px solid rgba(233, 233, 233, 0.425);
+          }
+        }
+      }
+    }
+
+    &--listDiv {
+      position: relative;
+      @include heightWidth100;
+      display: grid;
+      grid-template-columns: 10% 80% 10%;
+      @include flexcenter;
+      flex-direction: column;
+    }
+
+    &--list {
+      grid-column: 2/3;
+      position: relative;
+      @include heightWidth100;
+      margin: 3.5rem 1rem;
+      top: 0.5vh;
+
+      &--item {
+        position: relative;
+        width: 100%;
+        background-color: rgb(54, 59, 59);
+        span {
+          color: $color-white;
+          font-size: 1rem;
+        }
+      }
+    }
+  }
+
+  //Load more option--- then make it bigger
+  &--trendingUploaders {
+    grid-column: 1/2;
+    grid-row: 3/4;
+
+    @media screen and (min-width: $bp-large) {
+      grid-column: 2/3;
+    }
+  }
+}
+
+$nav-size: 6rem;
+$button-size: calc(#{$nav-size} * 0.5);
+$border-raidus: 0.8rem;
+$border: 1px solid #383d44;
+$speed: 500ms;
+$bg: #242526;
+
+.navtest {
+  @include heightWidth100;
+  @include flexcenter;
+  position: relative;
+  margin: 0;
+
+  &--nav {
+    @include heightWidth100;
+    @include flexcenter;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    text-decoration: none;
+    position: relative;
+
+    &--more {
+      position: absolute;
+      right: -3.5vw;
+      @include flexcenter;
+      transform: scale(0.85);
+
+      div.mouseOver {
+        height: 2.5vh;
+        width: 7.2vw;
+        left: -2.5rem;
+        padding: 0;
+        min-height: 35px;
+        min-width: 95px;
+        pointer-events: none;
+        background-color: black;
+        bottom: 1rem;
+        span {
+          button {
+            font-size: 0.95rem;
+            font-family: $font-1;
+          }
+        }
+
+        @media screen and (max-width: 1550px) {
+          left: 1rem;
+        }
+
+        @media screen and (max-width: 1099px) {
+          top: -2.75rem;
+          min-height: 25px;
+          left: 0rem;
+
+          span {
+            button {
+              font-size: 1.2rem;
+            }
+          }
+        }
+        @media screen and (max-height: 700px) {
+          top: -2.5rem;
+        }
+
+        @media screen and (max-height: 700px) and (max-width: 1099px) {
+          top: -3rem;
+          
+        }
+        
+
+
+
+        @media screen and (max-width: 550px) {
+          left: -3rem;
+          
+
+          span {
+            button {
+              font-size: 1.2rem;
+            }
+          }
+        }
+      }
+
+      @media screen and (max-width: 1550px) {
+        padding: 1vh 3vw;
+        right: -8vw;
+      }
+
+      @media screen and (max-width: 1099px) {
+        transform: scale(1.3);
+        right: -9vw;
+      }
+      @media screen and (max-width: 750px) {
+        transform: scale(1.3);
+        right: -11vw;
+      }
+      @media screen and (max-width: 375px) {
+        right: -13vw;
+      }
+      @media screen and (max-width: 350px) {
+        transform: scale(1);
+        right: -12vw;
+      }
+
+      button.btn {
+        background: none;
+        padding: 0;
+        margin: 0;
+        height: 2vh;
+        width: 3vw;
+        box-shadow: none;
+        white-space: nowrap;
+        font-size: 0.8rem;
+      }
+
+      &--img {
+        pointer-events: stroke;
+        padding: 0.9rem 0.9rem;
+        background-color: rgba(108, 121, 124, 0.14);
+        border-radius: 50%;
+        @include heightWidthSame(calc(0.6vw + 0.9vh));
+        @include flexcenter;
+        box-shadow: $shadow-new;
+        
+        img {
+          @include heightWidthSame(1.25rem);
+          @media screen and (max-width: 1099px) {
+            @include heightWidthSame(1.65rem);
+          }
+        }
+      }
+    }
+  }
+
+  &--item {
+    display: grid;
+    grid-template-columns: 33.33% 33.33% 33.33%;
+    grid-template-rows: 20% 80%;
+    background-image: linear-gradient(45deg, #1b1f1f, #1b1f1f, #1b1f1f);
+    background-size: 3%;
+
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    @include heightWidth100;
+    position: relative;
+  }
+
+  &--dropdown {
+    @include heightWidth100;
+    @include flexcenter;
+    position: relative;
+
+    a {
+      text-decoration: none;
+      color: $color-white;
+    }
+
+    &--itemContain {
+      @include heightWidth100;
+      @include flexcenter;
+      flex-direction: column;
+      position: relative;
+      border-right: 2px solid #383d44;
+
+      &--top-btn {
+        margin: 0.7rem 0;
+        width: 100%;
+        background: none;
+        outline: none;
+        border: none;
+        position: relative;
+        display: flex;
+        align-items: center;
+        border-bottom: 2px solid #383d44;
+        color: $color-white;
+        min-height: 25px;
+
+        span {
+          position: relative;
+          margin: 0;
+          font-size: 1.1rem;
+          left: 1rem;
+          bottom: 0.3rem;
+          font-family: $font-1;
+          font-weight: 300;
+          color: $color-white;
+          text-align: center;
+          @media screen and (max-width: 1099px) {
+            font-size: 2rem;
+          }
+        }
+      }
+    }
+  }
+}
+.icon-button {
+  grid-row: 1/3;
+  grid-column: 1/4;
+  width: $button-size;
+  height: $button-size;
+  border-radius: 50%;
+
+  @include flexcenter;
+  transition: filter 300ms;
+  color: #e3e7ebe1;
+  text-decoration: none;
+  font-size: 1rem;
+  transition: all 0.2s;
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  margin: 0;
+
+  &--open {
+    grid-row: 1/2;
+    grid-column: 1/4;
+    border-radius: 0rem;
+
+    border-bottom: 2px solid #383d44;
+    transition: all 0.2s;
+  }
+
+  svg {
+  }
+
+ 
+  
+  @media (hover: hover) and (pointer: fine) {
+    &:hover {
+      filter: brightness(1.2);
+    }
+  } 
+}
+
+.menu-item {
+  @include heightWidth100;
+  position: relative;
+  display: grid;
+  grid-template-rows: 100%;
+  grid-template-columns: 10% 50% 30% 10%;
+  justify-content: center;
+  max-height: 45px;
+  align-items: center;
+  border-bottom: 2px solid #383d44;
+  background-image: linear-gradient(45deg, #1b1f1f, #1b1f1f, #1b1f1f);
+
+  span {
+    grid-column: 2/3;
+    @include flexcenter;
+    justify-content: start;
+    font-size: 0.91rem;
+    white-space: nowrap;
+    @media screen and (max-width: 1099px) {
+      font-size: 1.9rem;
+    }
+  }
+
+  &--check {
+    grid-column: 3/4;
+    @include heightWidth100;
+    @include flexcenter;
+    justify-content: flex-end;
+    img {
+      @include heightWidthSame(1.2rem);
+    }
+  }
+}
+
+.menu-primary-enter {
+  position: absolute;
+  transform: translateX(-110%);
+}
+.menu-primary-enter-active {
+  position: absolute;
+  transform: translateX(0%);
+  transition: all $speed ease;
+}
+.menu-primary-exit {
+  position: absolute;
+}
+.menu-primary-exit-active {
+  position: absolute;
+  transform: translateX(-110%);
+  transition: all $speed ease;
+}
+
+.menu-secondary-enter {
+  position: absolute;
+  transform: translateX(110%);
+}
+.menu-secondary-enter-active {
+  position: absolute;
+  transform: translateX(0%);
+  transition: all $speed ease;
+}
+.menu-secondary-exit {
+  position: absolute;
+}
+
+.menu-secondary-exit-active {
+  position: absolute;
+  transform: translateX(180%);
+  transition: all $speed ease;
+}
+
+.drop-label {
+  @include heightWidth100;
+  margin: 0;
+  padding: 0;
+  text-decoration: none;
+  border: none;
+  outline: none;
+  font-size: 1rem;
+  position: relative;
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  @include flexcenter;
+  font-family: $font-1;
+  font-weight: 400;
+  @media screen and (max-width: 1099px) {
+    font-size: 2.35rem;
+  }
+}
+
+.dropdown-text {
+  @include heightWidth100;
+  height: 100%;
+  // display: grid;
+  // grid-template-rows: 100%;
+  // grid-template-columns: 30% 5% 30% 5% 30%;
+  // justify-content: center;
+  // align-items: center;
+  @include flexcenter;
+  position: relative;
+
+  &--main-text {
+    font-size: 1.1rem;
+    @include flexcenter;
+    display: inline;
+    margin-left: 0.3vw;
+    font-family: $font-1;
+    font-weight: 400;
+    @media screen and (max-width: 1099px) {
+      font-size: 2.35rem;
+    }
+    @media screen and (max-width: 375px) {
+      font-size: 2rem;
+    }
+  }
+  &--dash-text {
+    font-size: 1.3rem;
+    width: 1vw;
+    display: inline;
+    position: relative;
+    left: 0vw;
+    margin: 0 1rem;
+    @include flexcenter;
+    @include niceTxt;
+    font-weight: 600;
+    
+    @media screen and (max-width: 1099px) {
+      font-size: 2.3rem;
+    }
+
+  }
+  &--1 {
+    grid-column: 1/2;
+    @include flexcenter;
+    @include heightWidth100;
+    position: relative;
+    span {
+      white-space: nowrap;
+    }
+  }
+  &--2 {
+    grid-column: 2/3;
+    @include flexcenter;
+    @include heightWidth100;
+    position: relative;
+    span {
+      white-space: nowrap;
+    }
+  }
+  &--3 {
+    grid-column: 3/4;
+    @include flexcenter;
+    @include heightWidth100;
+    position: relative;
+    span {
+      white-space: nowrap;
+    }
+  }
+  @media screen and (max-width: 1099px) {
+    font-size: 2rem;
+  }
+}
+
+.filter-menu {
+  background-color: $color-new-grey;
+  @include heightWidth100;
+  position: absolute;
+  width: 15vw;
+  height: 38.5vh;
+  min-height: 365px;
+  max-height: 380px;
+  min-width: 290px;
+
+  pointer-events: stroke;
+  border-radius: 2rem;
+  padding: 1rem 2rem;
+  box-shadow: $shadow-newer-2;
+  z-index: 3;
+  top: -2vh;
+  display: grid;
+  grid-template-columns: 30% 70%;
+  grid-template-rows: 8% 80% 12%;
+  scrollbar-width: thin;
+  overflow: visible;
+
+  @media screen and (max-width: 1099px) {
+    left: -17vw;
+    width: 13vw;
+    height: 29vh;
+    min-height: 270px;
+    max-height: 290px;
+    min-width: 210px;
+    top: -10vh;
+    padding-bottom: 0;
+
+  }
+  @media screen and (max-width: 850px) {
+    width: 25vw;
+    left: -450%;
+  }
+  @media screen and (max-width: 575px) {
+    left: -500%;
+  }
+  @media screen and (max-width: 450px) {
+    min-width: 180px;
+    left: -47.5vw;
+    top: -5rem;
+    
+
+  }
+  @media screen and (max-width: 350px) {
+    left: -600%;
+
+  }
+ 
+  // @media screen and (max-width: 550px) {
+  //   left: -11.5vw;
+  //   height: 25vh;
+  // }
+
+  &--close.main-close {
+    grid-column: 4/5;
+    grid-row: 1/2;
+    @include circleBtn;
+    position: relative;
+    bottom: 1.5vh;
+    right: 1vw;
+    div {
+      background-color: none;
+      img.xtraoptions-close {
+        background: none;
+        box-shadow: none;
+        transition: all 0.2s;
+        
+        
+        @media (hover: hover) and (pointer: fine) {
+          &:hover {
+            filter: brightness(1.3);
+            transition: all 0.2s;
+          }
+        } 
+      }
+    }
+  }
+  &::-webkit-scrollbar {
+    background: rgba(82, 90, 92, 0.151);
+    width: 10px;
+    border-radius: 0.4rem;
+  }
+  &::-webkit-scrollbar-track {
+    background: rgba(82, 90, 92, 0.151);
+    border-radius: 0.4rem;
+    background-clip: content-box;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: rgba(68, 140, 156, 0.89);
+    scrollbar-face-color: rgba(68, 140, 156, 0.89);
+    transform: translateY(0.4);
+    border-radius: 0.4rem;
+    border: 1px solid rgba(36, 32, 32, 0.082);
+  }
+
+  &--labels {
+    @include heightWidth100;
+    grid-row: 2/3;
+
+    span {
+      @include heightWidth100;
+
+      @media screen and (max-width: 1099px) {
+        font-size: 1.5rem;
+      }
+    }
+
+    span.order-label-browse {
+      position: relative;
+      // top: 0.34rem;
+      // @media screen and (max-height: 800px) and (min-width: $bp-large) {
+      //   top: 0.5rem;
+      // }
+      // @media screen and (max-height: 675px) {
+      //   top: 0.75rem;
+      // }
+    }
+    display: grid;
+    margin: 0.5rem 0;
+
+    grid-template-rows: repeat(4, 10.9%);
+    grid-row-gap: 1.75rem;
+    @media screen and (max-width: 1099px) {
+      grid-row-gap: 2.75rem;
+    }
+  }
+
+  span {
+    color: $color-white;
+    font-family: $font-1;
+    pointer-events: stroke;
+    @include heightWidth100;
+    white-space: nowrap;
+    position: relative;
+    right: 1vw;
+    @include flexcenter;
+    font-size: 0.91rem;
+    justify-content: flex-start;
+    @media screen and (max-width: 1099px) {
+      font-size: 1.1rem;
+    }
+  }
+
+  &--inputs {
+    pointer-events: stroke;
+    grid-column: 2/3;
+    @include flexcenter;
+    flex-direction: column;
+    justify-content: flex-start;
+    margin-left: 1vw;
+    grid-row: 2/3;
+    margin-top: .75rem;
+    @media screen and (min-width: $bp-large) {
+      margin-top: .1rem;
+
+    }
+    form {
+      display: grid;
+      grid-template-rows: repeat(4, 10.9%);
+      grid-row-gap: 1.75rem;
+
+      div {
+        padding: 0;
+      }
+
+      input {
+        font-size: 0.9rem;
+
+        padding: 10px;
+        min-height: 15px;
+        background-color: $color-darker;
+        @media screen and (max-width: 1099px) {
+          font-size: 1.4rem;
+          padding: 5px 10px;
+        }
+      }
+      @media screen and (max-width: 1099px) {
+        grid-row-gap: 2.75rem;
+      }
+    }
+
+    &--input {
+      margin: 0.5rem 0;
+      @include flexcenter;
+
+      &--bpm {
+        width: 80%;
+
+        input {
+          height: min-content;
+          padding: 10px 20px;
+        }
+        label.form-label.filter-menu--extra-options--input--label {
+          left: 0;
+        }
+        &--2 {
+          margin-left: 1rem;
+        }
+      }
+    }
+
+    &--extra-btn {
+      @include heightWidth100;
+      @include flexcenter;
+      padding: 0;
+
+      button {
+        @include dark-btn;
+        font-weight: 500;
+        padding: 0;
+        padding: 12px 20px;
+        height: 4vh;
+        min-height: 38px;
+        text-transform: capitalize;
+        background-color: $color-darker;
+
+        @media screen and (max-width: 1099px) {
+          font-size: 1.1rem;
+          padding: 5px 7px;
+          height: 2rem;
+          min-height: 24.5px;
+        }
+
+        
+        
+        @media (hover: hover) and (pointer: fine) {
+          &:hover {
+            background-color: #53caccb9;
+            color: $color-darker;
+            transition: all 0.2s;
+          }
+        } 
+      }
+    }
+  }
+
+  &--extra-options {
+    background-color: $color-darker;
+    z-index: 3;
+    border-radius: 2rem;
+    padding: 1.5vh 1.2vw;
+    position: relative;
+    box-shadow: $shadow-newer-2;
+    display: grid;
+    grid-template-rows: 5% 30% 20% 20% 20%;
+    grid-template-columns: 10% 40% 20% 30%;
+    grid-row-gap: 0.75rem;
+    pointer-events: stroke;
+    transform: none;
+
+    &--close {
+      grid-column: 4/5;
+      grid-row: 1/2;
+      @include circleBtn;
+
+      position: relative;
+      bottom: 1vh;
+      left: 1vw;
+      div {
+        background-color: none;
+        img.xtraoptions-close {
+          background: none;
+          box-shadow: none;
+          transition: all 0.2s;
+         
+          
+          @media (hover: hover) and (pointer: fine) {
+            &:hover {
+              filter: brightness(1.3);
+              transition: all 0.2s;
+            }
+          } 
+        }
+      }
+    }
+
+    &--tags {
+      grid-row: 1/3;
+      @include flexcenter;
+      pointer-events: stroke;
+      grid-column: 1/-1;
+      div.upload-tags--search {
+        width: 100%;
+
+        input {
+          font-family: $font-1;
+          font-size: 0.85rem;
+          @media screen and (max-width: 1099px) {
+            font-size: 1.1rem;
+          }
+        }
+
+        @media screen and (max-width: 1099px) {
+          width: 17vw;
+        }
+
+        @media screen and (max-width: 550px) {
+          width: 90%;
+          height: 2vh;
+          input {
+            height: 2vh;
+          }
+          &--wrapper {
+            height: 2vh;
+          }
+        }
+      }
+      button {
+        span {
+          font-size: 1rem;
+        }
+      }
+    }
+
+    &--input {
+      @include heightWidth100;
+      grid-row: 3/5;
+      grid-column: 1/5;
+      @include flexcenter;
+      margin: 0;
+      flex-direction: column;
+      align-items: flex-start;
+      position: relative;
+
+      left: 0.2vw;
+
+      form {
+        @include heightWidth100;
+        @include flexcenter;
+        justify-content: flex-start;
+        position: relative;
+        left: -0.7vw;
+        margin: 0;
+
+        div.form-control {
+          @include heightWidth100;
+
+          input {
+            width: 2vw;
+            height: 1vh;
+            pointer-events: stroke;
+            font-size: 0.75rem;
+          }
+        }
+      }
+
+      &--label {
+        
+        font-size: 0.75rem;
+        font-family: $font-1;
+        
+        @media screen and (max-width: 1099px) {
+          font-size: 1.3rem;
+        }
+      }
+
+      &--bpm {
+        color: $color-white;
+        font-weight: 400;
+        font-family: $font-1;
+        font-size: 0.8rem;
+        position: relative;
+        @media screen and (max-width: 1099px) {
+          font-size: 1.5rem;
+        }
+      }
+    }
+
+    &--input2 {
+      @include heightWidth100;
+      grid-row: 4/5;
+      grid-column: 1/5;
+      @include flexcenter;
+      margin: 0;
+      flex-direction: column;
+      align-items: flex-start;
+      position: relative;
+
+      left: 0.2vw;
+
+      form {
+        @include heightWidth100;
+        @include flexcenter;
+        justify-content: flex-start;
+        position: relative;
+        left: -0.7vw;
+        margin: 0;
+
+        div.form-control {
+          @include heightWidth100;
+
+          input {
+            width: 2vw;
+            height: 1vh;
+            pointer-events: stroke;
+            font-size: 0.75rem;
+          }
+        }
+      }
+
+      &--label {
+        font-size: 0.75rem;
+        font-family: $font-1;
+        
+      }
+
+      &--bpm {
+        color: $color-white;
+        font-weight: 400;
+        font-family: $font-1;
+        font-size: 0.8rem;
+        position: relative;
+      }
+    }
+
+    &--seeMore {
+      grid-row: 4/6;
+      grid-column: 1/5;
+      @include flexcenter;
+    }
+  }
+
+  &--submit {
+    grid-column: 1/3;
+    @include flexcenter;
+    position: relative;
+    bottom: 1vh;
+    grid-row: 3/4;
+
+    button {
+      @include dark-btn;
+      border: none;
+      padding: 12px 30px;
+      @include flexcenter;
+      background-color: $color-darker;
+      transition: all 0.2s;
+      @media screen and (max-width: 1099px) {
+        font-size: 1.1rem;
+        margin-bottom: 2rem;
+      }
+      
+      
+      @media (hover: hover) and (pointer: fine) {
+        &:hover {
+          background-color: #53caccb9;
+          border: 1px solid #1b1f1fab;
+          color: $color-darker;
+          transition: all 0.2s;
+        }
+      } 
+
+      box-shadow: $shadow-newer-2;
+    }
+  }
+}
+
+// .browse-soundlist {
+//   &--play {
+//     button.btn.nohover.user-loops-play {
+//       transform: scaleY(0.48) scaleX(0.45) scale(0.95);
+//       &:hover {
+//         transform: scaleY(0.48) scaleX(0.45) scale(1.05);
+//       }
+
+//       @media screen and (max-width: 1099px) {
+//         transform: scaleY(0.48) scaleX(0.55) scale(0.95);
+//         &:hover {
+//           transform: scaleY(0.48) scaleX(0.55) scale(1.05);
+//         }
+//       }
+//       @media screen and (max-width: 1099px) {
+//         transform: scaleY(0.57) scaleX(0.55) scale(0.95);
+//         &:hover {
+//           transform: scaleY(0.57) scaleX(0.55) scale(1.05);
+//         }
+//       }
+//     }
+//   }
+// }
+
+div.sound-list-item {
+  &--btn-contain {
+    @include flexcenter;
+    grid-column: 7/9;
+    grid-row: 1/2;
+    position: relative;
+    right: 2vw;
+  }
+  &--circle {
+    @include circleActionBtn;
+    @include flexcenter;
+    flex-direction: column;
+    margin-left: 2vw;
+  }
+}
+
+header.main-browse--chartSection--head {
+  span.headings.main-browse--chartSection--head--undertext {
+    @media screen and (max-width: 1099px) {
+      margin-bottom: 2vh;
+      font-size: 2rem;
+    }
+  }
+}
+
+.close-filters {
+  background-color: none;
+  position: fixed;
+  height: 200vh;
+  width: 200vw;
+  left: -100vw;
+  top: -100vh;
+  z-index: 1;
+  pointer-events: stroke;
+}
+
+.extra-tags-browse {
+  background-color: $color-darker;
+  height: 45vh;
+  width: 20vw;
+  @include flexcenter;
+  left: 0vw;
+  top: -1vh;
+  z-index: 3;
+  border-radius: 2rem;
+  padding: 1.5vh 1.2vw;
+  position: absolute;
+  box-shadow: $shadow-newer-2;
+  flex-direction: column;
+
+  h1 {
+    @include flexcenter;
+    @include niceTxt;
+  }
+  ul {
+    @include flexcenter;
+    @include heightWidth100;
+    padding: 0;
+    margin: 0;
+  }
+
+  li {
+    @include flexcenter;
+    @include niceTxt;
+    list-style: none;
+    flex-direction: column;
+    margin: 0 2vw;
+
+    div {
+      margin: 2vh 0;
+    }
+  }
+}
+
+span.dropdown-text--main-text.dropdown-text--timetext {
+  margin-left: 0;
+  margin-right: 1vw;
+}
+
+span.dropdown-text--main-text.dropdown-text--typetext {
+  margin-right: 1vw;
+}
+
+div.orderby-options {
+  height: min-content;
+  width: 18vw;
+  // top: 0;
+  // left: 150%;
+  // background-color: rgba(108, 121, 124, 0.14);
+  background: none;
+  background-color: rgb(19, 16, 16);
+  box-shadow: none;
+  border-radius: 0.5rem;
+  padding: 0;
+  @include flexcenter;
+  align-items: flex-end;
+  max-width: 240px;
+  transform: none;
+
+  // @media screen and (max-width: 1099px) {
+  //   left: 10%;
+  //   top: 5vh;
+  //   bottom: 0;
+  // }
+}
+
+.orderby-options {
+  &--list {
+    grid-row: 1/4;
+    grid-column: 1/4;
+    @include heightWidth100;
+    display: grid;
+    grid-template-columns: 100%;
+    grid-template-rows: repeat(4, min-content);
+    grid-row-gap: 0rem;
+    margin: 0;
+    li {
+      grid-template-columns: 1/-1;
+      height: 100%;
+      width: 100%;
+      background-color: rgb(19, 16, 16);
+      border-radius: 0.2rem;
+      margin: 0;
+      transition: all 0.2s;
+      @include flexcenter;
+
+      
+      
+      @media (hover: hover) and (pointer: fine) {
+        &:hover {
+          background-color: #53caccb9;
+          transition: all 0.2s;
+        }
+      } 
+      button.btn.nohover {
+        padding: 0.5rem 1rem;
+        width: 100%;
+        height: 3vh;
+        min-height: 18px;
+        max-height: 25px;
+        font-size: 0.95rem;
+        margin: 0;
+
+        justify-content: flex-start;
+        @include niceTxt;
+      }
+    }
+  }
+}
+
+.orderby-option-contain {
+  // background-color: yellow;
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  @include flexcenter;
+  justify-content: flex-end;
+  align-items: flex-end;
+  bottom: 15%;
+  left: 15%;
+}
+
+
+.more-filters-browse-smaller  {
+  @include heightWidth100;
+  position: absolute;
+  left: 0;
+  bottom: 1rem;
+  @include flexcenter;
+  width: 86vw;
+  z-index: 99;
+
+  @media screen and (max-width: 405px) {
+    width: 90vw;
+
+  }
+  @media screen and (max-width: 375px) {
+    width: 95vw;
+
+  }
+
+  div.navtest--nav--more {
+    right: 0;
+    
+
+  }
+}
+
+
+div.filter-menu--inputs {
+  form {
+      label.form-label.filter-menu--extra-options--input--label {
+        @include niceTxt;
+        z-index: 3;
+      }
+    
+  }
+}

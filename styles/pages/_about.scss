@@ -1,0 +1,122 @@
+.about-page-contain {
+  position: relative;
+  grid-row: 2/-1;
+  padding: 0rem 0;
+  @include flexcenter;
+  height: 100vh;
+  overflow: hidden;
+  display: grid;
+  grid-template-rows: 10% 80%;
+  grid-template-columns: 80vh;
+  overflow: hidden;
+
+} 
+
+
+.about-page {
+  @include flexcenter;
+  @include heightWidth100;
+  align-items: flex-start;
+  grid-row: 1/3;
+  grid-column: 1/-1;
+  overflow: hidden;
+  margin-top: 0rem;
+}
+
+.about-square {
+  position: relative;
+  height: 590px;
+  width: 380px;
+  background-color: $color-new-grey;
+  margin-top: 8rem;
+  border-radius: .4rem;
+  display: grid;
+  grid-template-columns: 5% 10% 70% 10% 5%;
+  grid-template-rows: 10% 35% 40% 15%;
+
+  @media screen and (min-width: 1100px) and (max-height: 600px) {
+    height: 500px;
+  }
+  @media screen and (min-width: 1100px) and (max-height: 550px) {
+    height: 350px;
+  }
+  @media screen and (max-width: 1099px) and (max-height: 600px) {
+    height: 400px;
+  }
+  @media screen and (max-width: 1099px) and (max-height: 450px) {
+    height: 350px;
+  }
+  @media screen and (max-width: 400px) {
+    width: 250px;
+  }
+
+  &--desc {
+    grid-row: 3/4;
+    @include niceTxt;
+    grid-column: 2/5;
+    @include heightWidth100;
+    @include flexcenter;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    margin-top: 1rem;
+    position: relative;
+    z-index: 2;
+    p {
+      font-size: 1rem;
+      font-weight: 300;
+      @media screen and (max-width: 1099px) {
+        font-size: 2rem;
+      }
+
+    }
+    p.email-about {
+      font-weight: 500;
+    }
+    
+
+  }
+
+  &--innerBack {
+    @include heightWidth100;
+    grid-row: 1/-1;
+    grid-column: 1/-1;
+    position: absolute;
+
+    z-index: 1;
+    &::before {
+      @include beforeTrick;
+      position: absolute;
+      transform: translateY(-0rem);
+      background-size: 100px;
+      background-image: url("../../util/img/pic.svg");
+      opacity: .1;
+    }
+
+  }
+
+  &--img {
+    @include flexcenter;
+    grid-row: 2/3;
+    grid-column: 1/-1;
+    z-index: 2;
+
+    img {
+      @include heightWidthSame(14.5rem);
+      border-radius: 50%;
+      @media screen and (max-width: 1099px) {
+        @include heightWidthSame(24.5rem);
+      }
+      @media screen and (min-width: 1100px) and (max-height: 550px) {
+        @include heightWidthSame(10.5rem);
+    
+      }
+      @media screen and (max-width: 1099px) and (max-height: 600px) {
+        @include heightWidthSame(20.5rem);
+      }
+    }
+
+  }
+
+ 
+}
