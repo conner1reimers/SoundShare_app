@@ -1,7 +1,7 @@
 import React, { useCallback } from 'react'
 import { Fragment } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import Hamburger from '../../Components/lotties/Hamburger';
+import Hamburger from '../../animatedLoaders/Hamburger';
 import SideDrawer from './SideDrawer'
 
 const SideContain: React.FC = () => {

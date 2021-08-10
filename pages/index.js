@@ -7,6 +7,11 @@ import Input from '../components/common_reusable/Input';
 import { VALIDATOR_EMAIL } from '../util/validators';
 import GlobalMsg from '../components/GlobalMsg';
 import {useGlobalMsg} from '../util/hooks/useGlobalMsg';
+import Media from 'react-media';
+import SideContain from '../components/shared/SideDrawer/SideContain'
+import TopNav from '../components/shared/SideDrawer/TopNav'
+import { Fragment } from 'react';
+
 
 export default function Home() {
 
@@ -41,9 +46,22 @@ export default function Home() {
     <div className="root-app-container">
       <GlobalMsg/>
       
-        <button onClick={showMsg}>
-        heyyoo
-        </button>
+      <Media
+				queries={{
+					small: "(max-width: 1099px)",
+					big: "(min-width: 1100px)",
+				}}
+			>
+				{(matches) => (
+					<Fragment>
+						{matches.small && (<SideContain/>)}
+
+						{matches.big && <TopNav />}
+
+						{/* <Analytics/> */}
+					</Fragment>
+				)}
+			</Media>
 
 
 
