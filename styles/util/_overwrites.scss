@@ -1332,3 +1332,11 @@ div.refresh-comment-spinner {
   pointer-events: none;
 }
 
+div.action-heart-img.action-heart-img-contain {
+  @include heightWidth100;
+  @include flexcenter;
+  div {
+    @include heightWidthSame(59%);
+    @include flexcenter;
+  }
+}

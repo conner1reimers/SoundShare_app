@@ -7,6 +7,7 @@ import redHeart from "../../util/img/red-heart.svg";
 import { AnimatePresence, motion } from "framer-motion";
 import MouseOverLabel from "../../util/MouseOverLabel";
 import BallLoader from "../animatedLoaders/BallLoader/BallLoader";
+import Image from "next/image";
 
 const redVariants = {
   initial: {
@@ -78,7 +79,7 @@ const FavButton: React.FC<Props> = ({soundId, setCount, global}) => {
       try {
         
         response = await sendRequest(
-          `${process.env.REACT_APP_MY_ENV}/sounds/fav/${soundId}/${userId}`,
+          `${process.env.NEXT_PUBLIC_REACT_APP_MY_ENV}/sounds/fav/${soundId}/${userId}`,
           "POST",
           JSON.stringify({
             userId: userId,
@@ -140,30 +141,38 @@ const FavButton: React.FC<Props> = ({soundId, setCount, global}) => {
         >
           <AnimatePresence exitBeforeEnter>
             {isLiked && (
-              <motion.img
-                src={redHeart}
-                alt=""
-                className="action-heart-img"
+              <motion.div
+                className="action-heart-img action-heart-img-contain"
                 initial="initial"
                 animate="in"
                 exit="out"
                 variants={redVariants}
                 transition={redTransition}
                 key="red"
-              />
+              >
+                <Image 
+                  src={redHeart}
+                  alt=""
+                  className="action-heart-img"
+                />
+              </motion.div>
             )}
             {!isLiked && (
-              <motion.img
-                src={heartItem}
-                alt=""
-                className="action-heart-img"
+              <motion.div
+                className="action-heart-img action-heart-img-contain"
                 initial="initial"
                 animate="in"
                 exit="out"
                 variants={pageVariants}
                 transition={pageTransition}
                 key="blue"
-              />
+              >
+                <Image
+                  className="action-heart-img"
+                  src={heartItem}
+                  alt=""
+                />
+              </motion.div>
             )}
           </AnimatePresence>
         </button>

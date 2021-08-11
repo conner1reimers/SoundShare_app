@@ -1,20 +1,17 @@
-import React, { useState, Fragment, useContext, useCallback, useEffect } from 'react'
+import React, { useState, Fragment, useCallback, useEffect } from 'react'
 import {motion, AnimatePresence} from 'framer-motion';
 import ReactDOM from 'react-dom';
 import { Box, Typography, List, ListItem, Button } from '@material-ui/core';
-import Modal from '../Modal'
-import Auth from '../../Components/Auth';
-import { AuthContext } from '../../util/context/auth-context';
-import { NavLink, useHistory, useLocation } from 'react-router-dom';
+import Auth from '../../auth/Auth';
 import { useSelector, useDispatch } from 'react-redux';
-import { setModalOpen, resetGlobalSound, setModalClosed } from '../../store/actions';
-import Notification from './Notifications/Notification'
-import bell from "../../util/img/bell.svg";
-import bell2 from "../../util/img/bell2.svg";
+import { setModalOpen, resetGlobalSound, setModalClosed } from '../../../store/actions';
+import bell from "../../../util/img/bell.svg";
 import UploadModal from '../Modals/Upload/UploadModal';
-import useLogout from '../../util/hooks/useLogout'
+import useLogout from '../../../util/hooks/useLogout'
 import BrowseOptionsMobile from './BrowseOptions/BrowseOptionsMobile';
-
+import { useRouter } from 'next/router';
+import Link from 'next/link';
+import Image from 'next/image';
 
 const optionsVariants = {
     initial: {
@@ -80,7 +77,7 @@ const SideDrawer: React.FC<Props> = ({open}) => {
     }, []);
 
 
-    const location = useLocation();
+    const location = useRouter();
     const uid = useSelector((state: any)  => state.user.userId);
     const notifications = useSelector(
         (state: any) => state.user.uncheckedNotifications
@@ -135,11 +132,11 @@ const SideDrawer: React.FC<Props> = ({open}) => {
         
     }, [sideDrawerOpen])
 
-    const history = useHistory();
+    
     
     const logout = useCallback(() => {
         logoutUser();
-        history.push('/home');
+        location.push('/home');
         dispatch({type: "CLOSE_SIDE_DRAWER"});
         window.scrollTo(0, 0);
     }, []);
@@ -165,30 +162,36 @@ const SideDrawer: React.FC<Props> = ({open}) => {
 
     const homeElement = 
     auth.isLoggedIn ? 
-    (<NavLink className={`sidedrawer-navlink ${locationOption === 'home' ? 'active-sidedrawer' : ''}`} to={`/home/${auth.userId}}`}>
-        <button 
-            onClick={() => dispatch({type: "CLOSE_SIDE_DRAWER"})} 
-            className="btn nohover sidedrawer--list--btn"
-            >Home 
-        </button>
-    </NavLink>)
-    : (<NavLink className={`sidedrawer-navlink ${locationOption === 'home' ? 'active-sidedrawer' : ''}`} to='/home'>
+    (<Link href={`/home/${auth.userId}}`}>
+        <a className={`sidedrawer-navlink ${locationOption === 'home' ? 'active-sidedrawer' : ''}`}>
             <button 
                 onClick={() => dispatch({type: "CLOSE_SIDE_DRAWER"})} 
                 className="btn nohover sidedrawer--list--btn"
                 >Home 
             </button>
-        </NavLink>)
+        </a>
+    </Link>)
+    : (<Link href='/home'>
+        <a className={`sidedrawer-navlink ${locationOption === 'home' ? 'active-sidedrawer' : ''}`}>
+            <button 
+                onClick={() => dispatch({type: "CLOSE_SIDE_DRAWER"})} 
+                className="btn nohover sidedrawer--list--btn"
+                >Home 
+            </button>
+        </a>
+        </Link>)
 
     const userpageElement = 
     auth.isLoggedIn ? 
-    (<NavLink className={`sidedrawer-navlink ${locationOption === 'user' ? 'active-sidedrawer' : ''}`} to={`/user/${uid}`}>
-        <button 
-            onClick={() => dispatch({type: "CLOSE_SIDE_DRAWER"})} 
-            className="btn nohover sidedrawer--list--btn"
-            >Your profile 
-        </button>
-    </NavLink>)
+    (<Link href={`/user/${uid}`}>
+        <a className={`sidedrawer-navlink ${locationOption === 'user' ? 'active-sidedrawer' : ''}`} >
+            <button 
+                onClick={() => dispatch({type: "CLOSE_SIDE_DRAWER"})} 
+                className="btn nohover sidedrawer--list--btn"
+                >Your profile 
+            </button>
+        </a>
+    </Link>)
     : (<div className={`sidedrawer-navlink`}>
             <button 
                 onClick={openAuth} 
@@ -199,33 +202,41 @@ const SideDrawer: React.FC<Props> = ({open}) => {
     
     const feedElement = 
     auth.isLoggedIn ? 
-    (<NavLink className={`sidedrawer-navlink ${locationOption === 'feed' ? 'active-sidedrawer' : ''}`} to={`/feed/${uid}`}>
-        <button 
-            onClick={() => dispatch({type: "CLOSE_SIDE_DRAWER"})} 
-            className="btn nohover sidedrawer--list--btn"
-            >Your Feed
-        </button>
-    </NavLink>)
+    (<Link href={`/feed/${uid}`}>
+        <a className={`sidedrawer-navlink ${locationOption === 'feed' ? 'active-sidedrawer' : ''}`}>
+            <button 
+                onClick={() => dispatch({type: "CLOSE_SIDE_DRAWER"})} 
+                className="btn nohover sidedrawer--list--btn"
+                >Your Feed
+            </button>
+        </a>
+    </Link>)
     : null
 
     const notificationElement = 
     (auth.isLoggedIn && notifications) ? 
-    (<NavLink className={`sidedrawer-navlink ${locationOption === 'notification' ? 'active-sidedrawer' : ''}`} to={`/notification/${uid}`}>
+    (<Link href={`/notification/${uid}`}>
+        <a className={`sidedrawer-navlink ${locationOption === 'notification' ? 'active-sidedrawer' : ''}`} >
+            
+        
         <button 
             onClick={() => dispatch({type: "CLOSE_SIDE_DRAWER"})} 
             className="btn nohover sidedrawer--list--btn"
             >Notifications
                 {notifications.length > 0 && <div className="bell-icon--contain">
-                    <img src={bell} alt=""/>
+                    <Image src={bell} alt=""/>
                     <div className="top-nav-big--links--notifications">
                         <span>{notifications.length}</span>
                     </div>
                 </div>}
         </button>
-    </NavLink>)
+        </a>
+    </Link>)
     : null
+    
 
-    return ReactDOM.createPortal(
+
+    const finalEl = process.browser ? ReactDOM.createPortal(
         <Fragment>
             <AnimatePresence exitBeforeEnter>
                 {sideDrawerOpen &&
@@ -251,24 +262,19 @@ const SideDrawer: React.FC<Props> = ({open}) => {
                             </ListItem>
 
                             <ListItem>
-                                {/* <NavLink className={`sidedrawer-navlink ${locationOption === 'browse' ? 'active-sidedrawer' : ''}`} to='/browse'>
-                                    <button 
-                                        onClick={() => dispatch({type: "CLOSE_SIDE_DRAWER"})} 
-                                        className="btn nohover sidedrawer--list--btn"
-                                        >Browse 
-                                    </button>
-                                </NavLink> */} 
                                 <BrowseOptionsMobile locationOption={locationOption}/>
                             </ListItem>
 
                             <ListItem>
-                                <NavLink className={`sidedrawer-navlink ${locationOption === 'contact' ? 'active-sidedrawer' : ''}`} to='/about'>
-                                    <button 
-                                        onClick={() => dispatch({type: "CLOSE_SIDE_DRAWER"})} 
-                                        className="btn nohover sidedrawer--list--btn"
-                                        >Contact 
-                                    </button>
-                                </NavLink>
+                                <Link href='/about'>
+                                    <a className={`sidedrawer-navlink ${locationOption === 'contact' ? 'active-sidedrawer' : ''}`}>
+                                        <button 
+                                            onClick={() => dispatch({type: "CLOSE_SIDE_DRAWER"})} 
+                                            className="btn nohover sidedrawer--list--btn"
+                                            >Contact 
+                                        </button>
+                                    </a>
+                                </Link>
                             </ListItem>
 
                             
@@ -309,7 +315,9 @@ const SideDrawer: React.FC<Props> = ({open}) => {
             <Auth open={authModalOpen} />
             
             {sideDrawerOpen && <div onClick={closeSideDrawer} className="close-filters"></div>}
-        </Fragment>, document.getElementById('sidedrawer-hook') as HTMLElement)
+        </Fragment>, document.getElementById('sidedrawer-hook') as HTMLElement) : null
+
+    return finalEl;
 }
 
 export default React.memo(SideDrawer);

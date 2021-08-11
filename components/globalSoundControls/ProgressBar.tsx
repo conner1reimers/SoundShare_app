@@ -1,5 +1,5 @@
 import React, { useEffect, useContext, useRef, createRef, useState, Fragment, useCallback } from 'react'
-import getBrowserDim from '../../util/getBrowserDim'
+import useWindowSize from '../../util/useWindowSize'
 import { useSelector, useDispatch } from 'react-redux';
 import { updateTime, resetProgress, seekSound, playGlobalSound, endGlobalSound, pauseGlobalSound } from '../../store/actions';
 import { useChangeSound } from '../../util/hooks/useChangeSound';
@@ -13,6 +13,7 @@ import { GlobalMsgState } from '../../store/reducers/globalMsg';
 import { ProgressState } from '../../store/reducers/progressState';
 import { UiState } from '../../store/reducers/uiStateReducer';
 import { GlobalPlayingState } from '../../store/reducers/globalPlaying';
+import { styled } from '@material-ui/core/styles';
 
 const optionsVariants = {
     initial: {
@@ -86,7 +87,8 @@ const ProgressBar: React.FC<Props> = ({fx, singleSound, hidden, playing, open, s
     const progress = useSelector((state: Root) => state.progress);
     const setGlobalMsg = useGlobalMsg();
 
-  
+    const browserDims = useWindowSize();
+
     const small = gpuTier.isMobile;
     const sound = globalSoundPlaying.sound;
 
@@ -125,7 +127,6 @@ const ProgressBar: React.FC<Props> = ({fx, singleSound, hidden, playing, open, s
       if (!fx && !singleSound) {
         e.persist();
 
-        const browserDims = getBrowserDim();
         const timeEl: any = document.querySelector('.global-player--time--progress');
         const timelineEl: any = document.querySelector('.global-player--time--line');
 
@@ -171,8 +172,6 @@ const ProgressBar: React.FC<Props> = ({fx, singleSound, hidden, playing, open, s
           }
       } else if (fx && !singleSound) {
         e.persist();
-
-          const browserDims = getBrowserDim();
           const cursorEl: any = document.querySelector('.global-player--time--moveOver--followingTile');
 
           const lengthToBarEl: any = document.querySelector('.length-to-fxbar');
@@ -204,8 +203,6 @@ const ProgressBar: React.FC<Props> = ({fx, singleSound, hidden, playing, open, s
 
       } else if (!fx && singleSound) {
         e.persist();
-
-        const browserDims = getBrowserDim();
         const timeEl: any = document.querySelector('.global-player--time--progress');
         const timelineEl: any = document.querySelector('.global-player--time--line');
         const cursorEl: any = document.querySelector('.global-player--time--moveOver--followingTile');
@@ -526,7 +523,7 @@ const ProgressBar: React.FC<Props> = ({fx, singleSound, hidden, playing, open, s
       
       
 
-      const PrettoSlider = withStyles({
+      const PrettoSlider = styled(Slider)({
         root: {
           color: "rgba(108, 121, 124, 0.24)",
           height: 8,
@@ -572,7 +569,7 @@ const ProgressBar: React.FC<Props> = ({fx, singleSound, hidden, playing, open, s
           color: "#CE665C",
           backgroundColor: "#4324",
         },
-      })(Slider);
+      });
     
     let soundPath: any;
   

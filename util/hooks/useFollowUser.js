@@ -38,7 +38,7 @@ export const useFollowUser = (id, location) => {
           if (!isFollowing) {
             try {
               result = await sendRequest(
-                `${process.env.REACT_APP_MY_ENV}/users/follow/${user.userId}/${id}`,
+                `${process.env.NEXT_PUBLIC_REACT_APP_MY_ENV}/users/follow/${user.userId}/${id}`,
                 "POST",
                 null,
                 {'Authorization': 'Bearer '+user.token}
@@ -50,7 +50,7 @@ export const useFollowUser = (id, location) => {
           } else {
             try {
               result = await sendRequest(
-                `${process.env.REACT_APP_MY_ENV}/users/unfollow/${user.userId}/${id}`,
+                `${process.env.NEXT_PUBLIC_REACT_APP_MY_ENV}/users/unfollow/${user.userId}/${id}`,
                 "DELETE",
                 null,
                 {'Authorization': 'Bearer '+user.token}

@@ -78,7 +78,7 @@ const SubmitList: React.FC<Props> = () => {
 
       fileList.forEach(async (el: any, indx: any) => {
         try {
-            let valid = await sendRequest(`${process.env.REACT_APP_MY_ENV}/sounds/soundlist`, 'POST', JSON.stringify({
+            let valid = await sendRequest(`${process.env.NEXT_PUBLIC_REACT_APP_MY_ENV}/sounds/soundlist`, 'POST', JSON.stringify({
               name:  el.info.form.name.value,
               description: el.info.form.description.value,
               type: el.info.soundType,
@@ -157,7 +157,7 @@ const SubmitList: React.FC<Props> = () => {
       formData.append('bpm', bpm);
       formData.append('image', image);
       
-      finalResult = await sendRequest(`${process.env.REACT_APP_MY_ENV}/sounds/upload/${tags}`, 'POST', formData, { 'Authorization': 'Bearer ' + user.token });
+      finalResult = await sendRequest(`${process.env.NEXT_PUBLIC_REACT_APP_MY_ENV}/sounds/upload/${tags}`, 'POST', formData, { 'Authorization': 'Bearer ' + user.token });
       setTimeout(() => {
         if (finalResult) {
           setGlobalMsg('Sounds uploaded!', 'success')

@@ -10,7 +10,7 @@ import XtraDropdowns from '../ExtraDropdown/XtraDropdowns'
 import XtraOptionDropdown from '../ExtraDropdown/XtraOptionDropdown'
 import SubmitUpload from '../SubmitUpload'
 import ResetButton from './ResetButton'
-import noImg from '../../../../../util/img/newErr.svg';
+import noImg from '../../../../../../util/img/newErr.svg';
 import Image from 'next/image'
 import { saveUploadForm, setUploadSound } from '../../../../../../store/actions'
 import { CLOSE_MODAL } from '../../../../../../store/actions/actionTypes'
@@ -156,7 +156,7 @@ const FullUploadForm: React.FC<Props> = ({goToFx, resetUpload, sound, isList, cu
           formData.append('xtra', formState.inputs.xtraOptions.value);
           formData.append('image', image);
           
-          await sendRequest(`${process.env.REACT_APP_MY_ENV}/sounds/upload/${tags}`, 'POST', formData, { 'Authorization': 'Bearer ' + user.token });
+          await sendRequest(`${process.env.NEXT_PUBLIC_REACT_APP_MY_ENV}/sounds/upload/${tags}`, 'POST', formData, { 'Authorization': 'Bearer ' + user.token });
           
           setData(
             {

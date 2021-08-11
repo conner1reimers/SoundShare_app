@@ -4,7 +4,7 @@ import { setUploadSound, setUploadBuffer } from '../store/actions';
 import { Buffer } from 'tone';
 import musicDownload from '../util/img/music-downloads.svg';
 import {useDropzone} from 'react-dropzone'
-import { analyze, guess } from 'web-audio-beat-detector';
+// import { analyze, guess } from 'web-audio-beat-detector';
 import {useGlobalMsg} from '../util/hooks/useGlobalMsg'
 import CloseUpload from './shared/Modals/Upload/CloseUpload';
 import Image from 'next/image';
@@ -75,17 +75,17 @@ const SoundUpload: React.FC<Props> = ({onInput, id, center, errorText, open}) =>
     const filePickerRef = useRef<any>();
     const dispatch = useDispatch();
 
-    const getBpm = (buff: any) => {
-        guess(buff)
-            .then(({ bpm }) => {
-                dispatch({type: 'FOUND_BPM', bpm: bpm});
-                onInput('bpm', bpm.toString(), true);
+    // const getBpm = (buff: any) => {
+    //     guess(buff)
+    //         .then(({ bpm }) => {
+    //             dispatch({type: 'FOUND_BPM', bpm: bpm});
+    //             onInput('bpm', bpm.toString(), true);
 
-            })
-            .catch((err) => {
-                return
-            });
-    }
+    //         })
+    //         .catch((err) => {
+    //             return
+    //         });
+    // }
 
     let AudioContext = window.AudioContext;
     let context = new AudioContext(); // Make it crossbrowser    
@@ -110,7 +110,7 @@ const SoundUpload: React.FC<Props> = ({onInput, id, center, errorText, open}) =>
             fileReaderBuff.onload = () => {
                 context.decodeAudioData(fileReaderBuff.result,
                     (buff) => {
-                        getBpm(buff)
+                        // getBpm(buff)
                         dispatch(setUploadBuffer(new Buffer(buff)))
                     }, (err) => {
                         setErrMsg(err)

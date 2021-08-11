@@ -40,7 +40,7 @@ const sendRequest = async (url, method = "GET", body = null, headers = {}) => {
 const fetchSound = async () => {
   let result;
   try {
-    result = await sendRequest(`${process.env.REACT_APP_MY_ENV}/sounds`);
+    result = await sendRequest(`${process.env.NEXT_PUBLIC_REACT_APP_MY_ENV}/sounds`);
     return result;
   } catch (err) {}
 };
@@ -49,7 +49,7 @@ const fetchSound = async () => {
 const fetchSoundCategory = async (category) => {
   let result;
   try {
-    result = await sendRequest(`${process.env.REACT_APP_MY_ENV}/sounds/recent-more/${category}`);
+    result = await sendRequest(`${process.env.NEXT_PUBLIC_REACT_APP_MY_ENV}/sounds/recent-more/${category}`);
     return result;
   } catch (err) {
   }
@@ -60,7 +60,7 @@ const fetchSoundCategory = async (category) => {
 const fetchUser = async (id) => {
   let result;
   try {
-    result = await sendRequest(`${process.env.REACT_APP_MY_ENV}/users/getUser/${id}`);
+    result = await sendRequest(`${process.env.NEXT_PUBLIC_REACT_APP_MY_ENV}/users/getUser/${id}`);
     const dateNow = new Date();
     const joinDate = new Date(result.user.join_date);
     const daysSince = Math.floor(
@@ -109,7 +109,7 @@ const refreshBrowse = async (query, val, offset, order) => {
 
   try {
     result = await sendRequest(
-      `${process.env.REACT_APP_MY_ENV}/sounds/refreshbrowse/${offset}`, 'POST', 
+      `${process.env.NEXT_PUBLIC_REACT_APP_MY_ENV}/sounds/refreshbrowse/${offset}`, 'POST', 
       JSON.stringify({
         query: query,
         vals: val,
@@ -128,7 +128,7 @@ const refreshAllLikes = async (offset) => {
 
   try {
     result = await sendRequest(
-      `${process.env.REACT_APP_MY_ENV}/sounds/moreTopLikes/${offset}`
+      `${process.env.NEXT_PUBLIC_REACT_APP_MY_ENV}/sounds/moreTopLikes/${offset}`
     );
 
     return result.results;
@@ -142,7 +142,7 @@ const refreshAllDownloads = async (offset) => {
 
   try {
     result = await sendRequest(
-      `${process.env.REACT_APP_MY_ENV}/sounds/moreTopDownloads/${offset}`
+      `${process.env.NEXT_PUBLIC_REACT_APP_MY_ENV}/sounds/moreTopDownloads/${offset}`
     );
 
     return result.results;
@@ -162,7 +162,7 @@ const fetchBrowse = async (params) => {
       let time = params.time.text ? params.time.text.split(" ").join("") : "alltime";
       
       response = await sendRequest(
-        `${process.env.REACT_APP_MY_ENV}/sounds/browse/${params.category}/${params.genre.text}/${params.type.text}/${time}`
+        `${process.env.NEXT_PUBLIC_REACT_APP_MY_ENV}/sounds/browse/${params.category}/${params.genre.text}/${params.type.text}/${time}`
       );
       
       return response;
@@ -178,7 +178,7 @@ const filterBrowse = async (params, lastQuery) => {
 
   try {
     response = await sendRequest(
-      `${process.env.REACT_APP_MY_ENV}/users/filtersoundswquery/${params.category}/${params.keyword}/${params.author}/${params.bpm1}/${params.bpm2}/${params.activeOrderbyOption}`,
+      `${process.env.NEXT_PUBLIC_REACT_APP_MY_ENV}/users/filtersoundswquery/${params.category}/${params.keyword}/${params.author}/${params.bpm1}/${params.bpm2}/${params.activeOrderbyOption}`,
       "POST",
       JSON.stringify({
         query: lastQuery.text,
@@ -201,7 +201,7 @@ const fetchFollowers = async (followers) => {
   if (followers.length > 0) {
     try {
       result = await sendRequest(
-        `${process.env.REACT_APP_MY_ENV}/users/followers/${followers.join(',')}`
+        `${process.env.NEXT_PUBLIC_REACT_APP_MY_ENV}/users/followers/${followers.join(',')}`
       );
       return result.followers;
     } catch (err) {
@@ -218,7 +218,7 @@ const fetchFeed = async (uid, following) => {
   
   try {
     result = await sendRequest(
-      `${process.env.REACT_APP_MY_ENV}/users/feed/${uid}/${following}`
+      `${process.env.NEXT_PUBLIC_REACT_APP_MY_ENV}/users/feed/${uid}/${following}`
     );
     return result;
   } catch (err) {
@@ -230,7 +230,7 @@ const fetchLoggedUser = async (uid) => {
   let result;
   try {
     result = await sendRequest(
-      `${process.env.REACT_APP_MY_ENV}/users/getLoggedUser/${uid}`
+      `${process.env.NEXT_PUBLIC_REACT_APP_MY_ENV}/users/getLoggedUser/${uid}`
     );
     return {
       user: result.gotUser[0],
@@ -246,7 +246,7 @@ const recentSoundsFetchMore = async (offset, category) => {
 
   try {
     response = await sendRequest(
-      `${process.env.REACT_APP_MY_ENV}/sounds/moresounds/${category}/${offset}`
+      `${process.env.NEXT_PUBLIC_REACT_APP_MY_ENV}/sounds/moresounds/${category}/${offset}`
     );
     return response;
   } catch (err) {}
@@ -279,7 +279,7 @@ function* fetchRecentCategoryAsync(action) {
 const fetchTopLikedSounds = async () => {
   let result;
   try {
-    result = await sendRequest(`${process.env.REACT_APP_MY_ENV}/sounds/top/likes`);
+    result = await sendRequest(`${process.env.NEXT_PUBLIC_REACT_APP_MY_ENV}/sounds/top/likes`);
     return result;
   } catch (err) {
     ;
@@ -289,7 +289,7 @@ const fetchTopLikedSounds = async () => {
 const fetchTopDownloadedSounds = async () => {
   let result;
   try {
-    result = await sendRequest(`${process.env.REACT_APP_MY_ENV}/sounds/top/downloads`);
+    result = await sendRequest(`${process.env.NEXT_PUBLIC_REACT_APP_MY_ENV}/sounds/top/downloads`);
     return result;
   } catch (err) {
     ;
@@ -300,7 +300,7 @@ const fetchTopDownloadedSounds = async () => {
 const checkForCookie = async () => {
   let result;
   try {
-    result = await sendRequest(`${process.env.REACT_APP_MY_ENV}/users/checkForCookie`);
+    result = await sendRequest(`${process.env.NEXT_PUBLIC_REACT_APP_MY_ENV}/users/checkForCookie`);
     
     return result;
   } catch (err) {
@@ -538,7 +538,7 @@ const BPMSearch = async (bpm) => {
 
     try {
       response = await sendRequest(
-        `${process.env.REACT_APP_MY_ENV}/sounds/search-bpm/${bpm}`
+        `${process.env.NEXT_PUBLIC_REACT_APP_MY_ENV}/sounds/search-bpm/${bpm}`
       );
       
       return response;

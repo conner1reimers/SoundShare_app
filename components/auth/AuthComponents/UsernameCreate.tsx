@@ -31,7 +31,7 @@ const UsernameCreate: React.FC = () => {
         let response;
         if (checkboxValue) {
             try {
-                response = await sendRequest(`${process.env.REACT_APP_MY_ENV}/users/create-user-google`, 
+                response = await sendRequest(`${process.env.NEXT_PUBLIC_REACT_APP_MY_ENV}/users/create-user-google`, 
                     'POST', 
                     JSON.stringify({
                         email: loginInfo.email,

@@ -1,7 +1,7 @@
 import React, { Fragment, useEffect, useReducer, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import Input from '../../../../../common_reusable/Input'
-import { analyze, guess } from 'web-audio-beat-detector';
+// import { analyze, guess } from 'web-audio-beat-detector';
 import { Buffer } from 'tone'
 import CategoryOption from './CategoryOption'
 
@@ -139,15 +139,15 @@ const UploadItem: React.FC<ItemProps> = ({ element, indx, goToDetails, notFirstL
     }
   }, false);
 
-  const getBpm = (buff: any) => {
-    guess(buff)
-        .then(({ bpm }) => {
-            return bpm;
-        })
-        .catch((err) => {
-            return
-      });
-  }
+  // const getBpm = (buff: any) => {
+  //   guess(buff)
+  //       .then(({ bpm }) => {
+  //           return bpm;
+  //       })
+  //       .catch((err) => {
+  //           return
+  //     });
+  // }
 
   
   
@@ -175,8 +175,8 @@ const UploadItem: React.FC<ItemProps> = ({ element, indx, goToDetails, notFirstL
                 soundType = 'fx';
               }
               
-              const bpm: any = getBpm(buff);
-              dispatch(setUploadListInfo(indx, element.name, bpm, soundType, buffer.duration));
+              // const bpm: any = getBpm(buff);
+              dispatch(setUploadListInfo(indx, element.name, 0, soundType, buffer.duration));
               setLoadin(false);
 
               

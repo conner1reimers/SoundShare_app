@@ -177,7 +177,7 @@ const SoundListItem: React.FC<Props> = ({id, key, category, sound_id, img_path, 
               onClick={playSound}
               className="btn nohover user-loops-play"
             >
-              <Image src={playBtn} alt="" />
+              <Image height={20} width={20} src={playBtn} alt="" />
             </button>
           </div>
 
@@ -190,10 +190,10 @@ const SoundListItem: React.FC<Props> = ({id, key, category, sound_id, img_path, 
                   src={`https://soundshare-bucket.s3.us-east-2.amazonaws.com/${img_path}`}
                   alt=""
               />
-            ) : category === "fx" ? (
-              <Image className="img-shine" src={game} alt="" />
-              ) : (
-                <Image className="img-shine" src={music} alt="" />
+            ) : category === "fx" ? ( <div className="img-shine"> 
+              <Image className="img-shine" height={35} width={35} src={game} alt="" /> </div>
+              ) : (<div className="img-shine">
+                <Image height={35} width={35} className="img-shine" src={music} alt="" /></div>
                 )}
           </div>
 
@@ -266,7 +266,7 @@ const SoundListItem: React.FC<Props> = ({id, key, category, sound_id, img_path, 
                 width={50}
                 height={50}
                 src={`https://soundshare-bucket.s3.us-east-2.amazonaws.com/${img_path}`}
-                alt=""
+                alt="agsd"
               />
               </div>
             ) : (

@@ -1,8 +1,8 @@
 import { motion } from 'framer-motion';
 import React, { Fragment, useState } from 'react'
 import Media from 'react-media';
-import pop from '../../../../../util/img/tag.svg';
-import pop2 from '../../../../../util/img/price-tag.svg';
+import pop from '../../../../../../util/img/tag.svg';
+import pop2 from '../../../../../../util/img/price-tag.svg';
 import Image from 'next/image';
 
 

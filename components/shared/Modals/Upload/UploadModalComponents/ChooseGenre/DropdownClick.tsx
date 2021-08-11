@@ -1,16 +1,16 @@
 import { motion } from 'framer-motion';
 import React, { Children, Fragment, useCallback, useEffect, useState } from 'react'
-import popGenre from '../../../../../util/img/pop.svg';
-import soundwaves from '../../../../../util/img/sound-waves.svg';
-import djMixer from '../../../../../util/img/djMixer.svg';
-import rnbBox from '../../../../../util/img/rnbBox.svg';
-import rock from '../../../../../util/img/rock.svg';
-import ipod from '../../../../../util/img/ipod.svg';
-import bird from '../../../../../util/img/bird.svg';
-import water from '../../../../../util/img/water.svg';
-import wedd from '../../../../../util/img/wedd.svg';
-import anger from '../../../../../util/img/anger.svg';
-import games from '../../../../../util/img/games.svg';
+import popGenre from '../../../../../../util/img/pop.svg';
+import soundwaves from '../../../../../../util/img/sound-waves.svg';
+import djMixer from '../../../../../../util/img/djMixer.svg';
+import rnbBox from '../../../../../../util/img/rnbBox.svg';
+import rock from '../../../../../../util/img/rock.svg';
+import ipod from '../../../../../../util/img/ipod.svg';
+import bird from '../../../../../../util/img/bird.svg';
+import water from '../../../../../../util/img/water.svg';
+import wedd from '../../../../../../util/img/wedd.svg';
+import anger from '../../../../../../util/img/anger.svg';
+import games from '../../../../../../util/img/games.svg';
 import Image from 'next/image';
 
 const genreFinderLoops = (val: any) => {

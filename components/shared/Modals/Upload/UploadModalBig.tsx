@@ -198,7 +198,7 @@ const UploadModalBig: React.FC<Props> = ({setBackdropVisibility, soundPreview}) 
             formData.append('xtra', formState.inputs.xtraOptions.value);
             formData.append('image', image);
 
-            await sendRequest(`${process.env.REACT_APP_MY_ENV}/sounds/${tags}`, 'POST', formData, {'Authorization': 'Bearer '+user.token});
+            await sendRequest(`${process.env.NEXT_PUBLIC_REACT_APP_MY_ENV}/sounds/${tags}`, 'POST', formData, {'Authorization': 'Bearer '+user.token});
             setData(
               {
                 inputs: {

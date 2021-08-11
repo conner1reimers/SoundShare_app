@@ -19,7 +19,7 @@ import {
 import { resetProgress } from "../../../store/actions";
 import vol from "../../../util/img/volume.svg";
 import mute from "../../../util/img/mute.svg";
-import { Slider, withStyles } from "@material-ui/core";
+import { Slider } from "@material-ui/core";
 import blueX from "../../../util/img/x-blue.svg";
 import { useChangePage } from "../../../util/hooks/changePage";
 import { useHttpClient } from "../../../util/hooks/http-hook";
@@ -31,7 +31,7 @@ import PlayPauseBtns from "../../common_reusable/playPauseBtn/PlayPauseBtns";
 import InPageLoadSpinner from "../../animatedLoaders/InPageLoad/InPageLoadSpinner";
 import DownloadButton from "../../common_reusable/DownloadButton";
 import ProgressBar from "../../globalSoundControls/ProgressBar";
-
+import { styled } from '@material-ui/core/styles';
 
 const optionsVariants = {
   initial: {
@@ -119,7 +119,7 @@ export const GlobalSound: React.FC = React.memo(() => {
     };
   }, []);
 
-  const PrettoSlider = withStyles({
+  const PrettoSlider = styled(Slider)({
     root: {
       color: "rgba(108, 121, 124, 0.24)",
       height: 8,
@@ -167,7 +167,9 @@ export const GlobalSound: React.FC = React.memo(() => {
       color: "#CE665C",
       backgroundColor: "#4324",
     },
-  })(Slider);
+  });
+
+
 
   const valuetext = (e: any) => {
     return `${0} Degs`;
@@ -514,7 +516,7 @@ const UserImg: React.FC<UserProps> = ({creator}) => {
     let result;
     try {
       result = await sendRequest(
-        `${process.env.REACT_APP_MY_ENV}/users/userimg/${creator}`
+        `${process.env.NEXT_PUBLIC_REACT_APP_MY_ENV}/users/userimg/${creator}`
       );
       setUserImg(result.user_img_path);
     } catch (err) {}

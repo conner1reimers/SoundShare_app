@@ -41,7 +41,7 @@ const Heart: React.FC<Props> = ({soundId, soundInfo, setSoundInfo, setFav, fav})
     if (userId) {
       try {
         response = await sendRequest(
-          `${process.env.REACT_APP_MY_ENV}/sounds/fav/${soundInfo.sound.id}/${userId}`,
+          `${process.env.NEXT_PUBLIC_REACT_APP_MY_ENV}/sounds/fav/${soundInfo.sound.id}/${userId}`,
           "POST",
           JSON.stringify({
             userId: userId,

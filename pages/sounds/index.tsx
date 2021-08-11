@@ -1,10 +1,11 @@
-import React from 'react'
+import React, { Fragment } from 'react'
+import { Header } from '../../components/Header'
 
 const Sounds = () => {
   return (
-    <div>
-      
-    </div>
+    <Fragment>
+      <Header />
+    </Fragment>
   )
 }
 

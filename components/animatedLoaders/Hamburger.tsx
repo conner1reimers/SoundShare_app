@@ -73,10 +73,9 @@ const Hamburger: React.FC<Props> = ({on}) => {
         }
     }, [on, anim]);
 
+    
 
-
-
-    return ReactDOM.createPortal(
+    const finalEl = process.browser ? ReactDOM.createPortal(
         <Fragment>
 
             <div className={`hamburger-container ${(modalOpen && gpuTier && gpuTier.isMobile) ? 'hamburger-contain-openmodal' : ''} ${(on || (modalOpen && gpuTier && !gpuTier.isMobile)) ? 'hamburger-contain-open' : ''}`}>
@@ -86,7 +85,10 @@ const Hamburger: React.FC<Props> = ({on}) => {
             </div>
 
             <LoadingAnimation loading={isLoading} />
-        </Fragment>, document.getElementById('burger-hook') as HTMLElement);
+        </Fragment>, document.getElementById('burger-hook') as HTMLElement) : null
+
+
+    return finalEl
 }
 
 export default React.memo(Hamburger)

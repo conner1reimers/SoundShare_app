@@ -25,7 +25,7 @@ const Notification: React.FC = () => {
       if (uid) {
         try {
           result = await sendRequest(
-            `${process.env.REACT_APP_MY_ENV}/users/notification/check`,
+            `${process.env.NEXT_PUBLIC_REACT_APP_MY_ENV}/users/notification/check`,
             "PATCH",
             JSON.stringify({
               uid: uid,

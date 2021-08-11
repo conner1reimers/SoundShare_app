@@ -119,6 +119,7 @@ const MouseOverLabel: React.FC<MouseOverProps> = ({circle, singlesound, label, l
     }
   }, [isVisHold, isVis]);
 
+
   return (
     <Fragment>
       {gpuTier && (

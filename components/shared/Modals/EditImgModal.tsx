@@ -1,7 +1,7 @@
 import Image from 'next/image';
-import React, { Fragment, useEffect, useState } from 'react'
+import React, { Fragment } from 'react'
 import ReactDOM from 'react-dom';
-import close from '../../util/img/close.svg';
+import close from '../../../util/img/close.svg';
 import BackdropMain from './BackdropMain';
 
 
@@ -15,8 +15,7 @@ interface Props {
 }
 const EditImgModal: React.FC<Props> = ({social, closeModal, open, alldownloads, children}) => {
     
-
-    return ReactDOM.createPortal(
+    const final = process.browser ? ReactDOM.createPortal(
         <Fragment>
             {open && (
             <div className={`followers-modal edit-img-modal ${social ? 'edit-social-modal' : ''} ${alldownloads ? 'all-downloads-modal' : ''}`}>
@@ -34,8 +33,9 @@ const EditImgModal: React.FC<Props> = ({social, closeModal, open, alldownloads, 
                
             </div>)}
             {open && <BackdropMain onClick={closeModal}/>}
-        </Fragment>, document.getElementById('modal-hook') as HTMLElement
-    )
+        </Fragment>, document.getElementById('modal-hook') as HTMLElement) : null
+
+    return final;
 }
 
 export default React.memo(EditImgModal);

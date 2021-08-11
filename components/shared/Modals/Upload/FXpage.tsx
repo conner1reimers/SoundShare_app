@@ -10,13 +10,12 @@ import { Slider, withStyles } from "@material-ui/core";
 import { AnimatePresence, motion } from "framer-motion";
 import FXBottom from "./FXBottom";
 import FXSide from "./FXSide";
-import right from "../../../util/img/forward.svg";
+import right from "../../../../util/img/forward.svg";
 import { useSelector, useDispatch } from "react-redux";
-
 import { uuid } from "uuidv4";
 import FXCircleBtn from "./FXCircleBtn";
-import fx2 from "../../../util/img/fx2.svg";
-import fx3 from "../../../util/img/fx3.svg";
+import fx2 from "../../../../util/img/fx2.svg";
+import fx3 from "../../../../util/img/fx3.svg";
 import ReactDOM from 'react-dom';
 import Media from "react-media";
 import { pauseFx } from "../../../../store/actions";
@@ -25,6 +24,7 @@ import { useGlobalMsg } from "../../../../util/hooks/useGlobalMsg";
 import LoadingAnimation from "../../../animatedLoaders/LoadingAnimation/LoadingAnimation";
 import PlayPauseBtns from "../../../common_reusable/playPauseBtn/PlayPauseBtns";
 import Image from "next/image";
+import { styled } from '@material-ui/core/styles';
 
 const optionsVariants = {
 	initial: {
@@ -329,7 +329,7 @@ const FXpage: React.FC<Props> = ({open, soundPrev, saveFx, onInput, resetSecondP
 		wahPage: false,
 	});
 
-	const PrettoSlider = withStyles({
+	const PrettoSlider = styled(Slider)({
 		root: {
 			color: "rgba(108, 121, 124, 0.24)",
 			height: 8,
@@ -362,8 +362,9 @@ const FXpage: React.FC<Props> = ({open, soundPrev, saveFx, onInput, resetSecondP
 			color: "#CE665C",
 			backgroundColor: "#4324",
 		},
-	})(Slider);
+	});
 
+	// PrettoSlider.dispayName = "FxSilder";
 
 
 	const valuetext = (e: any) => {

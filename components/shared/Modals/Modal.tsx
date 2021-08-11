@@ -72,8 +72,7 @@ const Modal: React.FC<Props> = ({auth, upload, open, children, backdropHeader, b
         
     };
 
-
-    return ReactDOM.createPortal(
+    const finalEl = process.browser ? ReactDOM.createPortal(
         <Fragment>
             <Media queries={{
               small: "(max-width: 1099px)",
@@ -219,7 +218,12 @@ const Modal: React.FC<Props> = ({auth, upload, open, children, backdropHeader, b
                   
             
 
-        </Fragment>, document.getElementById('modal-hook') as HTMLElement)
+        </Fragment>, document.getElementById('modal-hook') as HTMLElement) : null
+
+
+
+
+    return finalEl;
 }
 
 export default Modal

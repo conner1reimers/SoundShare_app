@@ -1,9 +1,9 @@
 import React, { useState } from 'react'
 import { GoogleLogin } from 'react-google-login';
 import { useDispatch } from 'react-redux';
-import { setModalClosed } from '../store/actions';
-import { useHttpClient } from '../util/hooks/http-hook';
-import useLogin from '../util/hooks/useLogin';
+import { setModalClosed } from '../../store/actions';
+import { useHttpClient } from '../../util/hooks/http-hook';
+import useLogin from '../../util/hooks/useLogin';
 import FacebookLogin from 'react-facebook-login';
 import FacebookIcon from './FacebookIcon';
 
@@ -19,7 +19,7 @@ const LoginByGoogle = () => {
             response = await sendRequest(`https://www.googleapis.com/oauth2/v3/tokeninfo?id_token=${res.tokenId}`);
             if (response.email) {
                 finalResponse = await sendRequest(
-                    `${process.env.REACT_APP_MY_ENV}/users/signin-google`, 
+                    `${process.env.NEXT_PUBLIC_REACT_APP_MY_ENV}/users/signin-google`, 
                     'POST', 
                     JSON.stringify({
                         email: response.email
@@ -50,7 +50,7 @@ const LoginByGoogle = () => {
         if (response.email) {
             let finalResponse;
             finalResponse = await sendRequest(
-                `${process.env.REACT_APP_MY_ENV}/users/signin-google`, 
+                `${process.env.NEXT_PUBLIC_REACT_APP_MY_ENV}/users/signin-google`, 
                 'POST', 
                 JSON.stringify({
                     email: response.email

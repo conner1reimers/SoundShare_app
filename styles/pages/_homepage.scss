@@ -180,9 +180,41 @@
     position: relative;
     left: 5vw;
     bottom: 8vh;
+    
+    
+
     @media screen and (max-height: 580px) {
       min-height: 150px;
     }
+
+    @media screen and (min-width: 1100px) {
+      @include flexcenter;
+      margin-top: 0;
+      width: 100vw;
+      left: 0;
+      div.firstpage--box.firstpage--box1{
+        background: none;
+        box-shadow: none;
+        border: none;
+        margin: 0;
+        right: 0;
+        @include flexcenter;
+        div.firstpage-big--box--img {
+          box-shadow: none;
+          background: none;
+          top: 0;
+        }
+      }
+    }
+    @media screen and (min-width: 1100px) and (min-height: 579px) {
+      align-items: flex-start;
+
+    }
+    @media screen and (min-width: 1100px) and (max-height: 580px) {
+      top: 1rem;
+
+    }
+
   }
 
   &--box1 {
@@ -202,6 +234,8 @@
     z-index: 9;
     pointer-events: stroke;
     cursor: pointer;
+
+
 
     @media screen and (min-width: 650px) {
       width: 25vw;
@@ -570,8 +604,8 @@
     &--img {
       position: relative;
       @include flexcenter;
-      width: 19rem;
-      height: 7rem;
+      width: 224px;
+      height: 66px;
 
       &:before {
         @include beforeTrick();
@@ -587,6 +621,10 @@
         padding: 0.1rem 0.2rem;
         color: #53c9cc;
       }
+
+      .uploadbtn-image-contain {
+        @include heightWidthSame(50%);
+      }
     }
     &--btn {
       margin: 1rem;
@@ -595,7 +633,7 @@
       width: 14rem;
       padding: 2rem 4.3rem;
       position: absolute;
-      left: 1.5rem;
+      // left: 1.5rem;
       filter: $drop2;
       background: $color-white-2;
       z-index: 3;

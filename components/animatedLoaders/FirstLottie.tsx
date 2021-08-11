@@ -8,7 +8,9 @@ import React, {
 import Lottie from "react-lottie";
 import animationData from "./animationDatas/blueMain.json";
 import Media from "react-media";
-import getBrowserDimensions from "../../util/getBrowserDim";
+import useWindowSize from "../../util/useWindowSize";
+
+
 
 interface Props {
   nav?: boolean
@@ -18,7 +20,7 @@ const FirstLottie: React.FC<Props> = ({nav}) => {
   let _lottieHeartRef: any;
   const [reset, setRest] = useState<any>(false);
 
-  const browserDims = getBrowserDimensions();
+  const browserDims = useWindowSize();
 
   let smallWidth = useRef<any>();
   let medHeight = useRef<any>();
@@ -28,127 +30,128 @@ const FirstLottie: React.FC<Props> = ({nav}) => {
   let lgWidth = useRef<any>();
   let navWidth = useRef<any>();
 
+
+
   const setSizes = useCallback(() => {
-    if (browserDims.width < 299) {
-      smallWidth.current = browserDims.width * 0.515 + "px";
-      medHeight.current = browserDims.width * 0.28 + "px";
-      medWidth.current = browserDims.width * 0.5 + "px";
-      lgWidth.current = browserDims.width * 0.26 + "px";
-    } else if (browserDims.width >= 300 && browserDims.width <= 350) {
-      smallWidth.current = browserDims.width * 0.4 + "px";
-  
-      medHeight.current = browserDims.width * 0.35 + "px";
-      medWidth.current = browserDims.width * 0.58 + "px";
-      lgWidth.current = browserDims.width * 0.4 + "px";
-    } else if (browserDims.width > 350 && browserDims.width <= 400) {
-      smallWidth.current = browserDims.width * 0.4 + "px";
-  
-      medHeight.current = browserDims.width * 0.32 + "px";
-      medWidth.current = browserDims.width * 0.58 + "px";
-      lgWidth.current = browserDims.width * 0.4 + "px";
-    } else if (browserDims.width > 400 && browserDims.width <= 450) {
-      smallWidth.current = browserDims.width * 0.37 + "px";
-      medHeight.current = browserDims.width * 0.32 + "px";
-      medWidth.current = browserDims.width * 0.58 + "px";
-      lgWidth.current = browserDims.width * 0.4 + "px";
-    } else if (browserDims.width > 450 && browserDims.width <= 500) {
-      smallWidth.current = browserDims.width * 0.41 + "px";
-  
-      medHeight.current = browserDims.width * 0.34 + "px";
-      medWidth.current = browserDims.width * 0.42 + "px";
-      lgWidth.current = browserDims.width * 0.4 + "px";
-    } else if (browserDims.width > 500 && browserDims.width <= 530) {
-      smallWidth.current = browserDims.width * 0.4 + "px";
-  
-      medHeight.current = browserDims.width * 0.37 + "px";
-      medWidth.current = browserDims.width * 0.48 + "px";
-      lgWidth.current = browserDims.width * 0.4 + "px";
-    } else if (browserDims.width > 530 && browserDims.width <= 600) {
-      smallWidth.current = browserDims.width * 0.37 + "px";
-  
-      medHeight.current = browserDims.width * 0.38 + "px";
-      medWidth.current = browserDims.width * 0.8 + "px";
-      lgWidth.current = browserDims.width * 0.4 + "px";
-    } else if (browserDims.width > 600 && browserDims.width <= 650) {
-      smallWidth.current = browserDims.width * 0.15 + "px";
-  
-      medHeight.current = browserDims.width * 0.28 + "px";
-      medWidth.current = browserDims.width * 0.7 + "px";
-      lgWidth.current = browserDims.width * 0.37 + "px";
-    } else if (browserDims.width > 650 && browserDims.width <= 715) {
-      smallWidth.current = browserDims.width * 0.15 + "px";
-  
-      medHeight.current = browserDims.width * 0.28 + "px";
-      medWidth.current = browserDims.width * 0.6 + "px";
-      lgWidth.current = browserDims.width * 0.33 + "px";
-    } else if (browserDims.width > 715 && browserDims.width <= 850) {
-      smallWidth.current = browserDims.width * 0.15 + "px";
-  
-      medHeight.current = browserDims.width * 0.28 + "px";
-      medWidth.current = browserDims.width * 0.55 + "px";
-      lgWidth.current = browserDims.width * 0.3 + "px";
-      
-    } else if (browserDims.width > 850 && browserDims.width <= 915) {
-      smallWidth.current = browserDims.width * 0.15 + "px";
-  
-      medHeight.current = browserDims.width * 0.28 + "px";
-      medWidth.current = browserDims.width * 0.486 + "px";
-      lgWidth.current = browserDims.width * 0.26 + "px";
-  
-      medHeight2.current = browserDims.width * 0.1 + "px";
-      medWidth2.current = browserDims.width * 0.27 + "px";
-    } else if (browserDims.width > 915 && browserDims.width <= 1099) {
-      smallWidth.current = browserDims.width * 0.15 + "px";
-  
-      medHeight.current = browserDims.width * 0.28 + "px";
-      medWidth.current = browserDims.width * 0.5 + "px";
-      lgWidth.current = browserDims.width * 0.26 + "px";
-  
-      medHeight2.current = browserDims.width * 0.1 + "px";
-      medWidth2.current = browserDims.width * 0.27 + "px";
-    } else if (browserDims.width >= 1100 && browserDims.width <= 1200) {
-      medWidth.current = browserDims.width * 0.58 + "px";
-      lgWidth.current = browserDims.width * 0.3 + "px";
-      navWidth.current = browserDims.width * 0.1 + "px";
-      medHeight2.current = browserDims.width * 0.05 + "px";
-      medWidth2.current = browserDims.width * 0.27 + "px";
-    } else if (browserDims.width > 1200 && browserDims.width <= 1300) {
-      medWidth.current = browserDims.width * 0.55 + "px";
-      lgWidth.current = browserDims.width * 0.28 + "px";
-      navWidth.current = browserDims.width * 0.1 + "px";
-  
-      medHeight2.current = browserDims.width * 0.05 + "px";
-      medWidth2.current = browserDims.width * 0.27 + "px";
-    } else if (browserDims.width > 1300 && browserDims.width <= 1400) {
-      medWidth.current = browserDims.width * 0.49 + "px";
-      lgWidth.current = browserDims.width * 0.26 + "px";
-      navWidth.current = browserDims.width * 0.1 + "px";
-  
-      medHeight2.current = browserDims.width * 0.051 + "px";
-      medWidth2.current = browserDims.width * 0.27 + "px";
-    } else if (browserDims.width >= 1401 && browserDims.width <= 1550) {
-      medWidth.current = browserDims.width * 0.45 + "px";
-      lgWidth.current = browserDims.width * 0.24 + "px";
-      navWidth.current = browserDims.width * 0.1 + "px";
-  
-      medHeight2.current = browserDims.width * 0.051 + "px";
-      medWidth2.current = browserDims.width * 0.27 + "px";
-    } else if (browserDims.width > 1551 && browserDims.width < 1699) {
-      medWidth.current = browserDims.width * 0.41 + "px";
-      lgWidth.current = browserDims.width * 0.21 + "px";
-      medHeight2.current = browserDims.width * 0.051 + "px";
-      medWidth2.current = browserDims.width * 0.27 + "px";
-      navWidth.current = browserDims.width * 0.1 + "px";
-    } else if (browserDims.width >= 1700) {
-  
-      medHeight.current = browserDims.width * 0.45 + "px";
-      medWidth.current = browserDims.width * 0.38 + "px";
-      medHeight2.current = browserDims.width * 0.051 + "px";
-      medWidth2.current = browserDims.width * 0.27 + "px";
-      lgWidth.current = browserDims.width * 0.2 + "px";
-      navWidth.current = browserDims.width * 0.1 + "px";
-    }
-  }, [browserDims])
+      if (browserDims.width < 299) {
+        smallWidth.current = browserDims.width * 0.515 + "px";
+        medHeight.current = browserDims.width * 0.28 + "px";
+        medWidth.current = browserDims.width * 0.5 + "px";
+        lgWidth.current = browserDims.width * 0.26 + "px";
+      } else if (browserDims.width >= 300 && browserDims.width <= 350) {
+        smallWidth.current = browserDims.width * 0.4 + "px";
+    
+        medHeight.current = browserDims.width * 0.45 + "px";
+        medWidth.current = browserDims.width * 0.58 + "px";
+        lgWidth.current = browserDims.width * 0.4 + "px";
+      } else if (browserDims.width > 350 && browserDims.width <= 400) {
+        smallWidth.current = browserDims.width * 0.4 + "px";
+    
+        medHeight.current = browserDims.width * 0.42 + "px";
+        medWidth.current = browserDims.width * 0.58 + "px";
+        lgWidth.current = browserDims.width * 0.4 + "px";
+      } else if (browserDims.width > 400 && browserDims.width <= 450) {
+        smallWidth.current = browserDims.width * 0.37 + "px";
+        medHeight.current = browserDims.width * 0.42 + "px";
+        medWidth.current = browserDims.width * 0.58 + "px";
+        lgWidth.current = browserDims.width * 0.4 + "px";
+      } else if (browserDims.width > 450 && browserDims.width <= 500) {
+        smallWidth.current = browserDims.width * 0.41 + "px";
+        medHeight.current = browserDims.width * 0.44 + "px";
+        medWidth.current = browserDims.width * 0.42 + "px";
+        lgWidth.current = browserDims.width * 0.4 + "px";
+      } else if (browserDims.width > 500 && browserDims.width <= 530) {
+        smallWidth.current = browserDims.width * 0.4 + "px";
+    
+        medHeight.current = browserDims.width * 0.47 + "px";
+        medWidth.current = browserDims.width * 0.48 + "px";
+        lgWidth.current = browserDims.width * 0.4 + "px";
+      } else if (browserDims.width > 530 && browserDims.width <= 600) {
+        smallWidth.current = browserDims.width * 0.37 + "px";
+        medHeight.current = browserDims.width * 0.48 + "px";
+        medWidth.current = browserDims.width * 0.8 + "px";
+        lgWidth.current = browserDims.width * 0.4 + "px";
+      } else if (browserDims.width > 600 && browserDims.width <= 650) {
+        smallWidth.current = browserDims.width * 0.15 + "px";
+    
+        medHeight.current = browserDims.width * 0.28 + "px";
+        medWidth.current = browserDims.width * 0.7 + "px";
+        lgWidth.current = browserDims.width * 0.37 + "px";
+      } else if (browserDims.width > 650 && browserDims.width <= 715) {
+        smallWidth.current = browserDims.width * 0.15 + "px";
+    
+        medHeight.current = browserDims.width * 0.28 + "px";
+        medWidth.current = browserDims.width * 0.6 + "px";
+        lgWidth.current = browserDims.width * 0.33 + "px";
+      } else if (browserDims.width > 715 && browserDims.width <= 850) {
+        smallWidth.current = browserDims.width * 0.15 + "px";
+    
+        medHeight.current = browserDims.width * 0.28 + "px";
+        medWidth.current = browserDims.width * 0.55 + "px";
+        lgWidth.current = browserDims.width * 0.3 + "px";
+        
+      } else if (browserDims.width > 850 && browserDims.width <= 915) {
+        smallWidth.current = browserDims.width * 0.15 + "px";
+    
+        medHeight.current = browserDims.width * 0.28 + "px";
+        medWidth.current = browserDims.width * 0.486 + "px";
+        lgWidth.current = browserDims.width * 0.26 + "px";
+    
+        medHeight2.current = browserDims.width * 0.1 + "px";
+        medWidth2.current = browserDims.width * 0.27 + "px";
+      } else if (browserDims.width > 915 && browserDims.width <= 1099) {
+        smallWidth.current = browserDims.width * 0.15 + "px";
+    
+        medHeight.current = browserDims.width * 0.28 + "px";
+        medWidth.current = browserDims.width * 0.5 + "px";
+        lgWidth.current = browserDims.width * 0.26 + "px";
+    
+        medHeight2.current = browserDims.width * 0.1 + "px";
+        medWidth2.current = browserDims.width * 0.27 + "px";
+      } else if (browserDims.width >= 1100 && browserDims.width <= 1200) {
+        medWidth.current = browserDims.width * 0.58 + "px";
+        lgWidth.current = browserDims.width * 0.3 + "px";
+        navWidth.current = browserDims.width * 0.1 + "px";
+        medHeight2.current = browserDims.width * 0.05 + "px";
+        medWidth2.current = browserDims.width * 0.27 + "px";
+      } else if (browserDims.width > 1200 && browserDims.width <= 1300) {
+        medWidth.current = browserDims.width * 0.55 + "px";
+        lgWidth.current = browserDims.width * 0.28 + "px";
+        navWidth.current = browserDims.width * 0.1 + "px";
+    
+        medHeight2.current = browserDims.width * 0.05 + "px";
+        medWidth2.current = browserDims.width * 0.27 + "px";
+      } else if (browserDims.width > 1300 && browserDims.width <= 1400) {
+        medWidth.current = browserDims.width * 0.49 + "px";
+        lgWidth.current = browserDims.width * 0.26 + "px";
+        navWidth.current = browserDims.width * 0.1 + "px";
+    
+        medHeight2.current = browserDims.width * 0.051 + "px";
+        medWidth2.current = browserDims.width * 0.27 + "px";
+      } else if (browserDims.width >= 1401 && browserDims.width <= 1550) {
+        medWidth.current = browserDims.width * 0.45 + "px";
+        lgWidth.current = browserDims.width * 0.24 + "px";
+        navWidth.current = browserDims.width * 0.1 + "px";
+    
+        medHeight2.current = browserDims.width * 0.051 + "px";
+        medWidth2.current = browserDims.width * 0.27 + "px";
+      } else if (browserDims.width > 1551 && browserDims.width < 1699) {
+        medWidth.current = browserDims.width * 0.41 + "px";
+        lgWidth.current = browserDims.width * 0.21 + "px";
+        medHeight2.current = browserDims.width * 0.051 + "px";
+        medWidth2.current = browserDims.width * 0.27 + "px";
+        navWidth.current = browserDims.width * 0.1 + "px";
+      } else if (browserDims.width >= 1700) {
+        medHeight.current = browserDims.width * 0.45 + "px";
+        medWidth.current = browserDims.width * 0.38 + "px";
+        medHeight2.current = browserDims.width * 0.051 + "px";
+        medWidth2.current = browserDims.width * 0.27 + "px";
+        lgWidth.current = browserDims.width * 0.2 + "px";
+        navWidth.current = browserDims.width * 0.1 + "px";
+      } 
+    } 
+    
+  , [browserDims])
 
   setSizes();
 
@@ -169,6 +172,10 @@ const FirstLottie: React.FC<Props> = ({nav}) => {
     };
   }, []);
 
+  useEffect(() => {
+    setSizes()
+  }, [setSizes, browserDims])
+
   const onRefLottie = (ref: any) => {
     _lottieHeartRef = ref;
   };
@@ -176,8 +183,8 @@ const FirstLottie: React.FC<Props> = ({nav}) => {
   const lottieStylesSmall: any = {
     height: medHeight.current,
     width: medHeight.current,
-    minWidth: '275px',
-    minHeight: '275px',
+    minWidth: '100px',
+    minHeight: '100px',
     margin: "0rem",
     position: "relative",
     left: smallWidth.current,
@@ -230,6 +237,7 @@ const FirstLottie: React.FC<Props> = ({nav}) => {
       top: "0.2rem",
     };
   }
+
 
   const defaultOptions: any = {
     loop: true,

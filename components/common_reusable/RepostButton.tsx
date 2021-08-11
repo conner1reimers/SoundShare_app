@@ -1,4 +1,5 @@
 import { AnimatePresence, motion } from "framer-motion";
+import Image from "next/image";
 import React, { Fragment, useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHttpClient } from "../../util/hooks/http-hook";
@@ -82,7 +83,7 @@ const RepostButton: React.FC<Props> = ({soundId, username, creator: creatorProp,
       try {
         
         response = await sendRequest(
-          `${process.env.REACT_APP_MY_ENV}/sounds/repost/${userId}/${soundId}/${creator}/`,
+          `${process.env.NEXT_PUBLIC_REACT_APP_MY_ENV}/sounds/repost/${userId}/${soundId}/${creator}/`,
           "POST",
           null,
           { "Authorization": "Bearer "+token}
@@ -146,30 +147,44 @@ const RepostButton: React.FC<Props> = ({soundId, username, creator: creatorProp,
         >
           <AnimatePresence exitBeforeEnter>
             {isReposted && (
-              <motion.img
-                src={repostRed}
-                alt=""
-                className="action-heart-img"
+              <motion.div
+                
+                className="action-heart-img action-heart-img-contain"
                 initial="initial"
                 animate="in"
                 exit="out"
                 variants={redVariants}
                 transition={redTransition}
                 key="red"
-              />
+              >
+                <Image
+                  src={repostRed}
+                  alt=""
+                  height={20}
+                  width={20}
+                />
+
+              
+              </motion.div>
             )}
             {!isReposted && (
-              <motion.img
-                src={repost}
-                alt=""
-                className="action-heart-img"
+              <motion.div
+                
+                className="action-heart-img action-heart-img-contain"
                 initial="initial"
                 animate="in"
                 exit="out"
                 variants={pageVariants}
                 transition={pageTransition}
                 key="blue"
-              />
+              >
+                <Image
+                  src={repost}
+                  alt=""
+                  height={20}
+                  width={20}
+                />
+             </motion.div>
             )}
           </AnimatePresence>
         </button>

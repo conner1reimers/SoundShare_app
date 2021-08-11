@@ -3,7 +3,7 @@ import Lottie from 'react-lottie';
 import animationData from '../animationDatas/blue-red-loader.json';
 import ReactDOM from 'react-dom';
 import { AnimatePresence, motion } from 'framer-motion';
-import BackdropMain from '../../../shared/Modals/BackdropMain';
+import BackdropMain from '../../shared/Modals/BackdropMain';
 
 
 const pageVariants = {
@@ -51,7 +51,6 @@ const LoadingAnimation: React.FC<Props> = ({ loading }) => {
     const onRefLottie = (ref: any) => {
         _lottieHeartRef = ref;
     }
-    const inputTag = document.getElementById('loading-hook') as HTMLElement;
 
 
     const defaultOptions = {
@@ -63,10 +62,7 @@ const LoadingAnimation: React.FC<Props> = ({ loading }) => {
         }
     };
 
-    
-
-
-    return ReactDOM.createPortal(
+    const final = process.browser ? ReactDOM.createPortal(
         <Fragment>
                 
             <AnimatePresence>
@@ -95,7 +91,11 @@ const LoadingAnimation: React.FC<Props> = ({ loading }) => {
             </AnimatePresence>
             {loading && <BackdropMain />}
 
-        </Fragment>, inputTag);
+        </Fragment>, document.getElementById('loading-hook') as HTMLElement) : null;
+    
+
+
+    return final;
     
 }
 

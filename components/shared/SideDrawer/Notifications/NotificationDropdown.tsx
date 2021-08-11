@@ -24,7 +24,7 @@ const NotificationDropdown = () => {
     const listEl: any = document.querySelector('.notifications-list');
     try {
       res = await sendRequest(
-        `${process.env.REACT_APP_MY_ENV}/users/notifications/${uid}`
+        `${process.env.NEXT_PUBLIC_REACT_APP_MY_ENV}/users/notifications/${uid}`
       );
     
       dispatch({ type: "GET_ALL_NOTIFICATIONS", results: res });

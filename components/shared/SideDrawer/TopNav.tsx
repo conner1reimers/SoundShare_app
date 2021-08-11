@@ -1,33 +1,30 @@
-import React, { useState, useEffect, Fragment, useContext, useCallback } from "react";
-import Input from "../Input/Input";
-import { VALIDATOR_REQUIRE } from "../../util/validators";
-import { useForm } from "../../util/hooks/useForm";
-import FirstLottie from "../../Components/lotties/FirstLottie";
-import { useHistory, useLocation, NavLink } from "react-router-dom";
+import React, { useState, useEffect, Fragment, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import Auth from "../../Components/Auth";
-import { AuthContext } from "../../util/context/auth-context";
 import { useSelector, useDispatch } from "react-redux";
-import { setModalOpen, resetGlobalSound } from "../../store/actions";
-import { useHttpClient } from "../../util/hooks/http-hook";
-import { useSearchSound } from "../../util/hooks/searchHook";
-import padlock from "../../util/img/padlock.svg";
-import userImg from "../../util/img/user.svg";
-import feed from "../../util/img/feed.svg";
-import upload from "../../util/img/upload2.svg";
-import help from "../../util/img/question.svg";
-import browse from "../../util/img/browse.svg";
-import down from "../../util/img/top-arrow.svg";
-import down2 from "../../util/img/top-arrow2.svg";
-import cloud from "../../util/img/cloud2.svg";
+import { setModalOpen, resetGlobalSound } from "../../../store/actions";
+import padlock from "../../../util/img/padlock.svg";
+import userImg from "../../../util/img/user.svg";
+import feed from "../../../util/img/feed.svg";
+import help from "../../../util/img/question.svg";
+import down from "../../../util/img/top-arrow.svg";
+import down2 from "../../../util/img/top-arrow2.svg";
+import cloud from "../../../util/img/cloud2.svg";
 import Notification from "./Notifications/Notification";
 import NotificationDropdown from "./Notifications/NotificationDropdown";
-import MouseOverLabel from "../../util/MouseOverLabel";
+import MouseOverLabel from "../../../util/MouseOverLabel";
 import UploadModal from "../Modals/Upload/UploadModal";
-import useLogout from '../../util/hooks/useLogout';
-import LoadingAnimation from "../../Components/lotties/LoadingAnimation/LoadingAnimation";
+import useLogout from '../../../util/hooks/useLogout';
 import BrowseOptions from "./BrowseOptions/BrowseOptions";
 import BrowseOptionModal from "./BrowseOptions/BrowseOptionModal";
+import Input from "../../common_reusable/Input";
+import { useRouter } from "next/router";
+import Image from "next/image";
+import { useForm } from "../../../util/hooks/useForm";
+import { VALIDATOR_REQUIRE } from "../../../util/validators";
+import FirstLottie from "../../animatedLoaders/FirstLottie";
+import LoadingAnimation from "../../animatedLoaders/LoadingAnimation/LoadingAnimation";
+import Auth from "../../auth/Auth";
+import Link from 'next/link';
 
 const optionsVariants = {
   initial: {
@@ -63,7 +60,7 @@ const TopNav: React.FC = () => {
   const logout = useLogout();
   const dispatch = useDispatch();
 
-  const location = useLocation();
+  const location = useRouter();
   const soundRegex = /sounds/.test(location.pathname);
 
 
@@ -106,32 +103,36 @@ const TopNav: React.FC = () => {
         
         {user.isLoggedIn && (
           <Fragment>
-            <NavLink
-              to={`/user/${user.userId}`}
-              className="top-nav-big--links--user"
+            <Link
+              href={`/user/${user.userId}`}
+              
             >
-              <div
-                className={`bell-icon--contain ${
-                  user.full && user.full.user_img_path
-                    ? "userpic-contain-top"
-                    : "userpic-contain-top userpic-contain-top--noimg"
-                }`}
-              >
-                {user.full && ( 
-                <Fragment> 
-                  {user.full.user_img_path ? (
-                    <img
-                      src={`https://soundshare-bucket.s3.us-east-2.amazonaws.com/${user.full.user_img_path}`}
-                      className="userpic-contain-top--img"
-                      alt=""
-                    />
-                  ) : (
-                    <img className="userpic-contain-top--img" src={userImg} alt="" />
-                  )}
-                </Fragment>)}
-                {user.full && <span>{user.full.username}</span>}
-              </div>
-            </NavLink>
+                <a className="top-nav-big--links--user">
+                <div
+                  className={`bell-icon--contain ${
+                    user.full && user.full.user_img_path
+                      ? "userpic-contain-top"
+                      : "userpic-contain-top userpic-contain-top--noimg"
+                  }`}
+                >
+                  {user.full && ( 
+                  <Fragment> 
+                    {user.full.user_img_path ? (
+                      <Image
+                        src={`https://soundshare-bucket.s3.us-east-2.amazonaws.com/${user.full.user_img_path}`}
+                        className="userpic-contain-top--img"
+                        alt=""
+                        height={35}
+                        width={35}
+                      />
+                    ) : (
+                      <Image className="userpic-contain-top--img" src={userImg} alt="" />
+                    )}
+                  </Fragment>)}
+                  {user.full && <span>{user.full.username}</span>}
+                </div>
+              </a>
+            </Link>
 
 
             <MouseOverLabel
@@ -156,6 +157,7 @@ const TopNav: React.FC = () => {
         {!user.isLoggedIn && (
           <Fragment>
             <div className="notlogged--topnav">
+              
               <MouseOverLabel
                 classname="topnav-mouseover"
                 labelClass="topnav-mouseover--label"
@@ -163,7 +165,7 @@ const TopNav: React.FC = () => {
               >
                 <button onClick={openAuth} className="top-nav-big--links--item">
                   <div className="bell-icon--contain">
-                    <img src={padlock} alt="" />
+                    <Image src={padlock} alt="" />
                   </div>
                 </button>
               </MouseOverLabel>
@@ -172,19 +174,21 @@ const TopNav: React.FC = () => {
                 labelClass="topnav-mouseover--label"
                 label="About Soundshare"
               >
-                <NavLink to="/about" className="top-nav-big--links--item">
-                  <div className="bell-icon--contain">
-                    <img src={help} alt="" />
-                  </div>
-                </NavLink>
+                <Link href="/about">
+                  <a className="top-nav-big--links--item">
+                    <div className="bell-icon--contain">
+                      <Image src={help} alt="" />
+                    </div>
+                  </a>
+                </Link>
               </MouseOverLabel>
 
               
-              {/* <NavLink to="/browse" className="top-nav-big--links--item">
+              {/* <Link to="/browse" className="top-nav-big--links--item">
                 <div className="bell-icon--contain">
-                  <img src={browse} alt="" />
+                  <Image src={browse} alt="" />
                 </div>
-              </NavLink> */}
+              </Link> */}
 
               <BrowseOptions/>
            
@@ -221,12 +225,10 @@ const Scroller: React.FC = React.memo(() => {
   );
 
   const goToHome = () => {
-    history.push("/");
+    location.push("/");
   };
 
 
-
-  const history = useHistory();
 
 
   const searchSounds = (e: any) => {
@@ -237,7 +239,7 @@ const Scroller: React.FC = React.memo(() => {
 
 
   
-  const location = useLocation();
+  const location = useRouter();
   const regex = /home/.test(location.pathname);
   const soundRegex = /sounds/.test(location.pathname);
 
@@ -329,7 +331,7 @@ const NavItem: React.FC<Props> = React.memo(({children}) => {
     dispatch({ type: "TOGGLE_NAVBAR_XTRA" });
   };
 
-  const location = useLocation();
+  const location = useRouter();
   const [curLoaction] = useState<any>(location.pathname);
 
   useEffect(() => {
@@ -342,7 +344,7 @@ const NavItem: React.FC<Props> = React.memo(({children}) => {
     <Fragment>
       <a onClick={setOpen} className="top-nav-big--links--item bell-icon">
         <div className="bell-icon--contain">
-          <img className="down-top" src={!isOpen ? down : down2} alt="" />
+          <Image className="down-top" src={!isOpen ? down : down2} alt="" />
         </div>
       </a>
       {isOpen && children}
@@ -350,6 +352,7 @@ const NavItem: React.FC<Props> = React.memo(({children}) => {
   );
 });
 
+NavItem.displayName = "Navitem";
 
 interface DropDownMenuProps{
   openUpload: any,
@@ -384,10 +387,10 @@ const DropDownMenu: React.FC<DropDownMenuProps> = React.memo(({openUpload, userI
       <Fragment>
         {link ? (
           <div className="dropdown-top--item">
-            <NavLink
-              to={link || "#"}
-              className="dropdown-top--item--link"
+            <Link
+              href={link || "#"}
             >
+              <a className="dropdown-top--item--link">
               {leftIcon && (
                 <span className="dropdown-top--item--icon">
                   {leftIcon}
@@ -399,7 +402,8 @@ const DropDownMenu: React.FC<DropDownMenuProps> = React.memo(({openUpload, userI
                   {rightIcon}
                 </span>
               )}
-            </NavLink>
+              </a>
+            </Link>
           </div>
         ) : (
           <div onClick={clickItem} className="dropdown-top--item">
@@ -427,22 +431,22 @@ const DropDownMenu: React.FC<DropDownMenuProps> = React.memo(({openUpload, userI
       <div className="dropdown-top">
         <DropDownItem
           click={openUpload}
-          leftIcon={<img src={cloud} alt="" />}
+          leftIcon={<Image src={cloud} alt="" />}
         >
           Upload Sound
         </DropDownItem>
         <DropDownItem
           link={`/feed/${userId}`}
-          leftIcon={<img src={feed} alt="" />}
+          leftIcon={<Image src={feed} alt="" />}
         >
           Following Feed
         </DropDownItem>
-        <DropDownItem link="/about" leftIcon={<img src={help} alt="" />}>
+        <DropDownItem link="/about" leftIcon={<Image src={help} alt="" />}>
           Contact
         </DropDownItem>
         <DropDownItem
           click={logout}
-          leftIcon={<img src={padlock} alt="" />}
+          leftIcon={<Image src={padlock} alt="" />}
         >
           Logout
         </DropDownItem>
@@ -453,5 +457,7 @@ const DropDownMenu: React.FC<DropDownMenuProps> = React.memo(({openUpload, userI
     </Fragment>
   );
 });
+
+DropDownMenu.displayName = "ddmenu";
 
 export default React.memo(TopNav);

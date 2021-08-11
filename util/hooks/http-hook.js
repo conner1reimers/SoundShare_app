@@ -1,5 +1,4 @@
 import { useState, useCallback, useRef, useEffect } from "react";
-import { setGlobalSound } from "../../store/actions/globalSound";
 import { useGlobalMsg } from "./useGlobalMsg";
 
 

@@ -12,7 +12,7 @@
   align-items: center;
   margin: 0;
   background: none;
-
+  max-height: 145px;
 
   &::before {
     @include beforeTrick();
@@ -48,6 +48,7 @@
 
     div {
       height: 100%;
+      
     }
   }
 

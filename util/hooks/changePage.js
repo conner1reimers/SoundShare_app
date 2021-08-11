@@ -1,15 +1,13 @@
-import { useHistory, useLocation } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { useCallback, useEffect, useState } from "react";
 import { resetGlobalSound } from "../../store/actions";
+import { useRouter } from "next/router";
 
 export const useChangePage = () => {
-  const history = useHistory();
   const dispatch = useDispatch();
-
   const [isOnSounds, setIsOnSounds] = useState(false);
   const [isOnUser, setIsOnUser] = useState(false);
-  const location = useLocation();
+  const location = useRouter();
   const regexSounds = /sounds/.test(location.pathname);
   const regexUser = /user/.test(location.pathname);
 
@@ -36,14 +34,14 @@ export const useChangePage = () => {
 
   const gotoSingleSoundPage = useCallback((event, id) => {
     event.preventDefault();
-    history.push(`/sounds/${id}`);
+    location.push(`/sounds/${id}`);
     dispatch(resetGlobalSound());
   }, []);
 
   const goToUserPage = useCallback((event, id) => {
     event.preventDefault();
     event.stopPropagation();
-    history.push(`/user/${id}`);
+    location.push(`/user/${id}`);
 
   }, []);
 

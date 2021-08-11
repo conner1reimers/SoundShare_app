@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion';
 import React, { useState } from 'react'
-import getBrowserDimensions from '../../../../../../util/getBrowserDim';
+import useWindowSize from '../../../../../../util/useWindowSize';
 
 
 const dropdownVariants = {
@@ -38,11 +38,11 @@ const dropdownTransition = {
 const NavItem: React.FC = React.memo((props: any) => {
   const [open, setOpen] = useState<any>(false);
   const [elDims, setElDims] = useState<any>(false);
+  const browserDims: any  = useWindowSize();
 
   const openDrop = () => {
     const el: any  = document.querySelector('.xtraOption-dropdown--container')
     const btnEl: any  = document.querySelector('.btn.uploadmodal-big--info-form--input--imgUpload3--btn')
-    const browserDims: any  = getBrowserDimensions();
     if (open) {
       setOpen(false);
       el.style.transform = 'translateY(0px) scale(1)';

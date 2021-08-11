@@ -37,7 +37,7 @@ const BrowseOptionModal: React.FC<Props> = ({setOpen, searchTxt, mobile, search,
         let res;
         
         try {
-        res = await sendRequest(`${process.env.REACT_APP_MY_ENV}/users/searchsounds/${category}/${searchTxt.value}`);
+        res = await sendRequest(`${process.env.NEXT_PUBLIC_REACT_APP_MY_ENV}/users/searchsounds/${category}/${searchTxt.value}`);
         dispatch({ type: "SEARCH_BROWSE_HOME", results: res });
         } catch (err) {}
     }
@@ -89,108 +89,108 @@ const BrowseOptionModal: React.FC<Props> = ({setOpen, searchTxt, mobile, search,
         }
     }, [open]);
 
-    
-
-    return ReactDOM.createPortal(
+    const finalEl = process.browser ? ReactDOM.createPortal(
         <Fragment>
-            {open &&( 
-            <Fragment>
-                <div className={`browse-modal ${mobile ? 'mobile-browse-options' : ''}`}>
+            {open && (
+                <Fragment>
+                    <div className={`browse-modal ${mobile ? 'mobile-browse-options' : ''}`}>
 
-                    <div className="browse-modal--windows">
+                        <div className="browse-modal--windows">
 
-                        {/* <div className="browse-modal--head">
+                            {/* <div className="browse-modal--head">
                             <h1>
                                 What kind of sounds are you looking for?
                             </h1>
                         </div> */}
 
-                        <Media query="(max-width: 1099px)">
-                            <div className="auth-modal-close-contain browse-modal-close">
-                                <div onClick={cancelHandler}>
-                                    <Image src={close} alt=""/>
-                                </div>
+                            <Media query="(max-width: 1099px)">
+                                <div className="auth-modal-close-contain browse-modal-close">
+                                    <div onClick={cancelHandler}>
+                                        <Image src={close} alt="" />
+                                    </div>
                                 
-                            </div>
-                        </Media>
+                                </div>
+                            </Media>
 
                         
 
-                        <div className="browse-modal--inner-window">
+                            <div className="browse-modal--inner-window">
 
-                            <div className="browse-modal--inner-window--box" onClick={goToEffects}>
-                                <div className="browse-modal-image-container">
-                                    <Image src={game_controller} alt=""/>
-                                </div>
+                                <div className="browse-modal--inner-window--box" onClick={goToEffects}>
+                                    <div className="browse-modal-image-container">
+                                        <Image src={game_controller} alt="" />
+                                    </div>
 
-                                <span className="browse-modal-category-name">
-                                    Sound Effects / Game Sounds
-                                </span>
+                                    <span className="browse-modal-category-name">
+                                        Sound Effects / Game Sounds
+                                    </span>
 
                                 
 
-                                <div className="browse-modal-underline"></div>
+                                    <div className="browse-modal-underline"></div>
 
-                                <div className="browse-modal-text-contain">
-                                    <span>
-                                        Looking for short sounds, sound effects, or various sounds to be used in video games,
-                                        music, movies and more? Look here.
+                                    <div className="browse-modal-text-contain">
+                                        <span>
+                                            Looking for short sounds, sound effects, or various sounds to be used in video games,
+                                            music, movies and more? Look here.
+                                        </span>
+                                    </div>
+
+                                </div>
+                                <div className="browse-modal--inner-window--box" onClick={goToLoops}>
+                                    <div className="browse-modal-image-container">
+                                        <Image src={headphones} alt="" />
+                                    </div>
+
+                                    <span className="browse-modal-category-name">
+                                        Music Loops / Samples
                                     </span>
+
+                                    <div className="browse-modal-underline"></div>
+
+                                    <div className="browse-modal-text-contain">
+                                        <span>
+                                            Looking for full instrumental loops or music samples from various producers and creators?
+                                            Look here.
+                                        </span>
+                                    </div>
+
+
+                                </div>
+                                <div className="browse-modal--inner-window--box" onClick={goToVocals}>
+
+                                    <div className="browse-modal-image-container">
+                                        <Image src={microphone} alt="" />
+                                    </div>
+
+                                    <span className="browse-modal-category-name">
+                                        Vocals
+                                    </span>
+
+                                    <div className="browse-modal-underline"></div>
+
+                                    <div className="browse-modal-text-contain">
+                                        <span>
+                                            Looking for raw vocals / accepellas from artists to put over an instrumental, or for any other reason?
+                                            Look here.
+                                        </span>
+                                    </div>
                                 </div>
 
                             </div>
-                            <div className="browse-modal--inner-window--box" onClick={goToLoops}>
-                                <div className="browse-modal-image-container">
-                                    <Image src={headphones} alt=""/>
-                                </div>
 
-                                <span className="browse-modal-category-name">
-                                    Music Loops / Samples 
-                                </span>
-
-                                <div className="browse-modal-underline"></div>
-
-                                <div className="browse-modal-text-contain">
-                                    <span>
-                                        Looking for full instrumental loops or music samples from various producers and creators?
-                                        Look here.
-                                    </span>
-                                </div>
-
-
-                            </div>
-                            <div className="browse-modal--inner-window--box" onClick={goToVocals}>
-
-                                <div className="browse-modal-image-container">
-                                    <Image src={microphone} alt=""/>
-                                </div>
-
-                                <span className="browse-modal-category-name">
-                                    Vocals
-                                </span>
-
-                                <div className="browse-modal-underline"></div>
-
-                                <div className="browse-modal-text-contain">
-                                    <span>
-                                        Looking for raw vocals / accepellas from artists to put over an instrumental, or for any other reason?
-                                        Look here.
-                                    </span>
-                                </div>
-                            </div>
+                        
 
                         </div>
 
-                        
-
                     </div>
 
-                </div>
+                    <Backdrop onClick={cancelHandler} />
 
-                <Backdrop onClick={cancelHandler}/>
+                </Fragment>)}
+        </Fragment>, document.getElementById('modal-hook') as HTMLElement) : null;
 
-            </Fragment>)}
-        </Fragment>, document.getElementById('modal-hook') as HTMLElement)
+    return finalEl;
 }
 
 export default BrowseOptionModal
