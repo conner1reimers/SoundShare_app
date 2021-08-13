@@ -1,5 +1,5 @@
 import React from 'react'
-import back from '../../../../../../util/img/back-arrow.svg';
+import back from '../../../../../../public/back-arrow.svg';
 import Image from 'next/image';
 import MouseOverLabel from '../../../../../../util/MouseOverLabel';
 

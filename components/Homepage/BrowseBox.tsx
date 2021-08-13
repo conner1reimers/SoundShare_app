@@ -3,7 +3,7 @@ import React from 'react'
 import { Fragment } from 'react';
 import { useState } from 'react';
 import BrowseOptionModal from '../shared/SideDrawer/BrowseOptions/BrowseOptionModal'
-import listening3 from '../../util/img/listening-new2.svg';
+import listening3 from '../../public/listening-new2.svg';
 import Image from 'next/image';
 
 const BrowseBox: React.FC = () => {
@@ -22,12 +22,14 @@ const BrowseBox: React.FC = () => {
 
                 
                 <button className="btn nohover firstpage--box1--btn" type="button">
-                    <Image
-                        src={listening3}
-                        alt=""
-                        height={30}
-                        width={30}
-                    />
+                    <div>
+                        <Image
+                            src={listening3}
+                            alt=""
+                            height={60}
+                            width={60}
+                        />
+                    </div>
                 </button>
             </Box>
 

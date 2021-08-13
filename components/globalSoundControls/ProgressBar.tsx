@@ -89,7 +89,7 @@ const ProgressBar: React.FC<Props> = ({fx, singleSound, hidden, playing, open, s
 
     const browserDims = useWindowSize();
 
-    const small = gpuTier.isMobile;
+    const small = gpuTier && gpuTier.isMobile;
     const sound = globalSoundPlaying.sound;
 
     const dispatch = useDispatch();
@@ -124,7 +124,7 @@ const ProgressBar: React.FC<Props> = ({fx, singleSound, hidden, playing, open, s
     }}
 
     const mouseOverLine = useCallback((e: any) => {
-      if (!fx && !singleSound) {
+      if (!fx && !singleSound && process.browser) {
         e.persist();
 
         const timeEl: any = document.querySelector('.global-player--time--progress');
@@ -170,7 +170,7 @@ const ProgressBar: React.FC<Props> = ({fx, singleSound, hidden, playing, open, s
             cursorEl.style.display = 'inline-block';
             moustOverTextEl.innerHTML = formatDuration(newTime);
           }
-      } else if (fx && !singleSound) {
+      } else if (fx && !singleSound && process.browser) {
         e.persist();
           const cursorEl: any = document.querySelector('.global-player--time--moveOver--followingTile');
 
@@ -201,7 +201,7 @@ const ProgressBar: React.FC<Props> = ({fx, singleSound, hidden, playing, open, s
           cursorEl.style.display = 'inline-block';
           moustOverTextEl.innerHTML = formatDuration(newTime);
 
-      } else if (!fx && singleSound) {
+      } else if (!fx && singleSound && process.browser) {
         e.persist();
         const timeEl: any = document.querySelector('.global-player--time--progress');
         const timelineEl: any = document.querySelector('.global-player--time--line');
@@ -234,6 +234,7 @@ const ProgressBar: React.FC<Props> = ({fx, singleSound, hidden, playing, open, s
       if (mouseOver) {
         setMouseOver(false);
       };
+      if (process.browser) {
         const moustOverEl: any = document.querySelector('.global-player--time--moveOver--textcontain');
         const cursorEl: any = document.querySelector('.global-player--time--moveOver--followingTile');
         const timelineEl: any = document.querySelector('.global-player--time--line--background');
@@ -248,6 +249,8 @@ const ProgressBar: React.FC<Props> = ({fx, singleSound, hidden, playing, open, s
         timelineEl.style.transform = 'translateY(0)';
         cursorContainEl.style.height = timelineEl.style.height;
         styleHolder.style.transform = 'scale(1)';
+        }
+        
     }, [progress]);
 
 
@@ -262,7 +265,7 @@ const ProgressBar: React.FC<Props> = ({fx, singleSound, hidden, playing, open, s
         
         const noSound: any = isObjectEmpty(sound);
 
-        if (!noSound || uploadingSound.uploadSound) {
+        if ((!noSound || uploadingSound.uploadSound) && process.browser) {
 
 
         const progress: any = document.querySelector('.global-player--time--line--progressline');
@@ -302,8 +305,11 @@ const ProgressBar: React.FC<Props> = ({fx, singleSound, hidden, playing, open, s
 
 
     const updateTimeInterval = () => {
-      const wholeLine: any = document.querySelector('.global-player--time--line');
-      wholeLine && dispatch(updateTime(wholeLine.offsetWidth));      
+      if (process.browser) {
+        const wholeLine: any = document.querySelector('.global-player--time--line');
+        wholeLine && dispatch(updateTime(wholeLine.offsetWidth));     
+      }
+       
     };
 
     const updateTimeIntervalSmall = () => {
@@ -389,7 +395,7 @@ const ProgressBar: React.FC<Props> = ({fx, singleSound, hidden, playing, open, s
             ref.current.play()
           }, 200);
         } 
-        else if (gpuTier && !gpuTier.isMobile) {
+        else if (gpuTier && !gpuTier.isMobile && process.browser) {
             const progressBar: any = document.querySelector('.global-player--time--line--progressline');
             const dot: any = document.querySelector('.global-player--time--line--dot');
     
@@ -428,7 +434,7 @@ const ProgressBar: React.FC<Props> = ({fx, singleSound, hidden, playing, open, s
           }
           
 
-        } else if (runningInterval && globalSoundPlaying.playing && ref.current && !small && !small2) {
+        } else if (runningInterval && globalSoundPlaying.playing && ref.current && !small && !small2 && process.browser) {
           const progressBar: any = document.querySelector('.global-player--time--line--progressline');
           const dot: any = document.querySelector('.global-player--time--line--dot');
           timeInterval = setInterval(updateTimeInterval, 100);
@@ -442,7 +448,7 @@ const ProgressBar: React.FC<Props> = ({fx, singleSound, hidden, playing, open, s
             dot.style.transition = 'all .91s';
           }, 500);
 
-        } else if (runningInterval && !globalSoundPlaying.playing && !small && !small2) {
+        } else if (runningInterval && !globalSoundPlaying.playing && !small && !small2 && process.browser) {
           const progressBar: any = document.querySelector('.global-player--time--line--progressline');
           const dot: any = document.querySelector('.global-player--time--line--dot');
 
@@ -456,13 +462,13 @@ const ProgressBar: React.FC<Props> = ({fx, singleSound, hidden, playing, open, s
             dot.style.transition = 'all .91s'
           }, 500);
           
-        } else if (runningInterval && globalSoundPlaying.playing && ref.current && (small || small2)) {
+        } else if (runningInterval && globalSoundPlaying.playing && ref.current && (small || small2) && process.browser) {
           ref.current.play();
           timeInterval = setInterval(updateTimeIntervalSmall, 100);
           
           
 
-        } else if (runningInterval && !globalSoundPlaying.playing && !small) {
+        } else if (runningInterval && !globalSoundPlaying.playing && !small && process.browser) {
           
           timeInterval = setInterval(updateTimeIntervalSmall, 100);
         }

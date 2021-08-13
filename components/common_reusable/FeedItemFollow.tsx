@@ -2,8 +2,8 @@ import Image from 'next/image';
 import React from 'react'
 import Media from 'react-media';
 import { useFollowUser } from '../../util/hooks/useFollowUser';
-import follow from '../../util/img/followers.svg';
-import unknown from '../../util/img/question3.jpg';
+import follow from '../../public/followers.svg';
+import unknown from '../../public/question3.jpg';
 import BallLoader from '../animatedLoaders/BallLoader/BallLoader';
 
 interface FeedItemFollowProps {

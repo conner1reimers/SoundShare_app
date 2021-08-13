@@ -6,7 +6,7 @@ import Media from 'react-media';
 import { useSelector, useDispatch } from 'react-redux';
 import Heart from '../../components/animatedLoaders/Heart/Heart';
 import LoadingAnimation from '../../components/animatedLoaders/LoadingAnimation/LoadingAnimation';
-import DropSinglesound from '../../components/common_reusable/DropdownOptions';
+import DropSinglesound from '../../components/singleSound/SingleSoundMain/DropSingleSound';
 import PlayPauseBtns from '../../components/common_reusable/playPauseBtn/PlayPauseBtns';
 import ProgressBar from '../../components/globalSoundControls/ProgressBar';
 import FollowerModal from '../../components/shared/Modals/FollowerModal';
@@ -28,9 +28,9 @@ import { UserState } from '../../store/reducers/user';
 import { useChangePage } from '../../util/hooks/changePage';
 import { useHttpClient } from '../../util/hooks/http-hook';
 import MouseOverLabel from '../../util/MouseOverLabel';
-import music from "../../util/img/loop-background.svg";
-import game from "../../util/img/game-background.svg";
-import more from "../../util/img/more2.svg";
+import music from "../../public/loop-background.svg";
+import game from "../../public/game-background.svg";
+import more from "../../public/more2.svg";
 
 interface Root {
   user: UserState,
@@ -67,7 +67,6 @@ export default function Sounds() {
   const { goToUserPage } = useChangePage();
   const descRef = useRef<any>();
 
-  console.log(process.env)
 
   const fetchSoundInfo = useCallback(async () => {
     if (soundId.sid) {
@@ -204,7 +203,27 @@ export default function Sounds() {
   const closeReportSound = () => {
     setReportComment(false);
   }
-  
+  const myLoader = ({ src, width, quality }) => {
+      return `https://soundshare-bucket.s3.us-east-2.amazonaws.com/${soundInfo.sound.img_path}`;
+  }
+
+  useEffect(() => {
+    let try1: any = document.querySelector('.singlesound-img-container');
+
+    if (try1) {
+      let el: any = try1.children[0];
+      el.style.overflow = "visible";
+      let newImg: any = el.querySelector('img');
+      if (newImg) {
+        newImg.style.boxShadow = 'none';
+        console.log(newImg)
+      }
+    }
+
+    
+
+  }, [soundInfo]);
+
   return (
     <Fragment>
       {isLoading && <LoadingAnimation loading={isLoading} />}
@@ -222,17 +241,26 @@ export default function Sounds() {
                 <div className="single-sound">
                   <div className="single-sound--info">
                     <div className="singlesound-img">
-                    <Image
-                        height={400}
-                        width={400}
-                        className="singlesoundimg"
-                        src={
-                          soundInfo.sound.img_path
-                            ? `https://soundshare-bucket.s3.us-east-2.amazonaws.com/${soundInfo.sound.img_path}`
-                            : soundInfo.sound.category === "fx" ? game : music 
-                        }
-                        alt=""
-                      />
+                      <div className="singlesound-img-container">
+                      {soundInfo.sound.img_path ? (
+                        <Image
+                            height={450}
+                            width={450}
+                            objectFit="fill"
+                            className="singlesoundimg"
+                            src={`https://soundshare-bucket.s3.us-east-2.amazonaws.com/${soundInfo.sound.img_path}`}
+                            loader={myLoader}
+                            alt=""
+                          />) : (
+                          <Image
+                            height={450}
+                            width={450}
+                            objectFit="fill"
+                            className="singlesoundimg"
+                            src={soundInfo.sound.category === "fx" ? game : music }
+                            alt=""
+                          />)}
+                          </div>
                     </div>
                     
 
@@ -272,7 +300,7 @@ export default function Sounds() {
                           </div>
 
                           <AnimatePresence exitBeforeEnter>
-                              <DropSinglesound 
+                            <DropSinglesound 
                                 soundId={soundId.sid} 
                                 isMyPage={isMyPage} 
                                 soundInfo={soundInfo} 
@@ -428,7 +456,7 @@ export default function Sounds() {
                       <a rel="noreferrer"
                         target="_blank"
                             href="http://creativecommons.org/publicdomain/zero/1.0/">
-                            <Image height={20} width={20} src="https://licensebuttons.net/p/zero/1.0/88x31.png" alt="CC0" />
+                            <Image height={32} width={88} src="https://licensebuttons.net/p/zero/1.0/88x31.png" alt="CC0" />
                           </a>
                           <br />
                           <span>

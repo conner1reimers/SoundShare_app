@@ -2,7 +2,7 @@
   grid-row: 2/5;
   @include heightWidth100;
   position: relative;
-  top: 0.5rem;
+  top: 1rem;
   display: grid;
   grid-template-columns: 100%;
   grid-template-rows: 10vh min-content;
@@ -38,7 +38,7 @@
     }
     &::before {
       @include beforeTrick;
-      background-image: url("../../util/img/pic.svg");
+      background-image: url("../../public/pic.svg");
       background-size: 5%;
       opacity: 0.2;
       filter: brightness(2) contrast(0.12);
@@ -1287,7 +1287,7 @@ div.orderby-options {
   @include heightWidth100;
   position: absolute;
   left: 0;
-  bottom: 1rem;
+  bottom: 0rem;
   @include flexcenter;
   width: 86vw;
   z-index: 99;

@@ -67,6 +67,7 @@
     grid-template-columns: 5% 8% 10% 10% 24% 14% 8% 10%;
     grid-template-rows: 33% 33% 33.33%;
   }
+  
 
   &--hidebtn {
     background: none;
@@ -189,9 +190,14 @@
     @include heightWidth100();
     width: 10vw;
     grid-template-rows: 100%;
-    grid-template-columns: 15% 30% 48%;
+    grid-template-columns: 15% 35% 48%;
     margin: 2.8vh 0.2vw;
     color: #191b1be7;
+
+    @media screen and (max-width: 1500px) {
+      grid-template-columns: 15% 45% 48%;
+
+    }
 
     @media screen and (min-width: $bp-large) {
       grid-column: 1/3;
@@ -201,17 +207,24 @@
       grid-column: 1/4;
       grid-row: 1/2;
     }
+    @media screen and (max-width: 975px) {
+      grid-template-columns: 20% 55% 48%;
+    }
     @media screen and (max-width: 850px) {
       grid-column: 2/4;
       grid-row: 1/2;
       position: relative;
       right: 4vw;
+      grid-template-columns: 20% minmax(48px, 55%) 48%;
+
     }
     @media screen and (max-width: 750px) {
       right: 3vw;
     }
     @media screen and (max-width: 650px) {
       right: 2.3vw;
+      grid-template-columns: 0% minmax(48px, 50%) 48%;
+
     }
     @media screen and (max-width: 580px) {
       right: 1.5vw;
@@ -277,14 +290,20 @@
       position: relative;
       bottom: 1vh;
 
+      
+
       @media screen and (min-width: $bp-large) {
         font-size: 1.2rem;
         flex-direction: row;
         align-items: center;
+        position: relative;
+        right: 1rem;
         span {
           display: flex;
         }
+
       }
+
       @media screen and (max-width: 1099px) {
         @include heightWidthSame(100%);
         grid-row: 1/3;
@@ -307,6 +326,7 @@
         box-shadow: $shadow-new-3;
         min-height: 45px;
         min-width: 45px;
+
         @media screen and (max-width: 551px) {
           bottom: 1vh;
         }
@@ -1076,6 +1096,8 @@ div.sound-list-item--btn-contain.global-circle-btns.feed-soundlist--btn--actions
     }
   }
 }
+
+
 
 div.global-player.global-player-mobile {
   min-height: 185px;

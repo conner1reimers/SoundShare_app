@@ -756,6 +756,7 @@
 					background-image: none;
 					margin: 0;
 					padding: 0;
+					margin-left: 2rem;
 					
 					&::-webkit-scrollbar {
 						background: rgba(82, 90, 92, 0.151);
@@ -1024,11 +1025,15 @@
 		justify-content: flex-start;
 		position: relative;
 		@include heightWidth100;
-		left: 1.5vw;
+		left: 3.8vw;
 		background: none;
 		min-width: 170px;
 		min-height: 50px;
 		z-index: 6;
+
+		@media screen and (max-width: 1099px) {
+			left: 7rem;
+		}
 		
 
 		div {
@@ -1040,7 +1045,7 @@
 			height: 41%;
 			padding: 0;
 			margin: 0;
-			min-width: 170px;
+			
 
 			div.recent-sounds--list--item--player.globalPlay {
 				@include heightWidth100;
@@ -1097,6 +1102,7 @@
 					@media screen and (max-width: 1099px) {
 						transform: scale(0.41) scaleX(1);
 					}
+					
 				}
 			}
 		}
@@ -1511,6 +1517,23 @@ div.fx-sliders-4slides {
 		top: 75vh;
 		div.fx-player-overwrite {
 			justify-content: flex-start;
+			div.recent-sounds--list--item--player.globalPlay
+			{
+				button.btn.nohover.rotate {
+					// max-width: 30px;
+					box-shadow: none;
+					div {
+						transform: scale(.5);
+						box-shadow: none;
+						// @media screen and (max-width: 1099px) {
+						// 	transform: scale(1);
+						// }
+					}
+					img {
+						box-shadow: none;
+					}
+				}
+			}
 		}
 		div.recent-sounds--list--item--player.globalPlay {
 			width: 80rem;
@@ -1536,4 +1559,16 @@ div.fx-sliders-4slides {
 
 	}
 
+}
+
+.fx-bottomwindow--compare.uploadmodal-big--fxpage--box--playpause {
+	div {
+		button {
+			div {
+				box-shadow: none;
+				background: none;
+				
+			}
+		}
+	}
 }

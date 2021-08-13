@@ -1,6 +1,6 @@
 import React, { useCallback, useEffect, useState } from "react";
-import folder from "../../util/img/sound-waves3.svg";
-import eye from "../../util/img/eye.svg";
+import folder from "../../public/sound-waves3.svg";
+import eye from "../../public/eye.svg";
 import { useSelector, useDispatch } from "react-redux";
 import { useChangePage } from "../../util/hooks/changePage";
 import EditImgModal from '../shared/Modals/EditImgModal';
@@ -78,7 +78,9 @@ const RecentSide: React.FC = () => {
           <div className="recent-sounds--side--more">
             <button onClick={allTopLiked} className="btn nohover">
               <span>See more</span>
-              <Image src={eye} alt=""/>
+              <div>
+                <Image src={eye} alt=""/>
+              </div>
             </button>
           </div>
         </div>
@@ -125,7 +127,9 @@ const RecentSide: React.FC = () => {
           <div className="recent-sounds--side--more">
             <button onClick={allDownloads} className="btn nohover">
               <span>See more</span>
-              <Image src={eye} alt=""/>
+              <div>
+                <Image src={eye} alt=""/>
+              </div>
             </button>
           </div>
         </div>

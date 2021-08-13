@@ -2,9 +2,9 @@ import React from 'react'
 import ReactDOM from 'react-dom';
 import { useSelector } from 'react-redux';
 import { AnimatePresence, motion } from 'framer-motion';
-import check from '../util/img/check.svg'
-import err from '../util/img/err.svg'
-import question_mark from '../util/img/question-mark.svg'
+import check from '../public/check.svg'
+import err from '../public/err.svg'
+import question_mark from '../public/question-mark.svg'
 import Image from 'next/image'
 
 const msgVariants = {

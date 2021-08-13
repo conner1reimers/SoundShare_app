@@ -1,10 +1,10 @@
 import React, { Fragment, useState, useEffect, useContext, useRef } from 'react'
 import { useForm } from '../../util/hooks/useForm';
 import { Box, Typography } from '@material-ui/core';
-import listening2 from '../../util/img/listening-new.svg';
-import listening4 from '../../util/img/listening-new3.svg';
-import soundWaves from '../../util/img/sound-waves.svg';
-import soundWaves2 from '../../util/img/sound-waves2.svg';
+import listening2 from '../../public/listening-new.svg';
+import listening4 from '../../public/listening-new3.svg';
+import soundWaves from '../../public/sound-waves.svg';
+import soundWaves2 from '../../public/sound-waves2.svg';
 import { VALIDATOR_REQUIRE } from '../../util/validators';
 import Media from 'react-media';
 import { motion, AnimatePresence } from 'framer-motion';
@@ -161,10 +161,12 @@ const FirstpageBox: React.FC = () => {
       </div> */}
 
       <button onClick={clickSpan} className="btn nohover firstpage--box2--btn" type="button">
-  <Image
-    height={30}
-    width={30}
-    src={listening2} alt="" />
+        <div className="firstpage-img-container-grid">
+          <Image
+            height={110}
+            width={110}
+            src={listening2} alt="" />
+        </div>
       </button>
       
 
@@ -178,7 +180,14 @@ const FirstpageBox: React.FC = () => {
       </div> */}
 
       <button className="btn nohover firstpage--box3--btn" type="button">
-        <Image src={listening4} alt=""/>
+        <div>
+
+          <Image
+            height={60}
+            width={60}
+            src={listening4}
+            alt="" />
+        </div>
       </button>
 
   </Box>

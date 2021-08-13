@@ -3,7 +3,6 @@ import { Fragment } from 'react'
 import { useDispatch } from 'react-redux';
 import ForgotPassword from './ForgotPassword';
 import { useEffect } from 'react';
-import { Input } from '@material-ui/core';
 import { setModalClosed } from '../../../store/actions';
 import { useHttpClient } from '../../../util/hooks/http-hook';
 import { useForm } from '../../../util/hooks/useForm';
@@ -11,6 +10,7 @@ import { useGlobalMsg } from '../../../util/hooks/useGlobalMsg';
 import { VALIDATOR_LOGIN, VALIDATOR_MAXLENGTH, VALIDATOR_EMAIL, VALIDATOR_REQUIRE } from '../../../util/validators';
 import BallLoader from '../../animatedLoaders/BallLoader/BallLoader';
 import useLogin from '../../../util/hooks/useLogin';
+import Input from '../../common_reusable/Input';
 
 
 const AuthForm: React.FC = () => {

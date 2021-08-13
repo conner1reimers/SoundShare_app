@@ -5,7 +5,7 @@ import { Box, Typography, List, ListItem, Button } from '@material-ui/core';
 import Auth from '../../auth/Auth';
 import { useSelector, useDispatch } from 'react-redux';
 import { setModalOpen, resetGlobalSound, setModalClosed } from '../../../store/actions';
-import bell from "../../../util/img/bell.svg";
+import bell from "../../../public/bell.svg";
 import UploadModal from '../Modals/Upload/UploadModal';
 import useLogout from '../../../util/hooks/useLogout'
 import BrowseOptionsMobile from './BrowseOptions/BrowseOptionsMobile';

@@ -3,7 +3,7 @@ import React, { Fragment, useCallback } from 'react'
 import { useDispatch } from 'react-redux';
 import getDaysSince from '../../../../util/functions/getDaysSince';
 import { useChangePage } from '../../../../util/hooks/changePage';
-import unknown from '../../../../util/img/unknown.svg';
+import unknown from '../../../../public/unknown.svg';
 
 interface Item {
   type: string
@@ -66,14 +66,18 @@ const DropDownItem: React.FC<DropProps> = ({item}) => {
     );
 
     let returnEl;
+    
+    const myLoader = ({ src, width, quality }) => {
+      return `https://soundshare-bucket.s3.us-east-2.amazonaws.com/${user_img_path}`;
+    }
 
     if (type === "favs") {
       let days = getDaysSince(date);
       returnEl = (
-        <li onClick={goToSound} className={`notifications-list--item ${lengthAdded < 13 ? 'notifications-list--item--smaller' : ''}`}>
+        <li onClick={goToSound} className={`notifications-list--item ${lengthAdded < 13 ? 'notifications-list--item--smaller' : ''}`}>: 
           <div className="notifications-list--contain">
             <span className="notifications-list--img">
-              <Image src={user_img_path ? `https://soundshare-bucket.s3.us-east-2.amazonaws.com/${user_img_path}` : unknown} alt="" />
+              {user_img_path ? <Image loader={myLoader} width={35} height={35} src={`https://soundshare-bucket.s3.us-east-2.amazonaws.com/${user_img_path}`} alt="" /> : <Image width={35} height={35} src={unknown} alt="" />}
             </span>
             <div className="notifications-list--textcontain">
               
@@ -121,7 +125,7 @@ const DropDownItem: React.FC<DropProps> = ({item}) => {
         >
           <div className="notifications-list--contain">
             <span className="notifications-list--img">
-              <Image src={user_img_path ? `https://soundshare-bucket.s3.us-east-2.amazonaws.com/${user_img_path}` : unknown} alt="" />
+              {user_img_path ? <Image loader={myLoader} width={35} height={35} src={`https://soundshare-bucket.s3.us-east-2.amazonaws.com/${user_img_path}`} alt="" /> : <Image width={35} height={35} src={unknown} alt="" />}
             </span>
 
             <div className={`notifications-list--textcontain notifications-list--textcontain--comment notifications-list--item--comment--short ${!commentShort ? 'long-notific-comment' : ''}`}>
@@ -147,7 +151,7 @@ const DropDownItem: React.FC<DropProps> = ({item}) => {
         <li onClick={goToUser} className="notifications-list--item">
           <div className="notifications-list--contain">
             <span className="notifications-list--img">
-              <Image src={user_img_path ? `https://soundshare-bucket.s3.us-east-2.amazonaws.com/${user_img_path}` : unknown} alt="" />
+              {user_img_path ? <Image loader={myLoader} width={35} height={35} src={`https://soundshare-bucket.s3.us-east-2.amazonaws.com/${user_img_path}`} alt="" /> : <Image width={35} height={35} src={unknown} alt="" />}
             </span>
             <div className="notifications-list--textcontain">
               
@@ -175,7 +179,7 @@ const DropDownItem: React.FC<DropProps> = ({item}) => {
         <li onClick={goToSound} className="notifications-list--item">
           <div className="notifications-list--contain">
             <span className="notifications-list--img">
-              <Image src={user_img_path ? `https://soundshare-bucket.s3.us-east-2.amazonaws.com/${user_img_path}` : unknown} alt="" />
+              {user_img_path ? <Image loader={myLoader} width={35} height={35} src={`https://soundshare-bucket.s3.us-east-2.amazonaws.com/${user_img_path}`} alt="" /> : <Image width={35} height={35} src={unknown} alt="" />}
             </span>
             <div className="notifications-list--textcontain">
               

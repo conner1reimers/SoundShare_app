@@ -1,7 +1,7 @@
 import React, { useReducer, useEffect, useState } from 'react';
 import {validate} from '../../util/validators';
 import { AnimatePresence, motion } from 'framer-motion';
-import err from '../../util/img/err.svg'
+import err from '../../public/err.svg'
 import Image from 'next/image';
 
 const optionsVariants = {

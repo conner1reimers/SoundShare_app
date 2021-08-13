@@ -1,6 +1,6 @@
 import React, { Fragment, useCallback, useEffect, useRef, useState } from 'react'
-import dots from "../../../util/img/more3.svg";
-import unknown from '../../../util/img/question3.jpg';
+import dots from "../../../public/more3.svg";
+import unknown from '../../../public/question3.jpg';
 import { useChangePage } from '../../../util/hooks/changePage';
 import { useSelector } from 'react-redux';
 import EditComment from './EditComment';

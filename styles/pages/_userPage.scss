@@ -23,7 +23,7 @@
     grid-template-columns: 3% 15% 55% 18.5% 5%;
   }
 
-  @media screen and (max-width: 1000px) {
+  @media screen and (max-width: 1099px) {
     grid-template-columns: 20% 80%;
     grid-template-rows: 20vh repeat(5, min-content);
   }
@@ -55,12 +55,16 @@
         margin-bottom: 2vh;
       }
       @media screen and (min-width: 1440px) {
+        transform: translateY(2.5vh) scale(1) translateX(0.8vw);
+      }
+      @media screen and (min-width: 1640px) {
         transform: translateY(2.5vh) scale(1.1) translateX(0.8vw);
       }
       @media screen and (max-width: 1439px) and (min-width: 1100px) and (max-height: 700px) {
         margin-bottom: 4vh;
-        
-
+      }
+      @media screen and (max-width: 1439px) and (min-width: 1100px) {
+        transform: translateY(0vh) scale(1.1);
       }
     }
 
@@ -69,9 +73,9 @@
       transform: scale(1.2);
       border-radius: 50%;
       box-shadow: $shadow-new;
-      @media screen and (max-width: 1099px) and (min-width: 1000px) {
-        transform: translateX(1.2vw);
-      }
+      // @media screen and (max-width: 1099px) and (min-width: 1000px) {
+      //   transform: translateX(1.2vw);
+      // }
 
       &--anon {
         @include heightWidthSame(calc(3.5vh + 4.5vw));
@@ -120,7 +124,7 @@
 
           @include heightWidthSame(3rem);
         }
-        @media screen and (max-width: 1000px) {
+        @media screen and (max-width: 1099px) {
           grid-column: 2/3;
           transform: translateY(-4.5rem) translateX(-8.5rem);
           @include heightWidthSame(3rem);
@@ -194,7 +198,7 @@
       max-height: 445px;
     }
 
-    @media screen and (max-width: 1000px) {
+    @media screen and (max-width: 1099px) {
       grid-column: 1/3;
       grid-row: 1/3;
       justify-content: center;
@@ -361,7 +365,7 @@
           top: 5vh;
         }
 
-        @media screen and (max-width: 1000px) {
+        @media screen and (max-width: 1099px) {
           grid-row: 3/-1;
           grid-column: 2/3;
           top: 0vh;
@@ -403,7 +407,7 @@
           font-size: 1.6rem;
         }
       }
-      @media screen and (max-width: 1000px) {
+      @media screen and (max-width: 1099px) {
         width: 80%;
         justify-content: flex-start;
         p {
@@ -573,7 +577,7 @@
         font-size: 1.8rem;
       }
     }
-    @media screen and (max-height: 500px) and (max-width: 1000px) {
+    @media screen and (max-height: 500px) and (max-width: 1099px) {
       margin-top: 10rem;
     }
     @media screen and (max-width: 415px) {
@@ -605,7 +609,7 @@
       right: 2.5vw;
     }
 
-    @media screen and (max-width: 1000px) {
+    @media screen and (max-width: 1099px) {
       grid-column: 1/3;
       grid-row: 3/4;
     }
@@ -843,7 +847,7 @@
       flex-direction: column;
     }
 
-    // @media screen and (max-width: 1000px) {
+    // @media screen and (max-width: 1099px) {
     //   grid-column: 2/3;
     //   grid-row: 3/-1;
 
@@ -851,7 +855,7 @@
     //   position: relative;
     //   left: 7%;
     // }
-    @media screen and (max-width: 1000px) {
+    @media screen and (max-width: 1099px) {
       grid-column: 1/3;
       grid-row: 3/-1;
       justify-content: center;
@@ -860,7 +864,7 @@
       width: 100%;
       left: 0;
     }
-    @media screen and (max-width: 1000px) and (max-height: 500px) {
+    @media screen and (max-width: 1099px) and (max-height: 500px) {
       top: 2rem;
     }
 
@@ -1212,6 +1216,7 @@
   @media screen and (max-width: 1439px) and (min-width: 1100px) {
     width: 17vw;
     height: 85%;
+    max-height: 45px;
   }
   @media screen and (max-width: 1099px) {
     font-size: 1.8rem;
@@ -1220,7 +1225,7 @@
     height: 20%;
 
   }
-  @media screen and (max-width: 1000px) {
+  @media screen and (max-width: 1099px) {
     height: 100%;
     width: 50%;
     top: -1rem;
@@ -1470,7 +1475,7 @@
     height: 3rem;
     transform: translateY(-0rem);
     background-size: 100px;
-    background-image: url("../../util/img/pic.svg");
+    background-image: url("../../public/pic.svg");
     opacity: .05;
     &:not(.edit-social-modal) {
       padding-bottom: 13rem;
@@ -1498,7 +1503,7 @@
       position: absolute;
       transform: translateY(-0rem);
       background-size: 100px;
-      background-image: url("../../util/img/pic.svg");
+      background-image: url("../../public/pic.svg");
       opacity: .05;
       &:not(.edit-social-modal) {
         padding-bottom: 13rem;
@@ -2059,7 +2064,7 @@ div.edit-user-bio-med {
     transition: all 0.2s;
     pointer-events: stroke;
 
-    @media screen and (max-width: 1000px) {
+    @media screen and (max-width: 1099px) {
       transform: scale(3);
       margin: 0 4vw;
     }
@@ -2798,7 +2803,7 @@ div.user-page {
       span.dropdown-top--item--icon {
         transform: scale(.7);
       }
-      @media screen and (max-width: 1000px) {
+      @media screen and (max-width: 1099px) {
         left: -5vw;
       }
       @media screen and (max-width: 900px) {

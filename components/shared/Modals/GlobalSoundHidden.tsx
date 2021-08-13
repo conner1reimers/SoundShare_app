@@ -1,6 +1,6 @@
 import React, { useCallback } from 'react'
 import { AnimatePresence, motion } from 'framer-motion'
-import downArrow from '../../../util/img/down-arrow.svg';
+import downArrow from '../../../public/down-arrow.svg';
 import { useDispatch, useSelector } from 'react-redux';
 import { openGlobalBackUp, pauseGlobalSound, playGlobalSound } from '../../../store/actions/globalSound';
 

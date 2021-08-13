@@ -1,9 +1,9 @@
 import React, { Fragment } from 'react'
 import { useSelector } from 'react-redux';
-import refresh from '../../util/img/refresh.svg';
-import cloud from '../../util/img/cloud.svg';
-import heart from '../../util/img/heart2.svg';
-import msg from '../../util/img/chat.svg';
+import refresh from '../../public/refresh.svg';
+import cloud from '../../public/cloud.svg';
+import heart from '../../public/heart2.svg';
+import msg from '../../public/chat.svg';
 import getDaysSince from '../../util/functions/getDaysSince';
 import FeedItemFollow from './FeedItemFollow';
 import { FeedState } from '../../store/reducers/feedReducer';

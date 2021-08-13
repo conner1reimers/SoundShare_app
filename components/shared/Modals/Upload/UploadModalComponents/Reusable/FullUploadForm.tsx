@@ -10,7 +10,7 @@ import XtraDropdowns from '../ExtraDropdown/XtraDropdowns'
 import XtraOptionDropdown from '../ExtraDropdown/XtraOptionDropdown'
 import SubmitUpload from '../SubmitUpload'
 import ResetButton from './ResetButton'
-import noImg from '../../../../../../util/img/newErr.svg';
+import noImg from '../../../../../../public/newErr.svg';
 import Image from 'next/image'
 import { saveUploadForm, setUploadSound } from '../../../../../../store/actions'
 import { CLOSE_MODAL } from '../../../../../../store/actions/actionTypes'
@@ -507,11 +507,11 @@ const FullUploadForm: React.FC<Props> = ({goToFx, resetUpload, sound, isList, cu
             <div className="uploadmodal-big--info-form--input--imgUpload--preview">
                 <div className="uploadmodal-big--info-form--input--imgUpload--preview--contain">
                   {imgPreview ? (
-                  <div>
-                    <Image className="uploadimg-prev" src={imgPreview} alt=""/>
+                  <div className="uploadmodal-big--info-form--input--imgUpload--preview--contain-container">
+                    <Image height={200} width={200} className="uploadimg-prev" src={imgPreview} alt=""/>
                   </div>) : (
-                    <div> 
-                      <Image className="uploadimg-prev" src={noImg} alt=""/>
+                    <div className="uploadmodal-big--info-form--input--imgUpload--preview--contain-container"> 
+                      <Image height={200} width={200} className="uploadimg-prev" src={noImg} alt=""/>
                     </div>)}
                 </div>
             </div>

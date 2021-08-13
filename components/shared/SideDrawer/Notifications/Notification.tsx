@@ -3,8 +3,8 @@ import React, { Fragment, useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useRouter  } from "next/router";
 import { useHttpClient } from "../../../../util/hooks/http-hook";
-import bell from "../../../../util/img/bell.svg";
-import bell2 from "../../../../util/img/bell2.svg";
+import bell from "../../../../public/bell.svg";
+import bell2 from "../../../../public/bell2.svg";
 
 const Notification: React.FC = () => {
   const dispatch = useDispatch();
@@ -51,7 +51,7 @@ const Notification: React.FC = () => {
       {notifications && notifications.length > 0 ? (
         <a className="top-nav-big--links--item bell-icon" onClick={openNotif}>
           <div className="bell-icon--contain">
-            <Image src={bell} alt="" />
+            <Image src={bell} alt="" width={50} height={50}/>
 
             <div className="top-nav-big--links--notifications">
               <span>{notifications.length}</span>
@@ -61,7 +61,7 @@ const Notification: React.FC = () => {
       ) : (
         <a className="top-nav-big--links--item bell-icon" onClick={openNotif}>
           <div className="bell-icon--contain">
-            <Image src={bell2} alt="" />
+              <Image src={bell2} alt="" width={50} height={50}/>
           </div>
         </a>
       )}

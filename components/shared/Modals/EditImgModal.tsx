@@ -1,7 +1,7 @@
 import Image from 'next/image';
 import React, { Fragment } from 'react'
 import ReactDOM from 'react-dom';
-import close from '../../../util/img/close.svg';
+import close from '../../../public/close.svg';
 import BackdropMain from './BackdropMain';
 
 

@@ -4,7 +4,7 @@ import { RootStateOrAny, useDispatch, useSelector } from "react-redux";
 import { RootState } from "../../store/reducers";
 import useDownloadFile from '../../util/functions/useDownloadFile';
 import { useGlobalMsg } from "../../util/hooks/useGlobalMsg";
-import download from "../../util/img/item-download.svg";
+import download from "../../public/item-download.svg";
 import MouseOverLabel from "../../util/MouseOverLabel";
 
 

@@ -1,8 +1,8 @@
 import { motion } from 'framer-motion';
 import React from 'react'
 import { useHttpClient } from '../../util/hooks/http-hook';
-import pencil from "../../util/img/pencil.svg";
-import description from "../../util/img/description.svg";
+import pencil from "../../public/pencil.svg";
+import description from "../../public/description.svg";
 import { useDispatch } from 'react-redux';
 import Image from 'next/image';
 

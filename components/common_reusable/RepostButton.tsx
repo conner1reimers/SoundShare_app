@@ -3,8 +3,8 @@ import Image from "next/image";
 import React, { Fragment, useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHttpClient } from "../../util/hooks/http-hook";
-import repost from "../../util/img/item-repost.svg";
-import repostRed from "../../util/img/repost-red.svg";
+import repost from "../../public/item-repost.svg";
+import repostRed from "../../public/repost-red.svg";
 import MouseOverLabel from "../../util/MouseOverLabel";
 import BallLoader from "../animatedLoaders/BallLoader/BallLoader";
 

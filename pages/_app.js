@@ -13,6 +13,7 @@ import Head from 'next/head'
 import { useCallback, useEffect } from "react";
 import { getGPUTier } from "detect-gpu";
 import MainHead from "../components/MainHead";
+import GlobalSound from '../components/shared/Modals/GlobalSound';
 
 const sagaMiddleware = createSagaMiddleware();
 const composeEnhancers = composeWithDevTools({trace: true});
@@ -80,6 +81,7 @@ const MyApp = ({ Component, pageProps}) => {
             <div className="root-app-container">
               <MainHead/>
               <Component {...pageProps} />
+              <GlobalSound/>
             </div>
               
           </Provider>

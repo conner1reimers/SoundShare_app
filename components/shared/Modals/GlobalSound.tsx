@@ -6,8 +6,8 @@ import React, {
 } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import ReactDOM from "react-dom";
-import unknown from "../../util/img/unknown.svg";
-import downArrow from "../../util/img/down-arrow.svg";
+import unknown from "../../../public/unknown.svg";
+import downArrow from "../../../public/down-arrow.svg";
 import Media from "react-media";
 import { useSelector, useDispatch } from "react-redux";
 import {
@@ -17,10 +17,10 @@ import {
   muteGlobalSound,
 } from "../../../store/actions/globalSound";
 import { resetProgress } from "../../../store/actions";
-import vol from "../../../util/img/volume.svg";
-import mute from "../../../util/img/mute.svg";
+import vol from "../../../public/volume.svg";
+import mute from "../../../public/mute.svg";
 import { Slider } from "@material-ui/core";
-import blueX from "../../../util/img/x-blue.svg";
+import blueX from "../../../public/x-blue.svg";
 import { useChangePage } from "../../../util/hooks/changePage";
 import { useHttpClient } from "../../../util/hooks/http-hook";
 import Image from "next/image";
@@ -82,7 +82,7 @@ const volumeTransition = {
   velocity: 1,
 };
 
-export const GlobalSound: React.FC = React.memo(() => {
+const GlobalSound: React.FC = React.memo(() => {
   const { sound, active, playing, hiddenOpen, volume } = useSelector(
     (state: any) => state.globalSound
   );
@@ -94,8 +94,6 @@ export const GlobalSound: React.FC = React.memo(() => {
   const closePlayer = () => {
     dispatch(hideGlobalSound());
   };
-
-  const target = document.querySelector(".global-player");
 
   const [isVis, setIsVis] = useState(false);
 
@@ -202,8 +200,7 @@ export const GlobalSound: React.FC = React.memo(() => {
     }
   }
 
-
-  return ReactDOM.createPortal(
+  let final = process.browser ? ReactDOM.createPortal(
     <Media
       queries={{
         small: "(max-width: 1099px)",
@@ -499,8 +496,11 @@ export const GlobalSound: React.FC = React.memo(() => {
         </Fragment>
       )}
     </Media>,
-    document.getElementById("sound-hook") as HTMLElement
-  );
+    document.getElementById("sound-hook") as HTMLElement) : null
+
+
+ 
+  return final;
 });
 
 GlobalSound.displayName = "GlobalSound";
@@ -530,7 +530,7 @@ const UserImg: React.FC<UserProps> = ({creator}) => {
   }, [creator]);
 
   const myLoader = ({ src, width, quality }) => {
-    return `${src}?w=${width}&q=${quality || 75}`
+    return `https://soundshare-bucket.s3.us-east-2.amazonaws.com/${userImg}`;
   }
   
 
@@ -548,14 +548,23 @@ const UserImg: React.FC<UserProps> = ({creator}) => {
           <Image
             src={`https://soundshare-bucket.s3.us-east-2.amazonaws.com/${userImg}`}
             alt=""
-            width={50}
-            height={50}
+            width={245}
+            height={245}
+            loader={myLoader}
           />
       ) : (
-        <Image src={unknown} alt="" />
+            <Image
+              width={45}
+              height={45}
+              src={unknown}
+              alt=""
+            />
       )}
     </div>
   );
 };
 
 UserImg.displayName = "UserImg";
+
+
+export default GlobalSound;

@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react'
-import me from '../../util/img/me.jpg';
+import me from '../../public/me.jpg';
 import Image from 'next/image';
 
 const About: React.FC = () => {

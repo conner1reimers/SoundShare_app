@@ -1,15 +1,15 @@
 import ReactDOM from 'react-dom';
 import React, { Fragment, useCallback, useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion';
-import distort from '../../../../util/img/distort.svg';
-import menu from '../../../../util/img/menu.svg';
-import moon from '../../../../util/img/phase.svg';
-import gearshift from '../../../../util/img/gearshift.svg';
-import reverb from '../../../../util/img/reverb.svg';
-import chorus from '../../../../util/img/chorus.svg';
-import berry from '../../../../util/img/berry.svg';
-import filter from '../../../../util/img/filter.svg';
-import pingpong from '../../../../util/img/pingpong.svg';
+import distort from '../../../../public/distort.svg';
+import menu from '../../../../public/menu.svg';
+import moon from '../../../../public/phase.svg';
+import gearshift from '../../../../public/gearshift.svg';
+import reverb from '../../../../public/reverb.svg';
+import chorus from '../../../../public/chorus.svg';
+import berry from '../../../../public/berry.svg';
+import filter from '../../../../public/filter.svg';
+import pingpong from '../../../../public/pingpong.svg';
 import { useSelector } from 'react-redux';
 import Media from 'react-media';
 import Image from 'next/image';

@@ -1,6 +1,6 @@
 import React, { Fragment, useEffect, useState } from 'react'
 import ReactDOM from 'react-dom';
-import close from '../../../util/img/close.svg';
+import close from '../../../public/close.svg';
 import { useSelector, useDispatch } from 'react-redux';
 import { isUserGetFollowersLoading } from '../../../store/selectors';
 import BackdropMain from './BackdropMain';

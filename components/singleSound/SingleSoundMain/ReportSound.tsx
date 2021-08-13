@@ -6,7 +6,7 @@ import { VALIDATOR_MAXLENGTH } from '../../../util/validators'
 import {useHttpClient} from '../../../util/hooks/http-hook'
 import {  useSelector } from 'react-redux'
 import { useGlobalMsg } from '../../../util/hooks/useGlobalMsg'
-import close from '../../../util/img/close.svg';
+import close from '../../../public/close.svg';
 import { UserState } from "../../../store/reducers/user";
 import Input from '../../common_reusable/Input'
 import Modal from '../../shared/Modals/Modal'

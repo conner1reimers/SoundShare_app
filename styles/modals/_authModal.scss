@@ -4,7 +4,7 @@
 
   grid-template-columns: 17% 83%;
   &--leftSide {
-    background-image: url("../../util/img/pic.svg");
+    background-image: url("../../public/pic.svg");
     background-size: 70%;
   }
   border-radius: 0.8rem;
@@ -957,4 +957,14 @@ div.auth-grid {
     }
   }
 
+}
+
+div.auth-modal-close-contain  {
+
+  div.close-modal-container-next {
+    @include heightWidthSame(3.5%);
+    position: absolute;
+    top: -2%;
+    right: 1rem;
+  }
 }

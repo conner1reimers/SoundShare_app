@@ -1,7 +1,7 @@
 import React, { Fragment, useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import Modal from './Modal';
-import close from '../../../util/img/close.svg';
+import close from '../../../public/close.svg';
 import { setModalOpen } from '../../../store/actions';
 import Image from 'next/image';
 

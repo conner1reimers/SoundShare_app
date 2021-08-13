@@ -2,7 +2,7 @@ import Image from 'next/image';
 import React from 'react'
 import { useDispatch } from 'react-redux'
 import { setModalClosed } from '../../../../store/actions';
-import close from '../../../../util/img/close.svg';
+import close from '../../../../public/close.svg';
 
 interface Props {
     auth?: any,
@@ -26,7 +26,10 @@ const CloseUpload: React.FC<Props> = ({auth, upload}) => {
 
     return (
         <div className={`auth-modal-close-contain ${auth ? 'auth-modal-close-contain--auth' : ''}`}>
-            <Image onClick={closeModal} src={close} alt=""/>
+            <div className="close-modal-container-next">
+                <Image height={20} width={20} onClick={closeModal} src={close} alt=""/>
+            </div>
+            
         </div>
     )
 }

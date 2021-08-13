@@ -1,8 +1,8 @@
 import React, { Fragment, useCallback } from 'react'
 import { AnimatePresence, motion } from 'framer-motion';
-import popGenre from '../../../../../../util/img/pop.svg';
-import soundwaves from '../../../../../../util/img/sound-waves.svg';
-import djMixer from '../../../../../../util/img/djMixer.svg';
+import popGenre from '../../../../../../public/pop.svg';
+import soundwaves from '../../../../../../public/sound-waves.svg';
+import djMixer from '../../../../../../public/djMixer.svg';
 import { useGlobalMsg } from '../../../../../../util/hooks/useGlobalMsg';
 import Image from 'next/image';
 

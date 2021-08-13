@@ -1,9 +1,9 @@
 import React, { useState, useEffect, Fragment, useRef, useCallback } from "react";
 import { useChangePage } from "../../util/hooks/changePage";
-import playBtn from "../../util/img/newplay.svg";
-import pause from "../../util/img/newpause.svg";
-import music from "../../util/img/loop-background.svg";
-import game from "../../util/img/game-background.svg";
+import playBtn from "/public/newplay.svg";
+import pause from "/public/newpause.svg";
+import music from "/public/loop-background.svg";
+import game from "/public/game-background.svg";
 import { useDispatch, useSelector } from "react-redux";
 import {
   changeGlobalSound,
@@ -49,6 +49,7 @@ const SoundListItem: React.FC<Props> = ({id, key, category, sound_id, img_path, 
   const [repostCount, setRepostCount] = useState<any>(parseInt(proprepostCount));
   const [favCount, setFavCount] = useState<any>(parseInt(propfavCount));
   const [downloadCount, setDownloadCount] = useState<any>(parseInt(propDownloadCount));
+  const [playing, setPlaying] = useState<boolean>(false);
 
   const playSound = useCallback((event) => {
     event.preventDefault();
@@ -61,8 +62,9 @@ const SoundListItem: React.FC<Props> = ({id, key, category, sound_id, img_path, 
         if (globalSoundPlaying.playing) {
           dispatch(pauseGlobalSound());
           if (activeSound) {
-            activeSound.querySelector("img").src = playBtn;
+            // activeSound.children[0].children[1].src = playBtn;
             setActiveSound(null);
+            setPlaying(false);
           }
         } else {
           dispatch(playGlobalSound());
@@ -71,24 +73,31 @@ const SoundListItem: React.FC<Props> = ({id, key, category, sound_id, img_path, 
         dispatch(changeGlobalSound(el, location));
       }
     }
+    setPlaying(true);
   
-    if (activeSound) {
-      activeSound.querySelector("img").src = playBtn;
-      setActiveSound(event.currentTarget);
-      event.currentTarget.querySelector("img").src = pause;
-    } else if (!activeSound) {
-      setActiveSound(event.currentTarget);
-      event.currentTarget.querySelector("img").src = pause;
-    }
+    // if (activeSound) {
+    //   // activeSound.children[0].children[1].src = playBtn;
+    //   setActiveSound(event.currentTarget);
+    //   // event.currentTarget.children[0].children[1].src = pause;
+    //   setPlaying(true);
+    // } else if (!activeSound) {
+    //   setActiveSound(event.currentTarget);
+    //   // event.currentTarget.children[0].children[1].src = pause;
+    //   setPlaying(true);
+    // }
   }, [el, globalSoundPlaying.sound.id, globalSoundPlaying.active, globalSoundPlaying.playing]);
 
 
   useEffect(() => {
     if (activeSound && sound_id !== globalSoundPlaying.sound.id) {
-      activeSound.querySelector("img").src = playBtn;
+      // activeSound.children[0].children[1].src = playBtn;
+      setPlaying(false);
+
       setActiveSound(null);
     } else if (!globalSoundPlaying.playing && activeSound) {
-      activeSound.querySelector("img").src = playBtn;
+      // activeSound.children[0].children[1].src = playBtn;
+      console.log(activeSound)
+      setPlaying(false);
       setLastActiveSound(activeSound);
       setActiveSound(null);
     } else if (
@@ -98,7 +107,8 @@ const SoundListItem: React.FC<Props> = ({id, key, category, sound_id, img_path, 
       sound_id === globalSoundPlaying.sound.id
     ) {
       setActiveSound(lastActiveSound);
-      lastActiveSound.querySelector("img").src = pause;
+      // lastActiveSound.children[0].children[1].src = pause;
+      setPlaying(true);
       setLastActiveSound(null);
     } else if (
       globalSoundPlaying.playing &&
@@ -107,9 +117,20 @@ const SoundListItem: React.FC<Props> = ({id, key, category, sound_id, img_path, 
       sound_id === globalSoundPlaying.sound.id
     ) {
       setActiveSound(playRef.current);
-      playRef.current.querySelector("img").src = pause;
+      playRef.current.children[0].children[1].src = pause;
+      setPlaying(true);
     }
   }, [globalSoundPlaying.sound.id, globalSoundPlaying.playing]);
+
+
+  useEffect(() => {
+    if (globalSoundPlaying.sound.id === el.id) {
+      setPlaying(true);
+    } else {
+      setPlaying(false)
+    }
+  }, [el, globalSoundPlaying.sound]);
+
 
   
   let daysText = getDaysSince(date);
@@ -151,6 +172,10 @@ const SoundListItem: React.FC<Props> = ({id, key, category, sound_id, img_path, 
     goToUserPage(e, creator);
   }, [creator, goToUserPage]);
 
+  const myLoader = ({ src, width, quality }) => {
+    return `https://soundshare-bucket.s3.us-east-2.amazonaws.com/${img_path}`;
+  }
+
   return (
   <Media queries={{
     smaller: "(max-width: 525px)",
@@ -177,17 +202,18 @@ const SoundListItem: React.FC<Props> = ({id, key, category, sound_id, img_path, 
               onClick={playSound}
               className="btn nohover user-loops-play"
             >
-              <Image height={20} width={20} src={playBtn} alt="" />
+              {playing ? (<Image height={20} width={20} src={pause} alt="" />) : (<Image height={20} width={20} src={playBtn} alt="" />)}
             </button>
           </div>
 
           <div className="user-page--loopList--item--img">
             {img_path && img_path !== "none" ? (
                 <Image
-                  width={50}
-                  height={50}
+                  width={35}
+                  height={35}
                   className="img-shine"
                   src={`https://soundshare-bucket.s3.us-east-2.amazonaws.com/${img_path}`}
+                  loader={myLoader}
                   alt=""
               />
             ) : category === "fx" ? ( <div className="img-shine"> 
@@ -263,15 +289,16 @@ const SoundListItem: React.FC<Props> = ({id, key, category, sound_id, img_path, 
               <div className="feedlist-img-contain">
               <Image
                 className="img-shine"
-                width={50}
-                height={50}
+                width={35}
+                height={35}
                 src={`https://soundshare-bucket.s3.us-east-2.amazonaws.com/${img_path}`}
+                loader={myLoader}
                 alt="agsd"
               />
               </div>
             ) : (
               <div className="feedlist-img-contain">
-                <Image className="img-shine" src={music} alt="" />
+                <Image  className="img-shine" src={music} alt="" />
               </div>
             )}
             <div className="feedlist-item-playbtn-contain">
@@ -283,7 +310,7 @@ const SoundListItem: React.FC<Props> = ({id, key, category, sound_id, img_path, 
                     onClick={playSound}
                     className={`btn nohover user-loops-play ${feedUpload ? 'feed-playbtn-repost' : 'feed-playbtn-norepost'}`}
                   >
-                    <Image src={playBtn} alt="" />
+                    <Image height={21} width={21} src={playing ? pause : playBtn} alt="" />
                   </button>
               </div>
             </div>

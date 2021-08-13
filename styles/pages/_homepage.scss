@@ -430,9 +430,9 @@
       position: relative;
       bottom: 1vh;
       pointer-events: none;
-
       grid-row: 3/4;
       grid-column: 2/4;
+      
       @media screen and (min-width: 830px) {
         grid-row: 3/4;
         grid-column: 1/4;
@@ -909,4 +909,12 @@
       }
     }
   }
+}
+
+div.firstpage-img-container-grid {
+  @include flexcenter;
+  @include heightWidth100;
+  justify-content: flex-end;
+  position: relative;
+  top: 1rem;
 }

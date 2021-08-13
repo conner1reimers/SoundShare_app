@@ -423,7 +423,7 @@
       left: 0;
       opacity: 0.23;
       background-color: none;
-      background-image: url("../../util/img/whitewave.svg");
+      background-image: url("../../public/whitewave.svg");
       background-size: 10%;
       @media screen and (max-width: 1099px) {
         background-size: 7%;
@@ -482,7 +482,7 @@
         top: 0;
         left: 0;
         opacity: 0.08;
-        background-image: url("../../util/img/whitewave.svg");
+        background-image: url("../../public/whitewave.svg");
         background-size: 10%;
         
       }
@@ -758,7 +758,7 @@
         left: 0;
         border-radius: 0.3rem;
         background-repeat: repeat;
-        // background-image: url("../../util/img/pic.svg");
+        // background-image: url("../../public/pic.svg");
         background-size: 20%;
         box-shadow: $shadow-new;
         filter: brightness(2);
@@ -998,6 +998,7 @@ img.down-top {
   }
 }
 
+
 div.userpic-contain-top {
   background: none;
   box-shadow: none;
@@ -1019,14 +1020,60 @@ div.userpic-contain-top {
   }
   &--noimg {
     img {
-      padding: 0.3rem;
-      @include heightWidthSame(1.3rem);
-      background-color: rgba(53, 58, 58, 0.432);
+      
     }
     span {
       white-space: nowrap;
     }
   }
+
+  div.usperpic-main-container-nav {
+    padding: 0.3rem;
+    @include heightWidthSame(1.5rem);
+    background-color: rgba(53, 58, 58, 0.432);
+    border-radius: 50%;
+    @include flexcenter;
+    // justify-content: flex-start;
+
+
+    div {
+      @include heightWidthSame(20px);
+      padding: 0.3rem;
+      border-radius: 50%;
+      @include heightWidthSame(2rem);
+      box-shadow: $shadow-newer-2;
+      position: relative;
+      padding: 1.5vh 0.15rem;
+      @include flexcenter;
+      img {
+        border-radius: 50%;
+      }
+    }
+  }
+  div.usperpic-main-container-nav-withimg {
+    padding: 0rem;
+    @include heightWidthSame(2rem);
+    border-radius: 50%;
+    @include flexcenter;
+    // justify-content: flex-star
+    div {
+      @include heightWidthSame(20px);
+      padding: 0.3rem;
+      border-radius: 50%;
+      @include heightWidthSame(2rem);
+      box-shadow: $shadow-newer-2;
+      position: relative;
+      padding: 1.5vh 0.15rem;
+      @include flexcenter;
+      img {
+        border-radius: 50%;
+      }
+    }
+  }
+    
+  
+
+  
 }
 
 .notifications-list {
@@ -1047,7 +1094,7 @@ div.userpic-contain-top {
   overflow-y: auto;
   scrollbar-width: thin;
   min-width: 377px;
-  min-height: 490px;
+  min-height: 550px;
   max-height: 560px;
   transition: all .2s;
 
@@ -1175,6 +1222,8 @@ div.userpic-contain-top {
   &--img {
     @include flexcenter;
     justify-content: flex-start;
+    @include heightWidthSame(3rem);
+    min-width: 48px;
     img {
       @include heightWidthSame(3rem);
       border-radius: 50%;
@@ -1507,6 +1556,7 @@ div.notifications-list--textcontain.notifications-list--textcontain--comment.not
         font-size: 2rem;
       }
       span.notifications-list--img {
+
         img {
           @include heightWidthSame(5rem);
         }

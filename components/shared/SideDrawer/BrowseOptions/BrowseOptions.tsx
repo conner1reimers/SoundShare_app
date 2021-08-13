@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { Fragment } from 'react';
-import browse from "../../../../util/img/browse.svg";
+import browse from "../../../../public/browse.svg";
 import MouseOverLabel from '../../../../util/MouseOverLabel';
 import BrowseOptionModal from './BrowseOptionModal';
 import Image from 'next/image';

@@ -1234,7 +1234,7 @@
       padding: 2.5rem;
       background-color: rgba(97, 103, 104, 0.149);
       border-radius: 50%;
-      opacity: 0.8;
+      opacity: 0.9;
       cursor: pointer;
       @media screen and (max-width: 1099px) {
         @include heightWidthSame(12rem);
@@ -1486,17 +1486,15 @@ div.uploadmodal-big {
   z-index: 99999;
   overflow: hidden;
   div.uploadmodal-big--fx--container {
-    position: fixed;
     pointer-events: stroke;
-    padding-bottom: 10px;
-    bottom: 25px;
+    padding-bottom: 35px;
+    justify-self: flex-end;
+    align-self: flex-end;
     @media screen and (min-width: $bp-large) {
-      padding-bottom: 20px;
-      bottom: 35px;
+      padding-bottom: 55px;
     }
     @media screen and (min-width: $bp-large) and (max-height: 650px) {
-      padding-bottom: 5px;
-      bottom: 5px;
+      padding-bottom: 10px;
     }
 
     button.btn.nohover.uploadmodal-big--btn {
@@ -2012,5 +2010,60 @@ div.upload-list-submit-contain {
   span {
     @include heightWidth100;
     @include flexcenter;
+  }
+}
+
+div.uploadmodal-big{
+  div.form-control.choose-sound-btn-contain {
+    div.sound-upload--img {
+      max-width: 160px;
+      max-height: 160px;
+      min-width: 160px;
+      min-height: 160px;
+      // padding: 2rem;
+      background-color: rgba(97,103,104,.149);
+      border-radius: 50%;
+      opacity: .8;
+      cursor: pointer;
+      img {
+        background: none;
+        @include heightWidthSame(30%);
+        padding: 0;
+        margin: 0;
+      }
+      div {
+        @include heightWidthSame(60%);
+      }
+    }
+  }
+  
+}
+div.uploadmodal-big {
+  div.uploadmodal-big--info-form--input--imgUpload--preview--contain {
+    div.uploadmodal-big--info-form--input--imgUpload--preview--contain-container {
+      min-height: 200px;
+      max-width: 200px;
+      max-height: 200px;
+      min-width: 190px;
+      @media screen and (max-width: 1320px) {
+        position: relative;
+        left: 2%;
+      }
+      @media screen and (max-width: 1099px) and (min-width: 725px) {
+        left: 15%;
+        min-width: 180px;
+      }
+      @media screen and (max-width: 724px) and (min-width: 626px) {
+        left: 5%;
+      }
+      @media screen and (max-width: 625px) {
+        left: 0;
+      }
+      div {
+        min-height: 200px;
+        max-width: 200px;
+        max-height: 200px;
+      }
+    }
   }
 }

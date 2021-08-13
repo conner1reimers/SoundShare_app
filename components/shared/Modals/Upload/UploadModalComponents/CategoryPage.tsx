@@ -1,8 +1,8 @@
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import game_controller from '../../../../../util/img/game-controller.svg';
-import microphone from '../../../../../util/img/microphone.svg';
-import headphones from '../../../../../util/img/headphones.svg';
+import game_controller from '../../../../../public/game-controller.svg';
+import microphone from '../../../../../public/microphone.svg';
+import headphones from '../../../../../public/headphones.svg';
 import { useGlobalMsg } from '../../../../../util/hooks/useGlobalMsg';
 import Image from 'next/image';
 

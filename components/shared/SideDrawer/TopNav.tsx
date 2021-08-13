@@ -2,13 +2,13 @@ import React, { useState, useEffect, Fragment, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useSelector, useDispatch } from "react-redux";
 import { setModalOpen, resetGlobalSound } from "../../../store/actions";
-import padlock from "../../../util/img/padlock.svg";
-import userImg from "../../../util/img/user.svg";
-import feed from "../../../util/img/feed.svg";
-import help from "../../../util/img/question.svg";
-import down from "../../../util/img/top-arrow.svg";
-import down2 from "../../../util/img/top-arrow2.svg";
-import cloud from "../../../util/img/cloud2.svg";
+import padlock from "/public/padlock.svg";
+import userImg from "/public/user.svg";
+import feed from "/public/feed.svg";
+import help from "/public/question.svg";
+import down from "/public/top-arrow.svg";
+import down2 from "/public/top-arrow2.svg";
+import cloud from "/public/cloud2.svg";
 import Notification from "./Notifications/Notification";
 import NotificationDropdown from "./Notifications/NotificationDropdown";
 import MouseOverLabel from "../../../util/MouseOverLabel";
@@ -92,7 +92,27 @@ const TopNav: React.FC = () => {
     }
   }, [location]);
 
+  const myLoader = ({ src, width, quality }) => {
+    return `https://soundshare-bucket.s3.us-east-2.amazonaws.com/${user.full.user_img_path}`;
+  }
+  
+  
+  useEffect(() => {
+    let try1: any = document.querySelector('.usperpic-main-container-nav');
 
+    if (try1) {
+      let el: any = try1.children[0];
+      el.style.overflow = "visible";
+      let newImg: any = el.querySelector('img');
+      if (newImg) {
+        newImg.style.boxShadow = 'none';
+        console.log(newImg)
+      }
+    }
+
+    
+
+  }, [user]);
 
   
   return (
@@ -115,19 +135,31 @@ const TopNav: React.FC = () => {
                       : "userpic-contain-top userpic-contain-top--noimg"
                   }`}
                 >
-                  {user.full && ( 
-                  <Fragment> 
-                    {user.full.user_img_path ? (
+                  {user.full && (
+                    <Fragment>
+                    
+                      {user.full.user_img_path ? (
+                        <div className="usperpic-main-container-nav-withimg">
+                          <Image
+                            src={`https://soundshare-bucket.s3.us-east-2.amazonaws.com/${user.full.user_img_path}`}
+                            className="userpic-contain-top--img"
+                            alt=""
+                            height={35}
+                            width={35}
+                            loader={myLoader}
+                            
+                            />
+                        </div>
+                    ) : (<div className="usperpic-main-container-nav">
                       <Image
-                        src={`https://soundshare-bucket.s3.us-east-2.amazonaws.com/${user.full.user_img_path}`}
                         className="userpic-contain-top--img"
-                        alt=""
                         height={35}
                         width={35}
-                      />
-                    ) : (
-                      <Image className="userpic-contain-top--img" src={userImg} alt="" />
+                        src={userImg}
+                            alt="" />
+                        </div>
                     )}
+                  
                   </Fragment>)}
                   {user.full && <span>{user.full.username}</span>}
                 </div>

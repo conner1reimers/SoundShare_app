@@ -10,12 +10,12 @@ import { Slider, withStyles } from "@material-ui/core";
 import { AnimatePresence, motion } from "framer-motion";
 import FXBottom from "./FXBottom";
 import FXSide from "./FXSide";
-import right from "../../../../util/img/forward.svg";
+import right from "../../../../public/forward.svg";
 import { useSelector, useDispatch } from "react-redux";
 import { uuid } from "uuidv4";
 import FXCircleBtn from "./FXCircleBtn";
-import fx2 from "../../../../util/img/fx2.svg";
-import fx3 from "../../../../util/img/fx3.svg";
+import fx2 from "../../../../public/fx2.svg";
+import fx3 from "../../../../public/fx3.svg";
 import ReactDOM from 'react-dom';
 import Media from "react-media";
 import { pauseFx } from "../../../../store/actions";
@@ -375,6 +375,26 @@ const FXpage: React.FC<Props> = ({open, soundPrev, saveFx, onInput, resetSecondP
 	useEffect(() => {
 		setGlobalMsg('Use the refresh button to add the effects, then use the first player below to hear your new sound!', 'success', 11000);
 	}, [])
+
+
+	// useEffect(() => {
+  //   let try1: any = document.querySelector('.fx-player-overwrite');
+
+  //   if (try1) {
+  //     let el: any = try1.children[0];
+  //     el.style.overflow = "visible";
+  //     let newImg: any = el.querySelector('img');
+  //     if (newImg) {
+  //       newImg.style.boxShadow = 'none';
+  //       console.log(newImg)
+  //     }
+  //   }
+
+    
+
+  // }, [gpuTier]);
+
+
 
 	return (
 		<Fragment>
@@ -1836,27 +1856,33 @@ const PresetMenu: React.FC = React.memo(() => {
 			<Fragment>
 				<AnimatePresence>
 					{!active ? (
-						<motion.img
+						<motion.div
 							key="img-1"
-							src={fx3}
-							alt=""
+							
 							initial="initial"
 							animate="in"
 							exit="out"
 							variants={presetImgVariants}
 							transition={presetImgTransition}
-						/>
+						>
+							<Image
+								src={fx3}
+							alt=""/>
+						</motion.div>
 					) : (
-						<motion.img
+						<motion.div
 							key="img-2"
-							src={fx2}
-							alt=""
 							initial="initial"
 							animate="in"
 							exit="out"
 							variants={presetImgVariants2}
 							transition={presetImgTransition}
-						/>
+							>
+								<Image
+									src={fx2}
+									alt=""
+								/>
+						</motion.div>
 					)}
 				</AnimatePresence>
 			</Fragment>

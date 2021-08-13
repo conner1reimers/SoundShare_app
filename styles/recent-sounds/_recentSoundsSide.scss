@@ -13,10 +13,20 @@
         background: none;
         box-shadow: none;
       }
+
+      div {
+        position: relative;
+        left: .2rem;
+        @include flexcenter;
+        
+
+      }
       img {
         @include heightWidthSame(1.5rem);
         padding: 0.4rem;
         border-radius: 50%;
+        position: relative;
+        
       }
     }
   }
@@ -101,7 +111,7 @@
         top: -2vh;
         opacity: 0.08;
         background-color: #2d2e2e28;
-        background-image: url("../../util/img/pic.svg");
+        background-image: url("../../public/pic.svg");
         background-size: 20%;
         filter: brightness(2.5);
         @media screen and (max-width: 1450px) {

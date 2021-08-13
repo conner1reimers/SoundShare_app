@@ -2,7 +2,7 @@ import React, { useRef, useState, useEffect, Fragment, useCallback } from 'react
 import { useDispatch, useSelector } from 'react-redux';
 import { setUploadSound, setUploadBuffer } from '../store/actions';
 import { Buffer } from 'tone';
-import musicDownload from '../util/img/music-downloads.svg';
+import musicDownload from '../public/music-downloads.svg';
 import {useDropzone} from 'react-dropzone'
 // import { analyze, guess } from 'web-audio-beat-detector';
 import {useGlobalMsg} from '../util/hooks/useGlobalMsg'
@@ -163,7 +163,7 @@ const SoundUpload: React.FC<Props> = ({onInput, id, center, errorText, open}) =>
             />
             <div className={`sound-upload ${center && 'center'}`}>
                 <div className="sound-upload--img">
-                    <Image src={musicDownload} alt=""/>
+                    <Image height={80} width={80} src={musicDownload} alt=""/>
                 </div>
 
                 <div className="sound-upload--desc">

@@ -2,15 +2,15 @@ import React from 'react'
 import { Fragment } from 'react'
 import ReactDOM from 'react-dom';
 import Backdrop from '../../../Backdrop';
-import game_controller from '../../../../util/img/game-controller.svg';
-import microphone from '../../../../util/img/microphone.svg';
-import headphones from '../../../../util/img/headphones.svg';
+import game_controller from '../../../../public/game-controller.svg';
+import microphone from '../../../../public/microphone.svg';
+import headphones from '../../../../public/headphones.svg';
 import { useDispatch } from 'react-redux';
 import { useGlobalMsg } from '../../../../util/hooks/useGlobalMsg';
 import { useEffect } from 'react';
 import { useHttpClient } from '../../../../util/hooks/http-hook';
 import { setModalClosed, setModalOpen } from '../../../../store/actions';
-import close from '../../../../util/img/close.svg';
+import close from '../../../../public/close.svg';
 import Media from 'react-media';
 import { useRouter } from 'next/router';
 import Image from 'next/image';

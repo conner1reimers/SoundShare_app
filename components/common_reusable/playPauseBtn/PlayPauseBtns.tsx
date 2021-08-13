@@ -12,9 +12,9 @@ import { GlobalPlayingState } from "../../../store/reducers/globalPlaying";
 import { UploadState } from "../../../store/reducers/uploadReducer";
 import { UiState } from "../../../store/reducers/uiStateReducer";
 import Image from "next/image";
-import play from "../../../util/img/newplay.svg";
-import pause from "../../../util/img/newpause.svg";
-import FF from "../../../util/img/FF.svg";
+import play from "../../../public/newplay.svg";
+import pause from "../../../public/newpause.svg";
+import FF from "../../../public/FF.svg";
 
 
 interface Props {
@@ -91,11 +91,12 @@ const PlayPause: React.FC<Props> = React.memo(({global, sound, singleSound}) => 
 
   const pauseOrPlay = (e: any) => {
     e.preventDefault();
-
+    e.stopPropagation();
     if (gpuTier.isMobile && singleSound && !singleStarted) {
       setSingleStarted(true);
       dispatch(playAndSetGlobalSound(sound))
     }
+
     else {
       if (isPlaying) {
         dispatch(pauseGlobalSound());
@@ -103,7 +104,9 @@ const PlayPause: React.FC<Props> = React.memo(({global, sound, singleSound}) => 
         dispatch(playGlobalSound());
       }
     }
-};
+  };
+  
+  
 
   return (
     <Fragment>
@@ -115,11 +118,11 @@ const PlayPause: React.FC<Props> = React.memo(({global, sound, singleSound}) => 
             type="button"
             onClick={pauseOrPlay}
           >
-            <Image src={pause} alt="" />
+            <Image src={pause} alt="yhy" />
           </button>
         ) : (
           <button className="btn nohover" type="button" onClickCapture={pauseOrPlay}>
-            <Image src={play} alt="" />
+            <Image src={play} alt="zzzz" />
           </button>
         )}
       </Fragment>) : (<Fragment>
@@ -129,11 +132,11 @@ const PlayPause: React.FC<Props> = React.memo(({global, sound, singleSound}) => 
             type="button"
             onTouchStart={pauseOrPlay}
           >
-            <Image src={pause} alt="" />
+            <Image src={pause} alt="mmm" />
           </button>
         ) : (
           <button className="btn nohover" type="button" onTouchStartCapture={pauseOrPlay}>
-            <Image src={play} alt="" />
+            <Image src={play} alt="vvv" />
           </button>
         )}
       </Fragment>)}
