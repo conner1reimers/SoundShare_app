@@ -12,11 +12,7 @@ const Blog: React.FC = () => {
             a working prototype!
           </p>
         </div>
-        <div>test ad:</div>
-        <div className="ad-hm-slot">
-        <div id="div-gpt-ad-billboard-3" className="ad-slot"/>
-
-      </div>
+        
       </div>
 
      

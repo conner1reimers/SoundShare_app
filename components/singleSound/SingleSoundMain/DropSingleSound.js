@@ -4,11 +4,7 @@ import { UiState } from "../../../store/reducers/uiStateReducer";
 import { useSelector } from 'react-redux';
 import { useHttpClient } from '../../../util/hooks/http-hook';
 import { motion } from 'framer-motion';
-import trash from "../../../public/delete.svg";
-import description from "../../../public/description.svg";
-import frame from "../../../public/frame.svg";
-import pencil from "../../../public/pencil.svg";
-import tag from "../../../public/tag.svg";
+
 import MobileModal from '../../shared/Modals/MobileModal';
 import EditBtn from './EditBtn';
 import { useRouter } from 'next/router';
@@ -144,20 +140,20 @@ const DropSinglesound = ({cancel, setEditMode, isMyPage, soundInfo, soundId}) =>
                   transition={optionsTransition}
                   className="delete-btn-singlesound--inner"
                 >
-                  <DropdownItem click={editName} leftIcon={<EditBtn img={pencil}/>}>
+                  <DropdownItem click={editName} leftIcon={<EditBtn img={'pencil'}/>}>
                     Edit name
                   </DropdownItem>
-                  <DropdownItem click={editDescr} leftIcon={<EditBtn img={description}/>}>
+                  <DropdownItem click={editDescr} leftIcon={<EditBtn img={'description'}/>}>
                     Edit description
                   </DropdownItem>
-                  <DropdownItem click={editPic} leftIcon={<EditBtn img={frame}/>}>
+                  <DropdownItem click={editPic} leftIcon={<EditBtn img={'frame'}/>}>
                     Change image
                   </DropdownItem>
                   {/* <DropdownItem click={editTags} leftIcon={<EditBtn img={tag}/>}>
                     Edit tags
                   </DropdownItem> */}
                 
-                  <DropdownItem click={deleteSound} leftIcon={<EditBtn img={trash}/>}>
+                  <DropdownItem click={deleteSound} leftIcon={<EditBtn img={'trash'}/>}>
                     Delete sound
                   </DropdownItem>
                   
@@ -169,20 +165,20 @@ const DropSinglesound = ({cancel, setEditMode, isMyPage, soundInfo, soundId}) =>
       ) : (
               <MobileModal open={myPageOptionsOpen} cancel={cancel}>
                 <div className="singlesound-editbtns-mobile">
-                  <DropdownItem click={editName} leftIcon={<EditBtn img={pencil}/>}>
+                  <DropdownItem click={editName} leftIcon={<EditBtn img={'pencil'}/>}>
                     Edit name
                   </DropdownItem>
-                  <DropdownItem click={editDescr} leftIcon={<EditBtn img={description}/>}>
+                  <DropdownItem click={editDescr} leftIcon={<EditBtn img={'description'}/>}>
                     Edit description
                   </DropdownItem>
-                  <DropdownItem click={editPic} leftIcon={<EditBtn img={frame}/>}>
+                  <DropdownItem click={editPic} leftIcon={<EditBtn img={'frame'}/>}>
                     Change image
                   </DropdownItem>
-                  <DropdownItem click={editTags} leftIcon={<EditBtn img={tag}/>}>
+                  <DropdownItem click={editTags} leftIcon={<EditBtn img={'tag'}/>}>
                     Edit tags
                   </DropdownItem>
                 
-                  <DropdownItem click={deleteSound} leftIcon={<EditBtn img={trash}/>}>
+                  <DropdownItem click={deleteSound} leftIcon={<EditBtn img={'trash'}/>}>
                     Delete sound
                   </DropdownItem>
                 </div>

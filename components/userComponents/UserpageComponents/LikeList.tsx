@@ -84,7 +84,6 @@ const FavList: React.FC = () => {
           userInfo.map((el: any) => {
             return (
               <SoundListItem
-                id={el.id}
                 key={el.id}
                 sound_id={el.id}
                 img_path={el.img_path}

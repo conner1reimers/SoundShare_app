@@ -742,6 +742,7 @@
       @media screen and (max-width: 1099px) {
         right: 5vw;
       }
+
       @media screen and (max-width: 650px) and (min-height: 650px) {
         top: -6rem;
       }
@@ -770,11 +771,12 @@
         font-weight: 500;
         color: $color-white-2;
         @media screen and (max-width: 1099px) {
-          font-size: 2.2rem;
+          font-size: 1.8rem;
           position: relative;
           right: 0.5vw;
         }
       }
+
       img {
         @include heightWidthSame(1.3rem);
         position: relative;
@@ -782,8 +784,14 @@
         opacity: 0.9;
         box-shadow: $shadow-new;
         @media screen and (max-width: 1099px) {
-          @include heightWidthSame(2.5rem);
+          @include heightWidthSame(2.25rem);
         }
+      }
+      div {
+        @media screen and (max-width: 1099px) {
+          right: -.5rem;
+        }
+  
       }
     }
 
@@ -1404,6 +1412,12 @@ div.mouseOver.topnav-mouseover {
   padding: 0.3vh 0.8vw;
   @include flexcenter;
   width: min-content;
+  min-width: 101px;
+  min-height: 25px;
+
+  @media screen and (max-height: 800px)  {
+    top: 5rem;
+  }
 }
 
 div.browse-mouseover.topnav-mouseover--label--browse {

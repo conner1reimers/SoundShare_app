@@ -86,7 +86,39 @@
     &--mypage {
       cursor: pointer;
       pointer-events: none;
-      
+      grid-row: 1/5;
+      grid-column: 1/3;
+      @include heightWidth100;
+
+      div {
+        transform: scale(1.2);
+        @media screen and (max-width: 1439px) {
+          transform: scale(1.2) translateX(1vw);
+        }
+        @media screen and (max-width: 1099px) {
+          transform: none;
+        }
+        
+      }
+      div.userpage-info-smaller--userimg {
+        @media screen and (max-width: 1099px) {
+          div:not(.user-page--userpic--edit-contain) {
+            border-radius: 50%;
+            div {
+              border-radius: 50%;
+            }
+          }
+          
+        }
+        @media screen and (max-width: 1009px) {
+          div:not(.user-page--userpic--edit-contain) {
+            transform: translateX(-40px);
+            @include flexcenter;
+          }
+          
+        }
+      }
+
       @media (hover: hover) and (pointer: fine) {
         &:hover {
           img {

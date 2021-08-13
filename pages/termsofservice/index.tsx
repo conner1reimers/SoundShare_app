@@ -1,6 +1,10 @@
 import React from 'react'
 
-const Terms = () => {
+interface indexProps {
+
+}
+
+const Terms: React.FC<indexProps> = ({}) => {
   return (
     <div className="terms-conditions">
       <div className="terms-inner">
@@ -144,4 +148,4 @@ looperman and its subsidiaries, affiliates, successors, assigns, employees, agen
   )
 }
 
-export default Terms
+export default Terms;

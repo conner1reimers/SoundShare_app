@@ -229,21 +229,36 @@ const UserBig: React.FC = () => {
   }
 
   useEffect(() => {
-    let try1: any = document.querySelector('.user-page--userpic');
+    if (!isMyPage) {
+      let try1: any = document.querySelector('.user-page--userpic');
 
-    if (try1) {
-      let el: any = try1.children[0];
-      el.style.overflow = "visible";
-      let newImg: any = el.querySelector('img');
-      if (newImg) {
-        newImg.style.boxShadow = 'none';
-        console.log(newImg)
+      if (try1) {
+        let el: any = try1.children[0];
+        el.style.overflow = "visible";
+        let newImg: any = el.querySelector('img');
+        if (newImg) {
+          newImg.style.boxShadow = 'none';
+          console.log(newImg)
+        }
+      }
+    } else {
+      let try1: any = document.querySelector('.user-page--userpic--mypage');
+
+      if (try1) {
+        let el: any = try1.children[1];
+        el.style.overflow = "visible";
+        let newImg: any = el.querySelector('img');
+        if (newImg) {
+          newImg.style.boxShadow = 'none';
+          console.log(newImg)
+        }
       }
     }
+    
 
     
 
-  }, [userInfo]);
+  }, [userInfo, isMyPage]);
 
 
   return (

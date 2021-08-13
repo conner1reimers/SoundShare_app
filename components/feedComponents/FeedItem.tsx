@@ -48,7 +48,6 @@ const FeedItem: React.FC<FeeditemProps> = ({target, type, date, userId, second_t
 
                 <div className="feed-page--feed-list--item--name-contain">
                      <SoundListItem
-                        id={target}
                         sound_id={sound.id}
                         img_path={sound.img_path}
                         name={sound.name}
@@ -86,7 +85,6 @@ const FeedItem: React.FC<FeeditemProps> = ({target, type, date, userId, second_t
 
                 <div className="feed-page--feed-list--item--name-contain feed-list feed-list--repost">
                      <SoundListItem
-                        id={target}
                         sound_id={sound.id}
                         img_path={sound.img_path}
                         name={sound.name}
@@ -133,7 +131,6 @@ const FeedItem: React.FC<FeeditemProps> = ({target, type, date, userId, second_t
 
                  <div className="feed-page--feed-list--item--name-contain feed-list feed-list--repost">
                      <SoundListItem
-                        id={target}
                         sound_id={sound.id}
                         img_path={sound.img_path}
                         name={sound.name}
@@ -206,7 +203,6 @@ const FeedItem: React.FC<FeeditemProps> = ({target, type, date, userId, second_t
 
                  <div className="feed-page--feed-list--item--name-contain">
                      <SoundListItem
-                        id={target}
                         sound_id={sound.id}
                         img_path={sound.img_path}
                         name={sound.name}

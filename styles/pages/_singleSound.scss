@@ -1366,8 +1366,10 @@
           
         }
         div.sound-list-item--circle.singlesound-edit-btns {
-          padding: 5rem;
+          // padding: 5rem;
           overflow: visible;
+          @include flexcenter;
+
           @media screen and (max-width: 1099px) {
             padding: 0;
             @include flexcenter;
@@ -1377,10 +1379,11 @@
           button.btn {
             @include heightWidthSame(3rem);
             overflow: visible;
+            padding: 0;
             @media screen and (max-width: 1099px) {
               padding: 0;
               @include flexcenter;
-              transform: scale(1);
+              transform: scale(.71);
               @include heightWidthSame(6.2rem);
 
             }
@@ -3344,9 +3347,13 @@ div.single-sound--info--desc.single-sound--info--desc--small-desc {
     padding: 10px;
     position: relative;
     right: 5px;
+    @media screen and (max-width: 1099px) {
+      min-height: 30px;
+    }
     img {
       width: 5.2rem;
       height: 2rem;
+      
     }
 
     font-size: .8rem;

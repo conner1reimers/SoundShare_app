@@ -19,8 +19,6 @@ import DownloadButton from "./DownloadButton";
 import Image from "next/image";
 
 interface Props {
-  id?: any, 
-  key?: any, 
   category: any, 
   sound_id: any, 
   img_path: any, 
@@ -39,7 +37,7 @@ interface Props {
   uploadUser?: any,
   feedUpload?: any
 }
-const SoundListItem: React.FC<Props> = ({id, key, category, sound_id, img_path, date, name: nameProp, creator, path, el, browse, location, favCount: propfavCount, repostCount: proprepostCount, downloadCount: propDownloadCount, feed, userPage, uploadUser, feedUpload}) => {
+const SoundListItem: React.FC<Props> = ({category, sound_id, img_path, date, name: nameProp, creator, path, el, browse, location, favCount: propfavCount, repostCount: proprepostCount, downloadCount: propDownloadCount, feed, userPage, uploadUser, feedUpload}) => {
   const { gotoSingleSoundPage, goToUserPage } = useChangePage();
   const [activeSound, setActiveSound] = useState<any>(null);
   const [lastActiveSound, setLastActiveSound] = useState<any>(null);

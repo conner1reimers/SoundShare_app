@@ -74,7 +74,7 @@ const DropDownItem: React.FC<DropProps> = ({item}) => {
     if (type === "favs") {
       let days = getDaysSince(date);
       returnEl = (
-        <li onClick={goToSound} className={`notifications-list--item ${lengthAdded < 13 ? 'notifications-list--item--smaller' : ''}`}>: 
+        <li onClick={goToSound} className={`notifications-list--item ${lengthAdded < 13 ? 'notifications-list--item--smaller' : ''}`}>
           <div className="notifications-list--contain">
             <span className="notifications-list--img">
               {user_img_path ? <Image loader={myLoader} width={35} height={35} src={`https://soundshare-bucket.s3.us-east-2.amazonaws.com/${user_img_path}`} alt="" /> : <Image width={35} height={35} src={unknown} alt="" />}

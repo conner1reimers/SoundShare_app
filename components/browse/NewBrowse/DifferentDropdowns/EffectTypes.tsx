@@ -1,6 +1,6 @@
 import React from 'react'
 import { Fragment } from 'react';
-import check from "../../icons/check1.svg";
+import check from "public/check1.svg";
 import DropItem from '../Dropdown/DropItem';
 
 interface Props {

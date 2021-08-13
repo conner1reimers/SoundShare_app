@@ -215,7 +215,6 @@ const AllDownloadsList = () => {
         {topDownloadedAll && topDownloadedAll.map((el: any) => {
           return (
             <SoundListItem
-              id={el.id}
               key={el.id}
               sound_id={el.id}
               img_path={el.img_path}
@@ -305,7 +304,6 @@ const AllLikesList = () => {
         {topLikedAll && topLikedAll.map((el: any) => {
           return (
             <SoundListItem
-              id={el.id}
               key={el.id}
               sound_id={el.id}
               img_path={el.img_path}

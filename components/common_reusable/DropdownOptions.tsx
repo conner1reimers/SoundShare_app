@@ -1,8 +1,8 @@
 import { motion } from 'framer-motion';
 import React from 'react'
 import { useHttpClient } from '../../util/hooks/http-hook';
-import pencil from "../../public/pencil.svg";
-import description from "../../public/description.svg";
+import pencil from "/public/pencil.svg";
+import description from "/public/description.svg";
 import { useDispatch } from 'react-redux';
 import Image from 'next/image';
 
@@ -27,9 +27,9 @@ const optionsVariants = {
   const optionsTransition = {
     type: "spring",
     mass: 1.5,
-    damping: 100,
-    stiffness: 150,
-    velocity: 0.01,
+    damping: 25,
+    stiffness: 250,
+    velocity: 0.1,
   };
 interface DropItemProps {
   children: any,

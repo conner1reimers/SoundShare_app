@@ -53,7 +53,6 @@ const SoundList: React.FC = () => {
               return el.category !== "vocal" && (
                 <SoundListItem
                   key={el.id}
-                  id={el.id}
                   sound_id={el.id}
                   img_path={el.img_path}
                   path={el.path}
@@ -73,7 +72,6 @@ const SoundList: React.FC = () => {
               return (
                 <SoundListItem
                   key={el.id}
-                  id={el.id}
                   sound_id={el.id}
                   img_path={el.img_path}
                   path={el.path}

@@ -1,7 +1,8 @@
 import React from 'react'
-import check from "../../icons/check1.svg";
+import check from "public/check1.svg";
 import { Fragment } from 'react';
 import DropItem from '../Dropdown/DropItem';
+import Image from 'next/image';
 
 
 interface Props {
@@ -23,7 +24,7 @@ const EffectGenres: React.FC<Props> = ({curOptions, open, setIsBigger, optionSel
                   open={open}
                   curOptions={curOptions}
                   rightIcon={
-                    curOptions.genre.all && <img src={check} alt="" />
+                    curOptions.genre.all && <Image src={check} alt="" />
                   }
                 >
                   {" "}
@@ -38,7 +39,7 @@ const EffectGenres: React.FC<Props> = ({curOptions, open, setIsBigger, optionSel
                   open={open}
                   curOptions={curOptions}
                   rightIcon={
-                    curOptions.genre.aggressive && <img src={check} alt="" />
+                    curOptions.genre.aggressive && <Image src={check} alt="" />
                   }
                 >
                   <span>Aggressive</span>
@@ -51,7 +52,7 @@ const EffectGenres: React.FC<Props> = ({curOptions, open, setIsBigger, optionSel
                   open={open}
                   curOptions={curOptions}
                   rightIcon={
-                    curOptions.genre.calm && <img src={check} alt="" />
+                    curOptions.genre.calm && <Image src={check} alt="" />
                   }
                 >
                   <span>Calm</span>
@@ -64,7 +65,7 @@ const EffectGenres: React.FC<Props> = ({curOptions, open, setIsBigger, optionSel
                   open={open}
                   curOptions={curOptions}
                   rightIcon={
-                    curOptions.genre.alerts && <img src={check} alt="" />
+                    curOptions.genre.alerts && <Image src={check} alt="" />
                   }
                 >
                   <span>Alerts</span>
@@ -77,7 +78,7 @@ const EffectGenres: React.FC<Props> = ({curOptions, open, setIsBigger, optionSel
                   open={open}
                   curOptions={curOptions}
                   rightIcon={
-                    curOptions.genre.digital && <img src={check} alt="" />
+                    curOptions.genre.digital && <Image src={check} alt="" />
                   }
                 >
                   <span>Digital</span>
@@ -90,7 +91,7 @@ const EffectGenres: React.FC<Props> = ({curOptions, open, setIsBigger, optionSel
                   open={open}
                   curOptions={curOptions}
                   rightIcon={
-                    curOptions.genre.nature && <img src={check} alt="" />
+                    curOptions.genre.nature && <Image src={check} alt="" />
                   }
                 >
                   <span>Nature</span>
@@ -103,7 +104,7 @@ const EffectGenres: React.FC<Props> = ({curOptions, open, setIsBigger, optionSel
                   open={open}
                   curOptions={curOptions}
                   rightIcon={
-                    curOptions.genre.other && <img src={check} alt="" />
+                    curOptions.genre.other && <Image src={check} alt="" />
                   }
                 >
                   <span>other</span>

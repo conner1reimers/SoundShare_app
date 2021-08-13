@@ -3,13 +3,13 @@ import React, {
     Fragment
   } from "react";
 import { CSSTransition } from "react-transition-group";
-import check from "../../icons/check1.svg";
+import check from "public/check1.svg";
 import EffectGenres from "../DifferentDropdowns/EffectGenres";
 import LoopGenres from "../DifferentDropdowns/LoopGenres";
 import DropItem from "./DropItem";
 import EffectTypes from "../DifferentDropdowns/EffectTypes";
 import LoopTypes from "../DifferentDropdowns/LoopTypes";
-
+import Image from 'next/image';
 interface Props {
   menuLabel: any,
   curOptions: any,
@@ -104,7 +104,7 @@ const Dropdown: React.FC<Props> = ({menuLabel, curOptions, setIsBigger, open, op
                   curOptions={curOptions}
                   open={open}
                   rightIcon={
-                    curOptions.time.day && <img src={check} alt="" />
+                    curOptions.time.day && <Image src={check} alt="" />
                   }
                 >
                   <span>Day</span>
@@ -117,7 +117,7 @@ const Dropdown: React.FC<Props> = ({menuLabel, curOptions, setIsBigger, open, op
                   curOptions={curOptions}
                   open={open}
                   rightIcon={
-                    curOptions.time.week && <img src={check} alt="" />
+                    curOptions.time.week && <Image src={check} alt="" />
                   }
                 >
                   <span>Week</span>
@@ -130,7 +130,7 @@ const Dropdown: React.FC<Props> = ({menuLabel, curOptions, setIsBigger, open, op
                   type="time"
                   setIsBigger={setIsBigger}
                   rightIcon={
-                    curOptions.time.month && <img src={check} alt="" />
+                    curOptions.time.month && <Image src={check} alt="" />
                   }
                 >
                   <span>Month</span>
@@ -143,7 +143,7 @@ const Dropdown: React.FC<Props> = ({menuLabel, curOptions, setIsBigger, open, op
                   type="time"
                   setIsBigger={setIsBigger}
                   rightIcon={
-                    curOptions.time.year && <img src={check} alt="" />
+                    curOptions.time.year && <Image src={check} alt="" />
                   }
                 >
                   <span>Year</span>
@@ -156,7 +156,7 @@ const Dropdown: React.FC<Props> = ({menuLabel, curOptions, setIsBigger, open, op
                   type="time"
                   setIsBigger={setIsBigger}
                   rightIcon={
-                    curOptions.time.year && <img src={check} alt="" />
+                    curOptions.time.year && <Image src={check} alt="" />
                   }
                 >
                   <span>3 Years</span>
@@ -169,7 +169,7 @@ const Dropdown: React.FC<Props> = ({menuLabel, curOptions, setIsBigger, open, op
                   type="time"
                   setIsBigger={setIsBigger}
                   rightIcon={
-                    curOptions.time.all && <img src={check} alt="" />
+                    curOptions.time.all && <Image src={check} alt="" />
                   }
                 >
                   <span>All-Time</span>

@@ -533,7 +533,36 @@ const UserImg: React.FC<UserProps> = ({creator}) => {
     return `https://soundshare-bucket.s3.us-east-2.amazonaws.com/${userImg}`;
   }
   
+  useEffect(() => {
+    let try1: any = document.querySelector('.global-player--info--user');
+    let try2: any = document.querySelector('.global-player--info--user--unknown');
 
+    if (try1) {
+      let el: any = try1.children[0];
+      el.style.overflow = "visible";
+      el.style.position = "visible";
+      
+      let newImg: any = el.querySelector('img');
+      if (newImg) {
+        newImg.style.boxShadow = 'none';
+      }
+      if (try2 && newImg && el) {
+        newImg.style.boxSizing = 'content-box';
+        newImg.style.padding = '.5rem';
+        newImg.style.boxSizing = 'content-box';
+        newImg.style.display = 'none';
+
+        let el2 = el.children[2];
+        if (el2) {
+          el2.style.minWidth = '35px';
+          el2.style.minHeight = '35px';
+        }
+         
+
+      }
+    }
+
+  }, [userImg, isLoading]);
   return (
     <div
       className={`global-player--info--user ${
@@ -548,8 +577,8 @@ const UserImg: React.FC<UserProps> = ({creator}) => {
           <Image
             src={`https://soundshare-bucket.s3.us-east-2.amazonaws.com/${userImg}`}
             alt=""
-            width={245}
-            height={245}
+            width={45}
+            height={45}
             loader={myLoader}
           />
       ) : (

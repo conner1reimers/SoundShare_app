@@ -138,7 +138,7 @@ const DropdownClick: any = (props: any) => {
 
   useEffect(() => {
     if (props.chosen === "loop") {
-      setGenreIsChosen(<span>Loop <Image src={djMixer} alt="" /></span>)
+      setGenreIsChosen(<span>Loop <Image src={rock} alt="" /></span>)
     } else if (props.chosen === "fx") {
       setGenreIsChosen(<span>Effect <Image src={soundwaves} alt="" /></span>
       )

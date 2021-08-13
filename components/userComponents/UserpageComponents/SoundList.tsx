@@ -87,7 +87,6 @@ const SoundList = () => {
               return (
                 <SoundListItem
                   key={el.id}
-                  id={el.id}
                   sound_id={el.id}
                   img_path={el.img_path}
                   category={el.category}

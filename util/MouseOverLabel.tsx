@@ -25,8 +25,8 @@ const optionsVariants = {
 const optionsTransition = {
   type: "spring",
   mass: 1,
-  damping: 231,
-  stiffness: 1250,
+  damping: 21,
+  stiffness: 225,
   velocity: 1,
 };
 
@@ -92,7 +92,7 @@ const MouseOverLabel: React.FC<MouseOverProps> = ({circle, singlesound, label, l
     if (circle && isVis) {
       setTimer(setTimeout(() => {
         holdCheck()
-      }, 1000));
+      }, 500));
     } else if (circle && !isVis) {
       setIsVisHold(false)
       clearTimer();

@@ -256,8 +256,10 @@ const Scroller: React.FC = React.memo(() => {
     false
   );
 
-  const goToHome = () => {
-    location.push("/");
+  const goToHome = (event) => {
+    event.preventDefault();
+    event.stopPropagation();
+    location.push("/", undefined, { shallow: true });
   };
 
 
@@ -273,7 +275,6 @@ const Scroller: React.FC = React.memo(() => {
   
   const location = useRouter();
   const regex = /home/.test(location.pathname);
-  const soundRegex = /sounds/.test(location.pathname);
 
   useEffect(() => {
     if (regex) {
@@ -281,9 +282,6 @@ const Scroller: React.FC = React.memo(() => {
     } else {
       setIsOnHome(false);
     }
-
-    
-
   }, [location]);
 
   useEffect(() => {
@@ -399,8 +397,6 @@ interface DropItemProp{
   rightIcon?: any,
   leftIcon?: any,
   link?: any,
-
-
 }
 
 

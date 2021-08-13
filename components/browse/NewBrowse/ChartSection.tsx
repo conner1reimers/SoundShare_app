@@ -106,7 +106,6 @@ const ChartSection: React.FC<Props> = ({type, dispatch, optionState}) => {
                 browseResults.map((el: any) => {
                   return (
                     <SoundListItem
-                      id={el.id}
                       key={el.id}
                       category={el.category}
                       sound_id={el.id}
