@@ -542,7 +542,7 @@ export default function Sounds(props) {
 
 const sendRequest = async (url, method = 'GET', body = null, headers = {}) => {
   try {       
-    const response = await fetch(url, {
+    const response = await fetch(new URL(url), {
         method,
         body,
         headers,
