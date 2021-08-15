@@ -6,7 +6,9 @@ import { useSelector, useDispatch } from "react-redux";
 import SoundList from "./SoundList";
 import { RecentSoundState } from "../../store/reducers/recentSound";
 import { UiState } from "../../store/reducers/uiStateReducer";
-
+import { wrapper } from "../../store/wrapper";
+import { fetchRecentSounds } from "../../store/actions";
+import { END } from "@redux-saga/core";
 
 interface Root {
   recentSounds: RecentSoundState,
@@ -68,6 +70,41 @@ const RecentSounds: React.FC = () => {
     </div>
   );
 };
+
+
+
+
+
+// export const getServerSideProps = wrapper.getServerSideProps(async ({ req, res, store }) => {
+//   const state = store.getState();
+
+//   return {
+//     props: {},
+//   };
+// });
+
+
+
+
+
+// export const getStaticProps = wrapper.getStaticProps((store: any) => async ({ req }: any) => {
+
+//   console.log("DAD")
+//   store.dispatch(fetchRecentSounds())
+//   store.dispatch(END);
+//   await store.sagaTask.toPromise();
+
+//   return {props: {}}
+
+
+
+// // return {
+// //   props: {
+// //     dog: 'cat'
+// //   }
+// // }
+// })
+
 
 
 

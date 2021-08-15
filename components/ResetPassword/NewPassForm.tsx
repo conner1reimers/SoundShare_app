@@ -1,12 +1,12 @@
+import { useRouter } from 'next/router'
 import React from 'react'
-import { useHistory, useParams } from 'react-router-dom'
-import Input from '../../shared/Input/Input'
 import { useHttpClient } from '../../util/hooks/http-hook'
 import { useForm } from '../../util/hooks/useForm'
 import { useGlobalMsg } from '../../util/hooks/useGlobalMsg'
 import useLogin from '../../util/hooks/useLogin'
 import {VALIDATOR_REQUIRE} from '../../util/validators'
-import BallLoader from '../lotties/BallLoader/BallLoader'
+import BallLoader from '../animatedLoaders/BallLoader/BallLoader'
+import Input from '../common_reusable/Input'
 
 const NewPassForm: React.FC = () => {
     
@@ -21,8 +21,7 @@ const NewPassForm: React.FC = () => {
         }
     });
     const login = useLogin();
-    const params: any = useParams();
-    const history: any = useHistory();
+    const history: any = useRouter();
 
     const setGlobalMsg = useGlobalMsg();
 
@@ -38,7 +37,7 @@ const NewPassForm: React.FC = () => {
                 response = await sendRequest(`${process.env.NEXT_PUBLIC_REACT_APP_MY_ENV}/users/change-password/`, 'POST', 
                     JSON.stringify({
                         password: formState.inputs.password.value,
-                        token: params.token
+                        token: history.params.token
         
                     }),
                     {'Content-Type': 'application/json'});

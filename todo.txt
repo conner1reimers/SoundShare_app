@@ -1,0 +1,46 @@
+https://nextjs.org/docs/basic-features/data-fetching#use-together-with-getstaticprops
+
+^^ Need to make a list of paths so site can generate HTML for each page - 
+
+export async function getStaticPaths() {
+  return {
+    paths: [                                                    - The paths key determines which paths will be pre-rendered
+      { params: { ... } } // See the "paths" section below
+    ],
+    fallback: true or false // See the "fallback" section below
+  };
+}
+
+^^^ suppose that you have a page that uses dynamic routes named  pages/posts/[id].js
+return {
+  paths: [
+    { params: { id: '1' } },
+    { params: { id: '2' } }
+  ],
+  fallback: ...  <---- The object returned by getStaticPaths must contain a boolean fallback key.
+
+  
+}
+
+If fallback is false, then any paths not returned by getStaticPaths will result in a 404 page. 
+If fallback is true, then the behavior of getStaticProps changes: The paths returned from getStaticPaths will be rendered to HTML at build time by getStaticProps. The paths that have not been generated at build time will not result in a 404 page. Instead, Next.js will serve a “fallback” version of the page on the first 
+request to such a path 
+
+
+
+https://nextjs.org/docs/basic-features/data-fetching#getserversideprops-server-side-rendering
+
+If you export an async function called getServerSideProps from a page, Next.js will pre-render this page on each request using the data returned by getServerSideProps.
+
+export async function getServerSideProps(context) {
+  return {
+    props: {}, // will be passed to the page component as props
+  }
+}
+
+
+https://github.com/kirill-konshin/next-redux-wrapper    <--- use this
+
+
+GOT IT WORKING!!!!!!!!!!!!!!!!!  ---- make sure you fix all the use effect things on singlesoundpage 
+

@@ -1,12 +1,11 @@
 import React from 'react'
 import { Fragment } from 'react'
-
 import {useForm} from '../../../util/hooks/useForm'
 import { VALIDATOR_MAXLENGTH } from '../../../util/validators'
 import {useHttpClient} from '../../../util/hooks/http-hook'
 import {  useSelector } from 'react-redux'
 import { useGlobalMsg } from '../../../util/hooks/useGlobalMsg'
-import close from '../../../public/close.svg';
+import closeImg from '/public/close.svg';
 import { UserState } from "../../../store/reducers/user";
 import Input from '../../common_reusable/Input'
 import Modal from '../../shared/Modals/Modal'
@@ -72,8 +71,8 @@ const ReportSound: React.FC<Props> = ({id, close}) => {
                         </h1>
                     </div>
 
-                    <div className="auth-modal-close-contain modal-close-report">
-                        <Image onClick={close} src={close} alt=""/>
+                    <div onClick={close} className="auth-modal-close-contain modal-close-report">
+                        <Image src={closeImg} alt=""/>
                     </div>
                 
                     <form onSubmit={submit}>

@@ -1,7 +1,8 @@
 import React from 'react'
-import check from "public/check1.svg";
+import check from "/public/check1.svg";
 import { Fragment } from 'react';
 import DropItem from '../Dropdown/DropItem';
+import Image from 'next/image';
 
 
 interface Props {
@@ -23,7 +24,7 @@ const LoopTypes: React.FC<Props> = ({curOptions, open, setIsBigger, optionSelect
                 curOptions={curOptions}
                 setIsBigger={setIsBigger}
                 rightIcon={
-                  curOptions.type.loops && <img src={check} alt="" />
+                  curOptions.type.loops && <Image src={check} alt="" />
                 }
               >
                 <span>Loops</span>
@@ -37,7 +38,7 @@ const LoopTypes: React.FC<Props> = ({curOptions, open, setIsBigger, optionSelect
                 curOptions={curOptions}
                 setIsBigger={setIsBigger}
                 rightIcon={
-                  curOptions.type.acapella && <img src={check} alt="" />
+                  curOptions.type.acapella && <Image src={check} alt="" />
                 }
               >
                 <span>Accapella</span>
@@ -51,7 +52,7 @@ const LoopTypes: React.FC<Props> = ({curOptions, open, setIsBigger, optionSelect
                 curOptions={curOptions}
                 setIsBigger={setIsBigger}
                 rightIcon={
-                  curOptions.type.samples && <img src={check} alt="" />
+                  curOptions.type.samples && <Image src={check} alt="" />
                 }
               >
                 <span>Samples</span>
@@ -65,7 +66,7 @@ const LoopTypes: React.FC<Props> = ({curOptions, open, setIsBigger, optionSelect
                 curOptions={curOptions}
                 setIsBigger={setIsBigger}
                 rightIcon={
-                  curOptions.type.synth && <img src={check} alt="" />
+                  curOptions.type.synth && <Image src={check} alt="" />
                 }
               >
                 <span>Synth</span>
@@ -79,7 +80,7 @@ const LoopTypes: React.FC<Props> = ({curOptions, open, setIsBigger, optionSelect
                 curOptions={curOptions}
                 setIsBigger={setIsBigger}
                 rightIcon={
-                  curOptions.type.guitar && <img src={check} alt="" />
+                  curOptions.type.guitar && <Image src={check} alt="" />
                 }
               >
                 <span>Guitar</span>
@@ -93,7 +94,7 @@ const LoopTypes: React.FC<Props> = ({curOptions, open, setIsBigger, optionSelect
                 curOptions={curOptions}
                 setIsBigger={setIsBigger}
                 rightIcon={
-                  curOptions.type.unique && <img src={check} alt="" />
+                  curOptions.type.unique && <Image src={check} alt="" />
                 }
               >
                 <span>Unique</span>

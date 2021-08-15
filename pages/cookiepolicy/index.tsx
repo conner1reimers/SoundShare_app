@@ -4,25 +4,75 @@ const Policy = () => {
     <div className="terms-conditions">
       <div className="terms-inner policy-inner">
         <div className="terms-bold">
-        Privacy Policy of www.soundshare.cc 
+        Privacy Policy of SoundShare 
         </div>
         <div></div>
-        <a className="policy-link" href="https://www.iubenda.com/privacy-policy/31696011">Click to see detailed policy</a>
+        {/* <a className="policy-link" href="https://www.iubenda.com/privacy-policy/31696011">Click to see detailed policy</a> */}
         {/* <a className="policy-link revoke-policy"href="javascript:googlefc.callbackQueue.push(googlefc.showRevocationMessage)">Click to revoke your choice (privacy-policy)</a> */}
         <div>
         This Application collects some Personal Data from its Users.
 
-        This document can be printed for reference by using the print command in the settings of any browser.
+          This website uses “cookies”. Cookies are small ammounts of data generated and stored in your computer which are linked to users. The cookies used cannot read data from the hard disk on your computer.
+          The cookies enable recognition of the users only when they sign up or login, so that they do not have to login each time they visit the website or access areas or services that are reserved exclusively for them. The cookies which are stored will also be accomanied by and store information that is important retaining
+          to the date and time of the last visit the user made to the website and the content selected in browsing. We use the following cookies:
+          <br /> <br />Google Analytics
+          <br />Session ID cookie (to detect your user login)
+          <br />TDID (cookie to distinguish between user devices)  
+          <br />__gads (google ads)
+
         </div>
 
-        <div>
-        Owner and Data Controller
+        <br />
+        
+        <div className="terms-justify-left">
+        Types of cookies
         </div>
-        <div>
-          6835 White Tail Dr.
-          Owner contact email: connerreimers@gmail.com
+        
+        <div> 
+        <span className="bold-letters">Strictly Necessary Cookies: </span>These cookies are necessary for the website to function and cannot be switched off in our systems. They are usually only set in response to actions made by you which amount to a request for services, such as setting your privacy preferences, or automatically logging you in. You can set your browser to block or alert you about these cookies, but some parts of the website will not then work. These cookies do not store any personally identifiable information.
+
+          <br /><br /><span className="bold-letters">Performance Cookies: </span>These cookies allow us to count visits and traffic sources so we can measure and improve the performance of our website. They help us to know which pages are the most and least popular and see how visitors move around the website. All information these cookies collect is aggregated and therefore anonymous. If you do not allow these cookies we will not know when you have visited our website, and will not be able to monitor its performance.
+
+          <br /><br /><span className="bold-letters">Statistical Analysis Cookies:</span> These cookies allow the monitoring and analysis of user behavior on the website. The information gathered through such cookies is used in measuring the activity of web, application or platform sites and the profiling of user navigation of these sites, in order to make improvements to the service and functionality for users.
+
+          <br /><br /><span className="bold-letters">Third Party Cookies: </span>These cookies allow third parties to have access to some data, for example, Google Analytics is used on this website to manage and improve the services offered and collect statistical information.
         </div>
-                <div>
+
+        <br /><br /><div className="terms-justify-left">
+        Specific cookies this site uses
+        </div>
+
+        <div><span className="bold-letters">__ga (Google Analytics): </span>
+
+          This cookie is used to distinguish users. This cookie name is associated with Google Universal Analytics. Google Analytics uses {`"cookies."`} These are text files which are located in the computer to help the website analyze how users use the site.
+          This cookie is used to distinguish unique users by assigning a randomly generated number as a client identifier. It is included in each page request in a website and used to calculate visitor, session and campaign data for the websites analytics reports. By default it is set to expire after 2 years.
+       
+        </div>
+
+        <div><span className="bold-letters">sessioncook (SoundShare manual cookie): </span>
+
+          This is a session cookie which is used to identify returning users and is set manually by the controller of SoundShare.cc. The cookie is read and if the user is a returning user who has registered in the past, the cookie will allow an automatic login. When the user logs out the cookie is deleted.  This cookie expires after 2 days.
+        </div>
+
+        <div className="terms-justify-left"><span className="bold-letters">TDID: </span>
+
+        <span className="nonbold-letters">This is a cookie that contains a unique randomly-generated value that enables the platform to distinguish browsers and devices. This cookie expires after 11 months and 30 days.</span>
+        </div>
+
+        <br /><br /><div><span className="bold-letters">Other links: </span>
+
+          SoundShare may contain links to third party websites, which may or may not be provided by the user without the consent of SoundShare. We make no representation whatsoever nor accept any responsibility about such sites nor have any control over them. Any third-party content or a link to a third-party site
+          that SoundShare itself provides, meaning any link that is not strictly related to a user or their user page, is for informational purposes only. Unless otherwise expressly established in each case, SoundShare does not intervene, participate in or assume any guarantee regarding the services or products offered
+          by third party providers that may be accessible through hyperlinks or advertisements.
+        </div>
+
+        
+
+        <div className="terms-justify-left">
+        Owner and Data Controller: Conner Reimers
+        </div>
+      
+                <div className="terms-justify-left">
           Types of Data collected
           Among the types of Personal Data that this Application collects, by itself or through third parties, there are: Tracker; Usage Data.
 
@@ -35,10 +85,7 @@ const Policy = () => {
       Users are responsible for any third-party Personal Data obtained, published or shared through this Application and confirm that they have the third {`party's consent to provide the Data to the Owner.`}
         </div>
     
-        <div>
-        Mode and place of processing the Data
-        </div>
-        <div>
+        <div className="terms-justify-left">
         Methods of processing
         </div>
 
@@ -63,9 +110,11 @@ const Policy = () => {
             In any case, the Owner will gladly help to clarify the specific legal basis that applies to the processing, and in particular whether the provision of Personal Data is a statutory or contractual requirement, or a requirement necessary to enter into a contract.
     
         </div>
+
+
         
 
-        <div className="terms-bold">Place</div>
+        <div className="terms-justify-left">Place</div>
         <div>
         {`The Data is processed at the Owner's operating offices and in any other places where the parties involved in the processing are located.
 
@@ -75,7 +124,7 @@ const Policy = () => {
 
         If any such transfer takes place, Users can find out more by checking the relevant sections of this document or inquire with the Owner using the information provided in the contact section.`}
         </div>
-        <div className="terms-bold">Retention time</div>
+        <div className="terms-justify-left">Retention time</div>
 
         <div>
         Personal Data shall be processed and stored for as long as required by the purpose they have been collected for.
@@ -88,7 +137,7 @@ const Policy = () => {
 
         Once the retention period expires, Personal Data shall be deleted. Therefore, the right of access, the right to erasure, the right to rectification and the right to data portability cannot be enforced after expiration of the retention period.
         </div>
-        <div className="terms-bold">The purposes of processing</div>
+        <div className="terms-justify-left">The purposes of processing</div>
 
         <div>
         The Data concerning the User is collected to allow the Owner to provide its Service, comply with its legal obligations, respond to enforcement requests, protect its rights and interests (or those of its Users or third parties), detect any malicious or fraudulent activity, as well as the following: Access to third-party accounts and Analytics.
@@ -96,7 +145,7 @@ const Policy = () => {
         For specific information about the Personal Data used for each purpose, the User may refer to the section “Detailed information on the processing of Personal Data”.
 
         </div>
-        <div className="terms-bold">Facebook permissions asked by this Application</div>
+        <div className="terms-justify-left">Facebook permissions asked by this Application</div>
 
         <div>{`This Application may ask for some Facebook permissions allowing it to perform actions with the User's Facebook account and to retrieve information, including Personal Data, from it. This service allows this Application to connect with the User's
           account on the Facebook social network, provided by Facebook Inc.`}
@@ -105,21 +154,17 @@ const Policy = () => {
 
             The permissions asked are the following:
         </div>
-        <div className="terms-bold">Basic information</div>
+        <div className="terms-justify-left">Basic information</div>
 
         <div>
         By default, this includes certain User’s Data such as id, name, picture, gender, and their locale. Certain connections of the User, such as the Friends, are also available. If the User has made more of their Data public, more information will be available.
         </div>
         
-        <div className="terms-bold">Email</div>
+        <div className="terms-justify-left">Email: Provides access to the {`User's primary email address.`}</div>
 
-        <div>
-          Provides access to the {`User's primary email address.`}
-        </div>
         
-        <div className="terms-bold">Detailed information on the processing of Personal Data</div>
-        <div>Personal Data is collected for the following purposes and using the following services:</div>
-        <div>Access to third-party accounts: This type of service allows this Application to access Data from your account on a third-party service and perform actions with it.
+        <div className="terms-justify-left">Detailed information on the processing of Personal Data</div>
+        <div>Personal Data is collected for the following purposes and using the following services: Access to third-party accounts: This type of service allows this Application to access Data from your account on a third-party service and perform actions with it.
             These services are not activated automatically, but require explicit authorization by the User.
 
             Facebook account access (Facebook, Inc.)

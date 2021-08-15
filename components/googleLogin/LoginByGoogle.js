@@ -33,7 +33,7 @@ const LoginByGoogle = () => {
                 } else {
                     login(finalResponse.res.id, finalResponse.token, finalResponse.res.username, finalResponse.res.following);
                     
-                    if(finalResponse.res.password === process.env.REACT_APP_MASTER_PASS && finalResponse.res.email === process.env.REACT_APP_MASTER_EMAIL) {
+                    if(finalResponse.res.password === process.env.NEXT_PUBLIC_REACT_APP_MASTER_PASS && finalResponse.res.email === process.env.NEXT_PUBLIC_REACT_APP_MASTER_EMAIL) {
                         dispatch({type: "SET_MASTER_USER"})
                     }
                     dispatch({type: "RESET_AUTH"});

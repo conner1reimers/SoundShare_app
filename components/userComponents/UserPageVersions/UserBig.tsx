@@ -15,11 +15,9 @@ import edit from "/public/edit.svg";
 import SocialFollow from "../SocialFollow";
 import MouseOverLabel from "../../../util/MouseOverLabel";
 import EditSocial from "../EditComponents/EditSocial";
-import Media from "react-media";
 import RepostList from "../UserpageComponents/RepostList";
 import FavList from "../UserpageComponents/LikeList";
 import SoundList from "../UserpageComponents/SoundList";
-import FollowBtnSmall from "../UserpageComponents/FollowBtnSmall";
 import FollowBtn from "../UserpageComponents/FollowBtn";
 import RecentActivity from "../UserpageComponents/RecentActivity";
 import NoUserFound from "../UserpageComponents/NoUserFound";
@@ -31,6 +29,7 @@ import { useRouter } from "next/router";
 import Image from "next/image";
 import FollowerModal from "../../shared/Modals/FollowerModal";
 import EditDesc from "../../singleSound/EditComponents/EditDesc";
+import useWindowSize from "../../../util/useWindowSize";
 
 interface Root {
   user: UserState,
@@ -104,6 +103,7 @@ const UserBig: React.FC = () => {
   const userInfo = useSelector((state: Root) => state.userPage);
   const loggedInUser = useSelector((state: Root) => state.user);
 
+  const windowSize = useWindowSize()
 
   const [pageState, dispatchPage] = useReducer(userPageReducer, {
     sounds: true,
@@ -194,13 +194,13 @@ const UserBig: React.FC = () => {
     }
   }, [file]);
 
-  useEffect(() => {
-    return () => {
-      if (userInfo.loaded) {
-        dispatch({ type: "RESET_USER" });
-      }
-    };
-  }, [dispatch]);
+  // useEffect(() => {
+  //   return () => {
+  //     if (userInfo.loaded) {
+  //       dispatch({ type: "RESET_USER" });
+  //     }
+  //   };
+  // }, [dispatch]);
 
   const seeFollowers = () => {
     setFollowModalOpen(true);
@@ -238,7 +238,6 @@ const UserBig: React.FC = () => {
         let newImg: any = el.querySelector('img');
         if (newImg) {
           newImg.style.boxShadow = 'none';
-          console.log(newImg)
         }
       }
     } else {
@@ -250,15 +249,11 @@ const UserBig: React.FC = () => {
         let newImg: any = el.querySelector('img');
         if (newImg) {
           newImg.style.boxShadow = 'none';
-          console.log(newImg)
         }
       }
     }
-    
 
-    
-
-  }, [userInfo, isMyPage]);
+  }, [userInfo, isMyPage, windowSize.width]);
 
 
   return (
@@ -272,8 +267,7 @@ const UserBig: React.FC = () => {
               followers={userFollowers}
               header={`Following ${userInfo.user.username}`}
           />
-            <Media queries={{bigger: "(min-width: 1100px)"}}>
-              {(matches) => (
+            
                 <div className="user-page">
                     
                     <RecentActivity/>
@@ -308,16 +302,7 @@ const UserBig: React.FC = () => {
                       Reposts
                     </a>
                     
-                    {!matches.bigger && <a
-                      onClick={() => dispatchPage({ type: "bio" })}
-                      className={`top-nav-big--links--item user-page--nav--link ${
-                        pageState.bio ? "user-page--nav--link--active" : ""
-                      }`}
-                      href="#info"
-                    >
-                      User Info
-                    </a>}
-                    <EditUserOptions small={!matches.bigger} goToDesc={() => dispatchPage({ type: "bio" })} setEdit={setEditState} isMyPage={isMyPage} />
+                    <EditUserOptions goToDesc={() => dispatchPage({ type: "bio" })} setEdit={setEditState} isMyPage={isMyPage} />
                   </div>
           
                   
@@ -339,6 +324,9 @@ const UserBig: React.FC = () => {
                             <Image
                               className="user-page--userpic--main"
                               src={unknown}
+                              
+                              height={130}
+                              width={130}
                               alt=""
                             />
                           )}
@@ -377,11 +365,17 @@ const UserBig: React.FC = () => {
                             <Image
                               className="user-page--userpic--main"
                               src={unknown}
+                              height={130}
+                              width={130}
                               alt=""
                             />
                           )}
                           <div className="user-page--userpic--edit-contain">
-                            <Image src={edit} alt="" />
+                        <Image
+                          height={25}
+                          width={25}
+                          src={edit}
+                          alt="" />
                           </div>
                         </div>
                       )}
@@ -417,16 +411,16 @@ const UserBig: React.FC = () => {
                         
                         <FollowBtn id={userInfo.user.id} isMyPage={isMyPage}/>
           
-                      {matches.bigger && <div className="social-follow--contain">
+                      <div className="social-follow--contain">
                         <SocialFollow
                           isMyPage={isMyPage}
                           setEdit={setEditState}
                         />
-                      </div>}
+                      </div>
 
                       <SoundStore id={userInfo.user.id} isMyPage={isMyPage}/>
           
-                      {editState !== "desc" && matches.bigger && (
+                      {editState !== "desc" && (
                         <div className="user-page--info--desc--contain">
                           <div className="user-page--info--desc">
                             <p>
@@ -438,7 +432,7 @@ const UserBig: React.FC = () => {
                         </div>
                       )}
           
-                      {matches.bigger && (
+                     
                         <div className="edit-user-bio">
                           <EditDesc
                             setEditMode={setEditState}
@@ -447,8 +441,7 @@ const UserBig: React.FC = () => {
                             desc={userInfo.user.bio ? userInfo.user.bio : ""}
                             id={userInfo.user.id}
                           />
-                        </div>)
-                      }
+                        </div>
 
                     </div>
                 
@@ -468,7 +461,7 @@ const UserBig: React.FC = () => {
                         <RepostList />
                       </div>
                     )}
-                    {pageState.bio && !matches.bigger && (
+                    {pageState.bio && (
                       <Fragment>
                         <div className="user-page--info--desc--contain">
                           
@@ -501,8 +494,7 @@ const UserBig: React.FC = () => {
                         </div>
                       </Fragment>)}
                       </div>
-              )}
-          </Media>
+              
             
         </Fragment>)}
       

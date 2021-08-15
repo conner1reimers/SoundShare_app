@@ -47,11 +47,6 @@ const ChartSection: React.FC<Props> = ({type, dispatch, optionState}) => {
             <span className="headings main-browse--chartSection--head--undertext">
               Search for sounds by type
             </span>
-
-            {/* <Media query="(max-width: 450px)" render={() =>
-              (
-                <div className="more-filters-browse-smaller">
-                  {/* <MoreFilters category={type} /> */}
                 
             
 

@@ -1,7 +1,8 @@
 import React from 'react'
-import check from "public/check1.svg";
+import check from "/public/check1.svg";
 import { Fragment } from 'react';
 import DropItem from '../Dropdown/DropItem';
+import Image from 'next/image';
 
 interface Props {
   curOptions: any,
@@ -22,7 +23,7 @@ const LoopGenres: React.FC<Props> = ({curOptions, open, setIsBigger, optionSelec
                 open={open}
                 curOptions={curOptions}
                 rightIcon={
-                  curOptions.genre.all && <img src={check} alt="" />
+                  curOptions.genre.all && <Image src={check} alt="" />
                 }
               >
                 {" "}
@@ -37,7 +38,7 @@ const LoopGenres: React.FC<Props> = ({curOptions, open, setIsBigger, optionSelec
                 open={open}
                 curOptions={curOptions}
                 rightIcon={
-                  curOptions.genre.hip && <img src={check} alt="" />
+                  curOptions.genre.hip && <Image src={check} alt="" />
                 }
               >
                 <span>Hip-Hop</span>
@@ -50,7 +51,7 @@ const LoopGenres: React.FC<Props> = ({curOptions, open, setIsBigger, optionSelec
                 open={open}
                 curOptions={curOptions}
                 rightIcon={
-                  curOptions.genre.rock && <img src={check} alt="" />
+                  curOptions.genre.rock && <Image src={check} alt="" />
                 }
               >
                 <span>Rock</span>
@@ -63,7 +64,7 @@ const LoopGenres: React.FC<Props> = ({curOptions, open, setIsBigger, optionSelec
                 open={open}
                 curOptions={curOptions}
                 rightIcon={
-                  curOptions.genre.rnb && <img src={check} alt="" />
+                  curOptions.genre.rnb && <Image src={check} alt="" />
                 }
               >
                 <span>Rnb</span>
@@ -76,7 +77,7 @@ const LoopGenres: React.FC<Props> = ({curOptions, open, setIsBigger, optionSelec
                 open={open}
                 curOptions={curOptions}
                 rightIcon={
-                  curOptions.genre.elect && <img src={check} alt="" />
+                  curOptions.genre.elect && <Image src={check} alt="" />
                 }
               >
                 <span>Electronic</span>
@@ -89,7 +90,7 @@ const LoopGenres: React.FC<Props> = ({curOptions, open, setIsBigger, optionSelec
                 open={open}
                 curOptions={curOptions}
                 rightIcon={
-                  curOptions.genre.pop && <img src={check} alt="" />
+                  curOptions.genre.pop && <Image src={check} alt="" />
                 }
               >
                 <span>Pop</span>
@@ -102,7 +103,7 @@ const LoopGenres: React.FC<Props> = ({curOptions, open, setIsBigger, optionSelec
                 open={open}
                 curOptions={curOptions}
                 rightIcon={
-                  curOptions.genre.other && <img src={check} alt="" />
+                  curOptions.genre.other && <Image src={check} alt="" />
                 }
               >
                 <span>other</span>

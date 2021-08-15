@@ -1,9 +1,8 @@
 import React, { useEffect } from 'react'
-import NewPassForm from './NewPassForm'
+import NewPassForm from '../../components/ResetPassword/NewPassForm'
 
-const NewPassword: React.FC = () => {
 
-    
+export default function Reset() {
     useEffect(() => {
         document.body.style.overflow = 'hidden';
           document.body.style.position = 'fixed';
@@ -37,5 +36,3 @@ const NewPassword: React.FC = () => {
         </div>  
     )
 }
-
-export default NewPassword

@@ -122,7 +122,30 @@ const RepostButton: React.FC<Props> = ({soundId, username, creator: creatorProp,
       setIsReposted(false);
     } 
   }, [isReposted]);
-  
+
+
+  useEffect(() => {
+    let try1: any = document.querySelector('.single-sound--repost');
+
+    let element: any;
+
+    if (try1) {
+      element = try1.querySelector('.action-heart-img-contain');
+
+    }
+      
+      if (element) {
+        let el: any = element.childNodes[0];
+        el.style.overflow = "visible";
+
+        // console.log(element)
+        // for (let i = 0; i < try1.length; i++) {
+          
+        // }
+        
+        }
+    }, []);
+
 
 
   return (

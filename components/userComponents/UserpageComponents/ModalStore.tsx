@@ -39,17 +39,17 @@ interface Props {
 
 const ModalStore: React.FC<Props> = ({ open, children, closeModal }) => {
   
-  return ReactDOM.createPortal(
+  const final = process.browser ? ReactDOM.createPortal(
     <Fragment>
       {open && (
         <Fragment>
           <motion.div
-              className="store-modal-contain"
-              initial="initial"
-              animate="in"
-              exit="out"
-              variants={optionsVariants}
-              transition={optionsTransition}
+            className="store-modal-contain"
+            initial="initial"
+            animate="in"
+            exit="out"
+            variants={optionsVariants}
+            transition={optionsTransition}
           >
             {children}
 
@@ -61,7 +61,8 @@ const ModalStore: React.FC<Props> = ({ open, children, closeModal }) => {
 
         
       )}
-    </Fragment>, document.getElementById('modal-hook-store') as HTMLElement)
+    </Fragment>, document.getElementById('modal-hook-store') as HTMLElement) : null;
+  return final;
   
 }
 

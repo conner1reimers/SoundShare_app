@@ -1918,6 +1918,9 @@ div.sound-list-item--circle.circle-btn-single-sound.circle-btn-single-sound--dow
   @media screen and (min-width: 1600px) and (max-height: 980px) {
     margin-top: 8.25rem;
   }
+  @media screen and (max-width: 400px) {
+    margin-top: 12rem;
+  }
 }
 div.sound-list-item--circle.circle-btn-single-sound.circle-btn-single-sound--download.singlesound-btn.move-down {
   @media screen and (min-width: $bp-large) {
@@ -1928,6 +1931,19 @@ div.sound-list-item--circle.circle-btn-single-sound.circle-btn-single-sound--dow
 
 
 div.single-sound--repost {
+  div.action-heart-img.action-heart-img-contain {
+    @media screen and (min-width: $bp-large) {
+      @include heightWidthSame(2rem);
+      
+    }
+    @media screen and (max-width: 1099px) {
+      div {
+        transform: scale(1.4);
+      }
+      
+    }
+  }
+ 
   div.sound-list-item--circle.circle-btn-single-sound.singlesound-btn.move-down-more {
     @media screen and (min-width: 451px) {
       margin-top: 3rem;
@@ -1941,11 +1957,16 @@ div.single-sound--repost {
     @media screen and (max-width: 450px) {
       margin-top: 8rem;
     }
+    
     @media screen and (min-width: $bp-large) {
       margin-top: 6rem;
+
     }
     @media screen and (min-width: 1600px) and (max-height: 980px) {
       margin-top: 8.25rem;
+    }
+    @media screen and (max-width: 400px) {
+      margin-top: 12rem;
     }
     
   }
@@ -3124,11 +3145,15 @@ div.followers-modal.edit-img-modal {
 }
 
 div.auth-modal-close-contain.modal-close-report {
-  margin-top: 2rem;
-  margin-right: 1rem;
-  @media screen and (max-width: 1099px) {
-    margin-top: 5rem;
-    margin-right: 3rem;
+  div {
+    position: relative;
+    top: 1rem;
+    right: 1.5rem;
+  
+    @media screen and (max-width: 1099px) {
+      top: 2.5rem;
+      right: 3rem;
+    }
   }
 } 
 

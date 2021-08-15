@@ -129,11 +129,6 @@ const FirstpageBox: React.FC = () => {
       }
     })
 
-    const openBrowse = ((e: any) => {
-      e.preventDefault();
-
-      history.push('/browse')
-  })
   
   const BigHomepage= () => (<Fragment>
     <div className="firstpage-big">

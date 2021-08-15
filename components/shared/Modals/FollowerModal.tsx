@@ -36,11 +36,7 @@ const FollowerModal: React.FC<Props> = ({open, likeList, children, closeModal, f
     }, [open])
 
 
-
-    
-
-
-    return ReactDOM.createPortal(
+    const finalEl = process.browser ? ReactDOM.createPortal(
         <Fragment>
             {open && <BackdropMain onClick={closeModal}/>}
             {open && (
@@ -69,7 +65,7 @@ const FollowerModal: React.FC<Props> = ({open, likeList, children, closeModal, f
                             {matches.big && (
                             <div className="followers-modal--close">
                                 <div onClick={closeModal}>
-                                    <Image className="xtraoptions-close" src={close} alt=""/>
+                                    <Image height={40} width={40} className="xtraoptions-close" src={close} alt=""/>
                                 </div>
                             </div>
                             )}
@@ -86,8 +82,11 @@ const FollowerModal: React.FC<Props> = ({open, likeList, children, closeModal, f
                 )}
             </div>)}
             
-        </Fragment>, document.getElementById('modal-hook') as HTMLElement
-    )
+        </Fragment>, document.getElementById('modal-hook') as HTMLElement) : null
+    
+
+
+    return finalEl
 }
 
 

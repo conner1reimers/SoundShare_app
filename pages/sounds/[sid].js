@@ -1,7 +1,7 @@
 import { AnimatePresence } from 'framer-motion';
 import Image from 'next/image';
-import { useRouter } from 'next/router'
-import React, { useState, useRef, useCallback, useEffect, Fragment } from 'react';
+import { Router, useRouter } from 'next/router'
+import React, { useState, useRef, useCallback, useEffect,  } from 'react';
 import Media from 'react-media';
 import { useSelector, useDispatch } from 'react-redux';
 import Heart from '../../components/animatedLoaders/Heart/Heart';
@@ -31,41 +31,61 @@ import MouseOverLabel from '../../util/MouseOverLabel';
 import music from "../../public/loop-background.svg";
 import game from "../../public/game-background.svg";
 import more from "../../public/more2.svg";
+import Licesnse from '../../components/singleSound/Licesnse';
 
-interface Root {
-  user: UserState,
-  ui: UiState
-}
+// interface Root {
+//   user: UserState,
+//   ui: UiState
+// }
+
+// export async function getStaticPaths() {
+//   return {
+//     paths: [
+//       { params: { sid: '341' } },
+//       { params: { sid: '22' } }
+//     ],
+//     fallback: false 
+//   };
+// }
 
 
-export default function Sounds() {
+
+// export const getServerSideProps = wrapper.getServerSideProps(async (store) =>
+//   ({req, res, reduxStore}) => {
+//       return {props: {...reduxStore}};
+//       // store.dispatch({type: 'TICK', payload: 'was set in other page'});
+//   }
+// );
+
+export default function Sounds(props) {
   const { isLoading, sendRequest } = useHttpClient();
   const router = useRouter();
 
   let soundId = router.query;
 
 
-  const [soundInfo, setSoundInfo] = useState<any>(null);
-  const [faved, setFaved] = useState<boolean>(false);
-  const [isMyPage, setIsMyPage] = useState<boolean>(false);
-  const [moveBtnDown, setMoveBtnDown] = useState<any>(false);
-  const [smallDesc, setSmallDesc] = useState<any>(false);
-  const [descOpen, setDescOpen] = useState<boolean>(false);
-  const [editMode, setEditMode] = useState<any>(null);
-  const [likeModalOpen, setLikeModalOpen] = useState<any>(false);
-  const [reportComment, setReportComment] = useState<any>(false);
 
+  const [soundInfo, setSoundInfo] = useState(props.response);
+  const [faved, setFaved] = useState(false);
+  const [isMyPage, setIsMyPage] = useState(false);
+  const [moveBtnDown, setMoveBtnDown] = useState(false);
+  const [smallDesc, setSmallDesc] = useState(false);
+  const [descOpen, setDescOpen] = useState(false);
+  const [editMode, setEditMode] = useState(null);
+  const [likeModalOpen, setLikeModalOpen] = useState(false);
+  const [reportComment, setReportComment] = useState(false);
+  
 
-  const myPageOptionsOpen = useSelector((state: Root) => state.ui.singlesoundOptionsOpen);
-  const gpuTier = useSelector((state: Root) => state.ui.gpuTier);
-  const userId = useSelector((state: Root) => state.user.userId);
-  const isMaster = useSelector((state: Root) => state.user.master);
+  const myPageOptionsOpen = useSelector((state) => state.ui.singlesoundOptionsOpen);
+  const gpuTier = useSelector((state) => state.ui.gpuTier);
+  const userId = useSelector((state) => state.user.userId);
+  const isMaster = useSelector((state) => state.user.master);
 
 
   const dispatch = useDispatch();
 
   const { goToUserPage } = useChangePage();
-  const descRef = useRef<any>();
+  const descRef = useRef();
 
 
   const fetchSoundInfo = useCallback(async () => {
@@ -98,9 +118,13 @@ export default function Sounds() {
   
   useEffect(() => {
     if (gpuTier) {
-      fetchSoundInfo();
+      if (!soundInfo) {
+        fetchSoundInfo();
+      } else if (soundId.sid != soundInfo.sound.id) {
+        fetchSoundInfo();
+      } 
     }
-  }, [gpuTier, soundId, userId, fetchSoundInfo]);
+  }, [gpuTier, soundId, soundInfo]);
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -149,9 +173,9 @@ export default function Sounds() {
     }
   }, [myPageOptionsOpen]);
 
-  let name: any;
-  let last: any;
-  let nameLong: any = false;
+  let name;
+  let last;
+  let nameLong = false;
 
   if (soundInfo && soundInfo.sound) {
     if (soundInfo.sound.name.length > 25) {
@@ -208,24 +232,40 @@ export default function Sounds() {
   }
 
   useEffect(() => {
-    let try1: any = document.querySelector('.singlesound-img-container');
+    let try1 = document.querySelector('.singlesound-img-container');
 
     if (try1) {
-      let el: any = try1.children[0];
+      let el = try1.children[0];
       el.style.overflow = "visible";
-      let newImg: any = el.querySelector('img');
+      let newImg = el.querySelector('img');
       if (newImg) {
         newImg.style.boxShadow = 'none';
-        console.log(newImg)
       }
     }
 
     
 
   }, [soundInfo]);
+  
+
+  useEffect(() => {
+    if (gpuTier && !gpuTier.isMobile && soundInfo) {
+        dispatch(setGlobalSound(soundInfo.sound));
+      } 
+          
+    if (userId) {
+      if (response.sound.favs.indexOf(userId.toString()) !== -1) {
+        if (!faved) {
+          setFaved(true);
+        }
+        
+      }
+    }
+  }, [userId, gpuTier, dispatch, faved, soundInfo])
+  
 
   return (
-    <Fragment>
+    <>
       {isLoading && <LoadingAnimation loading={isLoading} />}
       {soundInfo && (
         <Media
@@ -236,7 +276,7 @@ export default function Sounds() {
           }}
         >
           {(matches) => (
-            <Fragment>
+            <>
               
                 <div className="single-sound">
                   <div className="single-sound--info">
@@ -322,7 +362,7 @@ export default function Sounds() {
 
                     <div className="single-sound--info--username-contain">
                       {editMode !== "name" && (
-                        <Fragment>
+                        <>
                           <span>Uploaded by:</span>
                           <span
                             onClick={(e) =>
@@ -333,7 +373,7 @@ export default function Sounds() {
                             {soundInfo.sound.username}
                           </span>
                           {matches.smaller && (
-                            <Fragment>
+                            <>
                             
                             <div className="singlesound-likes-smaller-contain">
                               <div className="singlesound-likes-smaller">
@@ -348,10 +388,10 @@ export default function Sounds() {
                                   
                               </div>
                             </div>
-                            </Fragment>
+                            </>
                           
                           )}
-                        </Fragment>
+                        </>
                       )}
                     </div>
 
@@ -385,7 +425,7 @@ export default function Sounds() {
                         {(soundInfo.sound.tags && soundInfo.sound.tags.length > 0) ? (
                           <div className="sound-tags">
                             <span className="tagword">Tags: </span>
-                            {soundInfo.sound.tags.map((el: any, i: any) => (
+                            {soundInfo.sound.tags.map((el, i) => (
                               <SoundTags category={soundInfo.sound.category} key={el} tag={el} notLast={soundInfo.sound.tags[i + 1]} />
                             ))}
                           </div>
@@ -399,7 +439,7 @@ export default function Sounds() {
                             <span onClick={seeLikes} className="like-txt-single likesingle"> {soundInfo.sound.favs.length} Likes</span>
                           )}
                           {soundInfo.sound.category !== 'fx' && (
-                            <BPMComponent bpm={soundInfo.sound.bpm}/>
+                            <BPMComponent category={soundInfo.sound.category} bpm={soundInfo.sound.bpm}/>
                           )}
                           {!matches.smaller && (
                             <span onClick={gotoCategory} className="repost-singlesound-count">Category: {soundInfo.sound.category}</span>
@@ -429,7 +469,7 @@ export default function Sounds() {
                       moveDown={nameLong && !moveBtnDown}
                      />
 
-                    {!matches.smaller && <div className="single-sound--likes">
+                    {(!matches.smaller && gpuTier)? <div className="single-sound--likes">
                       <div className={`outline-btn outline-btn--heart ${moveBtnDown ? 'move-down' : ''} ${(moveBtnDown && nameLong) ? 'move-down-more' : ''} ${(!moveBtnDown && nameLong) ? 'move-down-other' : ''}`}>
                         <Heart
                           soundInfo={soundInfo}
@@ -442,7 +482,8 @@ export default function Sounds() {
                         <span onClick={seeLikes} className="like-txt-single likesingle"> {soundInfo.sound.favs.length} Likes</span>
                         
                       </div>
-                    </div>}
+                    </div> : null}
+
 
                     <SingleSoundRepostButton
                       moveDown={nameLong && !moveBtnDown}
@@ -451,29 +492,9 @@ export default function Sounds() {
                       setSoundInfo={setSoundInfo}
                       further={moveBtnDown}
                     />
-                    <div className="commons-license">
-                      <div>
-                      <a rel="noreferrer"
-                        target="_blank"
-                            href="http://creativecommons.org/publicdomain/zero/1.0/">
-                            <Image height={32} width={88} src="https://licensebuttons.net/p/zero/1.0/88x31.png" alt="CC0" />
-                          </a>
-                          <br />
-                          <span>
-                            <a href="http://creativecommons.org/publicdomain/zero/1.0/" className="text-license-link" rel="noreferrer" target="_blank">
-                              This work is licensed under the Creative Commons 0 License.
-                            </a>
-                          </span>
-                        
-                        </div>
-                      <div className="commons-license-report-sound">
-                        <div>
-                          <span>Is this sound offensive or in violation of copyright?</span>
-                          <button onClick={reportSound} className="btn nohover">Report it</button>
-                        </div>
-                      </div>
 
-                    </div>
+                    <Licesnse reportSound={reportSound}/>
+                  
                   </div>
 
 
@@ -491,12 +512,12 @@ export default function Sounds() {
                   <CommentSection setSoundInfo={setSoundInfo} soundInfo={soundInfo} />
                 </div>
               
-            </Fragment>
+            </>
           )}
         </Media>
       )}
       {soundInfo && (
-        <Fragment>
+        <>
 
           <FollowerModal likeList closeModal={closeLikesModal} header={likeModalOpen} open={likeModalOpen}>
               <LikeSoundList closeModal={closeLikesModal} option={likeModalOpen} favs2={soundInfo.sound.favs} reposts={soundInfo.sound.reposts}/>
@@ -510,11 +531,190 @@ export default function Sounds() {
 
           {reportComment && <ReportSound id={soundInfo.sound.id} close={closeReportSound}/>}
 
-        </Fragment>)
+        </>)
       }
 
       
 
-    </Fragment>
+    </>
   );
 }
+
+const sendRequest = async (url, method = 'GET', body = null, headers = {}) => {
+  try {       
+    const response = await fetch(url, {
+        method,
+        body,
+        headers,
+        credentials: 'same-origin'
+
+    }, );
+    const responseData = await response.json();
+   
+    if (!response.ok) {
+        throw new Error(responseData.message);
+    }
+    return responseData;
+}
+    // CATCH
+    catch (err) {
+      throw err;
+  }
+}
+
+export async function getStaticPaths() {
+  const soundList = await sendRequest(`${process.env.NEXT_PUBLIC_REACT_APP_MY_ENV}/sounds/getids`);
+  
+  const pathList = soundList.sounds.map(el => {
+    return {
+      params: {sid: el.id}
+    }
+  })
+
+  return {
+    paths: pathList,
+    fallback: false
+  }
+}
+
+export async function getStaticProps(context){
+    const soundId = context.params.sid;
+    // regular stuff
+
+    // store.dispatch(fetchRecentSounds());
+    // end the saga
+
+    // store.dispatch(END);
+    // await store.sagaTask.toPromise();
+    
+
+    const fetchSoundInfo = async () => {
+      if (soundId) {
+        let response;
+  
+        try {
+          response = await sendRequest(
+            `${process.env.NEXT_PUBLIC_REACT_APP_MY_ENV}/sounds/${soundId}`
+          );
+
+
+
+          // setSoundInfo({
+          //   sound: response.sound,
+          //   comments: response.comments,
+          //   offset: response.comments.length,
+          //   refreshFinished: response.comments.length !== 20
+          // });
+  
+          // if (!gpuTier.isMobile) {
+          //   dispatch(setGlobalSound(response.sound));
+          // } 
+          
+          // if (userId) {
+          //   if (response.sound.favs.indexOf(userId.toString()) !== -1) {
+          //     setFaved(true);
+          //   }
+          // }
+          return {
+            sound: response.sound,
+            comments: response.comments,
+            offset: response.comments.length,
+            refreshFinished: response.comments.length !== 20
+          }
+        } catch (err) {}
+      }
+    };
+
+
+    let response = await fetchSoundInfo();
+    return {props: {
+      response,
+      revalidate: 1
+    }};
+
+
+    
+};
+
+
+
+
+// export const getServerSideProps = (async ({  req, res, ...ctx }) => {
+//     const soundId = ctx.query.sid;
+//     // regular stuff
+
+//     // store.dispatch(fetchRecentSounds());
+//     // end the saga
+
+//     // store.dispatch(END);
+//     // await store.sagaTask.toPromise();
+//     const sendRequest = async (url, method = 'GET', body = null, headers = {}) => {
+//       try {       
+//         const response = await fetch(url, {
+//             method,
+//             body,
+//             headers,
+//             credentials: 'same-origin'
+
+//         }, );
+//         const responseData = await response.json();
+       
+//         if (!response.ok) {
+//             throw new Error(responseData.message);
+//         }
+//         return responseData;
+//     }
+//         // CATCH
+//         catch (err) {
+//           throw err;
+//       }
+//     }
+
+
+
+
+//     const fetchSoundInfo = async () => {
+//       if (soundId) {
+//         let response;
+  
+//         try {
+//           response = await sendRequest(
+//             `${process.env.NEXT_PUBLIC_REACT_APP_MY_ENV}/sounds/${soundId}`
+//           );
+
+
+
+//           // setSoundInfo({
+//           //   sound: response.sound,
+//           //   comments: response.comments,
+//           //   offset: response.comments.length,
+//           //   refreshFinished: response.comments.length !== 20
+//           // });
+  
+//           // if (!gpuTier.isMobile) {
+//           //   dispatch(setGlobalSound(response.sound));
+//           // } 
+          
+//           // if (userId) {
+//           //   if (response.sound.favs.indexOf(userId.toString()) !== -1) {
+//           //     setFaved(true);
+//           //   }
+//           // }
+//           return {
+//             sound: response.sound,
+//             comments: response.comments,
+//             offset: response.comments.length,
+//             refreshFinished: response.comments.length !== 20
+//           }
+//         } catch (err) {}
+//       }
+//     };
+
+
+//     let response = await fetchSoundInfo();
+//     return {props: {response}};
+
+
+    
+//   }
+// );

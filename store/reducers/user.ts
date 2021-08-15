@@ -1,3 +1,5 @@
+import { HYDRATE } from "next-redux-wrapper";
+
 export interface UserState {
   isLoggedIn: boolean,
   userId: any,
@@ -39,6 +41,8 @@ const initialState: UserState = {
 //REDUCER
 const userReducer = (state = initialState, action: any) => {
   switch (action.type) {
+
+    
     case "SIGN_IN":
       
       return {

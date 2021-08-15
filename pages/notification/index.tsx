@@ -4,10 +4,13 @@ interface indexProps {
 
 }
 
-export const Notification: React.FC<indexProps> = ({}) => {
+
+const Notification: React.FC<indexProps> = ({ }) => {
   return (
     <div>
-      
+        Notifications
       </div>
     );
 }
+
+export default Notification;

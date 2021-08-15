@@ -1,7 +1,8 @@
 import React from 'react'
 import { Fragment } from 'react';
-import check from "public/check1.svg";
+import check from "/public/check1.svg";
 import DropItem from '../Dropdown/DropItem';
+import Image from 'next/image';
 
 interface Props {
   curOptions: any,
@@ -23,7 +24,7 @@ const EffectTypes: React.FC<Props> = ({curOptions, open, setIsBigger, optionSele
                   option="dark"
                   type="type"
                   rightIcon={
-                    curOptions.type.dark && <img src={check} alt="" />
+                    curOptions.type.dark && <Image src={check} alt="" />
                   }
                 >
                   <span>Dark</span>
@@ -37,7 +38,7 @@ const EffectTypes: React.FC<Props> = ({curOptions, open, setIsBigger, optionSele
                   type="type"
                   setIsBigger={setIsBigger}
                   rightIcon={
-                    curOptions.type.crisp && <img src={check} alt="" />
+                    curOptions.type.crisp && <Image src={check} alt="" />
                   }
                 >
                   <span>Crisp</span>
@@ -51,7 +52,7 @@ const EffectTypes: React.FC<Props> = ({curOptions, open, setIsBigger, optionSele
                   type="type"
                   setIsBigger={setIsBigger}
                   rightIcon={
-                    curOptions.type.pretty && <img src={check} alt="" />
+                    curOptions.type.pretty && <Image src={check} alt="" />
                   }
                 >
                   <span>Pretty</span>
@@ -65,7 +66,7 @@ const EffectTypes: React.FC<Props> = ({curOptions, open, setIsBigger, optionSele
                   type="type"
                   setIsBigger={setIsBigger}
                   rightIcon={
-                    curOptions.type.harsh && <img src={check} alt="" />
+                    curOptions.type.harsh && <Image src={check} alt="" />
                   }
                 >
                   <span>Harsh</span>
@@ -79,7 +80,7 @@ const EffectTypes: React.FC<Props> = ({curOptions, open, setIsBigger, optionSele
                   type="type"
                   setIsBigger={setIsBigger}
                   rightIcon={
-                    curOptions.type.loud && <img src={check} alt="" />
+                    curOptions.type.loud && <Image src={check} alt="" />
                   }
                 >
                   <span>Loud</span>
@@ -93,7 +94,7 @@ const EffectTypes: React.FC<Props> = ({curOptions, open, setIsBigger, optionSele
                   type="type"
                   setIsBigger={setIsBigger}
                   rightIcon={
-                    curOptions.type.unique && <img src={check} alt="" />
+                    curOptions.type.unique && <Image src={check} alt="" />
                   }
                 >
                   <span>Unique</span>

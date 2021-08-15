@@ -129,11 +129,11 @@ const optionsReducer = (state: any, action: any) => {
           verify: "all-genre",
         },
       };
-    case "loops":
+    case "loop":
       return {
         ...state,
         type: {
-          loops: true,
+          loop: true,
           acapella: false,
           samples: false,
           synth: false,
@@ -141,7 +141,7 @@ const optionsReducer = (state: any, action: any) => {
           unique: false,
           all: false,
           text: "Loops",
-          verify: "loops",
+          verify: "loop",
         },
       };
 
@@ -149,7 +149,7 @@ const optionsReducer = (state: any, action: any) => {
       return {
         ...state,
         type: {
-          loops: false,
+          loop: false,
           acapella: true,
           samples: false,
           synth: false,
@@ -164,7 +164,7 @@ const optionsReducer = (state: any, action: any) => {
       return {
         ...state,
         type: {
-          loops: false,
+          loop: false,
           acapella: false,
           samples: true,
           synth: false,
@@ -179,7 +179,7 @@ const optionsReducer = (state: any, action: any) => {
       return {
         ...state,
         type: {
-          loops: false,
+          loop: false,
           acapella: false,
           samples: false,
           synth: true,
@@ -194,7 +194,7 @@ const optionsReducer = (state: any, action: any) => {
       return {
         ...state,
         type: {
-          loops: false,
+          loop: false,
           acapella: false,
           samples: false,
           synth: false,
@@ -209,7 +209,7 @@ const optionsReducer = (state: any, action: any) => {
       return {
         ...state,
         type: {
-          loops: false,
+          loop: false,
           acapella: false,
           samples: false,
           synth: false,
@@ -224,7 +224,7 @@ const optionsReducer = (state: any, action: any) => {
       return {
         ...state,
         type: {
-          loops: false,
+          loop: false,
           acapella: false,
           samples: false,
           synth: false,
@@ -239,7 +239,7 @@ const optionsReducer = (state: any, action: any) => {
       return {
         ...state,
         type: {
-          loops: false,
+          loop: false,
           acapella: false,
           samples: false,
           synth: false,
@@ -347,7 +347,7 @@ const BrowseLoops: React.FC<indexProps> = ({ }) => {
 
   const [optionState, dispatch] = useReducer(optionsReducer, {
     type: {
-      loops: false,
+      loop: false,
       acapella: false,
       samples: false,
       synth: false,

@@ -1,5 +1,5 @@
 import Image from 'next/image';
-import React, { Fragment, } from 'react'
+import React, { Fragment, useEffect, } from 'react'
 import Media from 'react-media';
 import { useChangePage } from '../../util/hooks/changePage';
 import { useFollowUser } from '../../util/hooks/useFollowUser';
@@ -61,9 +61,49 @@ const FollowerListItem: React.FC<Props> = ({id, desc2, imgPath, closeModal, user
     }
 
 
+    const myLoader = () => {
+      return `https://soundshare-bucket.s3.us-east-2.amazonaws.com/${imgPath}`;
+    }
 
+    useEffect(() => {
+      let try1: any = document.getElementsByClassName('followers-modal--list--item--img');
+      
+      if (try1) {
+        for (let i = 0; i < try1.length; i++) {
+          let el: any = try1[i].children[0];
+          el.style.overflow = "visible";
+          let newImg: any = el.querySelector('img');
+          if (newImg) {
+            newImg.style.boxShadow = 'none';      }      
+          }
+        }
+        
+    }, []);
+  
+    useEffect(() => {
+      let try1: any = document.getElementsByClassName('follower-modal-followbtn-contain');
+  
+      if (try1) {
+        for (let i = 0; i < try1.length; i++) {
+          let el: any = try1[i].children[0].children[0].children[0];
+          el.style.overflow = "visible";
+          let newImg: any = el.querySelector('img');
+          let newFollow: any = el.children[1]
+          let newFollow2: any = el.children[2]
 
-
+          if (newImg) {
+            newImg.style.boxShadow = 'none';
+          }
+          if (newFollow) {
+            newFollow.style.marginLeft = '0.7vw';
+          }
+          if (newFollow2) {
+            newFollow2.style.marginLeft = '0.7vw';
+          }
+        }
+        
+        }
+    }, []);
 
     return (
       <Fragment>
@@ -84,9 +124,12 @@ const FollowerListItem: React.FC<Props> = ({id, desc2, imgPath, closeModal, user
                     <Image
                       width={50}
                       height={50}
-                      className="img-shine" src={`https://soundshare-bucket.s3.us-east-2.amazonaws.com/${imgPath}`} alt="" />
+                      loader={myLoader}
+                      className="img-shine" src={`https://soundshare-bucket.s3.us-east-2.amazonaws.com/${imgPath}`}
+                      alt="" />
                         ) : (
-                          <Image className="img-shine" src={unknown} alt=""/>
+                          <Image width={50}
+                          height={50} className="img-shine" src={unknown} alt=""/>
                         )}
                     </div>
                     {/* USERNAME */}
@@ -94,11 +137,7 @@ const FollowerListItem: React.FC<Props> = ({id, desc2, imgPath, closeModal, user
                         <span>{username}</span>
                     </div >
 
-                    {/* <div className="followers-modal--list--item--counts"> */}
-                        {/* <span>{followers} followers</span> */}
-                        {/* <span>Uploaded {sounds} sounds</span> */}
-                        {/* <span>Joined {joinDate}</span> */}
-                    {/* </div> */}
+                   
 
                     <div className="user-page--info--followBtn outline-btn follower-modal-followbtn-contain">
                           <button
@@ -108,11 +147,13 @@ const FollowerListItem: React.FC<Props> = ({id, desc2, imgPath, closeModal, user
                           >
                             {isFollowing ? (
                               <span>
-                                Unfollow <Image src={follow} alt="" />
+                                Unfollow <Image width={20} layout="intrinsic" unoptimized={true}
+                      height={20} src={follow} alt="" />
                               </span>
                             ) : (
                               <span>
-                                Follow <Image src={follow} alt="" />
+                                Follow <Image width={20} layout="intrinsic" unoptimized={true}
+                      height={20} src={follow} alt="" />
                               </span>
                             )}
                           </button>

@@ -7,26 +7,35 @@ const Bottompage = ({ }) => {
 
 
   const goToCookie = (e) => {
-    console.log('ger')
-
     e.preventDefault();
     e.stopPropagation();
     router.push('/cookiepolicy', undefined, { shallow: true })
-    console.log('his')
+  }
+  const goToTerms = (e) => {
+    e.preventDefault();
+    e.stopPropagation();
+    router.push('/termsofservice', undefined, { shallow: true })
   }
 
   return (
   <Fragment>
     <div className="policy-btn-holder">
       <div className="policy-btn-main" onClick={goToCookie}>
-          <button className="btn nohover"
+          <button className="btn nohover upload-sound-button"
             
           >
             Privacy Policy
         </button>
       </div>
-      <div className="policy-btn-main">
-          <button
+      <div className="policy-btn-main" onClick={goToCookie}>
+          <button className="btn nohover upload-sound-button"
+            
+          >
+            Cookies
+        </button>
+      </div>
+      <div className="policy-btn-main terms-btn">
+          <button onClick={goToTerms} className="btn nohover upload-sound-button"
           >
             Terms of Service
           </button>

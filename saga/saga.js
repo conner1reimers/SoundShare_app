@@ -5,18 +5,18 @@ import {
   refreshActionStop,
   stopAction,
 } from "../store/actions/uiActions";
+import safeJsonStringify from 'safe-json-stringify';
 
 const sendRequest = async (url, method = "GET", body = null, headers = {}) => {
   // TRY CATCH BLOCK FOR SENDING REQUEST WITH THE METHOD, BODY, AND HEADERS WE GIVE IT
 
-  const httpAbortController = new AbortController();
+  // const httpAbortController = new AbortController();
   // activeHttpRequest.current.push(httpAbortController);
   try {
     const response = await fetch(url, {
       method,
       body,
       headers,
-      signal: httpAbortController.signal
     });
     const responseData = await response.json();
 
@@ -42,7 +42,9 @@ const fetchSound = async () => {
   try {
     result = await sendRequest(`${process.env.NEXT_PUBLIC_REACT_APP_MY_ENV}/sounds`);
     return result;
-  } catch (err) {}
+  } catch (err) {
+
+  }
 };
 
 
@@ -71,7 +73,7 @@ const fetchUser = async (id) => {
       ...result,
       user: {
         ...result.user,
-        join_date: joinDate,
+        join_date: JSON.parse(safeJsonStringify(joinDate)),
         days: daysSince,
       },
       refreshOptions: {
@@ -90,7 +92,7 @@ const fetchUser = async (id) => {
       
     };
   } catch (err) {
-    
+
     if (err.message === "Cannot read property 'sounds' of undefined") {
       
     }
@@ -258,6 +260,7 @@ const recentSoundsFetchMore = async (offset, category) => {
 
 function* fetchRecentAsync() {
   const fetched = yield call(fetchSound);
+
   yield put({
     type: "FETCH_RECENT_ASYNC",
     recents: fetched.sounds,

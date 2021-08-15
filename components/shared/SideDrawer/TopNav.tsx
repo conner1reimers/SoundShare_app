@@ -106,7 +106,6 @@ const TopNav: React.FC = () => {
       let newImg: any = el.querySelector('img');
       if (newImg) {
         newImg.style.boxShadow = 'none';
-        console.log(newImg)
       }
     }
 
@@ -259,7 +258,7 @@ const Scroller: React.FC = React.memo(() => {
   const goToHome = (event) => {
     event.preventDefault();
     event.stopPropagation();
-    location.push("/", undefined, { shallow: true });
+    location.push("/home", undefined, { shallow: true });
   };
 
 

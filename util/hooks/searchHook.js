@@ -1,9 +1,9 @@
+import { useRouter } from "next/router";
 import { useDispatch } from "react-redux";
-import { useHistory } from "react-router-dom";
 import { useHttpClient } from "./http-hook";
 
 export const useSearchSound = async (search) => {
-  const history = useHistory();
+  const history = useRouter();
   const { sendRequest } = useHttpClient();
   const dispatch = useDispatch();
 

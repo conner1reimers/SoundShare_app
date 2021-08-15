@@ -377,23 +377,6 @@ const FXpage: React.FC<Props> = ({open, soundPrev, saveFx, onInput, resetSecondP
 	}, [])
 
 
-	// useEffect(() => {
-  //   let try1: any = document.querySelector('.fx-player-overwrite');
-
-  //   if (try1) {
-  //     let el: any = try1.children[0];
-  //     el.style.overflow = "visible";
-  //     let newImg: any = el.querySelector('img');
-  //     if (newImg) {
-  //       newImg.style.boxShadow = 'none';
-  //       console.log(newImg)
-  //     }
-  //   }
-
-    
-
-  // }, [gpuTier]);
-
 
 
 	return (

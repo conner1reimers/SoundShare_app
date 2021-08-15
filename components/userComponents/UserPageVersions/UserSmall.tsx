@@ -191,13 +191,13 @@ const UserSmall: React.FC = () => {
     }
   }, [file]);
 
-  useEffect(() => {
-    return () => {
-      if (userInfo.loaded) {
-        dispatch({ type: "RESET_USER" });
-      }
-    };
-  }, [dispatch]);
+  // useEffect(() => {
+  //   return () => {
+  //     if (userInfo.loaded) {
+  //       dispatch({ type: "RESET_USER" });
+  //     }
+  //   };
+  // }, [dispatch]);
 
   const seeFollowers = () => {
     setFollowModalOpen(true);
@@ -234,14 +234,10 @@ const UserSmall: React.FC = () => {
       el.style.overflow = "visible";
       let newImg: any = el.querySelector('img');
       if (newImg) {
-        newImg.style.boxShadow = 'none';
-        console.log(newImg)
+        newImg.style.boxShadow = 'none';      }      
       }
-    }
-
-    
-
   }, [userInfo]);
+  
 
   return (
     <Fragment>
@@ -330,7 +326,6 @@ const UserSmall: React.FC = () => {
                                 />
                               ) : (
                                 <Image
-                                  loader={myLoader}
                                   height={130}
                                   width={130}
                                   className="user-page--userpic--main"
@@ -340,7 +335,8 @@ const UserSmall: React.FC = () => {
                                 )}
 
                             <div className="user-page--userpic--edit-contain">
-                              <Image className="userpage-edit-img" src={edit} alt="" />
+                              <Image height={25}
+                                  width={25} className="userpage-edit-img" src={edit} alt="" />
                             </div>
 
                         </div>
@@ -403,6 +399,8 @@ const UserSmall: React.FC = () => {
                                   className="user-page--userpic--main"
                                   src={unknown}
                                   alt=""
+                                  height={130}
+                                  width={130}
                                 />
                               )}
                             

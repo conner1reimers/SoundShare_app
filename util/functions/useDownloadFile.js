@@ -1,7 +1,6 @@
 import { useDispatch, useSelector } from "react-redux";
 
 const useDownloadFile = () => {
-  var req = new XMLHttpRequest();
   let soundPath;
   const dispatch = useDispatch();
   const isShowAd = useSelector(state => state.ui.adShow);
@@ -13,6 +12,8 @@ const useDownloadFile = () => {
   const downloadFile = (event, sound) => {
     event.preventDefault();
     event.stopPropagation();
+    var req = new XMLHttpRequest();
+
     event.cancelBubble = true;
 
     if (sound.path) {

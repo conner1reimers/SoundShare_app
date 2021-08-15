@@ -7,7 +7,7 @@ import RecentSounds from '../recentSounds/RecentSounds'
 
 
 
-const Homepage: React.FC = () => {
+const Homepage: React.FC = (props) => {
     return (
         <Fragment>
             <Box component="div" className="searchSound">

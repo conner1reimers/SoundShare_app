@@ -16,87 +16,32 @@ import MainHead from "../components/MainHead";
 import GlobalSound from '../components/shared/Modals/GlobalSound';
 import * as ga from '../lib/ga'
 import { useGlobalMsg } from "../util/hooks/useGlobalMsg";
+import React from 'react';
+import {END} from 'redux-saga';
+import {makeStore, wrapper} from '../store/wrapper';
 
-const sagaMiddleware = createSagaMiddleware();
-const composeEnhancers = composeWithDevTools({trace: true});
 
-const store = createStore(allReducers, composeEnhancers(
-  applyMiddleware(sagaMiddleware), 
-));
 
-sagaMiddleware.run(rootSaga);
+// const sagaMiddleware = createSagaMiddleware();
+// const composeEnhancers = composeWithDevTools({trace: true});
+
+// let store;
+
+// if (process.env.NODE_ENV == "development") {
+//   store = createStore(allReducers, composeEnhancers(
+//     applyMiddleware(sagaMiddleware), 
+//   ));
+  
+// } else {
+//   store = createStore(allReducers, applyMiddleware(sagaMiddleware));
+// }
+
+// sagaMiddleware.run(rootSaga);
+
+
 
 const MyApp = ({ Component, pageProps}) => {
-  const dispatch = useDispatch();
-  const router = useRouter();
-	const isLoggedIn = useSelector((state) => state.user.isLoggedIn);
-	const userId = useSelector((state) => state.user.userId);
-	const gpuTierState = useSelector((state) => state.ui.gpuTier);
-	const aModalIsOpen = useSelector(state => state.globalMsg.aModalIsOpen);
 
-
-  
-	const getGpu = useCallback(async () => {
-    window.scrollTo(0, 0);
-		dispatch({ type: "CHECK_COOKIE" });
-    
-    try  {
-      const gpuTier = await getGPUTier({});
-      dispatch({
-        type: "GET_GPU_TIER",
-        payload: {
-          gpu: gpuTier.gpu,
-          mobile: gpuTier.isMobile,
-          tier: gpuTier.tier,
-        },
-      });
-    } catch (err) {
-      
-    }
-    
-  }, [dispatch]);
-	
-	useEffect(() => {
-		window.scrollTo(0, 0);
-		dispatch({ type: "CHECK_COOKIE" });
-
-		if (!gpuTierState) {
-			getGpu();
-		}
-
-	}, [gpuTierState, dispatch, getGpu]);
-
-	useEffect(() => {
-		if (aModalIsOpen) {
-			document.body.style.overflow = 'hidden';
-			document.body.style.position = 'fixed';
-			document.body.style.height = '100vh';
-			
-		} else if (!aModalIsOpen) {
-			document.body.style.overflowY = 'visible';
-			document.body.style.overflowX = 'hidden';
-			document.body.style.position = 'relative';
-			document.body.style.height = '100%';
-
-		}
-	}, [aModalIsOpen]);
-
-    // const { Component, pageProps, router, store } = this.props
-
-    useEffect(() => {
-      const handleRouteChange = (url) => {
-        ga.pageview(url)
-      }
-      //When the component is mounted, subscribe to router changes
-      //and log those page views
-      router.events.on('routeChangeComplete', handleRouteChange)
-  
-      // If the component is unmounted, unsubscribe
-      // from the event with the `off` method
-      return () => {
-        router.events.off('routeChangeComplete', handleRouteChange)
-      }
-    }, [router.events])
 
     return (
         <> 
@@ -104,7 +49,7 @@ const MyApp = ({ Component, pageProps}) => {
           <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,shrink-to-fit=no"/>
         </Head>
 
-          <Provider store={store}>
+          
 
             <div className="root-app-container">
               <MainHead/>
@@ -112,14 +57,76 @@ const MyApp = ({ Component, pageProps}) => {
               <GlobalSound/>
             </div>
 
-              
-          </Provider>
+         
         </>
     )
   
 }
 
-const makestore = () => store;
-const wrapper = createWrapper(makestore);
+// MyApp.getInitialProps = wrapper.getInitialAppProps ((store) => async ({Component, ctx}) => {
+//   // 1. Wait for all page actions to dispatch
+//   const pageProps = {
+//       ...(Component.getInitialProps ? await Component.getInitialProps(ctx) : {}),
+//   };
+
+
+//   // 2. Stop the saga if on server
+//   if (ctx.req) {
+//       store.dispatch(END);
+//       await store.sagaTask.toPromise();
+//   }
+
+//   // 3. Return props
+//   return {
+//       pageProps,
+//   };
+// })
+
+
+// class WrappedApp extends App {
+//    static getInitialProps = async ({Component, ctx}) => {
+//       // 1. Wait for all page actions to dispatch
+//       const pageProps = {
+//           ...(Component.getInitialProps ? await Component.getInitialProps(ctx) : {}),
+//       };
+
+//       // 2. Stop the saga if on server
+//       if (ctx.req) {
+//           ctx.store.dispatch(END);
+//           await (ctx.store).sagaTask.toPromise();
+//       }
+
+//       // 3. Return props
+//       return {
+//           pageProps,
+//       };
+//   };
+
+//    render() {
+//       const {Component, pageProps} = this.props;
+//       return (
+//         <> 
+//         <Head>
+//           <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,shrink-to-fit=no"/>
+//         </Head>
+
+//           <Provider store={store}>
+
+//             <div className="root-app-container">
+//               <MainHead/>
+//               <Component {...pageProps} />
+//               <GlobalSound/>
+//             </div>
+
+//           </Provider>
+//         </>);
+//   }
+// }
+
+
+// const makestore = () => store;
+// export const wrapper = createWrapper(makestore);
+
+
 
 export default wrapper.withRedux(MyApp)

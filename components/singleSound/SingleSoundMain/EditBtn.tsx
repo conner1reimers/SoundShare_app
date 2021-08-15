@@ -55,21 +55,6 @@ const EditBtn: React.FC<Props> = ({ img }) => {
         newImg.style.height = '30px';
       };
     }
-    // if (try1) {
-
-
-
-    //   // if (newImg2) {
-    //   //   newImg2.style.width = '30px';
-    //   //   newImg2.style.height = '30px';
-    //   // }
-
-    //   // if (newImg) {
-    //   //   newImg.style.boxShadow = 'none';
-    //   //   console.log(newImg)
-    //   // }
-    // }
-
   }, [img]);
 
   return ( 

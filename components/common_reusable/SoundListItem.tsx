@@ -94,7 +94,6 @@ const SoundListItem: React.FC<Props> = ({category, sound_id, img_path, date, nam
       setActiveSound(null);
     } else if (!globalSoundPlaying.playing && activeSound) {
       // activeSound.children[0].children[1].src = playBtn;
-      console.log(activeSound)
       setPlaying(false);
       setLastActiveSound(activeSound);
       setActiveSound(null);

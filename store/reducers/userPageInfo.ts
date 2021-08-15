@@ -1,3 +1,4 @@
+import { HYDRATE } from "next-redux-wrapper"
 
 export interface UserpageState {
   following: any,
@@ -60,7 +61,15 @@ const initialState: UserpageState = {
 
 
 const userPageReducer = (state = initialState, action: any) => {
-    switch (action.type) {
+  switch (action.type) {
+    case HYDRATE: {
+      if (action.payload) {
+          return { ...state, ...action.payload.userPage }
+      } else {
+          return {...state}
+      }
+      
+  }
       case 'FETCH_USER_ASYNC':
         return {
           ...action.result,

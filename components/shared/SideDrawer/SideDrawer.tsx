@@ -116,7 +116,7 @@ const SideDrawer: React.FC<Props> = ({open}) => {
                 setLocationOption('notification');
             }
         }
-    }, [location, uid]);
+    }, [location.pathname, uid]);
 
     
     useEffect(() => {
@@ -145,6 +145,12 @@ const SideDrawer: React.FC<Props> = ({open}) => {
         dispatch({type: "CLOSE_SIDE_DRAWER"});
     }, [dispatch]);
 
+    const goHome = (e) => {
+        e.preventDefault();
+        location.push('/home', undefined, {shallow: true});
+
+    }
+
 
     const loginElement =
     auth.isLoggedIn ? 
@@ -160,9 +166,7 @@ const SideDrawer: React.FC<Props> = ({open}) => {
         </button>
     </div>)
 
-    const homeElement = 
-    auth.isLoggedIn ? 
-    (<Link href={`/home/${auth.userId}}`}>
+    const homeElement = <a onClick={goHome}>
         <a className={`sidedrawer-navlink ${locationOption === 'home' ? 'active-sidedrawer' : ''}`}>
             <button 
                 onClick={() => dispatch({type: "CLOSE_SIDE_DRAWER"})} 
@@ -170,16 +174,7 @@ const SideDrawer: React.FC<Props> = ({open}) => {
                 >Home 
             </button>
         </a>
-    </Link>)
-    : (<Link href='/home'>
-        <a className={`sidedrawer-navlink ${locationOption === 'home' ? 'active-sidedrawer' : ''}`}>
-            <button 
-                onClick={() => dispatch({type: "CLOSE_SIDE_DRAWER"})} 
-                className="btn nohover sidedrawer--list--btn"
-                >Home 
-            </button>
         </a>
-        </Link>)
 
     const userpageElement = 
     auth.isLoggedIn ? 

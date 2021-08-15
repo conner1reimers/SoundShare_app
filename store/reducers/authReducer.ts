@@ -1,3 +1,4 @@
+import { HYDRATE } from "next-redux-wrapper";
 
 const GOOGLE_MOVE_TO_USERNAME = 'GOOGLE_MOVE_TO_USERNAME';
 const RESET_AUTH = 'RESET_AUTH';
@@ -27,6 +28,11 @@ interface GoogleMoveAction {
     info: object
 }
 
+interface Hydration {
+    type: typeof HYDRATE,
+    payload: any
+}
+
 interface ResetAuthAction {
     type: typeof RESET_AUTH
 }
@@ -35,12 +41,13 @@ interface ForgotPasswordAction {
     type: typeof FORGOT_PASS_PAGE
 }
 
-type AuthActionTypes = GoogleMoveAction | ResetAuthAction | ForgotPasswordAction;
+type AuthActionTypes = GoogleMoveAction | ResetAuthAction | ForgotPasswordAction | Hydration;
 
 
 
 const authReducer = (state = initState, action: AuthActionTypes) => {
-    switch(action.type) {
+    switch (action.type) {
+        
         case GOOGLE_MOVE_TO_USERNAME:
             return {
                 ...state,

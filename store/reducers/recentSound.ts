@@ -1,3 +1,4 @@
+import { HYDRATE } from "next-redux-wrapper";
 import * as actionTypes from "../actions/actionTypes";
 
 export interface RecentSoundState {
@@ -34,7 +35,15 @@ const initRecSoundState: RecentSoundState = {
 }
 
 const recentSoundReducer = (state = initRecSoundState, action: any) => {
-    switch(action.type) {
+    switch (action.type) {
+        case HYDRATE: {
+            if (action.payload) {
+                return { ...state, ...action.payload.recentSounds }
+            } else {
+                return {...state}
+            }
+            
+        }
         case 'FETCH_RECENT_ASYNC':
             return {
                 ...state,

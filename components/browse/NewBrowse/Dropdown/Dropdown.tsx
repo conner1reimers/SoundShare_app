@@ -3,7 +3,7 @@ import React, {
     Fragment
   } from "react";
 import { CSSTransition } from "react-transition-group";
-import check from "public/check1.svg";
+import check from "/public/check1.svg";
 import EffectGenres from "../DifferentDropdowns/EffectGenres";
 import LoopGenres from "../DifferentDropdowns/LoopGenres";
 import DropItem from "./DropItem";
