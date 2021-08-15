@@ -250,7 +250,7 @@ const FirstpageBox: React.FC = () => {
 
                 {matches && (
                   <Fragment>
-                    {matches.small ? <SmallHomepage/> : matches.big ? <BigHomepage/> : null}
+                    {matches.big ? <BigHomepage/> : matches.small ? <SmallHomepage/> : null}
                   
                   
                     </Fragment>)}
