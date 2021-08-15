@@ -254,7 +254,7 @@ export default function Sounds(props) {
       } 
           
     if (userId) {
-      if (response.sound.favs.indexOf(userId.toString()) !== -1) {
+      if (soundInfo.sound.favs.indexOf(userId.toString()) !== -1) {
         if (!faved) {
           setFaved(true);
         }
