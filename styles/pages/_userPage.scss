@@ -509,6 +509,7 @@
       // transform: scale(0.8);
       width: 100%;
       min-height: 31.5px;
+      max-height: 35px;
 
       @media screen and (min-width: 751px) and (max-width: 1099px) {
         width: 100%;
@@ -2751,9 +2752,7 @@ div.user-page--info {
     @media screen and (min-height: 1000px) {
       top: 0.75rem;
     }
-    @media screen and (min-height: 1200px) {
-      top: 2rem;
-    }
+    
   }
 }
 
