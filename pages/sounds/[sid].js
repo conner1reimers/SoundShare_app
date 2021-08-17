@@ -666,10 +666,10 @@ export async function getStaticProps(context){
 
       if (response.rows) {
         finalSound = {
-            sound: response.rows[0],
-            comments: rows,
-            offset: rows.comments.length,
-            refreshFinished: rows.comments.length !== 20
+            sound: JSON.stringify(response.rows[0]),
+            comments: JSON.stringify(rows),
+            offset: JSON.stringify(rows.comments.length),
+            refreshFinished: JSON.stringify(rows.comments.length !== 20)
           
           }
       }
