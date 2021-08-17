@@ -563,22 +563,22 @@ const sendRequest = async (url, method = 'GET', body = null, headers = {}) => {
   }
 }
 
-// export async function getStaticPaths() {
-//   const soundList = await sendRequest(`${process.env.NEXT_PUBLIC_REACT_APP_MY_ENV}/sounds/getids`);
+export async function getStaticPaths() {
+  const soundList = await sendRequest(`${process.env.NEXT_PUBLIC_REACT_APP_MY_ENV}/sounds/getids`);
   
-//   const pathList = soundList.sounds.map(el => {
-//     return {
-//       params: {sid: el.id}
-//     }
-//   })
+  const pathList = soundList.sounds.map(el => {
+    return {
+      params: {sid: el.id}
+    }
+  })
 
-//   return {
-//     paths: pathList,
-//     fallback: false
-//   }
-// }
+  return {
+    paths: pathList,
+    fallback: 'blocking'
+  }
+}
 
-export async function getServerSideProps(context){
+export async function getStaticProps(context){
     const soundId = context.params.sid;
     // regular stuff
 
