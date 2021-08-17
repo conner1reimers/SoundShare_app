@@ -628,10 +628,13 @@ export async function getStaticProps(context){
 
 
     let response = await fetchSoundInfo();
-    return {props: {
-      response,
+    return {
+      props: JSON.stringify(
+        {
+          response
+        }),
       revalidate: 1
-    }};
+      };
 
 
     
