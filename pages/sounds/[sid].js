@@ -647,7 +647,7 @@ export async function getStaticProps(context){
     let soundVal = [soundId];
     let response;
     let client;
-    let finalSound;
+    let finalSound = null;
     try {
       client = await db.connect();
     } catch (err) {
@@ -673,7 +673,7 @@ export async function getStaticProps(context){
           
           }
       }
-      console.log(finalSound)
+      
 
     } catch (err) {} finally {
       client.release();
