@@ -1,6 +1,6 @@
 import nc from "next-connect";
-import db from '../../../../../server/util/queries'
-import HttpError from "../../../../../server/models/http-error";
+import db from '../../../../server/util/queries'
+import HttpError from "../../../../server/models/http-error";
 import { v4 as uuid } from 'uuid';
 
 
