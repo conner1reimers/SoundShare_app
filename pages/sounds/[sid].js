@@ -680,7 +680,7 @@ export async function getStaticProps(context){
     }
 
     let finalSoundJSON = JSON.stringify(finalSound);
-
+    console.log(finalSoundJSON);
       return {
         props: JSON.parse(
           {
