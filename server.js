@@ -5,12 +5,10 @@ const bodyParser = require("body-parser");
 const cookieParser = require("cookie-parser");
 const session = require("express-session");
 pgSession = require("connect-pg-simple")(session);
-const enforce = require('express-sslify');
+// const enforce = require('express-sslify');
 const db = require("./server/util/queries.js");
 const fs = require("fs");
 const path = require("path");
-// const usersRoutes = require("./routes/users-routes");
-
 require('dotenv').config();
 
 const port = parseInt(process.env.PORT, 10) || 3000
