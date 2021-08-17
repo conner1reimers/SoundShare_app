@@ -32,6 +32,7 @@ import music from "../../public/loop-background.svg";
 import game from "../../public/game-background.svg";
 import more from "../../public/more2.svg";
 import Licesnse from '../../components/singleSound/Licesnse';
+import db from '../../server/util/queries';
 
 // interface Root {
 //   user: UserState,
@@ -564,7 +565,20 @@ const sendRequest = async (url, method = 'GET', body = null, headers = {}) => {
 }
 
 export async function getStaticPaths() {
-  const soundList = await sendRequest(`${process.env.NEXT_PUBLIC_REACT_APP_MY_ENV}/sounds/getids`);
+  // const soundList = await sendRequest(`${process.env.NEXT_PUBLIC_REACT_APP_MY_ENV}/sounds/getids`);
+
+  const getSoundsQueryTxt = "SELECT id FROM sounds";  
+
+    let foundSounds;
+    let soundList;
+  
+    try {
+      foundSounds = await db.query(getSoundsQueryTxt);
+  
+      soundList = {
+        sounds: foundSounds.rows
+      };
+    } catch (err) { }
   
   const pathList = soundList.sounds.map(el => {
     return {
@@ -589,56 +603,91 @@ export async function getStaticProps(context){
     // await store.sagaTask.toPromise();
     
 
-    const fetchSoundInfo = async () => {
-      if (soundId) {
-        let response;
+    // const fetchSoundInfo = async () => {
+    //   if (soundId) {
+    //     let response;
   
-        try {
-          response = await sendRequest(
-            `${process.env.NEXT_PUBLIC_REACT_APP_MY_ENV}/sounds/${soundId}`
-          );
+    //     try {
+    //       response = await sendRequest(
+    //         `${process.env.NEXT_PUBLIC_REACT_APP_MY_ENV}/sounds/${soundId}`
+    //       );
 
 
 
-          // setSoundInfo({
-          //   sound: response.sound,
-          //   comments: response.comments,
-          //   offset: response.comments.length,
-          //   refreshFinished: response.comments.length !== 20
-          // });
+    //       // setSoundInfo({
+    //       //   sound: response.sound,
+    //       //   comments: response.comments,
+    //       //   offset: response.comments.length,
+    //       //   refreshFinished: response.comments.length !== 20
+    //       // });
   
-          // if (!gpuTier.isMobile) {
-          //   dispatch(setGlobalSound(response.sound));
-          // } 
+    //       // if (!gpuTier.isMobile) {
+    //       //   dispatch(setGlobalSound(response.sound));
+    //       // } 
           
-          // if (userId) {
-          //   if (response.sound.favs.indexOf(userId.toString()) !== -1) {
-          //     setFaved(true);
-          //   }
-          // }
-          return JSON.stringify({
-            sound: response.sound,
-            comments: response.comments,
-            offset: response.comments.length,
-            refreshFinished: response.comments.length !== 20
-          })
-        } catch (err) {}
-      }
-    };
+    //       // if (userId) {
+    //       //   if (response.sound.favs.indexOf(userId.toString()) !== -1) {
+    //       //     setFaved(true);
+    //       //   }
+    //       // }
+    //       return JSON.stringify({
+    //         sound: response.sound,
+    //         comments: response.comments,
+    //         offset: response.comments.length,
+    //         refreshFinished: response.comments.length !== 20
+    //       })
+    //     } catch (err) {}
+    //   }
+    // };
+
+
+    // const soundId = req.query.soundId;
+    let queryText = "SELECT * FROM sounds WHERE id = $1";
+
+    let soundVal = [soundId];
     let response;
+    let client;
+    let finalSound;
     try {
-      response = await fetchSoundInfo();
+      client = await db.connect();
+    } catch (err) {
+      client.release();
+    }
+
+    try {
+      response = await client.query(queryText, soundVal);
+      let commentQueryTxt =
+
+        "select c.id as com_id, c.comment_date, c.message, c.creator_id as comment_creator, \
+        u.user_img_path, u.username from comments c join users u on u.id = c.creator_id WHERE \
+        c.id = any ($1) ORDER BY comment_date DESC LIMIT 20";
+      let comVals = [response.rows[0].comments];
+      const { rows } = await client.query(commentQueryTxt, comVals);
+
+      if (response.rows) {
+        finalSound = JSON.stringify(
+          {
+            sound: response.rows[0],
+            comments: rows,
+            offset: rows.comments.length,
+            refreshFinished: rows.comments.length !== 20
+          
+          }
+        );
+      }
+    } catch (err) {} finally {
+      client.release();
+    }
+
     
       return {
         props: JSON.parse(
           {
-            response
+            finalSound
           }),
         revalidate: 3
         };
-    } catch (err) {
-      throw err;
-    }
+    
     
 
 
