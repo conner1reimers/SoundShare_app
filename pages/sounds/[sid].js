@@ -542,27 +542,27 @@ export default function Sounds(props) {
   );
 }
 
-const sendRequest = async (url, method = 'GET', body = null, headers = {}) => {
-  try {       
-    const response = await fetch(new URL(url), {
-        method,
-        body,
-        headers,
-        credentials: 'same-origin'
+// const sendRequest = async (url, method = 'GET', body = null, headers = {}) => {
+//   try {       
+//     const response = await fetch(new URL(url), {
+//         method,
+//         body,
+//         headers,
+//         credentials: 'same-origin'
 
-    }, );
-    const responseData = await response.json();
+//     }, );
+//     const responseData = await response.json();
    
-    if (!response.ok) {
-        throw new Error(responseData.message);
-    }
-    return responseData;
-}
-    // CATCH
-    catch (err) {
-      throw err;
-  }
-}
+//     if (!response.ok) {
+//         throw new Error(responseData.message);
+//     }
+//     return responseData;
+// }
+//     // CATCH
+//     catch (err) {
+//       throw err;
+//   }
+// }
 
 export async function getStaticPaths() {
   // const soundList = await sendRequest(`${process.env.NEXT_PUBLIC_REACT_APP_MY_ENV}/sounds/getids`);
@@ -665,25 +665,26 @@ export async function getStaticProps(context){
       const { rows } = await client.query(commentQueryTxt, comVals);
 
       if (response.rows) {
-        finalSound = JSON.stringify(
-          {
+        finalSound = {
             sound: response.rows[0],
             comments: rows,
             offset: rows.comments.length,
             refreshFinished: rows.comments.length !== 20
           
           }
-        );
       }
+      console.log(finalSound)
+
     } catch (err) {} finally {
       client.release();
     }
 
-    
+    let finalSoundJSON = JSON.stringify(finalSound);
+
       return {
         props: JSON.parse(
           {
-            finalSound
+            finalSoundJSON
           }),
         revalidate: 3
         };
