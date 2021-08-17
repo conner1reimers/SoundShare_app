@@ -11,6 +11,8 @@ class MyDocument extends Document {
             async
             src={`https://www.googletagmanager.com/gtag/js?id=${process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS}`}
           />
+          <script data-ad-client="ca-pub-3538724927778129" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+
           <script
             dangerouslySetInnerHTML={{
               __html: `
