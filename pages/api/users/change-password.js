@@ -1,6 +1,6 @@
 import nc from "next-connect";
-import db from '../../../../../server/util/queries'
-import HttpError from "../../../../../server/models/http-error";
+import db from '../../../server/util/queries'
+import HttpError from "../../../server/models/http-error";
 import { body, validationResult} from 'express-validator';
 import jwt from 'jsonwebtoken';
 import bcrypt from 'bcrypt';
