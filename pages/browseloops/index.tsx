@@ -445,14 +445,14 @@ const BrowseLoops: React.FC<indexProps> = ({ }) => {
       window.removeEventListener("scroll", handleScroll);
       if (!browseLastQuery.finishMsgShown) {
         setGlobalMsg('No more sounds available.', 'error');
-        reduxDispatch({type: 'BROWSE_FINISH_MSG'})
+        reduxDispatch({ type: 'BROWSE_FINISH_MSG' })
       }
-    } 
+    }
 
     return () => {
       window.removeEventListener("scroll", handleScroll);
     }
-  }, [browseLastQuery.lastQueryForRefresh, browseLastQuery.finishMsgShown, handleScroll])
+  }, [browseLastQuery.lastQueryForRefresh, browseLastQuery.finishMsgShown, handleScroll]);
 
 
 
