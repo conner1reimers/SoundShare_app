@@ -84,7 +84,7 @@ const LoginByGoogle = () => {
              disabled={false}
              />
              
-            <FacebookLogin
+            {/* <FacebookLogin
                 appId="742634189702202"
                 size="small"
                 cssClass="facebook-login-contain"
@@ -93,7 +93,7 @@ const LoginByGoogle = () => {
                 icon={<FacebookIcon/>} 
                 textButton={<span className="login-txt-facebook">Login with Facebook</span>}
 
-            />
+            /> */}
 
         </div>
     )

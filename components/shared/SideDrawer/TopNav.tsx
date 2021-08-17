@@ -244,7 +244,8 @@ const Scroller: React.FC = React.memo(() => {
   const [searchOpen, setSearchOpen] = useState<any>(false);
   const [scrolledFar, setScrolledFar] = useState<any>(false);
   const aModalIsOpen = useSelector((state: any) => state.globalMsg.aModalIsOpen);
-
+  const dispatch = useDispatch();
+  
   const [formState, inputHandler] = useForm(
     {
       search: {
@@ -256,6 +257,7 @@ const Scroller: React.FC = React.memo(() => {
   );
 
   const goToHome = (event) => {
+    dispatch({type: "MAIN_LOADER_START"});
     event.preventDefault();
     event.stopPropagation();
     location.push("/home", undefined, { shallow: true });

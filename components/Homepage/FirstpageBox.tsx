@@ -85,6 +85,8 @@ const FirstpageBox: React.FC = () => {
 
     useEffect(() => {
       document.title = "Soundshare";
+      dispatch({type: "MAIN_LOADER_FINISH"});
+
     }, []);
 
 

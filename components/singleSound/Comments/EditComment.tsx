@@ -33,11 +33,13 @@ const EditComment: React.FC<Props> = ({soundInfo, setSoundInfo, id, indx, close}
     const {isLoading, sendRequest} = useHttpClient();
     const setGlobalMsg = useGlobalMsg();
     const token = useSelector((state: Root) => state.user.token);
+    const userId = useSelector((state: Root) => state.user.userId);
+
 
     const submitEditComment = async () => {
         try {
             let result = await sendRequest(
-                    `${process.env.NEXT_PUBLIC_REACT_APP_MY_ENV}/sounds/editcomment/${id}`, 'PATCH', 
+                    `${process.env.NEXT_PUBLIC_REACT_APP_MY_ENV}/sounds/editcomment/${id}/${userId}`, 'PATCH', 
                     JSON.stringify({
                         msg: formState.inputs.comment.value
                     }),

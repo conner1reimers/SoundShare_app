@@ -124,15 +124,16 @@ export default function Sounds(props) {
         fetchSoundInfo();
       } 
     }
-  }, [gpuTier, soundId, soundInfo]);
+  }, [gpuTier, soundId, soundInfo, fetchSoundInfo]);
 
   useEffect(() => {
     window.scrollTo(0, 0);
+    dispatch({type: "MAIN_LOADER_FINISH"})
     return () => {
       dispatch(resetGlobalSound());
       setSoundInfo(null);
     };
-  }, []);
+  }, [dispatch]);
 
   const gotoCategory = () => {
     const category = soundInfo.sound.category;

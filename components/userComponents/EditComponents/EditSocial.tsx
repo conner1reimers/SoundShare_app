@@ -69,7 +69,8 @@ const EditSocial: React.FC<Props> = ({setEditMode, id, open}) => {
                         link: editSoundState.inputs.insta.value
                     }),
                     {'Content-Type': 'application/json', 'Authorization': 'Bearer '+token});
-                    dispatch({type: 'CHANGE_USER_SOCIAL', social: 'insta', link: editSoundState.inputs.insta.value})
+                    dispatch({ type: 'CHANGE_USER_SOCIAL', social: 'insta', link: editSoundState.inputs.insta.value });
+                    setGlobalMsg('Link set!', 'success');
     
                 } catch (err) {}
             } else {
@@ -91,7 +92,8 @@ const EditSocial: React.FC<Props> = ({setEditMode, id, open}) => {
                     }),
                     {'Content-Type': 'application/json', 'Authorization': 'Bearer '+token});
                     dispatch({type: 'CHANGE_USER_SOCIAL', social: 'youtube', link: editSoundState.inputs.youtube.value})
-    
+                    setGlobalMsg('Link set!', 'success');
+
                 } catch (err) {}
             } else {
                 setGlobalMsg('Sorry, thats not a Youtube link', 'error')
@@ -112,7 +114,8 @@ const EditSocial: React.FC<Props> = ({setEditMode, id, open}) => {
                     }),
                     {'Content-Type': 'application/json', 'Authorization': 'Bearer '+token});
                     dispatch({type: 'CHANGE_USER_SOCIAL', social: 'twitter', link: editSoundState.inputs.twitter.value})
-    
+                    setGlobalMsg('Link set!', 'success');
+
                 } catch (err) {}
             } else {
                 setGlobalMsg('Sorry, thats not a Twitter link', 'error')
@@ -135,7 +138,8 @@ const EditSocial: React.FC<Props> = ({setEditMode, id, open}) => {
                     }),
                     {'Content-Type': 'application/json', 'Authorization': 'Bearer '+token});
                     dispatch({type: 'CHANGE_USER_SOCIAL', social: 'facebook', link: editSoundState.inputs.facebook.value})
-    
+                    setGlobalMsg('Link set!', 'success');
+
                 } catch (err) {}
             } else {
                 setGlobalMsg('Sorry, thats not a Facebook link', 'error')

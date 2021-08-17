@@ -22,6 +22,7 @@ export default function User(props) {
  const {uid} = router.query;
 
   useEffect(() => {
+    dispatch({type: "MAIN_LOADER_FINISH"})
     return () => {
       if (userInfo.loaded) {
         dispatch({ type: "RESET_USER" });

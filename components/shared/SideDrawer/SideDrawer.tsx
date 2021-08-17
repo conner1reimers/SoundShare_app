@@ -135,6 +135,7 @@ const SideDrawer: React.FC<Props> = ({open}) => {
     
     
     const logout = useCallback(() => {
+        dispatch({type: "MAIN_LOADER_START"});
         logoutUser();
         location.push('/home');
         dispatch({type: "CLOSE_SIDE_DRAWER"});
@@ -146,6 +147,7 @@ const SideDrawer: React.FC<Props> = ({open}) => {
     }, [dispatch]);
 
     const goHome = (e) => {
+        dispatch({type: "MAIN_LOADER_START"});
         e.preventDefault();
         location.push('/home', undefined, {shallow: true});
 

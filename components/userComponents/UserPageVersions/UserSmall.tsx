@@ -30,6 +30,7 @@ import Image from "next/image";
 import FollowerModal from "../../shared/Modals/FollowerModal";
 import EditDesc from "../../singleSound/EditComponents/EditDesc";
 import { useRouter } from "next/router";
+import useWindowSize from "../../../util/useWindowSize";
 
 interface Root {
   user: UserState,
@@ -100,7 +101,7 @@ const UserSmall: React.FC = () => {
   const userFollowers = useSelector((state: Root) => state.userPage.user.followers);
   const userInfo = useSelector((state: Root) => state.userPage);
   const loggedInUser = useSelector((state: Root) => state.user);
-
+  const windowSize = useWindowSize();
 
   const [pageState, dispatchPage] = useReducer(userPageReducer, {
     sounds: true,
@@ -171,8 +172,8 @@ const UserSmall: React.FC = () => {
         formData,
         {'Authorization': 'Bearer '+token});
       
-        dispatch({type: "NEW_USER_PIC", path: response});
-        dispatch({type: "NEW_MAIN_USER_PIC", path: response});
+        dispatch({type: "NEW_USER_PIC", path: response.response});
+        dispatch({type: "NEW_MAIN_USER_PIC", path: response.response});
       
     } catch (err) {}
   };
@@ -235,8 +236,14 @@ const UserSmall: React.FC = () => {
       let newImg: any = el.querySelector('img');
       if (newImg) {
         newImg.style.boxShadow = 'none';      }      
-      }
-  }, [userInfo]);
+    }
+    let editEl: any = document.querySelector('.user-page--userpic--edit-contain');
+    if (editEl) {
+       let newEdit: any = editEl.children[0];
+       newEdit.style.overflow = 'visible';
+     }
+    
+  }, [isMyPage, windowSize.width]);
   
 
   return (

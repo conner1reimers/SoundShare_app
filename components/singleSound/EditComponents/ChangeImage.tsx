@@ -138,11 +138,11 @@ const EditImage: React.FC<Props> = ({setEditMode, setSoundInfo, oldpath, open, i
                     <div className="single-edit-img--upload">
                         {imgPreview ? (
                             <div className="single-edit-img--upload--prev">
-                                <Image src={imgPreview} alt=""/>
+                                <Image height={50} width={50} src={imgPreview} alt=""/>
                             </div>
                         ) : (
                             <div className="single-edit-img--upload--prev">
-                                <Image src={imgSrc} alt="x"/>
+                                <Image height={50} width={50} src={imgSrc} alt="x"/>
                             </div>)}
                         <ImageUpload
                             pass={passImgPrev}

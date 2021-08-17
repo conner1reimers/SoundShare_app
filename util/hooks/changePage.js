@@ -33,12 +33,15 @@ export const useChangePage = () => {
   }, []);
 
   const gotoSingleSoundPage = useCallback((event, id) => {
+    dispatch({type: "MAIN_LOADER_START"});
     event.preventDefault();
     location.push(`/sounds/${id}`);
     dispatch(resetGlobalSound());
+
   }, []);
 
   const goToUserPage = useCallback((event, id) => {
+    dispatch({type: "MAIN_LOADER_START"});
     event.preventDefault();
     event.stopPropagation();
     location.push(`/user/${id}`);

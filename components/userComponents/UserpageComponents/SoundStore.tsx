@@ -109,7 +109,7 @@ const SoundStore: React.FC<Props> = ({ isMyPage, id }) => {
               
                 <div className="close-store-outter">
                   <div className="close-contain-store">
-                      <Image onClick={closeModal} className="xtraoptions-close close-ignore" src={close} alt=""/>
+                      <Image height={20} width={20} onClick={closeModal} className="xtraoptions-close close-ignore" src={close} alt=""/>
                   </div>
                 </div>
                         

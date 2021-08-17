@@ -998,9 +998,18 @@
          @media screen and (min-width: $bp-large) {
           padding-left: 0.4rem;
 
+          }
         }
+        @media screen and (max-width: 1099px) {
+          label.form-label.com-label {
+            font-size: 1.8rem;
+          }
         }
       }
+
+
+
+      
     }
     &--submit {
       align-self: center;

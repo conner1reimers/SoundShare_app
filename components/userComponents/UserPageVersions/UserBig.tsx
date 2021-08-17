@@ -172,10 +172,10 @@ const UserBig: React.FC = () => {
         `${process.env.NEXT_PUBLIC_REACT_APP_MY_ENV}/users/user-img/${params.uid}/${userInfo.user.user_img_path}`,
         "POST",
         formData,
-        {'Authorization': 'Bearer '+token});
+        { 'Authorization': 'Bearer ' + token });
       
-        dispatch({type: "NEW_USER_PIC", path: response});
-        dispatch({type: "NEW_MAIN_USER_PIC", path: response});
+        dispatch({type: "NEW_USER_PIC", path: response.response});
+        dispatch({type: "NEW_MAIN_USER_PIC", path: response.response});
       
     } catch (err) {}
   };
@@ -188,6 +188,7 @@ const UserBig: React.FC = () => {
     fileReader.onload = () => {
       setPreviewUrl(fileReader.result);
     };
+
     fileReader.readAsDataURL(file);
     if (file && fileIsValid) {
       postNewPic();
@@ -249,6 +250,11 @@ const UserBig: React.FC = () => {
         let newImg: any = el.querySelector('img');
         if (newImg) {
           newImg.style.boxShadow = 'none';
+        }
+        let editEl: any = document.querySelector('.user-page--userpic--edit-contain');
+        if (editEl) {
+          let newEdit: any = editEl.children[0];
+          newEdit.style.overflow = 'visible';
         }
       }
     }

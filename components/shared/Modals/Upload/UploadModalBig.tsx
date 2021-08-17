@@ -345,7 +345,7 @@ const UploadModalBig: React.FC<Props> = ({setBackdropVisibility, soundPreview}) 
     }, []);
 
     useEffect(() => {
-      if (!formState.inputs.sound.value) {
+      if (formState && !formState.inputs.sound.value) {
         if (pageState.secondPage && soundToUpload.form && !soundToUpload.hasFx) {
             
           setData(soundToUpload.form);
