@@ -1,5 +1,5 @@
 import nc from "next-connect";
-import db from '../../../server/util/queries'
+import db from '../../../../../server/util/queries'
 
 const handler = nc()
   .get(async (req, res, next) => {
