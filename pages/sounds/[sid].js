@@ -563,22 +563,22 @@ const sendRequest = async (url, method = 'GET', body = null, headers = {}) => {
   }
 }
 
-export async function getStaticPaths() {
-  const soundList = await sendRequest(`${process.env.NEXT_PUBLIC_REACT_APP_MY_ENV}/sounds/getids`);
+// export async function getStaticPaths() {
+//   const soundList = await sendRequest(`${process.env.NEXT_PUBLIC_REACT_APP_MY_ENV}/sounds/getids`);
   
-  const pathList = soundList.sounds.map(el => {
-    return {
-      params: {sid: el.id}
-    }
-  })
+//   const pathList = soundList.sounds.map(el => {
+//     return {
+//       params: {sid: el.id}
+//     }
+//   })
 
-  return {
-    paths: pathList,
-    fallback: false
-  }
-}
+//   return {
+//     paths: pathList,
+//     fallback: false
+//   }
+// }
 
-export async function getStaticProps(context){
+export async function getServerSideProps(context){
     const soundId = context.params.sid;
     // regular stuff
 
@@ -616,25 +616,30 @@ export async function getStaticProps(context){
           //     setFaved(true);
           //   }
           // }
-          return {
+          return JSON.stringify({
             sound: response.sound,
             comments: response.comments,
             offset: response.comments.length,
             refreshFinished: response.comments.length !== 20
-          }
+          })
         } catch (err) {}
       }
     };
-
-
-    let response = await fetchSoundInfo();
-    return {
-      props: JSON.parse(
-        {
-          response
-        }),
-      revalidate: 1
-      };
+    let response;
+    try {
+      response = await fetchSoundInfo();
+    
+      return {
+        props: JSON.parse(
+          {
+            response
+          }),
+        revalidate: 3
+        };
+    } catch (err) {
+      throw err;
+    }
+    
 
 
     
