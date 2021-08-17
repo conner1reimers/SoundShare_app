@@ -1738,7 +1738,7 @@
           min-width: 90px;
           max-width: 120px;
           min-height: 25px;
-          max-height: 40px;
+          max-height: 30px;
           background-color: #434949;
           border-radius: .15rem;
           height: 1.8rem;
@@ -2174,6 +2174,9 @@ div.moveright {
   
   @media screen and (min-width: 1440px) and (max-width: 1760px) {
     left: 2vw;
+  }
+  @media screen and (min-width: 1901px) and (max-width: 2071px) {
+    left: 3vw;
   }
 }
 
