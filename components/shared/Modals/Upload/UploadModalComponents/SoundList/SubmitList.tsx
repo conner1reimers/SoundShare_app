@@ -49,7 +49,7 @@ const SubmitList: React.FC<Props> = () => {
         if (!info.name) {
           setGlobalMsg('Make all sounds have a name', 'error');
           isValid = false;
-        } else if (!bpm) {
+        } else if (!bpm && (info.soundType === 'loop')) {
           setGlobalMsg(`BPM not set for sound ${info.index + 1}`, 'error');
           isValid = false;
         }

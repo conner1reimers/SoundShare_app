@@ -37,7 +37,8 @@ export const useHttpClient = () => {
     }
         // CATCH
         catch (err) {
-        setGlobalMsg(err.message, 'error');
+        console.log(err.message)
+        setGlobalMsg(JSON.stringify(err.message), 'error');
         setTimeout(() => {
             setIsLoading(false);
         }, 500);

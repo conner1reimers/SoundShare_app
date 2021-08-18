@@ -113,83 +113,95 @@ const FullUploadForm: React.FC<Props> = ({goToFx, resetUpload, sound, isList, cu
 
 
   const submitSound = async (event: any) => {
-        event.preventDefault();
-        
-    try {
-          
+    event.preventDefault();
+
+    if (formState.inputs) {
+      if (formState.inputs.name.value != '') {
           const soundName = formState.inputs.name.value ? formState.inputs.name.value : 'untitled';
           const userName = user.isLoggedIn ? user.userName : 'anonymous'
           const creatorId = user.isLoggedIn ? user.userId : null;
           const genre = genreChosen ? genreChosen : 'other';
           const image = formState.inputs.image.value ? formState.inputs.image.value : null;
           const bpm = formState.inputs.bpm.value ? formState.inputs.bpm.value : 0;
-
-          let tags;
-          if (tagState.tags.length > 0) {
-            tags = tagState.tags.map((el: any) => el.name).join('zzzz');
-          } else if (formState.inputs.xtraOptions.value.length && formState.inputs.xtraOptions.value.length > 0) {
-            tags = 'zzzz';
-          } else {
-            tags = ['sound'].join('zzzz');
-          }
-
-
-          const soundData = JSON.stringify({
-            name: sound.name,
-            lastmodified: sound.lastModified,
-            size: sound.size.toString(),
-          });
-
-
-
-          const formData = new FormData();
-          formData.append('name', soundName);
-          formData.append('sound', sound);
-          formData.append('description', formState.inputs.description.value);
-          formData.append('type', sound.type);
-          formData.append('category', soundToUpload.category);
-          formData.append('data', soundData);
-          formData.append('username', userName);
-          formData.append('creator', creatorId);
-          formData.append('genre', genre);
-          formData.append('bpm', bpm);
-          formData.append('xtra', formState.inputs.xtraOptions.value);
-          formData.append('image', image);
+        if ((bpm !== 0) || soundToUpload.category !== 'loops') {
+          try {
           
-          await sendRequest(`${process.env.NEXT_PUBLIC_REACT_APP_MY_ENV}/sounds/upload/${tags}`, 'POST', formData, { 'Authorization': 'Bearer ' + user.token });
-          
-          setData(
-            {
-              inputs: {
-                name: {
-                  value: '',
-                  isValid: false
-                },
-                description: {
-                  value: '',
-                  isValid: true
-                },
-                image: {
-                  value: null,
-                  isValid: true
-                },
-                bpm: {
-                  value: null,
-                  isValid: true
-                },
-                xtraOptions: {
-                  value: [],
-                  isValid: true
-                }
-                
-              }, isValid: false});
-          reduxDispatch({type: 'CLOSE_RESET_UPLOAD_MODAL'});
-          reduxDispatch({type: CLOSE_MODAL});
           
 
-        } catch (err) {
-          
+            let tags;
+            if (tagState.tags.length > 0) {
+              tags = tagState.tags.map((el: any) => el.name).join('zzzz');
+            } else if (formState.inputs.xtraOptions.value.length && formState.inputs.xtraOptions.value.length > 0) {
+              tags = 'zzzz';
+            } else {
+              tags = ['sound'].join('zzzz');
+            }
+  
+  
+            const soundData = JSON.stringify({
+              name: sound.name,
+              lastmodified: sound.lastModified,
+              size: sound.size.toString(),
+            });
+  
+  
+  
+            const formData = new FormData();
+            formData.append('name', soundName);
+            formData.append('sound', sound);
+            formData.append('description', formState.inputs.description.value);
+            formData.append('type', sound.type);
+            formData.append('category', soundToUpload.category);
+            formData.append('data', soundData);
+            formData.append('username', userName);
+            formData.append('creator', creatorId);
+            formData.append('genre', genre);
+            formData.append('bpm', bpm);
+            formData.append('xtra', formState.inputs.xtraOptions.value);
+            formData.append('image', image);
+            
+            await sendRequest(`${process.env.NEXT_PUBLIC_REACT_APP_MY_ENV}/sounds/upload/${tags}`, 'POST', formData, { 'Authorization': 'Bearer ' + user.token });
+            
+            setData(
+              {
+                inputs: {
+                  name: {
+                    value: '',
+                    isValid: false
+                  },
+                  description: {
+                    value: '',
+                    isValid: true
+                  },
+                  image: {
+                    value: null,
+                    isValid: true
+                  },
+                  bpm: {
+                    value: null,
+                    isValid: true
+                  },
+                  xtraOptions: {
+                    value: [],
+                    isValid: true
+                  }
+                  
+                }, isValid: false});
+            reduxDispatch({type: 'CLOSE_RESET_UPLOAD_MODAL'});
+            reduxDispatch({type: CLOSE_MODAL});
+            
+  
+          } catch (err) {}
+        } else {
+          setGlobalMsg('Please set a BPM', 'error')
         }
+      } else {
+        setGlobalMsg('Please title your sound', 'error')
+        
+      }
+    }
+        
+    
 
   }
     
