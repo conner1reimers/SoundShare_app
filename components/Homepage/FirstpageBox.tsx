@@ -55,9 +55,7 @@ const FirstpageBox: React.FC = () => {
     const aModalIsOpen = useSelector((state: RootState) => state.globalMsg.aModalIsOpen);
     const isLoggedIn = useSelector((state: RootState) => state.user.isLoggedIn);
     const userId = useSelector((state: RootState) => state.user.userId);
-
-    const uploadModalOpen = useSelector((state: RootState) => state.upload.modalOpen);
-    const authModalOpen = useSelector((state: RootState) => state.sideDrawer.authModalOpen);
+    const mainLoader = useSelector((state: RootState) => state.ui.mainLoader);
     const [searchOpen, setSearchOpen] = useState(false);
 
     const dispatch = useDispatch();
@@ -87,7 +85,14 @@ const FirstpageBox: React.FC = () => {
       document.title = "Soundshare";
       dispatch({type: "MAIN_LOADER_FINISH"});
 
-    }, []);
+    }, [dispatch]);
+  
+    useEffect(() => {
+      if (mainLoader) {
+        dispatch({type: "MAIN_LOADER_FINISH"});
+
+      }
+    }, [mainLoader, dispatch])
 
 
     const searchSounds = ((e: any) => {

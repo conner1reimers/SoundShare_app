@@ -74,6 +74,8 @@ const handler = nc()
                 req.session.jwt = token;
                 res.cookie('sessioncook', req.session.id, { expires: new Date(Date.now() + 200000000), httpOnly: true });
                 
+
+
                 res.status(200).json({
                   res: user.rows[0],
                   token: token,
