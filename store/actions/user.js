@@ -21,3 +21,10 @@ export const fetchUser = (id) => {
         id: id
     }
 }
+
+export const fetchUserServer = (id) => {
+    return {
+        type: actionTypes.FETCH_USER_SERVER,
+        id: id
+    }
+}

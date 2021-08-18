@@ -1,5 +1,6 @@
 import Document, { Html, Head, Main, NextScript } from 'next/document'
 import Bottompage from '../components/shared/Bottompage'
+import {mediaStyles} from '../util/media'
 class MyDocument extends Document {
   render() {
     return (
@@ -24,6 +25,10 @@ class MyDocument extends Document {
             });
           `,
             }}
+          />
+          <style
+            type="text/css"
+            dangerouslySetInnerHTML={{ __html: mediaStyles }}
           />
         </Head>
 

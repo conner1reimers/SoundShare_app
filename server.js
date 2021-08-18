@@ -7,9 +7,9 @@ const session = require("express-session");
 pgSession = require("connect-pg-simple")(session);
 // const enforce = require('express-sslify');
 const db = require("./server/util/queries.js");
-const fs = require("fs");
+const fs = require('fs-extra')
 const path = require("path");
-require('dotenv').config();
+// require('dotenv').config();
 
 const port = parseInt(process.env.PORT, 10) || 3000
 const dev = process.env.NODE_ENV !== 'production'

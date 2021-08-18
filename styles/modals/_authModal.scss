@@ -369,6 +369,7 @@
       span {
         @media screen and (max-width: 540px) {
           font-size: .97rem;
+          bottom: 2rem;
         }
         
       }
@@ -646,7 +647,7 @@ div.form-control--invalid {
     top: -3vh;
   }
   @media screen and (max-width: 425px) and (min-height: 710px) {
-    top: 0vh;
+    top: -12.5vh;
   }
 
   button {

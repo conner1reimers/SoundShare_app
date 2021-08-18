@@ -1,6 +1,6 @@
-import { useDispatch } from "react-redux";
+import { useDispatch , useSelector} from "react-redux";
 import { useCallback, useEffect, useState } from "react";
-import { resetGlobalSound } from "../../store/actions";
+import { pauseGlobalSound, resetGlobalSound } from "../../store/actions";
 import { useRouter } from "next/router";
 
 export const useChangePage = () => {
@@ -10,6 +10,7 @@ export const useChangePage = () => {
   const location = useRouter();
   const regexSounds = /sounds/.test(location.pathname);
   const regexUser = /user/.test(location.pathname);
+  const globalSoundIsPlaying = useSelector(state => state.globalSound.playing);
 
   useEffect(() => {
     if (regexSounds) {
@@ -33,11 +34,16 @@ export const useChangePage = () => {
   }, []);
 
   const gotoSingleSoundPage = useCallback((event, id) => {
+    if(globalSoundIsPlaying) {
+      dispatch(pauseGlobalSound());
+    }
+    dispatch({type: "RESET_SINGLE"})
+      
     dispatch({type: "MAIN_LOADER_START"});
     event.preventDefault();
     location.push(`/sounds/${id}`);
     dispatch(resetGlobalSound());
-
+    
   }, []);
 
   const goToUserPage = useCallback((event, id) => {

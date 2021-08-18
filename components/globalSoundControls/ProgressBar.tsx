@@ -1,7 +1,7 @@
 import React, { useEffect, useContext, useRef, createRef, useState, Fragment, useCallback } from 'react'
 import useWindowSize from '../../util/useWindowSize'
 import { useSelector, useDispatch } from 'react-redux';
-import { updateTime, resetProgress, seekSound, playGlobalSound, endGlobalSound, pauseGlobalSound } from '../../store/actions';
+import { updateTime, resetProgress, seekSound, playGlobalSound, endGlobalSound, pauseGlobalSound, resetGlobalSound } from '../../store/actions';
 import { useChangeSound } from '../../util/hooks/useChangeSound';
 import { Slider, withStyles } from '@material-ui/core';
 import Media from 'react-media';
@@ -346,12 +346,17 @@ const ProgressBar: React.FC<Props> = ({fx, singleSound, hidden, playing, open, s
 
     const pauseListen = useCallback(() => {
       setRunningInterval(false);
-      
     }, [sound, ref]);
   
     const valuetext = (e: any) => {
       return formatDuration(e);
-    };
+  };
+  
+  useEffect(() => {
+    if (progress.resetSingle) {
+      setRunningInterval(false);
+    }
+  }, [progress.resetSingle]);
   
     const goToTimeSmall = (e: any, newVal: any) => {
       e.preventDefault();
@@ -384,12 +389,15 @@ const ProgressBar: React.FC<Props> = ({fx, singleSound, hidden, playing, open, s
 
     }
 
-      useEffect(() => {
+  useEffect(() => {
+      if ((progress.curTime < progress.duration+2) || !progress.duration) {
         if (progress.reset) {
           ref.current.pause()
           ref.current.currentTime = 0;
 
-          if (!globalSoundPlaying.playing) dispatch(playGlobalSound());
+          if (!globalSoundPlaying.playing && globalSoundPlaying.location) {
+            dispatch(playGlobalSound());
+          }
 
           setTimeout(() => {
             ref.current.play()
@@ -414,6 +422,14 @@ const ProgressBar: React.FC<Props> = ({fx, singleSound, hidden, playing, open, s
             progressBar.style.width = progress.percentInPx+'px';
             dot.style.transform = 'translateY(0px) translateX('+dotPx+'px)';
           } 
+      } else {
+        if (runningInterval) {
+          setRunningInterval(false)
+          dispatch(resetGlobalSound())
+        }
+          
+        }
+        
       }, [progress]);
 
       useEffect(() => {
@@ -473,10 +489,15 @@ const ProgressBar: React.FC<Props> = ({fx, singleSound, hidden, playing, open, s
           timeInterval = setInterval(updateTimeIntervalSmall, 100);
         }
 
+        if (progress.resetSingle) {
+          clearInterval(timeInterval);
+          dispatch({type: "UNDO_RESET_SINGLE"})
+        }
+
         return () => {
           clearInterval(timeInterval);
         }
-      }, [runningInterval]);
+      }, [runningInterval, progress.resetSingle]);
 
 
       useEffect(() => {

@@ -2,14 +2,16 @@ import { useRouter } from 'next/router'
 import React, {Fragment, useEffect, useState} from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { isUserPageLoading } from "../../store/selectors";
-import Media from "react-media";
+// import Media from "react-media";
 import LoadingAnimation from '../../components/animatedLoaders/LoadingAnimation/LoadingAnimation';
 import UserBig from '../../components/userComponents/UserPageVersions/UserBig';
 import UserSmall from '../../components/userComponents/UserPageVersions/UserSmall';
 import { END } from 'redux-saga';
 import { wrapper } from '../../store/wrapper';
 import { fetchUser } from '../../store/actions';
-
+import db from '../../server/util/queries';
+import { fetchUserServer } from '../../store/actions/user';
+import { Media, MediaContextProvider } from "../../util/media"
 
 
 export default function User(props) {
@@ -20,6 +22,7 @@ export default function User(props) {
  const userInfo = useSelector((state) => state.userPage);
  const router = useRouter();
  const {uid} = router.query;
+ const mainLoader = useSelector((state) => state.ui.mainLoader)
 
   useEffect(() => {
     dispatch({type: "MAIN_LOADER_FINISH"})
@@ -34,6 +37,9 @@ export default function User(props) {
     if (userInfo && (uid != userInfo.user.id)) {
       dispatch(fetchUser(uid));
     }
+    if(mainLoader) {
+      dispatch({type: "MAIN_LOADER_FINISH"})
+    }
     
   }, [uid, userInfo, dispatch])
 
@@ -44,140 +50,59 @@ export default function User(props) {
 
         <Fragment>
           <LoadingAnimation loading={isPageLoading} />
-
-        <Media queries={{
-              small: "(max-width: 1099px)",
-              big: "(min-width: 1100px)",
-             
-            }}>
-
-            {(matches) => (
-              <Fragment>
-                {matches.big ? (
-                  <UserBig/> )
-                  : (
-                  <UserSmall/>)}
-                  
-                
-
-                
-                </Fragment>)}
-          </Media>
+          <MediaContextProvider>
+              <Media between={["xs", "sm"]}>
+                <UserSmall/>
+              </Media>
+              <Media greaterThanOrEqual="lg">
+                <UserBig/>
+              </Media>
+          </MediaContextProvider>
         </Fragment>
 
         </Fragment>
   )
 }
 
-// const sendRequest = async (url, method = 'GET', body = null, headers = {}) => {
-//   try {       
-//     const response = await fetch(url, {
-//         method,
-//         body,
-//         headers,
-//         credentials: 'same-origin'
+export async function getStaticPaths() {
+  // const userList = await sendRequest(`${process.env.NEXT_PUBLIC_REACT_APP_MY_ENV}/users/getids`);
 
-//     }, );
-//     const responseData = await response.json();
-   
-//     if (!response.ok) {
-//         throw new Error(responseData.message);
-//     }
-//     return responseData;
-// }
-//     // CATCH
-//     catch (err) {
-//       throw err;
-//   }
-// }
+  const getUsers = "SELECT id FROM users";  
 
-// export async function getStaticPaths() {
-//   const userList = await sendRequest(`${process.env.NEXT_PUBLIC_REACT_APP_MY_ENV}/users/getids`);
+  let foundUsers;
+  let response;
+
+  try {
+    foundUsers = await db.query(getUsers);
+  } catch (err) {
+    const error = HttpError(err, 500, res);
+    return next(error);
+  }
   
-//   const pathList = userList.map(el => {
-//     return {
-//       params: {uid: el.id}
-//     }
-//   })
+  const pathList = foundUsers.rows.map(el => {
+    return {
+      params: {uid: el.id}
+    }
+  })
 
-//   console.log(`pathlist: ${pathList}`)
+  return {
+    paths: pathList,
+    fallback: false
+  }
+}
 
-//   return {
-//     paths: pathList,
-//     fallback: false
-//   }
-// }
+export const getStaticProps = wrapper.getStaticProps((store) =>
+  async ({  req, res, ...ctx }) => {
 
-// export const getStaticProps = wrapper.getStaticProps((store) =>
-//   async ({  req, res, ...ctx }) => {
+    // regular stuff
+    store.dispatch(fetchUserServer(ctx.params.uid));
+    // end the saga
+    store.dispatch(END);
+    await store.sagaTask.toPromise();
 
-//     // regular stuff
-//     store.dispatch(fetchUser(ctx.params.uid));
-//     // end the saga
-//     store.dispatch(END);
-//     await store.sagaTask.toPromise();
-
-//     return {
-//       props: {so: "hi"},
-//       revalidate: 1
-//     }
-//   }
-// );
-
-
-// export async function getStaticProps(context){
-//     const soundId = context.params.sid;
-//     // regular stuff
-
-//     // store.dispatch(fetchRecentSounds());
-//     // end the saga
-
-//     // store.dispatch(END);
-//     // await store.sagaTask.toPromise();
-    
-
-//     const fetchSoundInfo = async () => {
-//       if (soundId) {
-//         let response;
-  
-//         // try {
-//         //   response = await sendRequest(
-//         //     `${process.env.NEXT_PUBLIC_REACT_APP_MY_ENV}/sounds/${soundId}`
-//         //   );
-
-
-
-//         //   // setSoundInfo({
-//         //   //   sound: response.sound,
-//         //   //   comments: response.comments,
-//         //   //   offset: response.comments.length,
-//         //   //   refreshFinished: response.comments.length !== 20
-//         //   // });
-  
-//         //   // if (!gpuTier.isMobile) {
-//         //   //   dispatch(setGlobalSound(response.sound));
-//         //   // } 
-          
-//         //   // if (userId) {
-//         //   //   if (response.sound.favs.indexOf(userId.toString()) !== -1) {
-//         //   //     setFaved(true);
-//         //   //   }
-//         //   // }
-//         //   return {
-//         //     sound: response.sound,
-//         //     comments: response.comments,
-//         //     offset: response.comments.length,
-//         //     refreshFinished: response.comments.length !== 20
-//         //   }
-//         // } catch (err) {}
-//       }
-//     };
-
-
-//     let response = await fetchSoundInfo();
-//     console.log(`responz - response}`)
-//     return {props: {response: ''}};
-
-
-    
-// };
+    return {
+      props: {so: "hi"},
+      revalidate: 1
+    }
+  }
+);

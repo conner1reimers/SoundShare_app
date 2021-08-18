@@ -7,7 +7,6 @@ const handler = nc()
   .get(async (req, res, next) => {
   const soundId = req.query.soundId;
   let queryText = "SELECT * FROM sounds WHERE id = $1";
-  console.log(soundId)
 
   let soundVal = [soundId];
   let response;

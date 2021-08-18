@@ -5,3 +5,9 @@ export const fetchRecentSounds = () => {
         type: actionTypes.FETCH_RECENT
     }
 }
+
+export const fetchRecentSoundsServer = () => {
+    return {
+        type: actionTypes.FETCH_RECENT_SERVER
+    }
+}

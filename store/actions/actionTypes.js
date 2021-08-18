@@ -1,4 +1,5 @@
 export const FETCH_RECENT = 'FETCH_RECENT';
+export const FETCH_RECENT_SERVER = 'FETCH_RECENT_SERVER';
 export const LOGIN = 'LOGIN';
 export const LOGOUT = 'LOGOUT';
 export const OPEN_AND_PLAY_GLOBAL = 'OPEN_AND_PLAY_GLOBAL';
@@ -16,6 +17,7 @@ export const PAUSE = 'PAUSE';
 export const SEEK = 'SEEK';
 export const RESET_PROGRESS = 'RESET_PROGRESS';
 export const FETCH_USER = 'FETCH_USER';
+export const FETCH_USER_SERVER = 'FETCH_USER_SERVER';
 export const SET_INDEX_RECENT = 'SET_CUR_INDEX_RECENT_LIST';
 export const SET_MSG = 'SET_MSG';
 export const REMOVE_MSG = 'REMOVE_MSG';

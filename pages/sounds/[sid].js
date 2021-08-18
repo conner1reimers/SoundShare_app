@@ -21,10 +21,8 @@ import LikeSoundList from '../../components/singleSound/SingleSoundMain/LikeSoun
 import ReportSound from '../../components/singleSound/SingleSoundMain/ReportSound';
 import SingleSoundRepostButton from '../../components/singleSound/SingleSoundMain/SingleSoundRepostButton';
 import SoundTags from '../../components/singleSound/SingleSoundMain/SoundTags';
-import { resetGlobalSound } from '../../store/actions';
-import { setGlobalSound } from '../../store/actions/globalSound';
-import { UiState } from '../../store/reducers/uiStateReducer';
-import { UserState } from '../../store/reducers/user';
+import { resetGlobalSound, resetProgress, seekSound } from '../../store/actions';
+import { setGlobalSound, pauseGlobalSound } from '../../store/actions/globalSound';
 import { useChangePage } from '../../util/hooks/changePage';
 import { useHttpClient } from '../../util/hooks/http-hook';
 import MouseOverLabel from '../../util/MouseOverLabel';
@@ -64,9 +62,7 @@ export default function Sounds(props) {
 
   let soundId = router.query;
 
-
-
-  const [soundInfo, setSoundInfo] = useState(props.response);
+  const [soundInfo, setSoundInfo] = useState(props);
   const [faved, setFaved] = useState(false);
   const [isMyPage, setIsMyPage] = useState(false);
   const [moveBtnDown, setMoveBtnDown] = useState(false);
@@ -81,7 +77,7 @@ export default function Sounds(props) {
   const gpuTier = useSelector((state) => state.ui.gpuTier);
   const userId = useSelector((state) => state.user.userId);
   const isMaster = useSelector((state) => state.user.master);
-
+  const mainLoader = useSelector((state) => state.ui.mainLoader)
 
   const dispatch = useDispatch();
 
@@ -92,7 +88,6 @@ export default function Sounds(props) {
   const fetchSoundInfo = useCallback(async () => {
     if (soundId.sid) {
       let response;
-
       try {
         response = await sendRequest(
           `${process.env.NEXT_PUBLIC_REACT_APP_MY_ENV}/sounds/${soundId.sid}`
@@ -119,22 +114,36 @@ export default function Sounds(props) {
   
   useEffect(() => {
     if (gpuTier) {
-      if (!soundInfo) {
-        fetchSoundInfo();
-      } else if (soundId.sid != soundInfo.sound.id) {
+      if (soundInfo && (soundId.sid != soundInfo.sound.id)) {
         fetchSoundInfo();
       } 
+      if (mainLoader) {
+        dispatch({type: "MAIN_LOADER_FINISH"})
+
+      }
     }
+
   }, [gpuTier, soundId, soundInfo, fetchSoundInfo]);
 
   useEffect(() => {
     window.scrollTo(0, 0);
-    dispatch({type: "MAIN_LOADER_FINISH"})
+    dispatch({type: "MAIN_LOADER_FINISH"});
+    dispatch({type: "UNDO_RESET_SINGLE"})
+
+    // dispatch(seekSound(0, 0, true));
     return () => {
       dispatch(resetGlobalSound());
+      
       setSoundInfo(null);
     };
   }, [dispatch]);
+
+  // useEffect(() => {
+  //   if (gpuTier) {
+  //     dispatch(setGlobalSound(props.sound))
+  //   }
+    
+  // }, [props.sound, gpuTier])
 
   const gotoCategory = () => {
     const category = soundInfo.sound.category;
@@ -253,9 +262,9 @@ export default function Sounds(props) {
   useEffect(() => {
     if (gpuTier && !gpuTier.isMobile && soundInfo) {
         dispatch(setGlobalSound(soundInfo.sound));
-      } 
+    } 
           
-    if (userId) {
+    if (userId && soundInfo) {
       if (soundInfo.sound.favs.indexOf(userId.toString()) !== -1) {
         if (!faved) {
           setFaved(true);
@@ -263,7 +272,16 @@ export default function Sounds(props) {
         
       }
     }
-  }, [userId, gpuTier, dispatch, faved, soundInfo])
+  }, [userId, gpuTier, dispatch, faved, soundInfo]);
+
+
+  useEffect(() => {
+    if(!soundInfo && props.sound) {
+      setSoundInfo(props);
+    } else if (soundInfo && !soundInfo.sound && props.sound) {
+      setSoundInfo(props.sound);
+    }
+  }, [soundInfo, props])
   
 
   return (
@@ -506,7 +524,7 @@ export default function Sounds(props) {
                         <PlayPauseBtns global singleSound sound={soundInfo.sound}/>
                       </div>
                       <div className="single-sound--player--progress">
-                        <ProgressBar singleSound global small2={matches.small}/>
+                        <ProgressBar key={props.sound.id} singleSound global small2={matches.small}/>
                       </div>
                     </div>
                   </div>
@@ -656,39 +674,41 @@ export async function getStaticProps(context){
 
     try {
       response = await client.query(queryText, soundVal);
-      let commentQueryTxt =
 
+      let commentQueryTxt = 
         "select c.id as com_id, c.comment_date, c.message, c.creator_id as comment_creator, \
         u.user_img_path, u.username from comments c join users u on u.id = c.creator_id WHERE \
         c.id = any ($1) ORDER BY comment_date DESC LIMIT 20";
-      let comVals = [response.rows[0].comments];
+      
+      let comVals = [response.rows[0].comments] || null;
       const { rows } = await client.query(commentQueryTxt, comVals);
+
+
 
       if (response.rows) {
         finalSound = {
             sound: response.rows[0],
             comments: rows,
-            offset: rows.comments.length,
-            refreshFinished: rows.comments.length !== 20
+            offset: rows.length,
+            refreshFinished: rows.length !== 20
           
           }
       }
       
 
-    } catch (err) {} finally {
+    } catch (err) {
+      throw err
+    } finally {
       client.release();
     }
 
     let finalSoundJSON = JSON.stringify(finalSound);
     
       return {
-        props: finalSound ? JSON.parse({response: finalSoundJSON}) : {},
+        props: JSON.parse(finalSoundJSON),
         revalidate: 3
         };
     
-    
-
-
     
 };
 

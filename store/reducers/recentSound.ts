@@ -53,6 +53,13 @@ const recentSoundReducer = (state = initRecSoundState, action: any) => {
                 offset: action.recents.length,
                 refreshFinished: false
             }
+        case 'FETCH_RECENT_SERVER_ASYNC':
+            return {
+                ...state,
+                sounds: action.recents,
+                topLiked: action.topLiked,                
+                topDownloaded: action.topDownloaded,
+            }
         case 'FETCH_RECENT_CAT_ASYNC':
             return {
                 ...state,

@@ -13,7 +13,6 @@ const handler = nc()
 
     const newComment = req.body.msg;
     const decoded = req.userData;
-    console.log('newComment: ')
   
     if (decoded.userId !== userId) {
       const error = HttpError(
@@ -22,12 +21,10 @@ const handler = nc()
       );
       return next(error);
     }
-    console.log('newComment: ')
   
     
     let queryText = "UPDATE comments set message = $1 where id = $2";
     let queryVals = [newComment, commentId];
-    console.log('newComment: ')
   
     try {
       await db.query(queryText, queryVals);
@@ -35,7 +32,6 @@ const handler = nc()
       const error = HttpError("errrrr", 500, res);
       return next(error);
     }
-    console.log('hooooo')
   
     res.status(200).json({ msg: "UPDATED" });
 

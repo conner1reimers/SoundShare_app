@@ -6,6 +6,9 @@ import {
   stopAction,
 } from "../store/actions/uiActions";
 import safeJsonStringify from 'safe-json-stringify';
+import db from '../server/util/queries';
+
+
 
 const sendRequest = async (url, method = "GET", body = null, headers = {}) => {
   // TRY CATCH BLOCK FOR SENDING REQUEST WITH THE METHOD, BODY, AND HEADERS WE GIVE IT
@@ -46,6 +49,56 @@ const fetchSound = async () => {
 
   }
 };
+
+const fetchSoundServer = async () => {
+  const getLikesQueryTxt =
+    "SELECT * FROM sounds \
+    WHERE array_length(favs, 1) != 0 \
+    ORDER BY array_length(favs, 1) DESC \
+    fetch first 5 rows only";
+
+  const getSoundsQueryTxt =
+    "SELECT * \
+    FROM sounds \
+    ORDER BY date_time DESC LIMIT 30";  
+
+  const getDownloadsTxt = 'SELECT * from sounds order by downloads desc limit 5';
+
+
+  let foundLikes;
+  let foundSounds;
+  let foundDownload;
+  let response;
+
+  let client;
+  try {
+    client = await db.connect();
+  } catch (err) {
+    return err;
+
+  }
+
+  try {
+    foundSounds = await client.query(getSoundsQueryTxt);
+    foundLikes = await client.query(getLikesQueryTxt);
+    foundDownload = await client.query(getDownloadsTxt);
+
+    response = {
+      sounds: foundSounds.rows,
+      topLiked: foundLikes.rows,
+      topDownloaded: foundDownload.rows,
+    };
+
+  } catch (err) {
+    return err;
+  } finally {
+    client.release();
+  }
+
+  return JSON.stringify(response);
+};
+
+
 
 
 const fetchSoundCategory = async (category) => {
@@ -97,6 +150,160 @@ const fetchUser = async (id) => {
       
     }
   }
+};
+
+const fetchUserServer = async (userId) => {
+  let result;
+  
+
+  let client;
+
+
+  try {
+    client = await db.connect();
+  } catch (err) {
+    const error = HttpError("errrrr", 500, res);
+    return next(error);
+  }
+  const userQuery = {
+    name: "fetch-user",
+    text:
+      "SELECT u.username, u.id, u.bio, u.favs, u.instagram_link, u.store_link, u.twitter_link, u.facebook_link, u.youtube_link, \
+         u.user_img_path, array_unique(u.followers) as followers, u.following, u.join_date, u.comments, \
+        u.sounds, s.path, s.type, s.type, s.name, s.img_path, s.date_time, s.username as sound_username, \
+        u.reposts, r.sound_id, r.user_id FROM users u \
+        full join reposts r on r.sound_id = any (u.reposts) full join sounds s on r.sound_id = s.id \
+        WHERE u.id = $1 ORDER BY s.date_time DESC LIMIT 17",
+    values: [userId],
+  };
+  const repostsQuery = {
+    name: "fetch-user-reposts",
+    text:
+      "SELECT * from reposts r inner join sounds s on s.id = r.sound_id where r.user_id = $1 ORDER BY repost_date DESC LIMIT 17",
+    values: [userId],
+  };
+
+  const actionQuery = {
+    name: "fetch-actions",
+    text:
+      "SELECT * from actions where user_id = $1 ORDER BY date DESC LIMIT 15",
+    values: [userId],
+  };
+
+  let user;
+  let sounds;
+  let soundsOnlyuser;
+  let favSounds;
+  let actions;
+  let recentActivities;
+  let followed;
+  let reposts;
+  try {
+    user = await client.query(userQuery);
+    actions = await client.query(actionQuery);
+    reposts = await client.query(repostsQuery);
+    
+    let soundVal = user.rows[0];
+
+    
+    const soundQuery = {
+      name: "fetch-userSounds",
+      text:
+        "SELECT s.id, c.message, s.name, s.date_time, s.creator_id, s.path, s.img_path, s.type, c.sound_id, c.creator_id as com_user_id, s.username \
+                FROM sounds s full join comments c on c.id = s.id WHERE s.id = any ($1) OR \
+                s.id = any (SELECT target_id FROM actions WHERE user_id = $2 and type = 'comments') ORDER BY s.date_time DESC LIMIT 17",
+      values: [soundVal.sounds, userId],
+    };
+
+    const soundQueryOnlyuser = {
+      name: "fetch-userSounds-onlyuser",
+      text:
+        "SELECT * FROM sounds WHERE creator_id = $1 ORDER BY date_time DESC LIMIT 17",
+      values: [userId],
+    };
+
+    sounds = await client.query(soundQuery);
+    soundsOnlyuser = await client.query(soundQueryOnlyuser);
+
+
+    const favsoundQuery = {
+      name: "fetch-userSounds-favs",
+      text: "SELECT * FROM favorites f inner join sounds s on s.id = f.sound_id WHERE f.user_id = $1 ORDER BY f.fav_date DESC LIMIT 17",
+      values: [userId]
+    };
+
+    favSounds = await client.query(favsoundQuery);
+
+    let followedArray = [];
+
+
+
+    actions.rows.forEach((el) => {
+      if (el.type === "follow") {
+        followedArray.push(el.target_id);
+      } 
+    });
+
+    if (followedArray.length > 0) {
+      const getFollowedQuery = {
+        name: "fetch-recent-followed",
+        text: "SELECT * FROM users WHERE id = any ($1) LIMIT 17",
+        values: [followedArray],
+      };
+      followed = await client.query(getFollowedQuery);
+    }
+  } catch (err) {
+    return next(err);
+  } finally {
+    client.release();
+  }
+
+  let followedFinal = followed ? followed.rows : [];
+  let favSoundsFinal = favSounds.rows ? favSounds.rows : [];
+
+  
+
+  result = {
+    user: user.rows[0],
+    sounds: sounds.rows,
+    soundsOnlyUser: soundsOnlyuser.rows,
+    reposts: [...user.rows],
+    userReposts: reposts.rows,
+    favSounds: favSoundsFinal,
+    actions: actions.rows,
+    recentActivities: followedFinal,
+  };
+
+
+    const dateNow = new Date();
+    const joinDate = new Date(result.user.join_date);
+    const daysSince = Math.floor(
+      (dateNow.getTime() - joinDate.getTime()) / (1000 * 3600 * 24)
+    );
+
+    return JSON.stringify({
+      ...result,
+      user: {
+        ...result.user,
+        join_date: JSON.parse(safeJsonStringify(joinDate)),
+        days: daysSince,
+      },
+      refreshOptions: {
+        offsetSounds: result.soundsOnlyUser.length,
+        offsetReposts: result.userReposts.length,
+        offsetFavs: result.favSounds.length,
+        soundFinished: result.soundsOnlyUser.length < 17,
+        repostFinished: result.userReposts.length < 17,
+        favFinished: result.favSounds.length < 17,
+
+
+      },
+
+      following: false,
+      loading: false
+      
+    });
+
 };
 
 const refreshBrowse = async (query, val, offset, order) => {
@@ -269,6 +476,18 @@ function* fetchRecentAsync() {
   });
 }
 
+function* fetchRecentServerAsync() {
+  const fetched = JSON.parse(yield call(fetchSoundServer));
+
+  yield put({
+    type: "FETCH_RECENT_SERVER_ASYNC",
+    recents: fetched.sounds,
+    topLiked: fetched.topLiked,
+    topDownloaded: fetched.topDownloaded
+  });
+}
+
+
 function* fetchRecentCategoryAsync(action) {
   const fetched = yield call(fetchSoundCategory, action.category);
   yield put({
@@ -316,8 +535,8 @@ export function* watchFetchRecentSounds() {
   yield takeLatest("FETCH_RECENT", fetchRecentAsync);
 }
 
-export function* watchFetchRecentSoundsCategory() {
-  yield takeLatest("FETCH_RECENT_CATEGORY", fetchRecentCategoryAsync);
+export function* watchFetchRecentSoundsServer() {
+  yield takeLatest("FETCH_RECENT_SERVER", fetchRecentServerAsync);
 }
 
 function* fetchUserAsync(action) {
@@ -331,10 +550,33 @@ function* fetchUserAsync(action) {
     yield put(stopAction(action.type));
   }
 }
+function* fetchUserServerAsync(action) {
+  try {
+    yield put(startAction(action.type));
+    const fetched = JSON.parse(yield call(fetchUserServer, action.id));
+
+    yield put({ type: "FETCH_USER_SERVER_ASYNC", result: fetched });
+  } catch (err) {
+  } finally {
+    yield put(stopAction(action.type));
+  }
+}
 
 export function* watchFetchUser() {
   yield takeLatest("FETCH_USER", fetchUserAsync);
 }
+
+export function* watchFetchUserServer() {
+  yield takeLatest("FETCH_USER_SERVER", fetchUserServerAsync);
+}
+
+
+
+
+export function* watchFetchRecentSoundsCategory() {
+  yield takeLatest("FETCH_RECENT_CATEGORY", fetchRecentCategoryAsync);
+}
+
 
 function* fetchBrowseAsync({ type, payload }) {
   const { refreshing } = payload;
@@ -580,6 +822,9 @@ function* rootSaga() {
   yield fork(watchRefreshAllLikes);
   yield fork(watchCheckForCookie);
   yield fork(watchBPMSearch);
+  yield fork(watchFetchRecentSoundsServer);
+  yield fork(watchFetchUserServer);
+
 
 }
 

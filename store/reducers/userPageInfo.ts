@@ -79,7 +79,20 @@ const userPageReducer = (state = initialState, action: any) => {
 
           }
         
-        } || state
+      } || state
+      
+      case 'FETCH_USER_SERVER_ASYNC':
+        return {
+          ...action.result,
+          loaded: true,
+          refreshOptions: {
+            ...action.result.refreshOptions,
+
+          }
+        
+      } || state
+    
+    
       case 'FOLLOW_USER':
         return {
           ...state,

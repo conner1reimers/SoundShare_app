@@ -6,7 +6,8 @@ export interface ProgressState {
     duration: number,
     percent: number,
     percentInPx: number,
-    reset: boolean
+    reset: boolean,
+    resetSingle: boolean
 }
 
 const initial: ProgressState = {
@@ -14,7 +15,8 @@ const initial: ProgressState = {
     duration: 0,
     percent: 2,
     percentInPx: 30,
-    reset: false
+    reset: false,
+    resetSingle: false
 }
 
 
@@ -88,6 +90,16 @@ const progressStateReducer = (state = initial, action: any) => {
                 ...state,
                 reset: false
 
+            }
+        case 'RESET_SINGLE':
+            return {
+                ...state,
+                resetSingle: true
+            }
+        case 'UNDO_RESET_SINGLE':
+            return {
+                ...state,
+                resetSingle: false
             }
             
         default:
