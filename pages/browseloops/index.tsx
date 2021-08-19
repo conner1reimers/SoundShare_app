@@ -380,7 +380,6 @@ const BrowseLoops: React.FC<indexProps> = ({ }) => {
   const browseFinish = useSelector((state: RootStateConst) => state.browse.refreshFinish);
   const browseLastQuery = useSelector((state: RootStateConst) => state.browse.lastQuery);
   const browseOffset = useSelector((state: RootStateConst) => state.browse.offset);
-  const mainLoader = useSelector((state: any) => state.ui.mainLoader);
 
 
   const isLoading = useSelector((state) => {
@@ -442,11 +441,9 @@ const BrowseLoops: React.FC<indexProps> = ({ }) => {
   }, []);
 
   useEffect(() => {
-    if (mainLoader) {
-      reduxDispatch({type: "MAIN_LOADER_FINISH"})
+    reduxDispatch({type: "MAIN_LOADER_FINISH"})
 
-    }
-  }, [mainLoader, reduxDispatch])
+  }, [reduxDispatch])
 
   useEffect(() => {
     if (!browseFinish) window.addEventListener("scroll", handleScroll);
