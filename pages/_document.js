@@ -31,6 +31,8 @@ class MyDocument extends Document {
             type="text/css"
             dangerouslySetInnerHTML={{ __html: mediaStyles }}
           />
+
+          
         </Head>
 
         <body>
