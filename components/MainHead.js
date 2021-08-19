@@ -21,6 +21,7 @@ const MainHead = () => {
 	const gpuTierState = useSelector((state) => state.ui.gpuTier);
 	const aModalIsOpen = useSelector(state => state.globalMsg.aModalIsOpen);
   const isLoading = useSelector(state => state.ui.mainLoader);
+  const homeLoader = useSelector(state => state.ui.homeLoader);
 
 	const getGpu = useCallback(async () => {
     window.scrollTo(0, 0);
@@ -95,7 +96,7 @@ const MainHead = () => {
     
     return (
         <Fragment>
-        <LoadingAnimation loading={isLoading}/>
+        <LoadingAnimation loading={isLoading || homeLoader}/>
       <GlobalMsg/>
             
             <Media

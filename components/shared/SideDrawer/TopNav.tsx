@@ -1,7 +1,7 @@
 import React, { useState, useEffect, Fragment, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useSelector, useDispatch } from "react-redux";
-import { setModalOpen, resetGlobalSound } from "../../../store/actions";
+import { setModalOpen, resetGlobalSound, fetchRecentSounds } from "../../../store/actions";
 import padlock from "/public/padlock.svg";
 import userImg from "/public/user.svg";
 import feed from "/public/feed.svg";
@@ -257,7 +257,8 @@ const Scroller: React.FC = React.memo(() => {
   );
 
   const goToHome = (event) => {
-    dispatch({type: "MAIN_LOADER_START"});
+    dispatch({ type: "HOME_LOADER_START" });
+    dispatch(fetchRecentSounds());
     event.preventDefault();
     event.stopPropagation();
     location.push("/home", undefined, { shallow: true });

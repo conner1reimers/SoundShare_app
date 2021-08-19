@@ -56,6 +56,8 @@ const FirstpageBox: React.FC = () => {
     const isLoggedIn = useSelector((state: RootState) => state.user.isLoggedIn);
     const userId = useSelector((state: RootState) => state.user.userId);
     const mainLoader = useSelector((state: RootState) => state.ui.mainLoader);
+    const homeLoader = useSelector((state: RootState) => state.ui.homeLoader);
+  
     const [searchOpen, setSearchOpen] = useState(false);
 
     const dispatch = useDispatch();
@@ -84,15 +86,12 @@ const FirstpageBox: React.FC = () => {
     useEffect(() => {
       document.title = "Soundshare";
       dispatch({type: "MAIN_LOADER_FINISH"});
-
     }, [dispatch]);
   
     useEffect(() => {
-      if (mainLoader) {
-        dispatch({type: "MAIN_LOADER_FINISH"});
+        dispatch({type: "HOME_LOADER_FINISH"});
 
-      }
-    }, [mainLoader, dispatch])
+    }, [homeLoader, dispatch])
 
 
     const searchSounds = ((e: any) => {

@@ -1,7 +1,7 @@
 import React, { Fragment } from 'react'
 import { UserState } from "../../../store/reducers/user";
 import { UiState } from "../../../store/reducers/uiStateReducer";
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { useHttpClient } from '../../../util/hooks/http-hook';
 import { motion } from 'framer-motion';
 
@@ -48,7 +48,7 @@ const DropSinglesound = ({cancel, setEditMode, isMyPage, soundInfo, soundId}) =>
   const gpuTier = useSelector((state) => state.ui.gpuTier);
   const myPageOptionsOpen = useSelector((state) => state.ui.singlesoundOptionsOpen);
   const token = useSelector((state) => state.user.token);
-
+  const dispatch = useDispatch();
 
   const editName = (e) => {
     e.preventDefault();
@@ -72,6 +72,7 @@ const DropSinglesound = ({cancel, setEditMode, isMyPage, soundInfo, soundId}) =>
 
     if (isMyPage) {
       try {
+        dispatch({ type: "MAIN_LOADER_START" });
         result = await sendRequest(
           `${process.env.NEXT_PUBLIC_REACT_APP_MY_ENV}/sounds/delete/${soundId}/${soundInfo.sound.creator_id}/`,
           "DELETE",
@@ -88,6 +89,8 @@ const DropSinglesound = ({cancel, setEditMode, isMyPage, soundInfo, soundId}) =>
         );
        
         history.replace("/home");
+        dispatch({ type: "MAIN_LOADER_FINISH" });
+
       } catch (err) {}
     }
   };

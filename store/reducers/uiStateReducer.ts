@@ -14,7 +14,8 @@ export interface UiState {
     extraLoader: boolean,
     mainLoader: boolean,
     initialLoad: boolean,
-    adShow: boolean
+    adShow: boolean,
+    homeLoader: boolean
 }
 
 
@@ -29,7 +30,8 @@ const initState: UiState = {
     extraLoader: false,
     mainLoader: false,
     initialLoad: false,
-    adShow: false
+    adShow: false,
+    homeLoader: false
 }
 
 
@@ -139,6 +141,16 @@ const uiReducer = (state = initState, action: ActionTypes) => {
             return {
                 ...state,
                 mainLoader: false
+            }
+        case "HOME_LOADER_START":
+            return {
+                ...state,
+                homeLoader: true
+            }
+        case "HOME_LOADER_FINISH":
+            return {
+                ...state,
+                homeLoader: false
             }
         case "INIT_LOAD":
             return {
