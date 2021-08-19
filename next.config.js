@@ -17,6 +17,11 @@ module.exports = {
         destination: '/home',
         permanent: true,
       },
+      {
+        source: '/privacypolicy',
+        destination: '/cookiepolicy',
+        permanent: true,
+      },
     ]
   },
   webpack: (config, { isServer }) => {
