@@ -38,16 +38,22 @@ const BrowseOptionModal: React.FC<Props> = ({setOpen, searchTxt, mobile, search,
 
     const searchSounds = async (category: any) => {
         let res;
-        
         try {
+        dispatch({type: "MAIN_LOADER_START"});
+
         res = await sendRequest(`${process.env.NEXT_PUBLIC_REACT_APP_MY_ENV}/users/searchsounds/${category}/${searchTxt.value}`);
         dispatch({ type: "SEARCH_BROWSE_HOME", results: res });
-        } catch (err) {}
+        } catch (err) {
+            
+        }
     }
 
     const goToLoops = (e: any) => {
         e.preventDefault();
+        dispatch({ type: "MAIN_LOADER_START" });
+        
         cancelHandler();
+
         if (search) {
             searchSounds('loops');
         }
@@ -59,6 +65,8 @@ const BrowseOptionModal: React.FC<Props> = ({setOpen, searchTxt, mobile, search,
 
     const goToEffects = (e: any) => {
         e.preventDefault();
+        dispatch({type: "MAIN_LOADER_START"});
+
         cancelHandler();
         if (search) {
             searchSounds('fx');
@@ -72,6 +80,8 @@ const BrowseOptionModal: React.FC<Props> = ({setOpen, searchTxt, mobile, search,
 
     const goToVocals = (e: any) => {
         e.preventDefault();
+        dispatch({type: "MAIN_LOADER_START"});
+
         cancelHandler();
         if (search) {
             searchSounds('vocal');
