@@ -706,7 +706,7 @@ export async function getStaticProps(context){
     
       return {
         props: JSON.parse(finalSoundJSON),
-        revalidate: 3
+        revalidate: 1
         };
     
     
