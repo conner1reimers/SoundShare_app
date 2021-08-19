@@ -28,7 +28,8 @@ export interface BrowseState {
   offset: number,
   refreshFinish: boolean,
   lastOptions: any,
-  page: number
+  page: number,
+  modalOpen: boolean
 }
 
 const initialState: BrowseState = {
@@ -50,7 +51,8 @@ const initialState: BrowseState = {
     offset: 0,
     refreshFinish: false,
     lastOptions: null,
-    page: 0
+    page: 0,
+    modalOpen: false
 
 
 }
@@ -193,6 +195,16 @@ const browseReducer = (state = initialState, action: BrowseActionTypes) => {
             finishMsgShown: true
           }
         }
+    case "SET_BROWSE_MODAL_OPEN":
+        return {
+          ...state,
+          modalOpen: true
+        }
+    case "SET_BROWSE_MODAL_CLOSED":
+        return {
+          ...state,
+          modalOpen: false
+      }
         
       default: 
             return state

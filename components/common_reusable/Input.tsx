@@ -211,7 +211,10 @@ const Input: React.FC<Props> = ({value: val2, valid, id, onInput, label, focusCa
             {element}
             {!inputState.isValid && inputState.isTouched && auth && (
                 <div className="input-notvalid">
-                    <Image src={err} alt=""/>
+                    <div className="notvalid-img">
+                        <Image height={20} width={20} src={err} alt=""/>
+                    </div>
+                   
                     <div>
                         <p className="input-error-txt">({errorText})</p>
                     </div>

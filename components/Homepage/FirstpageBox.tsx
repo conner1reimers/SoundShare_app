@@ -58,6 +58,7 @@ const FirstpageBox: React.FC = () => {
     const mainLoader = useSelector((state: RootState) => state.ui.mainLoader);
     const homeLoader = useSelector((state: RootState) => state.ui.homeLoader);
   
+  
     const [searchOpen, setSearchOpen] = useState(false);
 
     const dispatch = useDispatch();

@@ -6,6 +6,7 @@ import { useHttpClient } from '../../util/hooks/http-hook';
 import useLogin from '../../util/hooks/useLogin';
 import FacebookLogin from 'react-facebook-login';
 import FacebookIcon from './FacebookIcon';
+import { isIOS } from 'react-device-detect';
 
 const LoginByGoogle = () => {
     const {isLoading, sendRequest} = useHttpClient();
@@ -72,7 +73,7 @@ const LoginByGoogle = () => {
 
     
     return (
-        <div className="google-login-container">
+        <div className={`google-login-container ${isIOS ? 'google-login-container-ios' : ''}`}>
             
             <GoogleLogin 
              clientId="287437543388-bhgp1u8nhot7dst1kk8uvrr0cupa69dv.apps.googleusercontent.com"

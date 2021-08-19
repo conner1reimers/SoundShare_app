@@ -11,7 +11,7 @@ import { VALIDATOR_LOGIN, VALIDATOR_MAXLENGTH, VALIDATOR_EMAIL, VALIDATOR_REQUIR
 import BallLoader from '../../animatedLoaders/BallLoader/BallLoader';
 import useLogin from '../../../util/hooks/useLogin';
 import Input from '../../common_reusable/Input';
-
+import { isIOS } from 'react-device-detect';
 
 const AuthForm: React.FC = () => {
     const setGlobalMsg = useGlobalMsg();
@@ -44,6 +44,9 @@ const AuthForm: React.FC = () => {
             isValid: false
         },
     }, false);
+
+
+
 
     const submitAuth = async (event: any) => {
         event.preventDefault();
@@ -101,7 +104,7 @@ const AuthForm: React.FC = () => {
     return (
         <Fragment>
             {isOnLogin ? (
-                <div className="auth-grid">
+            <div className={`auth-grid ${isIOS ? 'auth-grid-ios' : ''}`}>
 
                     <div className="auth-grid--head auth-grid--head--login">
                         <h1 className="headings">Login.</h1>
@@ -169,7 +172,7 @@ const AuthForm: React.FC = () => {
                     </div>
 
             ) : (       
-            <div className="auth-grid">
+            <div className={`auth-grid ${isIOS ? 'auth-grid-ios' : ''}`}>
                 <div className="auth-grid--head">
                     <h1 className="headings">Create an account.</h1>
                     <p>Create an account to start uploading or sharing sounds for you and other music producers to use in your own music!</p>

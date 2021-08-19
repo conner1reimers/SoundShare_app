@@ -5,7 +5,7 @@ import Backdrop from '../../../Backdrop';
 import game_controller from '../../../../public/game-controller.svg';
 import microphone from '../../../../public/microphone.svg';
 import headphones from '../../../../public/headphones.svg';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { useGlobalMsg } from '../../../../util/hooks/useGlobalMsg';
 import { useEffect } from 'react';
 import { useHttpClient } from '../../../../util/hooks/http-hook';
@@ -26,11 +26,14 @@ const BrowseOptionModal: React.FC<Props> = ({setOpen, searchTxt, mobile, search,
     const history = useRouter();
     const dispatch = useDispatch();
     const { sendRequest } = useHttpClient();
+    const browseModalOpen = useSelector((state: any) => state.browse.modalOpen);
 
     
     const cancelHandler = () => {
         setOpen(false);
         dispatch(setModalClosed());
+        dispatch({ type: "SET_BROWSE_MODAL_CLOSED" });
+
     }
 
     const searchSounds = async (category: any) => {
@@ -90,8 +93,7 @@ const BrowseOptionModal: React.FC<Props> = ({setOpen, searchTxt, mobile, search,
     }, [open]);
 
     const finalEl = process.browser ? ReactDOM.createPortal(
-        <Fragment>
-            {open && (
+        
                 <Fragment>
                     <div className={`browse-modal ${mobile ? 'mobile-browse-options' : ''}`}>
 
@@ -106,7 +108,7 @@ const BrowseOptionModal: React.FC<Props> = ({setOpen, searchTxt, mobile, search,
                             <Media query="(max-width: 1099px)">
                                 <div className="auth-modal-close-contain browse-modal-close">
                                     <div onClick={cancelHandler}>
-                                        <Image src={close} alt="" />
+                                        <Image height={25} width={25} src={close} alt="" />
                                     </div>
                                 
                                 </div>
@@ -187,10 +189,11 @@ const BrowseOptionModal: React.FC<Props> = ({setOpen, searchTxt, mobile, search,
 
                     <Backdrop onClick={cancelHandler} />
 
-                </Fragment>)}
-        </Fragment>, document.getElementById('modal-hook') as HTMLElement) : null;
+                </Fragment>, document.getElementById('modal-hook') as HTMLElement) : null;
 
-    return finalEl;
+    return <Fragment>
+        {(open || browseModalOpen) && finalEl}
+        </Fragment>
 }
 
 export default BrowseOptionModal

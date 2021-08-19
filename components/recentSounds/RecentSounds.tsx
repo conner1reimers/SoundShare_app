@@ -75,37 +75,4 @@ const RecentSounds: React.FC = () => {
 
 
 
-// export const getServerSideProps = wrapper.getServerSideProps(async ({ req, res, store }) => {
-//   const state = store.getState();
-
-//   return {
-//     props: {},
-//   };
-// });
-
-
-
-
-
-// export const getStaticProps = wrapper.getStaticProps((store: any) => async ({ req }: any) => {
-
-//   console.log("DAD")
-//   store.dispatch(fetchRecentSounds())
-//   store.dispatch(END);
-//   await store.sagaTask.toPromise();
-
-//   return {props: {}}
-
-
-
-// // return {
-// //   props: {
-// //     dog: 'cat'
-// //   }
-// // }
-// })
-
-
-
-
 export default React.memo(RecentSounds);

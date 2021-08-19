@@ -137,11 +137,6 @@ const RepostButton: React.FC<Props> = ({soundId, username, creator: creatorProp,
       if (element) {
         let el: any = element.childNodes[0];
         el.style.overflow = "visible";
-
-        // console.log(element)
-        // for (let i = 0; i < try1.length; i++) {
-          
-        // }
         
         }
     }, []);

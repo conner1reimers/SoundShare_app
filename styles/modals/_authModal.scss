@@ -487,9 +487,20 @@ div.form-control--invalid {
   position: absolute;
   justify-content: flex-end;
   align-items: center;
-  bottom: 1vh;
-  left: 2.5vw;
+  bottom: .5rem;
+  left: 2.5rem;
   pointer-events: none;
+
+
+
+  div.notvalid-img {
+    @include heightWidth100;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    min-width: 40px;
+  }
+
 
   span {
     @include flexcenter;
@@ -515,7 +526,7 @@ div.form-control--invalid {
   div {
     @include flexcenter;
     position: relative;
-    width: 1vw;
+    // width: 1vw;
 
     p {
       position: absolute;
@@ -523,7 +534,7 @@ div.form-control--invalid {
       white-space: nowrap;
       width: min-content;
       font-size: 0.7rem;
-      left: 50%;
+      left: .75rem;
       color: #eb5c4f;
 
       font-weight: 500;
@@ -532,6 +543,10 @@ div.form-control--invalid {
         display: none;
       }
     }
+  }
+
+  @media screen and (max-width: 1099px) {
+    bottom: 0;
   }
 }
 
@@ -968,4 +983,39 @@ div.auth-modal-close-contain  {
     top: -2%;
     right: 1rem;
   }
+}
+
+
+div.auth-grid.auth-grid-ios {
+  div.auth-grid--inputSection {
+    label.form-label.form-label--focusCap.auth-grid--inputSection--input--label {
+      left: 1rem;
+      transform: none;
+      @include flexcenter;
+      justify-content: flex-start;
+      // transform: translateY(1rem);
+      top: .5rem;
+    }
+    form.auth-grid--form {
+      // background-color: yellow;
+
+      
+      label.form-label.form-label--focusCap.auth-grid--inputSection--input--label.form-label--labelUp {
+        transform: translateY(-4rem) translateX(-.5rem);
+      }
+    }
+
+    div.auth-agree-terms {
+      input {
+        min-width: 15px;
+        min-height: 15px;
+      }
+    }
+
+    
+  }
+}
+
+div.google-login-container-ios.google-login-container {
+  transform: translateY(-1rem);
 }

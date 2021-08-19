@@ -215,7 +215,8 @@ div.mobile-browse-options {
 
 div.auth-modal-close-contain.browse-modal-close {
     position: absolute;
-    top: 0rem;
+    top: 2.25rem;
+    // right: 2rem;
     width: 100vw;
     pointer-events: none;
     @include flexcenter;
@@ -223,19 +224,21 @@ div.auth-modal-close-contain.browse-modal-close {
     justify-content: flex-start;
     align-items: flex-end;
     z-index: 3;
+    transform: translateX(-2.5rem);
 
     div {
-        @include heightWidthSame(8rem);
+        @include heightWidthSame(2.5rem);
         cursor: pointer;
         @include flexcenter;
         pointer-events: stroke;
+        
 
         img {
             position: relative;
             pointer-events: stroke;
-            @include heightWidthSame(4rem);
+            @include heightWidthSame(3rem);
             @media screen and (max-width: 450px) {
-                @include heightWidthSame(3rem);
+                @include heightWidthSame(2.5rem);
             }
         }
         @media (hover: hover) and (pointer: fine) {
