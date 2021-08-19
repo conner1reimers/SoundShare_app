@@ -49,7 +49,7 @@ const MainHead = () => {
 
 		if (!gpuTierState) {
 			getGpu();
-		}
+		} 
 
 	}, [gpuTierState, dispatch, getGpu]);
 

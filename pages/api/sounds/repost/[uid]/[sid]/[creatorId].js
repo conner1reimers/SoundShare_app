@@ -69,7 +69,6 @@ const handler = nc()
       }
     } catch (err) {
       client.release();
-      console.log(err);
       return next(err)
     }
   
@@ -166,7 +165,6 @@ const handler = nc()
   
       await client.query("COMMIT");
     } catch (err) {
-      console.log(err)
 
       const error = HttpError(err, 500, res);
       await client.query("ROLLBACK");

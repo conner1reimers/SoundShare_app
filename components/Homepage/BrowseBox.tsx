@@ -5,14 +5,17 @@ import { useState } from 'react';
 import BrowseOptionModal from '../shared/SideDrawer/BrowseOptions/BrowseOptionModal'
 import listening3 from '../../public/listening-new2.svg';
 import Image from 'next/image';
+import { useDispatch } from 'react-redux';
 
 const BrowseBox: React.FC = () => {
     const [modalOpen, setModalOpen] = useState<boolean>(false);
+    const dispatch = useDispatch();
 
-    const openBrowseOptions = () => {
+
+    const openBrowseOptions = (e) => {
         setModalOpen(true);
+        dispatch({type: "SET_BROWSE_MODAL_OPEN"})
     }
-
     
 
     return (
