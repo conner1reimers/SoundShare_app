@@ -14,7 +14,8 @@
   background: none;
   max-height: 145px;
   transition: all .2s;
-  min-height: 88px;
+  min-height: 89px;
+  max-height: 89px;
 
   &::before {
     @include beforeTrick();
@@ -25,7 +26,8 @@
     left: 0;
     z-index: -1;
     transition: all .2s;
-
+    min-height: 89px;
+    max-height: 89px;
     background: none;
   }
   &::after {
@@ -42,7 +44,8 @@
     opacity: 0.24;
     background: none;
     transition: all .2s;
-
+    min-height: 89px;
+    max-height: 89px;
   }
 
   &--icon {
