@@ -70,6 +70,10 @@ const handler = nc()
     category
   } = req.body;
 
+  if(category === "loop") {
+    category = "loops"
+  }
+
   const decoded = req.userData;
 
   if (decoded.userId !== creator) {

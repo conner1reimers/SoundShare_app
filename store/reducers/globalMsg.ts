@@ -4,14 +4,16 @@ export interface GlobalMsgState {
   active: boolean,
   msg: string,
   aModalIsOpen: boolean,
-  msgType: any
+  msgType: any,
+  isOnHome: boolean
 }
 
 const initialState: GlobalMsgState = {
     active: false,
     msg: '',
     aModalIsOpen: false,
-    msgType: null
+    msgType: null,
+    isOnHome: false
 }
 
 
@@ -47,6 +49,16 @@ const globalMsgReducer = (state = initialState, action: any) => {
         return {
           ...state,
           aModalIsOpen: false
+        }
+      case "SET_IS_ON_HOME":
+        return {
+          ...state,
+          isOnHome: true
+        }
+      case "SET_NOT_ON_HOME":
+        return {
+          ...state,
+          isOnHome: false
         }
       
         default:

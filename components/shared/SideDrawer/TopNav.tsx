@@ -240,11 +240,15 @@ const TopNav: React.FC = () => {
 };
 
 const Scroller: React.FC = React.memo(() => {
-  const [isOnHome, setIsOnHome] = useState<any>(null);
   const [searchOpen, setSearchOpen] = useState<any>(false);
   const [scrolledFar, setScrolledFar] = useState<any>(false);
   const aModalIsOpen = useSelector((state: any) => state.globalMsg.aModalIsOpen);
+  const isOnHome = useSelector((state: any) => state.globalMsg.isOnHome);
+
   const dispatch = useDispatch();
+  const location = useRouter();
+
+  // const [isOnHome, setIsOnHome] = useState<boolean>(false);
   
   const [formState, inputHandler] = useForm(
     {
@@ -275,16 +279,18 @@ const Scroller: React.FC = React.memo(() => {
 
 
   
-  const location = useRouter();
-  const regex = /home/.test(location.pathname);
 
   useEffect(() => {
+    const regex = /home/.test(location.pathname);
     if (regex) {
-      setIsOnHome(true);
-    } else {
-      setIsOnHome(false);
+      dispatch({type: "SET_IS_ON_HOME"})
+    } else if (!regex) {
+      dispatch({type: "SET_NOT_ON_HOME"})
+
     }
-  }, [location]);
+  }, [location.pathname]);
+
+
 
   useEffect(() => {
     const scrollFunc = () => {
@@ -298,9 +304,10 @@ const Scroller: React.FC = React.memo(() => {
 
     return () => {
       window.removeEventListener("scroll", scrollFunc);
-      setIsOnHome(false);
     };
   });
+
+  console.log(isOnHome)
 
   return (
     <Fragment>

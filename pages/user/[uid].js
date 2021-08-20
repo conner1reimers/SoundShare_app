@@ -50,6 +50,7 @@ export default function User(props) {
 
         <Fragment>
           <LoadingAnimation loading={isPageLoading} />
+
           <MediaContextProvider>
               <Media between={["xs", "sm"]}>
                 <UserSmall/>
@@ -58,6 +59,7 @@ export default function User(props) {
                 <UserBig/>
               </Media>
           </MediaContextProvider>
+          
         </Fragment>
 
         </Fragment>

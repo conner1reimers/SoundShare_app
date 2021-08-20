@@ -708,8 +708,6 @@ export async function getStaticProps(context){
         props: JSON.parse(finalSoundJSON),
         revalidate: 1
         };
-    
-    
 };
 
 

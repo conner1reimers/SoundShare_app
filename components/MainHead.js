@@ -1,6 +1,6 @@
 import React, { Fragment } from 'react'
 import GlobalMsg from './GlobalMsg';
-import Media from 'react-media';
+// import Media from 'react-media';
 import SideContain from './shared/SideDrawer/SideContain'
 import TopNav from './shared/SideDrawer/TopNav'
 import withRedux, { createWrapper } from "next-redux-wrapper";
@@ -13,6 +13,7 @@ import GlobalSound from '../components/shared/Modals/GlobalSound';
 import * as ga from '../lib/ga'
 import { useGlobalMsg } from "../util/hooks/useGlobalMsg";
 import LoadingAnimation from './animatedLoaders/LoadingAnimation/LoadingAnimation';
+import { Media, MediaContextProvider } from "../util/media";
 
 
 const MainHead = () => {
@@ -99,22 +100,18 @@ const MainHead = () => {
         <LoadingAnimation loading={isLoading || homeLoader}/>
       <GlobalMsg/>
             
-            <Media
-              queries={{
-                small: "(max-width: 1099px)",
-                big: "(min-width: 1100px)",
-              }}
-            >
-              {(matches) => (
+            <MediaContextProvider>
+              
                 <Fragment>
-                  {matches.small && (<SideContain/>)}
-
-                  {matches.big && <TopNav />}
-
-                  {/* <Analytics/> */}
+                  <Media between={["xs", "sm"]}>
+                    <SideContain/>
+                  </Media>
+                  <Media greaterThanOrEqual="lg">
+                    <TopNav />
+                  </Media>
                 </Fragment>
-              )}
-            </Media>
+              
+            </MediaContextProvider>
       </Fragment>
     )
 }

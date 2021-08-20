@@ -231,7 +231,9 @@ const MoreFilters: React.FC<Props> = ({category}) => {
   
       setActiveOrderbyOption(e.currentTarget.dataset.option);
       setOrderByOptions(false);
-    }
+  }
+  
+    
     
     
     return (

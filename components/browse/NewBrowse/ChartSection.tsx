@@ -35,9 +35,6 @@ const ChartSection: React.FC<Props> = ({type, dispatch, optionState}) => {
         return isBrowseRefreshing(state);
     });
   
-    useEffect(() => {
-      
-    }, [])
     
     return (
         <div className="main-browse--chartSection">
