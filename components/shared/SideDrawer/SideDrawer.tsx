@@ -8,7 +8,7 @@ import { setModalOpen, resetGlobalSound, setModalClosed } from '../../../store/a
 import bell from "../../../public/bell.svg";
 import UploadModal from '../Modals/Upload/UploadModal';
 import useLogout from '../../../util/hooks/useLogout'
-import BrowseOptionsMobile from './BrowseOptions/BrowseOptionsMobile';
+import BrowseOptionsMobile from '../Modals/BrowseOptions/BrowseOptionsMobile';
 import { useRouter } from 'next/router';
 import Link from 'next/link';
 import Image from 'next/image';

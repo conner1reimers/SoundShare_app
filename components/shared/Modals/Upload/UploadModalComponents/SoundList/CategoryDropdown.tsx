@@ -109,7 +109,7 @@ const CategoryDropdown: React.FC<Props> = ({ setGenre, setChosen, duration }) =>
           option="fx"
           key="fx"
         >
-          <span>Effect <Image src={soundwaves} alt=""/></span>
+          <span>Short Sound <Image src={soundwaves} alt=""/></span>
         </DropdownItem>
 
         <DropdownItem

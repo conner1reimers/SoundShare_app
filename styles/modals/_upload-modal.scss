@@ -2103,3 +2103,18 @@ li.upload-list-list-el {
     }
   }
 }
+
+.upload-cat-resetbtn {
+  @include heightWidth100;
+  position: absolute;
+  @include flexcenter;
+  justify-content: flex-start;
+  align-items: flex-start;
+  left: 4rem;
+  div {
+    height: 3rem;
+    transform: scale(1.1);
+
+
+  }
+}

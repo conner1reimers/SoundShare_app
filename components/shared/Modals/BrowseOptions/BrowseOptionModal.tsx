@@ -136,7 +136,7 @@ const BrowseOptionModal: React.FC<Props> = ({setOpen, searchTxt, mobile, search,
                                     </div>
 
                                     <span className="browse-modal-category-name">
-                                        Sound Effects / Game Sounds
+                                            Short Sounds / Sound Effects
                                     </span>
 
                                 

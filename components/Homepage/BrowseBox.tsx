@@ -2,7 +2,7 @@ import { Box, Typography } from '@material-ui/core';
 import React from 'react'
 import { Fragment } from 'react';
 import { useState } from 'react';
-import BrowseOptionModal from '../shared/SideDrawer/BrowseOptions/BrowseOptionModal'
+import BrowseOptionModal from '../shared/Modals/BrowseOptions/BrowseOptionModal'
 import listening3 from '../../public/listening-new2.svg';
 import Image from 'next/image';
 import { useDispatch } from 'react-redux';

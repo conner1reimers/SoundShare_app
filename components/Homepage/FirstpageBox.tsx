@@ -17,7 +17,7 @@ import { RootState } from '../../store/reducers';
 import Input from '../common_reusable/Input';
 import Image from 'next/image';
 import FirstLottie from '../animatedLoaders/FirstLottie';
-import BrowseOptionModal from '../shared/SideDrawer/BrowseOptions/BrowseOptionModal';
+import BrowseOptionModal from '../shared/Modals/BrowseOptions/BrowseOptionModal';
 import { useRouter } from 'next/router';
 
 const optionsVariants = {

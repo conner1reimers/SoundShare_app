@@ -5,9 +5,14 @@ import microphone from '../../../../../public/microphone.svg';
 import headphones from '../../../../../public/headphones.svg';
 import { useGlobalMsg } from '../../../../../util/hooks/useGlobalMsg';
 import Image from 'next/image';
+import ResetButton from './Reusable/ResetButton';
 
 
-const CategoryPage: React.FC = () => {
+interface Props {
+    reset: any
+}
+
+const CategoryPage: React.FC<Props> = ({reset}) => {
     const dispatch = useDispatch();
     const sound = useSelector((state: any) => state.upload.buffer);
     const setGlobalMsg = useGlobalMsg();
@@ -50,8 +55,13 @@ const CategoryPage: React.FC = () => {
     }, []);
 
 
+
     return (
         <div className="upload-category-page">
+            <div className="upload-cat-resetbtn">
+            <ResetButton click={reset}/>
+            </div>
+            
             <div className="browse-modal--inner-window">
 
                 <div className="browse-modal--inner-window--box" onClick={chooseCategory} data-option="fx">
@@ -60,7 +70,7 @@ const CategoryPage: React.FC = () => {
                     </div>
 
                     <span className="browse-modal-category-name">
-                        Sound Effects / Game Sounds
+                        Short Sounds / Sound Effects 
                     </span>
 
                     

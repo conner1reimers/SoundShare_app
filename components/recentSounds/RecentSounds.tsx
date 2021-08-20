@@ -47,7 +47,7 @@ const RecentSounds: React.FC = () => {
               <span>ALL SOUNDS</span>
             </div>
             <div className={`recent-sound-options--contain ${category === 'fx' ? 'recent-sound-options--active' : ''}`} data-option="fx" onClick={setRecentSounds}>
-              <span>GAME SOUNDS</span>
+              <span>SHORT SOUNDS</span>
             </div>
             <div className={`recent-sound-options--contain ${category === 'loops' ? 'recent-sound-options--active' : ''}`} data-option="loops" onClick={setRecentSounds}>
               <span>MUSIC LOOPS</span>

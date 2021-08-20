@@ -411,7 +411,7 @@ const UploadModalBig: React.FC<Props> = ({setBackdropVisibility, soundPreview}) 
           {isLoading && <LoadingAnimation loading={isLoading}/>}
 
                     {pageState.categoryPage && !pageState.firstPage && !pageState.FxPage && !pageState.soundList && (
-                      <CategoryPage/>
+                      <CategoryPage reset={resetUploadModal}/>
                     )}
                     
         

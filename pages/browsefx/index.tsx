@@ -438,7 +438,7 @@ const BrowseLoops: React.FC<indexProps> = ({ }) => {
 
   useEffect(() => {
     window.scrollTo(0, 0);
-    document.title = "Browse Game Sounds - Soundshare";
+    document.title = "Browse Short Sounds - Soundshare";
 
     dispatch({type: 'all-genre'});
     
