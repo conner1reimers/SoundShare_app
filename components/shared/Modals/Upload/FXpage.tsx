@@ -10,12 +10,12 @@ import { Slider, withStyles } from "@material-ui/core";
 import { AnimatePresence, motion } from "framer-motion";
 import FXBottom from "./FXBottom";
 import FXSide from "./FXSide";
-import right from "../../../../public/forward.svg";
+import right from "/public/forward.svg";
 import { useSelector, useDispatch } from "react-redux";
 import { uuid } from "uuidv4";
 import FXCircleBtn from "./FXCircleBtn";
-import fx2 from "../../../../public/fx2.svg";
-import fx3 from "../../../../public/fx3.svg";
+import fx2 from "/public/fx2.svg";
+import fx3 from "/public/fx3.svg";
 import ReactDOM from 'react-dom';
 import Media from "react-media";
 import { pauseFx } from "../../../../store/actions";
@@ -1789,6 +1789,7 @@ const RightMsg = () => {
 	const [startHints, setStartHints] = useState<any>(false);
 	const msgShown = useSelector((state: any) => state.upload.fxState.tutorialShown);
 	const dispatch = useDispatch();
+	
 	useEffect(() => {
 		if (startHints) {
 			setTimeout(() => {
@@ -1798,6 +1799,7 @@ const RightMsg = () => {
 			}, 4000);
 		}
 	}, [startHints]);
+
 
 	useEffect(() => {
 		setTimeout(() => {

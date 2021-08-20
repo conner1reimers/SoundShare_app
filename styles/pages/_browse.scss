@@ -1318,3 +1318,120 @@ div.filter-menu--inputs {
     
   }
 }
+
+div.uploadmodal-big--fxpage--box--hearText.browse-msg-contain {
+  right: unset;
+  position: absolute;
+  @include flexcenter;
+  min-width: 220px;
+  left: 5rem;
+  span {
+    left: 1rem;
+    height: 2.3rem;
+    @include flexcenter;
+    top: 1px;
+
+    @media screen and (max-width: 1099px) {
+      font-size: 1.5rem;
+    }
+    @media screen and (max-width: 815px) {
+      max-width: 180px;
+      width: min-content;
+      min-width: 90px;
+      white-space: normal;
+      font-size: 1.25rem;
+      line-height: 2rem;
+    }
+    @media screen and (max-width: 560px) {
+      width: min-content;
+      left: .5rem;
+      line-height: 2rem;
+    }
+    @media screen and (max-width: 515px) {
+      min-width: 80px;
+      max-width: 115px;
+      height: 40px;
+    }
+    @media screen and (max-width: 490px) {
+      min-width: 70px;
+      max-width: 90px;
+    }
+    @media screen and (max-width: 435px) {
+      min-width: 40px;
+      max-width: 40px;
+      font-size: 1rem;
+      line-height: 1.4rem;
+
+    }
+    @media screen and (max-width: 350px) {
+      font-size: 1.5rem;
+      line-height: 2rem;
+      left: 1.2rem;
+    }
+
+
+  }
+  @media screen and (max-width: 1550px) {
+    left: 7rem;
+  }
+  @media screen and (max-width: 1099px) {
+    top: 6rem;
+    left: 2vw;
+  }
+  @media screen and (max-width: 815px) {
+    left: -3.5vw;
+  }
+
+  @media screen and (max-width: 750px) {
+    left: -4.5vw;
+
+  }
+  @media screen and (max-width: 580px) {
+    left: -7.5vw;
+  }
+  @media screen and (max-width: 515px) {
+    left: -9.5vw;
+    top: 4rem;
+  }
+  @media screen and (max-width: 490px) {
+    left: -12.5vw;
+    top: 5rem;
+  }
+  @media screen and (max-width: 435px) {
+    left: -15.5vw;
+    top: 5rem;
+  }
+  @media screen and (max-width: 405px) {
+    left: -17.5vw;
+  }
+  @media screen and (max-width: 350px) {
+    left: -20.5vw;
+    top: 7rem;
+  }
+
+  div.fx-backdrop {
+    pointer-events: none;
+  }
+
+}
+
+.browse-msg-arrow-contain {
+  @include heightWidthSame(2.3rem);
+  @include flexcenter;
+
+  @media screen and (max-width: 1099px) {
+    transform: rotate(90deg);
+    opacity: 1;
+    img.uploadmodal-big--fxpage--box--playpause--leftarrow {
+      opacity: 1;
+    }
+  }
+  @media screen and (max-width: 435px) {
+    img.uploadmodal-big--fxpage--box--playpause--leftarrow {
+      top: -1rem;
+    }
+  }
+
+
+
+}

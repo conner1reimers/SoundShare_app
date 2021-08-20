@@ -29,7 +29,8 @@ export interface BrowseState {
   refreshFinish: boolean,
   lastOptions: any,
   page: number,
-  modalOpen: boolean
+  modalOpen: boolean,
+  msg: any
 }
 
 const initialState: BrowseState = {
@@ -52,7 +53,11 @@ const initialState: BrowseState = {
     refreshFinish: false,
     lastOptions: null,
     page: 0,
-    modalOpen: false
+    modalOpen: false,
+    msg: {
+      active: false,
+      msg: null
+    }
 
 
 }
@@ -65,7 +70,8 @@ type BrowseActionTypes = {
   results?: any,
   time?: any,
   genre?: any,
-  tags?: any
+  tags?: any,
+  msg?: any,
 }
 
 
@@ -204,7 +210,32 @@ const browseReducer = (state = initialState, action: BrowseActionTypes) => {
         return {
           ...state,
           modalOpen: false
-      }
+        }
+    case "SET_BROWSE_MSG":
+        return {
+            ...state,
+            msg: {
+              active: true,
+              msg: action.msg,
+            }
+        }
+    case "RESET_BROWSE_MSG":
+        return {
+            ...state,
+            msg: {
+              active: false,
+              msg: '',
+            }
+            
+        }
+    case "REMOVE_BROWSE_MSG":
+        return {
+          ...state,
+          msg: {
+            ...state.msg,
+            active: false
+          }
+        }
         
       default: 
             return state

@@ -14,6 +14,7 @@ import { useGlobalMsg } from '../../../util/hooks/useGlobalMsg';
 import { BrowseState } from '../../../store/reducers/browseReducer';
 import Input from '../../common_reusable/Input';
 import Image from 'next/image';
+import { FilterMsg } from './FilterMsg';
 
 
 
@@ -234,7 +235,10 @@ const MoreFilters: React.FC<Props> = ({category}) => {
   }
   
 
-    
+    useEffect(() => {
+      dispatch({type: "SET_BROWSE_MSG", msg: "Filter sounds"})
+
+    }, [])
     
     return (
       <div onClick={openFilters} className="navtest--nav--more">
@@ -244,7 +248,7 @@ const MoreFilters: React.FC<Props> = ({category}) => {
           classname="user-page--loopList--item--moreBtn--mouse"
         >
           <div className="navtest--nav--more--img">
-            <Image src={more} alt="" />
+            <Image height={30} width={30} src={more} alt="" />
           </div>
         </MouseOverLabel>
         
@@ -412,8 +416,12 @@ const MoreFilters: React.FC<Props> = ({category}) => {
                   </Fragment>
               )}
             </AnimatePresence>
-        </Fragment>)}
+        
+            
+            </Fragment>)}
         </Media>
+
+        <FilterMsg/>
         {open && <div onClick={closeMain} className="close-filters"></div>}
       </div>
     );
