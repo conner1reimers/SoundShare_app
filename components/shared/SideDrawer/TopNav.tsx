@@ -189,6 +189,8 @@ const TopNav: React.FC = () => {
         {!user.isLoggedIn && (
           <Fragment>
             <div className="notlogged--topnav">
+
+              <BrowseOptions />
               
               <MouseOverLabel
                 classname="topnav-mouseover"
@@ -201,6 +203,10 @@ const TopNav: React.FC = () => {
                   </div>
                 </button>
               </MouseOverLabel>
+
+              
+              
+
               <MouseOverLabel
                 classname="topnav-mouseover about-mouseover"
                 labelClass="topnav-mouseover--label"
@@ -222,7 +228,7 @@ const TopNav: React.FC = () => {
                 </div>
               </Link> */}
 
-              <BrowseOptions/>
+              
            
             </div>
           </Fragment>
