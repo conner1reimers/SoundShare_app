@@ -227,8 +227,8 @@ const FirstpageBox: React.FC = () => {
                     </AnimatePresence>
               </Box>
                 <div className="main-text">
-                    <p>Share sounds, sound effects, loops, stock audio and more with other creators, all for free and free of copyright! Download new sounds for your music, movies, games and more. Add 
-                      effects to any sound quick and easy through soundshare!</p>
+                    <p>Share / Download sounds, sound effects, loops, stock audio and more, all for free! Download new sounds for your music, movies, games and more. Add 
+                      effects to any sound. All quick, easy and free through SoundShare!</p>
                 </div>
               <Media query="(max-width: 1099px)">
                 <Fragment>

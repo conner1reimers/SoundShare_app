@@ -50,7 +50,7 @@ const MyApp = ({ Component, pageProps}) => {
           <meta name="theme-color" content="#000000" />
           <meta
             name="description"
-            content="Share sounds, sound effects, loops, stock audio and more with other creators, all for free, check our terms of use for information about copyright. Download new sounds, loops, and effects for your music, movies, games and more. Add effects to any sound quick and easy through SoundShare!"
+            content="Share and Download sounds, sound effects, loops, stock audio and more with other creators, all for free, check our terms of use for information about copyright. Download new sounds, loops, and effects for your music, movies, games and more. Add effects to any sound quick and easy through SoundShare!"
           />
         </Head>
 
