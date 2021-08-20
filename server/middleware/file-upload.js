@@ -86,7 +86,6 @@ const deleteFromS3 = (req, res, next) => {
 
     s3.deleteObject(params, function(err, data) {
         if (err) {
-          console.log(err);
           next(err);
         } else {
           next(null);

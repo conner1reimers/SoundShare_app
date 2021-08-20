@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react'
 import MouseOverLabel from "../../../util/MouseOverLabel";
-import more from "../../../public/search.svg";
+import more from "/public/search.svg";
 import { useForm } from "../../../util/hooks/useForm";
 import { VALIDATOR_REQUIRE } from "../../../util/validators";
 import { Fragment } from 'react';
@@ -233,7 +233,7 @@ const MoreFilters: React.FC<Props> = ({category}) => {
       setOrderByOptions(false);
   }
   
-    
+
     
     
     return (

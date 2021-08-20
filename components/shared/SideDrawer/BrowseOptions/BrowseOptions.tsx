@@ -1,9 +1,11 @@
 import React, { useState } from 'react'
 import { Fragment } from 'react';
-import browse from "../../../../public/browse.svg";
+import browse from "/public/browse.svg";
 import MouseOverLabel from '../../../../util/MouseOverLabel';
 import BrowseOptionModal from './BrowseOptionModal';
 import Image from 'next/image';
+import more from "/public/search.svg";
+
 
 const BrowseOptions: React.FC = () => {
     const [modalOpen, setModalOpen] = useState<any>(false);
@@ -21,7 +23,7 @@ const BrowseOptions: React.FC = () => {
               >
                 <a onClick={openBrowseOptions} className="top-nav-big--links--item">
                     <div className="bell-icon--contain">
-                        <Image src={browse} alt="" />
+                        <Image src={more} alt="" />
                     </div>
                 </a>
             </MouseOverLabel>

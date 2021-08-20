@@ -26,6 +26,7 @@ import LoadingAnimation from "../../animatedLoaders/LoadingAnimation/LoadingAnim
 import Auth from "../../auth/Auth";
 import Link from 'next/link';
 
+
 const optionsVariants = {
   initial: {
     y: "-40%",
@@ -307,7 +308,6 @@ const Scroller: React.FC = React.memo(() => {
     };
   });
 
-  console.log(isOnHome)
 
   return (
     <Fragment>
