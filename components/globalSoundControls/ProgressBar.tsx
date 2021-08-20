@@ -352,12 +352,15 @@ const ProgressBar: React.FC<Props> = ({fx, singleSound, hidden, playing, open, s
       return formatDuration(e);
   };
   
-  useEffect(() => {
-    if (progress.resetSingle) {
-      setRunningInterval(false);
-    }
-  }, [progress.resetSingle]);
-  
+    // Resets singlesound progressbar
+    useEffect(() => {
+      if (progress.resetSingle) {
+        setRunningInterval(false);
+      }
+    }, [progress.resetSingle]);
+
+
+    // Smallpage seeksound function
     const goToTimeSmall = (e: any, newVal: any) => {
       e.preventDefault();
       const noSound = isObjectEmpty(sound);
@@ -389,6 +392,7 @@ const ProgressBar: React.FC<Props> = ({fx, singleSound, hidden, playing, open, s
 
     }
 
+  // MOVES THE PROGRESS BAR ---- Important -----
   useEffect(() => {
       if ((progress.curTime < progress.duration+2) || !progress.duration) {
         if (progress.reset) {
@@ -402,8 +406,7 @@ const ProgressBar: React.FC<Props> = ({fx, singleSound, hidden, playing, open, s
           setTimeout(() => {
             ref.current.play()
           }, 200);
-        } 
-        else if (gpuTier && !gpuTier.isMobile && process.browser) {
+        } else if (gpuTier && !gpuTier.isMobile && process.browser) {
             const progressBar: any = document.querySelector('.global-player--time--line--progressline');
             const dot: any = document.querySelector('.global-player--time--line--dot');
     
@@ -415,8 +418,22 @@ const ProgressBar: React.FC<Props> = ({fx, singleSound, hidden, playing, open, s
                   dot.style.transition = 'all .91s';
                 }, 200);
             }
-      
-            let dotPx = progress.percentInPx - 18;
+          
+            let dotPx: any;
+
+            if (progress.duration < 1) {
+              dotPx = progress.percentInPx - (13/progress.duration);
+            } else if (progress.duration < 2) {
+              dotPx = progress.percentInPx - (20/progress.duration);
+            } else if (progress.duration < 3) {
+              dotPx = progress.percentInPx - (45/progress.duration);
+            } else if (progress.duration <= 5) {
+              dotPx = progress.percentInPx - (65/progress.duration);
+            }
+            else {
+              dotPx = progress.percentInPx - 18;
+            }
+            
 
             
             progressBar.style.width = progress.percentInPx+'px';
@@ -441,6 +458,7 @@ const ProgressBar: React.FC<Props> = ({fx, singleSound, hidden, playing, open, s
       }, [globalSoundPlaying.playing]);
 
 
+  // SETS THE PROGRESS BAR TO MOVE ---- Important -----
       useEffect(() => {
         if (!runningInterval) {
           clearInterval(timeInterval)
@@ -459,10 +477,10 @@ const ProgressBar: React.FC<Props> = ({fx, singleSound, hidden, playing, open, s
           progressBar.style.transition = 'all 0.1s';
 
 
-          setTimeout(() => {
-            progressBar.style.transition = 'all .91s';
-            dot.style.transition = 'all .91s';
-          }, 500);
+          // setTimeout(() => {
+          //   progressBar.style.transition = 'all .91s';
+          //   dot.style.transition = 'all .91s';
+          // }, 500);
 
         } else if (runningInterval && !globalSoundPlaying.playing && !small && !small2 && process.browser) {
           const progressBar: any = document.querySelector('.global-player--time--line--progressline');
@@ -473,10 +491,10 @@ const ProgressBar: React.FC<Props> = ({fx, singleSound, hidden, playing, open, s
           dot.style.transition = 'all 0.1s';
           progressBar.style.transition = 'all 0.1s';
 
-          setTimeout(() => {
-            progressBar.style.transition = 'all .91s';
-            dot.style.transition = 'all .91s'
-          }, 500);
+          // setTimeout(() => {
+          //   progressBar.style.transition = 'all .91s';
+          //   dot.style.transition = 'all .91s'
+          // }, 500);
           
         } else if (runningInterval && globalSoundPlaying.playing && ref.current && (small || small2) && process.browser) {
           ref.current.play();

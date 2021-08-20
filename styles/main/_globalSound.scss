@@ -125,22 +125,36 @@
       transition: all 0.2s;
       right: 1.5vw;
       div {
-        @include heightWidthSame(2rem);
+        @include heightWidthSame(1.5rem);
         @include flexcenter;
         opacity: 0.8;
         cursor: pointer;
+        box-shadow: $shadow-newer-2;
+        background-color: $color-new-grey;
+        border-radius: 3rem;
+        padding: 0.5rem;
+
         img {
           @include heightWidthSame(1.1rem);
-          box-shadow: $shadow-newer-2;
+          
+
           border-radius: 3rem;
           background-size: 300%;
-          background-color: $color-new-grey;
-          padding: 0.5rem;
           pointer-events: none;
           transition: all 0.2s;
           filter: brightness(1.23);
           opacity: .7;
         }
+      }
+      div.global-player--volume--slider {
+        padding-top: 0;
+        padding-bottom: 0;
+        padding-left: .75rem;
+        padding-right: .75rem;
+        opacity: .8;
+        height: 80%;
+        background-color: #262c2d56;
+
       }
 
     }

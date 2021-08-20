@@ -352,7 +352,10 @@ const GlobalSound: React.FC = React.memo(() => {
                                             label='' */}
 
                             <div onClick={muteVolume}>
-                              <Image src={volume === 0 ? mute : vol} alt="" />
+                              <div>
+                              <Image height={20} width={20} src={volume === 0 ? mute : vol} alt="" />
+                              </div>
+                              
                             </div>
 
                             {(isVis || (gpuTier && gpuTier.isMobile)) && (
