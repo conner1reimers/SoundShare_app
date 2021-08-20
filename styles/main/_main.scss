@@ -14,6 +14,7 @@
   background: none;
   max-height: 145px;
   transition: all .2s;
+  min-height: 88px;
 
   &::before {
     @include beforeTrick();
