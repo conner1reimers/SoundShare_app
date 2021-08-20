@@ -52,46 +52,61 @@ const BrowseOptionModal: React.FC<Props> = ({setOpen, searchTxt, mobile, search,
 
     const goToLoops = (e: any) => {
         e.preventDefault();
-        dispatch({ type: "MAIN_LOADER_START" });
-        
-        cancelHandler();
+        if (history.pathname !== '/browseloops') {
+            dispatch({ type: "MAIN_LOADER_START" });
+            if (search) {
+                searchSounds('loops');
+            }
+            history.push('/browseloops');
 
-        if (search) {
-            searchSounds('loops');
         }
+
+        
         if (mobile) {
             dispatch({type: "CLOSE_SIDE_DRAWER"});
         }
-        history.push('/browseloops');
+        cancelHandler();
+
     }
 
     const goToEffects = (e: any) => {
         e.preventDefault();
-        dispatch({type: "MAIN_LOADER_START"});
+
+        if (history.pathname !== '/browsefx') {
+            dispatch({ type: "MAIN_LOADER_START" });
+            if (search) {
+                searchSounds('fx');
+            }
+            history.push('/browsefx');
+            
+        }
+
 
         cancelHandler();
-        if (search) {
-            searchSounds('fx');
-        }
+        
         if (mobile) {
             dispatch({type: "CLOSE_SIDE_DRAWER"});
         }
-        history.push('/browsefx');
 
     }
 
     const goToVocals = (e: any) => {
         e.preventDefault();
-        dispatch({type: "MAIN_LOADER_START"});
+        
+        if (history.pathname !== '/browsevocal') {
+            dispatch({ type: "MAIN_LOADER_START" });
+            if (search) {
+                searchSounds('vocal');
+            }
+            history.push('/browsevocal');
+
+        }
 
         cancelHandler();
-        if (search) {
-            searchSounds('vocal');
-        }
+        
         if (mobile) {
             dispatch({type: "CLOSE_SIDE_DRAWER"});
         }
-        history.push('/browsevocal');
 
     }
 
