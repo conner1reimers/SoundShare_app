@@ -238,7 +238,7 @@ const MoreFilters: React.FC<Props> = ({category}) => {
     useEffect(() => {
       dispatch({type: "SET_BROWSE_MSG", msg: "Filter sounds"})
 
-    }, [])
+    }, [dispatch])
     
     return (
       <div onClick={openFilters} className="navtest--nav--more">

@@ -42,20 +42,9 @@ interface FilterMsgProps {
 }
 
 export const FilterMsg: React.FC<FilterMsgProps> = ({ }) => {
-  
-  const [startHints, setStartHints] = useState<any>(false);
-	const browseMsgState = useSelector((state: any) => state.browse.msg);
+  const browseMsgState = useSelector((state: any) => state.browse.msg);
 	const dispatch = useDispatch();
 	
-	// useEffect(() => {
-	// 	if (startHints) {
-	// 		setTimeout(() => {
-	// 			setStartHints(false);
-	// 			dispatch({type: 'FX_TUTORIAL_DONE'})
-
-	// 		}, 4000);
-	// 	}
-	// }, [startHints]);
 
 
 	useEffect(() => {
