@@ -19,7 +19,7 @@ const handle = app.getRequestHandler()
 app.prepare().then(() => {
   const server = express();
 
-  server.use.use(cors({ origin: true, credentials: true }));
+  server.use(cors({ origin: true, credentials: true }));
   server.use(cookieParser());
   server.use(bodyParser.json());
 
