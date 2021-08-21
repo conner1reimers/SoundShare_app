@@ -413,10 +413,7 @@ const ProgressBar: React.FC<Props> = ({fx, singleSound, hidden, playing, open, s
             if (!runningInterval) {
               dot.style.transition = 'all 0.1s';
               progressBar.style.transition = 'all 0.1s';
-                setTimeout(() => {
-                  progressBar.style.transition = 'all .91s';
-                  dot.style.transition = 'all .91s';
-                }, 200);
+                
             }
           
             let dotPx: any;
@@ -491,10 +488,6 @@ const ProgressBar: React.FC<Props> = ({fx, singleSound, hidden, playing, open, s
           dot.style.transition = 'all 0.1s';
           progressBar.style.transition = 'all 0.1s';
 
-          // setTimeout(() => {
-          //   progressBar.style.transition = 'all .91s';
-          //   dot.style.transition = 'all .91s'
-          // }, 500);
           
         } else if (runningInterval && globalSoundPlaying.playing && ref.current && (small || small2) && process.browser) {
           ref.current.play();
