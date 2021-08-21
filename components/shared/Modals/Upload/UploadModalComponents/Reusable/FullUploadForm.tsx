@@ -123,8 +123,8 @@ const FullUploadForm: React.FC<Props> = ({goToFx, resetUpload, sound, isList, cu
           const genre = genreChosen ? genreChosen : 'other';
           const image = formState.inputs.image.value ? formState.inputs.image.value : null;
           const bpm = formState.inputs.bpm.value ? formState.inputs.bpm.value : 0;
-        if ((bpm !== 0) || soundToUpload.category !== 'loops') {
-          try {
+        
+         try {
           
           
 
@@ -191,10 +191,8 @@ const FullUploadForm: React.FC<Props> = ({goToFx, resetUpload, sound, isList, cu
             reduxDispatch({type: CLOSE_MODAL});
             
   
-          } catch (err) {}
-        } else {
-          setGlobalMsg('Please set a BPM', 'error')
-        }
+         } catch (err) {}
+        
       } else {
         setGlobalMsg('Please title your sound', 'error')
         

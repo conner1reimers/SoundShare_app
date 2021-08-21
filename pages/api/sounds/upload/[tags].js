@@ -88,16 +88,16 @@ const handler = nc()
   }
   
 
-  if (bpm == 0 && category != 'fx' && category != 'vocal') {
-    const error = HttpError(
-      "BPM Cannot be 0",
-      500,
-      res
-    );    
-    deleteFiles();
-    return next(error)
-    // return next({message: 'BPM Cannot be 0', code: 500});
-  }
+  // if (bpm == 0 && category != 'fx' && category != 'vocal') {
+  //   const error = HttpError(
+  //     "BPM Cannot be 0",
+  //     500,
+  //     res
+  //   );    
+  //   deleteFiles();
+  //   return next(error)
+  //   // return next({message: 'BPM Cannot be 0', code: 500});
+  // }
 
   const date = new Date();
 

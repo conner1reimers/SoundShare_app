@@ -31,7 +31,7 @@ const SubmitList: React.FC<Props> = () => {
   
         const info = soundListInfo.find((el: any) => el.index === indx);
         const genre = info.genre ? info.genre : 'other';
-        const bpm = info.form ? info.form.bpm.value : info.bpm;
+        const bpm = info.form ? info.form.bpm.value : info.bpm ? info.bpm : 0;
         let tags: any;
   
         if (info.tags) {
@@ -49,10 +49,11 @@ const SubmitList: React.FC<Props> = () => {
         if (!info.name) {
           setGlobalMsg('Make all sounds have a name', 'error');
           isValid = false;
-        } else if (!bpm && (info.soundType === 'loop')) {
-          setGlobalMsg(`BPM not set for sound ${info.index + 1}`, 'error');
-          isValid = false;
         }
+        // else if (!bpm && (info.soundType === 'loop')) {
+        //   setGlobalMsg(`BPM not set for sound ${info.index + 1}`, 'error');
+        //   isValid = false;
+        // }
         else {
           return {
             sound: el,
