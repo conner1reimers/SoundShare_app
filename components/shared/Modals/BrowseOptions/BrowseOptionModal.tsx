@@ -52,19 +52,14 @@ const BrowseOptionModal: React.FC<Props> = ({setOpen, searchTxt, mobile, search,
 
     const goToLoops = (e: any) => {
         e.preventDefault();
-        if (history.pathname !== '/browseloops') {
-            dispatch({ type: "MAIN_LOADER_START" });
-            if (search) {
-                searchSounds('loops');
-            }
-            history.push('/browseloops');
+        if (history.pathname !== '/browseloops' || search) {
+            if(!search) dispatch({ type: "MAIN_LOADER_START" });
+            if (search) searchSounds('loops');
+            if (history.pathname !== '/browseloops') history.push('/browseloops');
 
         }
 
-        
-        if (mobile) {
-            dispatch({type: "CLOSE_SIDE_DRAWER"});
-        }
+        if (mobile) dispatch({type: "CLOSE_SIDE_DRAWER"});
         cancelHandler();
 
     }
@@ -72,42 +67,29 @@ const BrowseOptionModal: React.FC<Props> = ({setOpen, searchTxt, mobile, search,
     const goToEffects = (e: any) => {
         e.preventDefault();
 
-        if (history.pathname !== '/browsefx') {
-            dispatch({ type: "MAIN_LOADER_START" });
-            if (search) {
-                searchSounds('fx');
-            }
-            history.push('/browsefx');
+        if (history.pathname !== '/browsefx' || search) {
+            if(!search) dispatch({ type: "MAIN_LOADER_START" });
+            if (search) searchSounds('fx');
+            if (history.pathname !== '/browsefx') history.push('/browsefx');
             
         }
-
-
         cancelHandler();
+        if (mobile) dispatch({type: "CLOSE_SIDE_DRAWER"});
         
-        if (mobile) {
-            dispatch({type: "CLOSE_SIDE_DRAWER"});
-        }
 
     }
 
     const goToVocals = (e: any) => {
         e.preventDefault();
         
-        if (history.pathname !== '/browsevocal') {
-            dispatch({ type: "MAIN_LOADER_START" });
-            if (search) {
-                searchSounds('vocal');
-            }
-            history.push('/browsevocal');
+        if (history.pathname !== '/browsevocal' || search) {
+            if(!search) dispatch({ type: "MAIN_LOADER_START" });
+            if (search) searchSounds('vocal');
+            if (history.pathname !== '/browsevocal') history.push('/browsevocal');
 
         }
-
         cancelHandler();
-        
-        if (mobile) {
-            dispatch({type: "CLOSE_SIDE_DRAWER"});
-        }
-
+        if (mobile) dispatch({type: "CLOSE_SIDE_DRAWER"});
     }
 
     const setGlobalMsg = useGlobalMsg();
