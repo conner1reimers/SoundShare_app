@@ -49,7 +49,7 @@ module.exports = {
     ]
   },
   env: {
-    NEXT_PUBLIC_REACT_APP_MY_ENV: 'https://soundshare.cc/api',
+    NEXT_PUBLIC_REACT_APP_MY_ENV: 'https://www.soundshare.cc/api',
     NEXT_PUBLIC_REACT_APP_MASTER_EMAIL: 'connerreimers@gmail.com',
     NEXT_PUBLIC_REACT_APP_MASTER_PASS: '\\$2b\$12\$ZrFH7Eipn/7IRyLJySv9feIWSsm8oBvRJl.a7iBGDtSMC3L1N6oCW',
     NEXT_IMAGE_ALLOWED_DOMAINS:"cdn.sanity.io",
