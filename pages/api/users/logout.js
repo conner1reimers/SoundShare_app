@@ -1,26 +1,28 @@
 import nc from "next-connect";
 import db from '../../../server/util/queries'
+import { ironSession } from 'next-iron-session';
 
-const handler = nc()
+
+
+const session = ironSession({
+  cookieName: "sessioncook",
+  password: process.env.NEXT_PUBLIC_ENV_SESHSECRET,
+  
+  cookieOptions: {
+    secure: process.env.NODE_ENV === "production",
+
+  },
+});
+
+
+const handler = nc().use(session)
   .post(async (req, res, next) => {
-    const sessCookie = req.cookies.sessioncook;
+
+    const sessCookie = req.session.get("sessioncook");
 
     if (sessCookie) {      
-        const getCookieQueryTxt =
-        "DELETE \
-        FROM session \
-        WHERE sid = $1";
-        const getCookieVal = [sessCookie];
-        
-        try {
-          await db.query(getCookieQueryTxt, getCookieVal);
-        } catch (err) {
-          const error = HttpError('Something went wrong..', 500, res);
-          return next(error);
-        }
-        
-      res.clearCookie("sessioncook");
-      res.status(200).json({msg: "cookie cleared"});
+        req.session.destroy();
     }
   })
+
 export default handler;

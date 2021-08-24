@@ -2,8 +2,22 @@ import nc from "next-connect";
 import db from '../../../server/util/queries'
 import jwt from 'jsonwebtoken';
 import HttpError from "../../../server/models/http-error";
+import { ironSession } from 'next-iron-session';
 
-const handler = nc()
+
+
+const session = ironSession({
+  cookieName: "sessioncook",
+  password: process.env.NEXT_PUBLIC_ENV_SESHSECRET,
+  
+  cookieOptions: {
+    secure: process.env.NODE_ENV === "production",
+
+  },
+});
+
+
+const handler = nc().use(session)
   .post(async (req, res, next) => {
     let email = req.body.email;
 
@@ -36,8 +50,11 @@ const handler = nc()
         process.env.NEXT_PUBLIC_JWTSECRET,
         { expiresIn: "2 days" }
       );
-      req.session.jwt = token;
-      res.cookie('sessioncook', req.session.id, { expires: new Date(Date.now() + 200000000), httpOnly: true });
+      req.session.set("sessioncook", {
+        name: email,
+        token: token
+      })
+      await req.session.save();
       
       res.status(200).json({
         res: foundUser.rows[0],

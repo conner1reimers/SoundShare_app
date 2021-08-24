@@ -4,9 +4,23 @@ import jwt from 'jsonwebtoken';
 import {body, validationResult} from 'express-validator';
 import bcrypt from 'bcrypt';
 import HttpError from "../../../server/models/http-error";
+import { ironSession } from 'next-iron-session';
 
 
-const handler = nc()
+
+const session = ironSession({
+  cookieName: "sessioncook",
+  password: process.env.NEXT_PUBLIC_ENV_SESHSECRET,
+  
+  cookieOptions: {
+    secure: process.env.NODE_ENV === "production",
+
+  },
+});
+
+
+
+const handler = nc().use(session)
   .use([
     body("email").normalizeEmail().isEmail(),
     body("username").isLength({ min: 5, max: 25 }),
@@ -58,21 +72,10 @@ const handler = nc()
   let token;
 
 
-  const sessCookie = req.cookies.sessioncook;
+  const sessCookie = req.session.get("sessioncook");
 
   if (sessCookie) {      
-      const getCookieQueryTxt =
-      "DELETE \
-      FROM session \
-      WHERE sid = $1";
-      const getCookieVal = [sessCookie];
-
-      try {
-        await client.query(getCookieQueryTxt, getCookieVal);
-      } catch {
-        const error = HttpError('Something went wrong..', 500, res);
-        return next(error);
-      }
+     req.session.destroy()
 
   }
     try {
@@ -91,10 +94,14 @@ const handler = nc()
         );
   
     
-      req.session.jwt = token;
-      
+        req.session.set("sessioncook", {
+          name: email,
+          token: token 
+
+        })
+      await req.session.save();
       await client.query("COMMIT");
-      res.cookie('sessioncook', req.session.id, { expires: new Date(Date.now() + 200000000), httpOnly: true });
+      // res.cookie('sessioncook', req.session.id, { expires: new Date(Date.now() + 200000000), httpOnly: true });
       res.status(200).json({ user, token });
     } catch (err) {
       let error;

@@ -37,7 +37,7 @@ const handler = nc().use(session)
   };
 
   let user;
-  const sessCookie = req.session.get('sesscookie');
+  const sessCookie = req.session.get('sessioncook');
 
   if (sessCookie) {
       req.session.destroy();
@@ -80,6 +80,8 @@ const handler = nc().use(session)
                   token: token 
 
                 })
+                await req.session.save();
+
 
 
                 res.status(200).json({

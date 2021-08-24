@@ -22,7 +22,7 @@ const handler = nc().use(session)
   
 
 
-  const sessCookie = req.cookies.sessioncook;
+  const sessCookie = req.session.get("sessioncook")
   let cookieResult;
   
 
@@ -48,12 +48,8 @@ const handler = nc().use(session)
     //   client.release();
     // }
 
-    cookieResult = req.session.get("sessioncook");
 
-    
-
-    if (cookieResult) {
-      const token = cookieResult.token;
+      const token = sessCookie.token;
 
       jwt.verify(token, process.env.NEXT_PUBLIC_JWTSECRET, async (err, decoded) => {
         if (err) {
@@ -96,11 +92,7 @@ const handler = nc().use(session)
         }
       })
     
-    }
-    
-
-
-  } else {
+    } else {
     res.json({msg: 'No cookie'})
   }
   })

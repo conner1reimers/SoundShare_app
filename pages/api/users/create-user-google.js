@@ -5,9 +5,21 @@ import HttpError from "../../../server/models/http-error";
 import { body, validationResult} from 'express-validator';
 import { v4 as uuid } from "uuid";
 import bcrypt from 'bcrypt'
+import { ironSession } from 'next-iron-session';
 
 
-const handler = nc()
+
+const session = ironSession({
+  cookieName: "sessioncook",
+  password: process.env.NEXT_PUBLIC_ENV_SESHSECRET,
+  
+  cookieOptions: {
+    secure: process.env.NODE_ENV === "production",
+
+  },
+});
+
+const handler = nc().use(session)
   .use([
     body("username").isLength({ min: 5, max: 25 }),
   ])
@@ -46,21 +58,10 @@ const handler = nc()
     const values = [email, username, new Date(), password];
 
 
-    const sessCookie = req.cookies.sessioncook;
+    const sessCookie = req.session.get("sessioncook");
 
     if (sessCookie) {      
-        const getCookieQueryTxt =
-        "DELETE \
-        FROM session \
-        WHERE sid = $1";
-        const getCookieVal = [sessCookie];
-
-        try {
-          await client.query(getCookieQueryTxt, getCookieVal);
-        } catch {
-          const error = HttpError('Something went wrong..', 500, res);
-          return next(error);
-        }
+        req.session.destroy();
 
     }
 
@@ -78,7 +79,7 @@ const handler = nc()
         );
   
     
-      req.session.jwt = token;
+      req.session.set("sessioncook")
       
       await client.query("COMMIT");
       res.cookie('sessioncook', req.session.id, { expires: new Date(Date.now() + 200000000), httpOnly: true });
