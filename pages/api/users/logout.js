@@ -1,5 +1,4 @@
 import nc from "next-connect";
-import db from '../../../server/util/queries'
 import { ironSession } from 'next-iron-session';
 
 
@@ -23,7 +22,8 @@ const handler = nc().use(session)
     if (sessCookie) {      
         req.session.unset("sessioncook");
     }
-    res.status(200);
+
+    res.status(200).json({msg: "logged out"});
   })
 
 export default handler;
