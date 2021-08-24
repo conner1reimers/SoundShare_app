@@ -1,10 +1,11 @@
+import { expressSession } from 'next-session';
 const express = require('express')
 const next = require('next')
 const cors = require("cors");
 const bodyParser = require("body-parser");
 const cookieParser = require("cookie-parser");
-const session = require("express-session");
-pgSession = require("connect-pg-simple")(session);
+// const session = require("express-session");
+pgSession = require("connect-pg-simple")(expressSession);
 // const enforce = require('express-sslify');
 const db = require("./server/util/queries.js");
 const fs = require('fs-extra')
@@ -42,7 +43,7 @@ app.prepare().then(() => {
 		server.set("trust proxy", 1);
 	}
 
-  server.use(session(sess));
+  server.use(expressSession(sess));
   server.use(bodyParser.urlencoded({ extended: true }));
 
   server.use((req, res, next) => {
