@@ -35,6 +35,12 @@ app.prepare().then(() => {
 		secure: false,
 	},
   }
+	if (server.get("env") === "production") {
+		server.set("trust proxy", 1); // trust first proxy
+		sess.cookie.secure = true; // serve secure cookies
+	} else {
+		server.set("trust proxy", 1);
+	}
 
   server.use(session(sess));
   server.use(bodyParser.urlencoded({ extended: true }));
