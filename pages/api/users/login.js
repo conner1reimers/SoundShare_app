@@ -85,6 +85,7 @@ const handler = nc()
 
                 
               } catch (error) {
+                console.log(error)
                 const err = HttpError("Token creation failed...", 500, res);
                 return next(err);
               }
