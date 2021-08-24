@@ -3,8 +3,21 @@ import db from '../../../server/util/queries'
 import jwt from 'jsonwebtoken';
 import HttpError from "../../../server/models/http-error";
 import bcrypt from 'bcrypt';
+import { ironSession } from 'next-iron-session';
 
-const handler = nc()
+
+
+const session = ironSession({
+  cookieName: "sessioncook",
+  password: process.env.NEXT_PUBLIC_ENV_SESHSECRET,
+  
+  cookieOptions: {
+    secure: process.env.NODE_ENV === "production",
+
+  },
+});
+
+const handler = nc().use(session)
   .post(async (req, res, next) => {
     const email = req.body.email.toLowerCase();
   const password = req.body.password;
@@ -24,23 +37,10 @@ const handler = nc()
   };
 
   let user;
-  const sessCookie = req.cookies.sessioncook;
+  const sessCookie = req.session.get('sesscookie');
 
   if (sessCookie) {
-      const getCookieQueryTxt =
-      "DELETE \
-      FROM session \
-      WHERE sid = $1";
-      const getCookieVal = [sessCookie];
-
-      try {
-        await client.query(getCookieQueryTxt, getCookieVal);
-      } catch {
-        const error = HttpError('Something went wrong..', 500, res);
-        return next(error);
-      }
-
-
+      req.session.destroy();
   }
 
 
@@ -66,15 +66,20 @@ const handler = nc()
             if (isValidPassword) {
               let token;
               try {
-                console.log(process.env.NEXT_PUBLIC_JWTSECRET)
+                // console.log(process.env.NEXT_PUBLIC_JWTSECRET)
                 token = await jwt.sign(
                   { userId: user.rows[0].id, email: email, master: false  },
                   process.env.NEXT_PUBLIC_JWTSECRET,
-                  { expiresIn: "2 days" }
+                  { expiresIn: "7 days" }
                 );
-                req.session.jwt = token;
-                res.cookie('sessioncook', req.session.id, { expires: new Date(Date.now() + 200000000), httpOnly: true });
+                // req.session.jwt = token;
+                // res.cookie('sessioncook', req.session.id, { expires: new Date(Date.now() + 200000000), httpOnly: true });
                 
+                req.session.set("sesscookie", {
+                  name: email,
+                  token: token 
+
+                })
 
 
                 res.status(200).json({
@@ -106,4 +111,5 @@ const handler = nc()
         client.release();
   }
   })
+
 export default handler;

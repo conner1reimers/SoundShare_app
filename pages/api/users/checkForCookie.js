@@ -2,8 +2,21 @@ import nc from "next-connect";
 import db from '../../../server/util/queries'
 import jwt from 'jsonwebtoken';
 import HttpError from "../../../server/models/http-error";
+import { ironSession } from 'next-iron-session';
 
-const handler = nc()
+
+
+const session = ironSession({
+  cookieName: "sessioncook",
+  password: process.env.NEXT_PUBLIC_ENV_SESHSECRET,
+  
+  cookieOptions: {
+    secure: process.env.NODE_ENV === "production",
+
+  },
+});
+
+const handler = nc().use(session)
   .get(async (req, res, next) => {
     let client;
   
@@ -23,22 +36,24 @@ const handler = nc()
     }
     
 
-    const getCookieQueryTxt =
-    "SELECT sess \
-    FROM session \
-    WHERE sid = $1";
-    const getCookieVal = [sessCookie];
+    // const getCookieQueryTxt =
+    // "SELECT sess \
+    // FROM session \
+    // WHERE sid = $1";
+    // const getCookieVal = [sessCookie];
 
-    try {
-      cookieResult = await client.query(getCookieQueryTxt, getCookieVal);
-    } catch (err) {
-      client.release();
-    }
+    // try {
+    //   cookieResult = await client.query(getCookieQueryTxt, getCookieVal);
+    // } catch (err) {
+    //   client.release();
+    // }
+
+    cookieResult = req.session.get("sessioncook");
 
     
 
-    if (cookieResult.rows[0]) {
-      const token = cookieResult.rows[0].sess.jwt;
+    if (cookieResult) {
+      const token = cookieResult.token;
 
       jwt.verify(token, process.env.NEXT_PUBLIC_JWTSECRET, async (err, decoded) => {
         if (err) {
