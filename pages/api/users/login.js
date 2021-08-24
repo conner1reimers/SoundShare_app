@@ -37,10 +37,10 @@ const handler = nc().use(session)
   };
 
   let user;
-  const sessCookie = req.session.get('sessioncook').token;
+  const sessCookie = req.session.get('sessioncook');
 
   if (sessCookie) {
-      req.session.destroy();
+      req.session.unset("sessioncook");
   }
 
 
@@ -75,7 +75,7 @@ const handler = nc().use(session)
                 // req.session.jwt = token;
                 // res.cookie('sessioncook', req.session.id, { expires: new Date(Date.now() + 200000000), httpOnly: true });
                 
-                req.session.set("sesscookie", {
+                req.session.set("sessioncook", {
                   name: email,
                   token: token 
 

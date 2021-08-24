@@ -21,8 +21,9 @@ const handler = nc().use(session)
     const sessCookie = req.session.get("sessioncook");
 
     if (sessCookie) {      
-        req.session.destroy();
+        req.session.unset("sessioncook");
     }
+    res.status(200);
   })
 
 export default handler;
