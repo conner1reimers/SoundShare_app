@@ -66,6 +66,7 @@ const handler = nc()
             if (isValidPassword) {
               let token;
               try {
+                console.log(process.env.NEXT_PUBLIC_JWTSECRET)
                 token = await jwt.sign(
                   { userId: user.rows[0].id, email: email, master: false  },
                   process.env.NEXT_PUBLIC_JWTSECRET,
