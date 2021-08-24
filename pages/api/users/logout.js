@@ -20,7 +20,7 @@ const handler = nc().use(session)
     const sessCookie = req.session.get("sessioncook");
 
     if (sessCookie) {      
-        req.session.unset("sessioncook");
+        req.session.destroy();
     }
 
     res.status(200).json({msg: "logged out"});
