@@ -37,7 +37,7 @@ const handler = nc().use(session)
   };
 
   let user;
-  const sessCookie = req.session.get('sessioncook');
+  const sessCookie = req.session.get('sessioncook').token;
 
   if (sessCookie) {
       req.session.destroy();

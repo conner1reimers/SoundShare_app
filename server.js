@@ -1,11 +1,10 @@
-import { expressSession } from 'next-session';
 const express = require('express')
 const next = require('next')
 const cors = require("cors");
 const bodyParser = require("body-parser");
 const cookieParser = require("cookie-parser");
 // const session = require("express-session");
-pgSession = require("connect-pg-simple")(expressSession);
+// pgSession = require("connect-pg-simple")(expressSession);
 // const enforce = require('express-sslify');
 const db = require("./server/util/queries.js");
 const fs = require('fs-extra')

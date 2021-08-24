@@ -22,7 +22,7 @@ const handler = nc().use(session)
   
 
 
-  const sessCookie = req.session.get("sessioncook")
+  const sessCookie = req.session.get("sessioncook");
   let cookieResult;
   
 
@@ -49,7 +49,7 @@ const handler = nc().use(session)
     // }
 
 
-      const token = sessCookie.token;
+      const token = req.session.get("sessioncook").token;
 
       jwt.verify(token, process.env.NEXT_PUBLIC_JWTSECRET, async (err, decoded) => {
         if (err) {
