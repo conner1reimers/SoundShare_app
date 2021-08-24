@@ -25,6 +25,7 @@ const handler = nc().use(session)
   const sessCookie = req.session.get("sessioncook");
   let cookieResult;
   
+  console.log(sessCookie)
 
   if (sessCookie) {
 
@@ -50,6 +51,8 @@ const handler = nc().use(session)
 
 
       const token = req.session.get("sessioncook").token;
+      console.log(`COOKIEZZ - ${sessCookie}`)
+
 
       jwt.verify(token, process.env.NEXT_PUBLIC_JWTSECRET, async (err, decoded) => {
         if (err) {
