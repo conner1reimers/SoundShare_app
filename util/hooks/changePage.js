@@ -44,15 +44,16 @@ export const useChangePage = () => {
     location.push(`/sounds/${id}`);
     dispatch(resetGlobalSound());
     
-  }, []);
+  }, [location, dispatch, globalSoundIsPlaying]);
 
   const goToUserPage = useCallback((event, id) => {
-    dispatch({type: "MAIN_LOADER_START"});
+    const regex = /user/.test(location.pathname);
+    if(!regex) dispatch({type: "MAIN_LOADER_START"});
     event.preventDefault();
     event.stopPropagation();
     location.push(`/user/${id}`);
 
-  }, []);
+  }, [location, dispatch]);
 
   return { gotoSingleSoundPage, goToUserPage };
 };
