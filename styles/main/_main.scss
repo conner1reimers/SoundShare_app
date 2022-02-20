@@ -989,6 +989,11 @@ img.down-top {
   flex-direction: column;
   border-radius: 0.3rem;
   z-index: 2;
+
+  @media screen and (min-height: 1000px) {
+    top: 95px;
+  }
+
   &--item {
     @include flexcenter;
     justify-content: flex-start;
