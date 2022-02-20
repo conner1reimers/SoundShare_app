@@ -96,7 +96,7 @@ const ProgressBar: React.FC<Props> = ({fx, singleSound, hidden, playing, open, s
 
   
     let shrunkClass: any = (playing && !open) ? '' : 'global-player--time--unshrunk';
-    let timeInterval: any;
+    const timeInterval = useRef<any>();
 
 
     const formatDuration = (durTime: any) => {
@@ -325,7 +325,7 @@ const ProgressBar: React.FC<Props> = ({fx, singleSound, hidden, playing, open, s
     }
 
     const endListen = () => {
-      clearInterval(timeInterval);
+      clearInterval(timeInterval.current);
       dispatch(endGlobalSound());
       if (!singleSound) {
         nextSound();
@@ -458,8 +458,8 @@ const ProgressBar: React.FC<Props> = ({fx, singleSound, hidden, playing, open, s
   // SETS THE PROGRESS BAR TO MOVE ---- Important -----
       useEffect(() => {
         if (!runningInterval) {
-          clearInterval(timeInterval)
-          clearInterval(timeInterval)
+          clearInterval(timeInterval.current)
+          clearInterval(timeInterval.current)
           if (ref && ref.current) {
             ref.current.pause();
           }
@@ -468,7 +468,7 @@ const ProgressBar: React.FC<Props> = ({fx, singleSound, hidden, playing, open, s
         } else if (runningInterval && globalSoundPlaying.playing && ref.current && !small && !small2 && process.browser) {
           const progressBar: any = document.querySelector('.global-player--time--line--progressline');
           const dot: any = document.querySelector('.global-player--time--line--dot');
-          timeInterval = setInterval(updateTimeInterval, 100);
+          timeInterval.current = setInterval(updateTimeInterval, 100);
           ref.current.play();
           dot.style.transition = 'all 0.1s';
           progressBar.style.transition = 'all 0.1s';
@@ -483,7 +483,7 @@ const ProgressBar: React.FC<Props> = ({fx, singleSound, hidden, playing, open, s
           const progressBar: any = document.querySelector('.global-player--time--line--progressline');
           const dot: any = document.querySelector('.global-player--time--line--dot');
 
-          timeInterval = setInterval(updateTimeInterval, 100);
+          timeInterval.current = setInterval(updateTimeInterval, 100);
           
           dot.style.transition = 'all 0.1s';
           progressBar.style.transition = 'all 0.1s';
@@ -491,22 +491,22 @@ const ProgressBar: React.FC<Props> = ({fx, singleSound, hidden, playing, open, s
           
         } else if (runningInterval && globalSoundPlaying.playing && ref.current && (small || small2) && process.browser) {
           ref.current.play();
-          timeInterval = setInterval(updateTimeIntervalSmall, 100);
+          timeInterval.current = setInterval(updateTimeIntervalSmall, 100);
           
           
 
         } else if (runningInterval && !globalSoundPlaying.playing && !small && process.browser) {
           
-          timeInterval = setInterval(updateTimeIntervalSmall, 100);
+          timeInterval.current = setInterval(updateTimeIntervalSmall, 100);
         }
 
         if (progress.resetSingle) {
-          clearInterval(timeInterval);
+          clearInterval(timeInterval.current);
           dispatch({type: "UNDO_RESET_SINGLE"})
         }
 
         return () => {
-          clearInterval(timeInterval);
+          clearInterval(timeInterval.current);
         }
       }, [runningInterval, progress.resetSingle]);
 
@@ -536,7 +536,7 @@ const ProgressBar: React.FC<Props> = ({fx, singleSound, hidden, playing, open, s
         }
         return () => {
           
-          clearInterval(timeInterval)
+          clearInterval(timeInterval.current)
         }
       }, [sound, ref]);
       
@@ -546,7 +546,7 @@ const ProgressBar: React.FC<Props> = ({fx, singleSound, hidden, playing, open, s
 
       useEffect(() => {
         return () => {
-          clearInterval(timeInterval);
+          clearInterval(timeInterval.current);
         }
       }, []);
 

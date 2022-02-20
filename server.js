@@ -3,13 +3,9 @@ const next = require('next')
 const cors = require("cors");
 const bodyParser = require("body-parser");
 const cookieParser = require("cookie-parser");
-// const session = require("express-session");
-// pgSession = require("connect-pg-simple")(expressSession);
-// const enforce = require('express-sslify');
 const db = require("./server/util/queries.js");
 const fs = require('fs-extra')
 const path = require("path");
-// require('dotenv').config();
 
 const port = parseInt(process.env.PORT, 10) || 3000
 const dev = process.env.NODE_ENV !== 'production'
@@ -23,26 +19,8 @@ app.prepare().then(() => {
   server.use(cookieParser());
   server.use(bodyParser.json());
 
-//   let sess = {
-// 	secret: process.env.NEXT_PUBLIC_ENV_SESHSECRET,
-// 	resave: false,
-// 	saveUninitialized: false,
-// 	store: new pgSession({
-// 		pool: db.pool,
-// 		tableName: "session",
-// 	}),
-// 	cookie: {
-// 		secure: process.env.NODE_ENV === "production"
-// 	},
-//   }
-// 	if (server.get("env") === "production") {
-// 		server.set("trust proxy", 1); // trust first proxy
-// 		sess.cookie.secure = true; // serve secure cookies
-// 	} else {
-// 		server.set("trust proxy", 1);
-// 	}
 
-  server.use(expressSession(sess));
+//   server.use(expressSession(sess));
   server.use(bodyParser.urlencoded({ extended: true }));
 
   server.use((req, res, next) => {

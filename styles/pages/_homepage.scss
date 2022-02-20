@@ -2,24 +2,16 @@
   flex-direction: column;
   height: 100%;
   width: 100%;
-  justify-content: flex-start;
+  justify-content: center;
   align-items: center;
   position: relative;
   transition: all 0.2s;
+
+
   @media screen and (min-width: $bp-large) and (max-height: 500px) {
     top: 5vh;
   }
-  &--reactplayer {
-    height: 5rem;
-    width: 15rem;
-
-    &:focus {
-      outline: none;
-    }
-    &::-webkit-media-controls-play-button {
-      visibility: visible;
-    }
-  }
+  
   &--input {
     margin: 0;
     @include flexcenter;
@@ -178,7 +170,7 @@
     grid-row-gap: 1rem;
     justify-content: center;
     position: relative;
-    left: 5vw;
+    left: 2%;
     bottom: 8vh;
     
     

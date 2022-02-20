@@ -143,11 +143,11 @@ const FirstLottie: React.FC<Props> = ({nav}) => {
         navWidth.current = browserDims.width * 0.1 + "px";
       } else if (browserDims.width >= 1700) {
         medHeight.current = browserDims.width * 0.45 + "px";
-        medWidth.current = browserDims.width * 0.38 + "px";
+        medWidth.current = 646 + "px";
         medHeight2.current = browserDims.width * 0.051 + "px";
         medWidth2.current = browserDims.width * 0.27 + "px";
-        lgWidth.current = browserDims.width * 0.2 + "px";
-        navWidth.current = browserDims.width * 0.1 + "px";
+        lgWidth.current = 350 + "px";
+        navWidth.current = 170 + "px";
       } 
     } 
     
