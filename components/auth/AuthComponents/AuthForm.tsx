@@ -121,7 +121,7 @@ const AuthForm: React.FC = () => {
                                 validators={VALIDATOR_LOGIN(25)}
                                 element="input"
                                 auth
-                                errorText="Please enter a valid email address / username"
+                                errorText="Enter a valid email address / username"
                                 id="email"
                                 labelClass="auth-grid--inputSection--input--label"
                                 labelUpClass="auth-grid--inputSection--input--label--up"                                
@@ -141,7 +141,7 @@ const AuthForm: React.FC = () => {
                                 labelUpClass="auth-grid--inputSection--input--label--up"
                                 formControlClass="uploadmodal-big--info-form--input--formcontrol auth-grid--inputSection--input--formcontrol uploadmodal-big--info-form--input--formcontrol--name"
                                 focusCap
-                                errorText="Please enter a valid password"
+                                errorText="Enter a valid password"
 
                             />
                             <div className="auth-grid--inputSection--btns login-btns auth-move-up-other">
@@ -186,7 +186,7 @@ const AuthForm: React.FC = () => {
                             validators={VALIDATOR_EMAIL()}
                             element="input"
                             id="email"
-                            errorText="Please enter a valid email address"
+                            errorText="Enter a valid email address"
                             auth
                             labelClass="auth-grid--inputSection--input--label"
                             labelUpClass="auth-grid--inputSection--input--label--up"
@@ -202,7 +202,7 @@ const AuthForm: React.FC = () => {
                             id="username"
                             max={25}
                             auth
-                            errorText="Username must be less than 25 characters"
+                            errorText="Must be 25 characters or less"
                             labelClass="auth-grid--inputSection--input--label"
                             labelUpClass="auth-grid--inputSection--input--label--up"
                             formControlClass="uploadmodal-big--info-form--input--formcontrol auth-grid--inputSection--input--formcontrol uploadmodal-big--info-form--input--formcontrol--name"
@@ -220,7 +220,7 @@ const AuthForm: React.FC = () => {
                             type="password"
                             labelClass="auth-grid--inputSection--input--label"
                             labelUpClass="auth-grid--inputSection--input--label--up"
-                            errorText="Please enter a valid password"
+                            errorText="Enter a valid password"
                             formControlClass="uploadmodal-big--info-form--input--formcontrol auth-grid--inputSection--input--formcontrol uploadmodal-big--info-form--input--formcontrol--name"
                             focusCap
                         />
