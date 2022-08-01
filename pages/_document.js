@@ -7,7 +7,7 @@ class MyDocument extends Document {
         <Head>
           <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" />
           <link href="https://fonts.googleapis.com/css2?family=Catamaran:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet"/>
-          <link rel="icon" href="favicon.ico" />
+          <link rel="icon" href="../public/favicon.ico" />
           <link rel="apple-touch-icon" href="soundline.png" />
           <script
             async

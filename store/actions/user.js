@@ -15,10 +15,11 @@ export const logoutUser = () => {
     }
 }
 
-export const fetchUser = (id) => {
+export const fetchUser = (id, loadType) => {
     return {
         type: actionTypes.FETCH_USER,
-        id: id
+        id,
+        loadType
     }
 }
 

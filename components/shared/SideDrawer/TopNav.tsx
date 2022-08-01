@@ -25,6 +25,7 @@ import FirstLottie from "../../animatedLoaders/FirstLottie";
 import LoadingAnimation from "../../animatedLoaders/LoadingAnimation/LoadingAnimation";
 import Auth from "../../auth/Auth";
 import Link from 'next/link';
+import { useChangePage } from "../../../util/hooks/changePage";
 
 
 const optionsVariants = {
@@ -63,7 +64,11 @@ const TopNav: React.FC = () => {
 
   const location = useRouter();
   const soundRegex = /sounds/.test(location.pathname);
+  const { goToUserPage } = useChangePage();
 
+  const goToUser = useCallback((e) => {
+    goToUserPage(e, user.userId)
+  }, [user.userId, goToUserPage]);
 
   const openAuth = useCallback(() => {
     dispatch({type: "OPEN_AUTH_MODAL"});
@@ -123,11 +128,8 @@ const TopNav: React.FC = () => {
         
         {user.isLoggedIn && (
           <Fragment>
-            <Link
-              href={`/user/${user.userId}`}
-              
-            >
-                <a className="top-nav-big--links--user">
+            
+                <a className="top-nav-big--links--user" onClick={goToUser}>
                 <div
                   className={`bell-icon--contain ${
                     user.full && user.full.user_img_path
@@ -150,21 +152,23 @@ const TopNav: React.FC = () => {
                             
                             />
                         </div>
-                    ) : (<div className="usperpic-main-container-nav">
-                      <Image
-                        className="userpic-contain-top--img"
-                        height={35}
-                        width={35}
-                        src={userImg}
-                            alt="" />
-                        </div>
+                      ) : (
+                      <div className="usperpic-main-container-nav">
+                        <Image
+                          className="userpic-contain-top--img"
+                          height={35}
+                          width={35}
+                          src={userImg}
+                          alt=""
+                        />
+                      </div>
                     )}
                   
                   </Fragment>)}
                   {user.full && <span>{user.full.username}</span>}
                 </div>
               </a>
-            </Link>
+            
 
 
             <MouseOverLabel

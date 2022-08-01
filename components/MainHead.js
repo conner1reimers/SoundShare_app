@@ -1,17 +1,12 @@
 import React, { Fragment } from 'react'
 import GlobalMsg from './GlobalMsg';
-// import Media from 'react-media';
 import SideContain from './shared/SideDrawer/SideContain'
 import TopNav from './shared/SideDrawer/TopNav'
-import withRedux, { createWrapper } from "next-redux-wrapper";
-import { Provider, useDispatch, useSelector } from 'react-redux'
-import { Router, useRouter, withRouter } from 'next/router'
-import Header from '../components/Header';
+import { useDispatch, useSelector } from 'react-redux'
+import { useRouter } from 'next/router'
 import { useCallback, useEffect } from "react";
 import { getGPUTier } from "detect-gpu";
-import GlobalSound from '../components/shared/Modals/GlobalSound';
 import * as ga from '../lib/ga'
-import { useGlobalMsg } from "../util/hooks/useGlobalMsg";
 import LoadingAnimation from './animatedLoaders/LoadingAnimation/LoadingAnimation';
 import { Media, MediaContextProvider } from "../util/media";
 
@@ -38,19 +33,14 @@ const MainHead = () => {
           tier: gpuTier.tier,
         },
       });
-    } catch (err) {
-      
-    }
+    } catch (err) {}
     
   }, [dispatch]);
 	
 	useEffect(() => {
 		window.scrollTo(0, 0);
 		dispatch({ type: "CHECK_COOKIE" });
-
-		if (!gpuTierState) {
-			getGpu();
-		} 
+		if (!gpuTierState) getGpu();
 
 	}, [gpuTierState, dispatch, getGpu]);
 
@@ -96,24 +86,26 @@ const MainHead = () => {
 
     
     return (
-        <Fragment>
+      <Fragment>
+
         <LoadingAnimation loading={isLoading || homeLoader}/>
-      <GlobalMsg/>
+        <GlobalMsg/>
             
-            <MediaContextProvider>
-              
-                <Fragment>
-                  <Media between={["xs", "sm"]}>
-                    <SideContain/>
-                  </Media>
-                  <Media greaterThanOrEqual="lg">
-                    <TopNav />
-                  </Media>
-                </Fragment>
-              
-            </MediaContextProvider>
+        <MediaContextProvider>
+          
+            <Fragment>
+              <Media between={["xs", "sm"]}>
+                <SideContain/>
+              </Media>
+              <Media greaterThanOrEqual="lg">
+                <TopNav />
+              </Media>
+            </Fragment>
+          
+        </MediaContextProvider>
+
       </Fragment>
     )
 }
 
-export default MainHead
+export default React.memo(MainHead);

@@ -70,12 +70,12 @@ const userPageReducer = (state = initialState, action: any) => {
       }
       
   }
-      case 'FETCH_USER_ASYNC':
+    case 'FETCH_USER_ASYNC':
         return {
-          ...action.result,
+          ...action.results,
           loaded: true,
           refreshOptions: {
-            ...action.result.refreshOptions,
+            ...action.results.refreshOptions,
 
           }
         
@@ -83,10 +83,10 @@ const userPageReducer = (state = initialState, action: any) => {
       
       case 'FETCH_USER_SERVER_ASYNC':
         return {
-          ...action.result,
+          ...action.results,
           loaded: true,
           refreshOptions: {
-            ...action.result.refreshOptions,
+            ...action.results.refreshOptions,
 
           }
         

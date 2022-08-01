@@ -22,17 +22,7 @@ const SoundList: React.FC = () => {
     const offset = useSelector((state: Root) => state.recentSounds.offset);
     const dispatch = useDispatch();
   
-    useEffect(() => {
-      if (category) {
-        if (category === 'all') {
-          dispatch(fetchRecentSounds());
-        } 
-        else {
-          dispatch({type: "FETCH_RECENT_CATEGORY", category: category})
-        }
-      }
-      
-    }, [category]);
+    
   
     const getMoreSounds = () => {
       const header: any = document.querySelector(".recent-sounds--head");
@@ -43,6 +33,14 @@ const SoundList: React.FC = () => {
     const isRefreshing = useSelector((state) => {
       return fetchMoreRecentSoundsloading(state);
     });
+  
+    useEffect(() => {
+      if (category) {
+        if (category === 'all') dispatch(fetchRecentSounds());
+        else dispatch({type: "FETCH_RECENT_CATEGORY", category: category})
+      }
+      
+    }, [category, dispatch]);
   
     return (
       <ul className="recent-sounds--list">

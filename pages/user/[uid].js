@@ -67,8 +67,6 @@ export default function User(props) {
 }
 
 export async function getStaticPaths() {
-  // const userList = await sendRequest(`${process.env.NEXT_PUBLIC_REACT_APP_MY_ENV}/users/getids`);
-
   const getUsers = "SELECT id FROM users";  
 
   let foundUsers;

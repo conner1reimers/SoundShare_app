@@ -61,6 +61,6 @@ export const getCurrentListForm = (state, index) => {
 
 // THEN IN COMPONENT WE WANT TO USE IT IN ---
 
-const mapStateToProps = state => ({
-    userFullName: getUserFullName(state),
-})
+// const mapStateToProps = state => ({
+//     userFullName: getUserFullName(state),
+// })

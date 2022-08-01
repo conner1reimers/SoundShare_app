@@ -1,3 +1,4 @@
+import { Console } from "console";
 import { HYDRATE } from "next-redux-wrapper";
 import * as actionTypes from "../actions/actionTypes";
 
@@ -47,18 +48,18 @@ const recentSoundReducer = (state = initRecSoundState, action: any) => {
         case 'FETCH_RECENT_ASYNC':
             return {
                 ...state,
-                sounds: action.recents,
-                topLiked: action.topLiked,                
-                topDownloaded: action.topDownloaded,
-                offset: action.recents.length,
+                sounds: action.results.sounds,
+                topLiked: action.results.topLiked,                
+                topDownloaded: action.results.topDownloaded,
+                offset: action.results.sounds.length,
                 refreshFinished: false
             }
         case 'FETCH_RECENT_SERVER_ASYNC':
             return {
                 ...state,
-                sounds: action.recents,
-                topLiked: action.topLiked,                
-                topDownloaded: action.topDownloaded,
+                sounds: action.results.sounds,
+                topLiked: action.results.topLiked,                
+                topDownloaded: action.results.topDownloaded,
             }
         case 'FETCH_RECENT_CAT_ASYNC':
             return {
@@ -91,12 +92,12 @@ const recentSoundReducer = (state = initRecSoundState, action: any) => {
         case 'FETCH_TOP_DOWNLOADS_ASYNC':
             return {
                 ...state,
-                topDownloadedAll: action.result
+                topDownloadedAll: action.results
             }
         case 'FETCH_TOP_LIKED_ASYNC':
             return {
                 ...state,
-                topLikedAll: action.result
+                topLikedAll: action.results
             }
         case 'REFRESH_ALL_DOWNLOADS_ASYNC':
             let newOffsetDownloaded = state.refreshTopList.topDownloadedOffset + action.results.length;

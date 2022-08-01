@@ -24,7 +24,6 @@ const RecentSounds: React.FC = () => {
   const setRecentSounds = (e: any) => {
     e.preventDefault();
     dispatch({type: "RECENT_SOUND_CHANGE_CATEGORY", category: e.target.dataset.option});
-    
   }
 
 

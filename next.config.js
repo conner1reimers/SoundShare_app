@@ -1,3 +1,6 @@
+const withPurgeCss = require("next-purgecss");
+const withPlugins = require('next-compose-plugins')
+
 // const nextEnv = require('next-env');
 // const dotenvLoad = require('dotenv-load');
 
@@ -5,11 +8,17 @@
  
 // const withNextEnv = nextEnv();
 
-module.exports = {
+// const plugins = [[withPurgeCss()]]
+
+module.exports = withPurgeCss({ 
+  webpack5: true,
   reactStrictMode: true,
   images: {
     domains: ['soundshare-bucket.s3.us-east-2.amazonaws.com', 'licensebuttons.net']
   },
+  swcMinify: true, 
+  
+
   async redirects() {
     return [
       {
@@ -24,15 +33,25 @@ module.exports = {
       },
     ]
   },
+  
+  
+
   webpack: (config, { isServer }) => {
     if (!isServer) {
       config.resolve.fallback.fs = false;
       config.resolve.fallback.net = false;
       config.resolve.fallback.tls = false;
       config.resolve.alias['pg-native'] = false;
-
     }
     return config;
+
+    // config.resolve.fallback = {
+    //   ...config.resolve.fallback, // if you miss it, all the other options in fallback, specified
+    //     // by next.js will be dropped. Doesn't make much sense, but how it is
+    //   fs: false, // the solution
+    // };
+    // return config;
+
   },
   async headers() {
     return [
@@ -49,7 +68,7 @@ module.exports = {
     ]
   },
   env: {
-    NEXT_PUBLIC_REACT_APP_MY_ENV: 'https://www.soundshare.cc/api',
+    NEXT_PUBLIC_REACT_APP_MY_ENV: 'http://localhost:3000/api',
     NEXT_PUBLIC_REACT_APP_MASTER_EMAIL: 'connerreimers@gmail.com',
     NEXT_PUBLIC_REACT_APP_MASTER_PASS: '\\$2b\$12\$ZrFH7Eipn/7IRyLJySv9feIWSsm8oBvRJl.a7iBGDtSMC3L1N6oCW',
     NEXT_IMAGE_ALLOWED_DOMAINS:"cdn.sanity.io",
@@ -68,4 +87,8 @@ module.exports = {
     NEXT_PUBLIC_JWTSECRET:"01515290-140e-48f0-ad0d-f43b273f0d3d"
   }
 
-};
+
+});
+
+
+// module.exports = ;

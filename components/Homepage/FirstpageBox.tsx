@@ -1,4 +1,4 @@
-import React, { Fragment, useState, useEffect, useContext, useRef } from 'react'
+import React, { Fragment, useState, useEffect } from 'react'
 import { useForm } from '../../util/hooks/useForm';
 import { Box, Typography } from '@material-ui/core';
 import listening2 from '../../public/listening-new.svg';
@@ -11,7 +11,6 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { useDispatch, useSelector } from 'react-redux';
 import { setModalOpen, resetGlobalSound } from '../../store/actions';
 import { useChangePage } from '../../util/hooks/changePage';
-import { useHttpClient } from '../../util/hooks/http-hook';
 import BrowseBox from './BrowseBox';
 import { RootState } from '../../store/reducers';
 import Input from '../common_reusable/Input';
@@ -50,12 +49,10 @@ const FirstpageBox: React.FC = () => {
         isValid: false
       }},false);
 
-    const {isLoading, sendRequest} = useHttpClient();
     const [scrolledFar, setScrolledFar] = useState(false);
     const aModalIsOpen = useSelector((state: RootState) => state.globalMsg.aModalIsOpen);
     const isLoggedIn = useSelector((state: RootState) => state.user.isLoggedIn);
     const userId = useSelector((state: RootState) => state.user.userId);
-    const mainLoader = useSelector((state: RootState) => state.ui.mainLoader);
     const homeLoader = useSelector((state: RootState) => state.ui.homeLoader);
   
   

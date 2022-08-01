@@ -8,6 +8,7 @@ const handler = nc()
     const userId = req.query.userId;
 
   let client;
+  console.log(userId)
 
 
   try {

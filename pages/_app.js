@@ -1,24 +1,9 @@
 import "../styles/base.scss";
-import withRedux, { createWrapper } from "next-redux-wrapper";
-import { Provider, useDispatch, useSelector } from 'react-redux'
-import { useRouter, withRouter } from 'next/router'
-import App from 'next/app'
-import { composeWithDevTools } from "redux-devtools-extension";
-import { applyMiddleware, createStore } from "redux";
-import { allReducers } from '../store/reducers';
-import createSagaMiddleware from 'redux-saga';
-import rootSaga from '../saga/saga';
-import Header from '../components/Header';
 import Head from 'next/head'
-import { useCallback, useEffect } from "react";
-import { getGPUTier } from "detect-gpu";
 import MainHead from "../components/MainHead";
 import GlobalSound from '../components/shared/Modals/GlobalSound';
-import * as ga from '../lib/ga'
-import { useGlobalMsg } from "../util/hooks/useGlobalMsg";
 import React from 'react';
-import {END} from 'redux-saga';
-import {makeStore, wrapper} from '../store/wrapper';
+import {wrapper} from '../store/wrapper';
 
 
 

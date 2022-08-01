@@ -66,7 +66,6 @@ const handler = nc().use(session)
             if (isValidPassword) {
               let token;
               try {
-                // console.log(process.env.NEXT_PUBLIC_JWTSECRET)
                 token = await jwt.sign(
                   { userId: user.rows[0].id, email: email, master: false  },
                   process.env.NEXT_PUBLIC_JWTSECRET,
@@ -92,7 +91,6 @@ const handler = nc().use(session)
 
                 
               } catch (error) {
-                console.log(error)
                 const err = HttpError("Token creation failed...", 500, res);
                 return next(err);
               }

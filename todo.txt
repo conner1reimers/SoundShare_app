@@ -1,46 +1,21 @@
-https://nextjs.org/docs/basic-features/data-fetching#use-together-with-getstaticprops
+NEXT HYDRATION (user page)
 
-^^ Need to make a list of paths so site can generate HTML for each page - 
+It is mentioned in the doc that if you use getInitialProps in _app.js, you will lose the static optimization. I don't know why you are using redux on the server side, personally I will advise you to only 
+use it on the client side and you won't need to use next-redux-wrapper anymore because it uses getInitialProps under the hood.
+I have read the docs about the App.getInitialProps but I am not sure how to avoid it in this case. For some pages I am using getServerSideProps to fetch data for SSR. I am using redux-thunk for API calls 
+and they route responses directly into redux. I would not like to skip redux as a single source of truth. Is that maybe a bad reasoning? – 
+How would we go by restoring redux state from local storage when the app reloads? – 
 
-export async function getStaticPaths() {
-  return {
-    paths: [                                                    - The paths key determines which paths will be pre-rendered
-      { params: { ... } } // See the "paths" section below
-    ],
-    fallback: true or false // See the "fallback" section below
-  };
-}
+If you have a layout as wrapper, you can do it in layout with useEffect – 
+enoch
+and i will suggest you to store your token in cookies not in localStorage
 
-^^^ suppose that you have a page that uses dynamic routes named  pages/posts/[id].js
-return {
-  paths: [
-    { params: { id: '1' } },
-    { params: { id: '2' } }
-  ],
-  fallback: ...  <---- The object returned by getStaticPaths must contain a boolean fallback key.
+getStaticProps(): A method that tells the Next component to populate props and render into a static HTML page at build time. 
+getServerSideProps(): A method that tells the Next component to populate the props and render into a static HTML page at run time.
 
-  
-}
-
-If fallback is false, then any paths not returned by getStaticPaths will result in a 404 page. 
-If fallback is true, then the behavior of getStaticProps changes: The paths returned from getStaticPaths will be rendered to HTML at build time by getStaticProps. The paths that have not been generated at build time will not result in a 404 page. Instead, Next.js will serve a “fallback” version of the page on the first 
-request to such a path 
+DOING Incremental Static Regeneration
 
 
 
-https://nextjs.org/docs/basic-features/data-fetching#getserversideprops-server-side-rendering
-
-If you export an async function called getServerSideProps from a page, Next.js will pre-render this page on each request using the data returned by getServerSideProps.
-
-export async function getServerSideProps(context) {
-  return {
-    props: {}, // will be passed to the page component as props
-  }
-}
-
-
-https://github.com/kirill-konshin/next-redux-wrapper    <--- use this
-
-
-GOT IT WORKING!!!!!!!!!!!!!!!!!  ---- make sure you fix all the use effect things on singlesoundpage 
+CSS changes
 

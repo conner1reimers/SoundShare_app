@@ -560,31 +560,7 @@ export default function Sounds(props) {
   );
 }
 
-// const sendRequest = async (url, method = 'GET', body = null, headers = {}) => {
-//   try {       
-//     const response = await fetch(new URL(url), {
-//         method,
-//         body,
-//         headers,
-//         credentials: 'same-origin'
-
-//     }, );
-//     const responseData = await response.json();
-   
-//     if (!response.ok) {
-//         throw new Error(responseData.message);
-//     }
-//     return responseData;
-// }
-//     // CATCH
-//     catch (err) {
-//       throw err;
-//   }
-// }
-
 export async function getStaticPaths() {
-  // const soundList = await sendRequest(`${process.env.NEXT_PUBLIC_REACT_APP_MY_ENV}/sounds/getids`);
-
   const getSoundsQueryTxt = "SELECT id FROM sounds";  
 
     let foundSounds;
@@ -612,54 +588,7 @@ export async function getStaticPaths() {
 
 export async function getStaticProps(context){
     const soundId = context.params.sid;
-    // regular stuff
 
-    // store.dispatch(fetchRecentSounds());
-    // end the saga
-
-    // store.dispatch(END);
-    // await store.sagaTask.toPromise();
-    
-
-    // const fetchSoundInfo = async () => {
-    //   if (soundId) {
-    //     let response;
-  
-    //     try {
-    //       response = await sendRequest(
-    //         `${process.env.NEXT_PUBLIC_REACT_APP_MY_ENV}/sounds/${soundId}`
-    //       );
-
-
-
-    //       // setSoundInfo({
-    //       //   sound: response.sound,
-    //       //   comments: response.comments,
-    //       //   offset: response.comments.length,
-    //       //   refreshFinished: response.comments.length !== 20
-    //       // });
-  
-    //       // if (!gpuTier.isMobile) {
-    //       //   dispatch(setGlobalSound(response.sound));
-    //       // } 
-          
-    //       // if (userId) {
-    //       //   if (response.sound.favs.indexOf(userId.toString()) !== -1) {
-    //       //     setFaved(true);
-    //       //   }
-    //       // }
-    //       return JSON.stringify({
-    //         sound: response.sound,
-    //         comments: response.comments,
-    //         offset: response.comments.length,
-    //         refreshFinished: response.comments.length !== 20
-    //       })
-    //     } catch (err) {}
-    //   }
-    // };
-
-
-    // const soundId = req.query.soundId;
     let queryText = "SELECT * FROM sounds WHERE id = $1";
 
     let soundVal = [soundId];
@@ -709,86 +638,3 @@ export async function getStaticProps(context){
         revalidate: 1
         };
 };
-
-
-
-
-// export const getServerSideProps = (async ({  req, res, ...ctx }) => {
-//     const soundId = ctx.query.sid;
-//     // regular stuff
-
-//     // store.dispatch(fetchRecentSounds());
-//     // end the saga
-
-//     // store.dispatch(END);
-//     // await store.sagaTask.toPromise();
-//     const sendRequest = async (url, method = 'GET', body = null, headers = {}) => {
-//       try {       
-//         const response = await fetch(url, {
-//             method,
-//             body,
-//             headers,
-//             credentials: 'same-origin'
-
-//         }, );
-//         const responseData = await response.json();
-       
-//         if (!response.ok) {
-//             throw new Error(responseData.message);
-//         }
-//         return responseData;
-//     }
-//         // CATCH
-//         catch (err) {
-//           throw err;
-//       }
-//     }
-
-
-
-
-//     const fetchSoundInfo = async () => {
-//       if (soundId) {
-//         let response;
-  
-//         try {
-//           response = await sendRequest(
-//             `${process.env.NEXT_PUBLIC_REACT_APP_MY_ENV}/sounds/${soundId}`
-//           );
-
-
-
-//           // setSoundInfo({
-//           //   sound: response.sound,
-//           //   comments: response.comments,
-//           //   offset: response.comments.length,
-//           //   refreshFinished: response.comments.length !== 20
-//           // });
-  
-//           // if (!gpuTier.isMobile) {
-//           //   dispatch(setGlobalSound(response.sound));
-//           // } 
-          
-//           // if (userId) {
-//           //   if (response.sound.favs.indexOf(userId.toString()) !== -1) {
-//           //     setFaved(true);
-//           //   }
-//           // }
-//           return {
-//             sound: response.sound,
-//             comments: response.comments,
-//             offset: response.comments.length,
-//             refreshFinished: response.comments.length !== 20
-//           }
-//         } catch (err) {}
-//       }
-//     };
-
-
-//     let response = await fetchSoundInfo();
-//     return {props: {response}};
-
-
-    
-//   }
-// );

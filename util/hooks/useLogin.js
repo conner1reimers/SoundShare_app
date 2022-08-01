@@ -11,22 +11,8 @@ const useLogin = () => {
         dispatch(loginUser(uid, token, userName, following));
         dispatch({ type: "FETCH_LOGGED_USER", uid });
         setGlobalMsgs(`${userName} logged in!`, "success");
-    
-        // localStorage.setItem(
-        //     "userData",
-        //     JSON.stringify({
-        //         userId: uid,
-        //         token: token,
-        //         userName: userName,
-        //         following: following,
-        //     })
-        // );
     }, []);
-
     
-    
-
-
     return login
 }
 

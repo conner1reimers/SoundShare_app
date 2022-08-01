@@ -473,12 +473,6 @@ const ProgressBar: React.FC<Props> = ({fx, singleSound, hidden, playing, open, s
           dot.style.transition = 'all 0.1s';
           progressBar.style.transition = 'all 0.1s';
 
-
-          // setTimeout(() => {
-          //   progressBar.style.transition = 'all .91s';
-          //   dot.style.transition = 'all .91s';
-          // }, 500);
-
         } else if (runningInterval && !globalSoundPlaying.playing && !small && !small2 && process.browser) {
           const progressBar: any = document.querySelector('.global-player--time--line--progressline');
           const dot: any = document.querySelector('.global-player--time--line--dot');

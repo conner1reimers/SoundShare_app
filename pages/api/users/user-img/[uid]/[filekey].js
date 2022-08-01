@@ -36,14 +36,6 @@ const handler = nc()
     };
     let postPic;
 
-    // try {
-    //   postPic = await client.query(postPicQuery);
-    // } catch (err) {
-    //   return next(err);
-    // } finally {
-    //   client.release();
-    // }
-
     try {
       await client.query("BEGIN");
       await client.query(postPicQuery);

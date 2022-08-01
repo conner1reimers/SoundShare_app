@@ -94,6 +94,7 @@ const browseReducer = (state = initialState, action: BrowseActionTypes) => {
           options: action.options
         }
     case FETCH_BROWSE_ASYNC:
+      console.log(action)
       if (!action.results.results) {
         
         return {
@@ -141,16 +142,6 @@ const browseReducer = (state = initialState, action: BrowseActionTypes) => {
             error: null
           }
         } 
-        // else if (newOffset % 90 === 0) {
-        //   return {
-        //     ...state,
-        //     results: [...state.results, ...action.results.results],
-        //     offset: newOffset,
-        //     refreshFinish: false,
-        //     error: null,
-        //     [newOffset+1]: 'test'
-        //   }
-        // }
          else {
           return {
             ...state,

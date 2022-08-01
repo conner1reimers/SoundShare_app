@@ -20,12 +20,8 @@ const handler = nc().use(session)
   .get(async (req, res, next) => {
     let client;
   
-
-
   const sessCookie = req.session.get("sessioncook");
-  let cookieResult;
   
-  console.log(sessCookie)
 
   if (sessCookie) {
 
@@ -35,23 +31,8 @@ const handler = nc().use(session)
       const error = HttpError("errrrr", 500, res);
       return next(error);
     }
-    
-
-    // const getCookieQueryTxt =
-    // "SELECT sess \
-    // FROM session \
-    // WHERE sid = $1";
-    // const getCookieVal = [sessCookie];
-
-    // try {
-    //   cookieResult = await client.query(getCookieQueryTxt, getCookieVal);
-    // } catch (err) {
-    //   client.release();
-    // }
-
 
       const token = req.session.get("sessioncook").token;
-      console.log(`COOKIEZZ - ${sessCookie}`)
 
 
       jwt.verify(token, process.env.NEXT_PUBLIC_JWTSECRET, async (err, decoded) => {

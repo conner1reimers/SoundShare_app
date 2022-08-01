@@ -119,18 +119,16 @@ const UserBig: React.FC = () => {
 
   useEffect(() => {
     if (!isPageLoading && params.uid) {
-      if (!userInfo.user) {
+      if (!userInfo.user || !userInfo.user.id || userInfo.user.id !== params.uid) {
+        console.log("get use");
         dispatch(fetchUser(params.uid));
-      } else if (userInfo.user.id !== params.uid) {
-          dispatch(fetchUser(params.uid));
-       } 
+      }
     }
 
     if (loggedInUser.userId) {
       if (params.uid === loggedInUser.userId.toString()) {
         setIsMyPage(true);
       }
-
     }
     
     return () => {
