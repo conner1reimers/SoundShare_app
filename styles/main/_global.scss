@@ -388,6 +388,8 @@ body {
   background-size: cover;
   background-repeat: no-repeat;
   min-height: 680px;
+  overflow-x: hidden;
+  overflow-y: auto;
 }
 
 code {
