@@ -1,6 +1,6 @@
 import { Console } from "console";
 import { HYDRATE } from "next-redux-wrapper";
-import * as actionTypes from "../actions/actionTypes";
+import * as actionTypes from "../../actions/actionTypes";
 
 export interface RecentSoundState {
     sounds: any,
@@ -64,9 +64,9 @@ const recentSoundReducer = (state = initRecSoundState, action: any) => {
         case 'FETCH_RECENT_CAT_ASYNC':
             return {
                 ...state,
-                sounds: action.recents,
-                refreshFinished: action.recents.length < 29,
-                offset: action.recents.length
+                sounds: action.results.sounds,
+                refreshFinished: ((action.results.sounds.length % 15) !== 0),
+                offset: action.results.sounds.length
 
             }
         case 'FETCH_RECENT_MORE_ASYNC':

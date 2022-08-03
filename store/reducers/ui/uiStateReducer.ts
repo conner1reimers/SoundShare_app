@@ -1,4 +1,4 @@
-import * as actionTypes from "../actions/actionTypes";
+import * as actionTypes from "../../actions/actionTypes";
 
 interface Loader {
     actions: Array<any>

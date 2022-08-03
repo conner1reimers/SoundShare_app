@@ -23,7 +23,7 @@ const BrowseOptions: React.FC = () => {
               >
                 <a onClick={openBrowseOptions} className="top-nav-big--links--item">
                     <div className="bell-icon--contain">
-                        <Image src={more} alt="" />
+                        <Image height={25} width={25} src={more} alt="" />
                     </div>
                 </a>
             </MouseOverLabel>

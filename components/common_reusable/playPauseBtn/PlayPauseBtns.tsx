@@ -8,9 +8,9 @@ import {
   playAndSetGlobalSound,
 } from "../../../store/actions";
 import { useChangeSound } from "../../../util/hooks/useChangeSound";
-import { GlobalPlayingState } from "../../../store/reducers/globalPlaying";
-import { UploadState } from "../../../store/reducers/uploadReducer";
-import { UiState } from "../../../store/reducers/uiStateReducer";
+import { GlobalPlayingState } from "../../../store/reducers/global/globalPlaying";
+import { UploadState } from "../../../store/reducers/ui/uploadReducer";
+import { UiState } from "../../../store/reducers/ui/uiStateReducer";
 import Image from "next/image";
 import play from "../../../public/newplay.svg";
 import pause from "../../../public/newpause.svg";
@@ -53,7 +53,7 @@ const PlayPauseBtns: React.FC<Props> = ({small, noarrow, global, fxglobe, fx, up
           type="button"
           onClick={prevSound}
         >
-          <Image src={FF} alt="" />
+          <Image src={FF} alt="" height={30} width={30}/>
         </button>
       )}
 
@@ -67,7 +67,7 @@ const PlayPauseBtns: React.FC<Props> = ({small, noarrow, global, fxglobe, fx, up
           type="button"
           onClick={nextSound}
         >
-          <Image src={FF} alt="" />
+          <Image src={FF} alt="" height={30} width={30}/>
         </button>
       )}
       {!noarrow && fx && (
@@ -122,7 +122,7 @@ const PlayPause: React.FC<Props> = React.memo(({global, sound, singleSound}) => 
           </button>
         ) : (
           <button className="btn nohover" type="button" onClickCapture={pauseOrPlay}>
-            <Image src={play} alt="zzzz" />
+            <Image src={play} alt="" height={45} width={45} />
           </button>
         )}
       </Fragment>) : (<Fragment>

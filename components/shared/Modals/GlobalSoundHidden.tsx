@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { openGlobalBackUp, pauseGlobalSound, playGlobalSound } from '../../../store/actions/globalSound';
 
 import {useChangePage} from '../../../util/hooks/changePage'
-import { GlobalPlayingState } from '../../../store/reducers/globalPlaying';
+import { GlobalPlayingState } from '../../../store/reducers/global/globalPlaying';
 import PlayPauseBtns from '../../common_reusable/playPauseBtn/PlayPauseBtns';
 import Image from 'next/image';
 

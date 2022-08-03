@@ -322,9 +322,6 @@
         margin: 1.5rem 0;
       }
 
-      // @media screen and (max-width: 1540px) and (min-height: 820px) and (min-width: 1100px) {
-      //   margin-top: 1vh;
-      // }
 
       span {
         letter-spacing: 0.15rem;
@@ -794,7 +791,7 @@
           grid-row: 2/3;
           grid-column: 2/3;
           @include flexcenter;
-          justify-self: start;
+          justify-self: flex-start;
           align-self: center;
           text-transform: capitalize;
           font-weight: 600;
@@ -1111,6 +1108,7 @@
         @include flexcenter;
         grid-column: 2/3;
         grid-row: 1/2;
+        position: relative;
         @media screen and (max-width: 750px) {
           position: relative;
           left: 25%;
@@ -1120,13 +1118,14 @@
           left: 60%;
         }
         div.img-shine {
+          span {
+            height: 41px;
+            width: 41px;
+          }
           @media screen and (min-width: 1850px) {
             height: 41px;
             width: 41px;
-            div {
-              height: 41px;
-              width: 41px;
-            }
+            
             img {
               height: 41px;
               width: 41px;
@@ -1434,13 +1433,6 @@
           top: 0;
 
         }
-
-        // &:not(.close-ignore) {
-        //   box-shadow: $shadow-newer-2;
-        //   padding: 0.5rem;
-        //   top: 1vh;
-        //   left: 0.5vw;
-        // }
       }
     }
 
@@ -2464,7 +2456,7 @@ div.user-page {
   &--userpic {
     @media screen and (max-width: 1439px) and (min-width: 1100px) {
       width: 7vw;
-      justify-self: start;
+      justify-self: flex-start;
       @include flexcenter;
       left: 0;
     }
@@ -2476,7 +2468,7 @@ div.user-page {
   div.social-follow--contain {
     @media screen and (max-width: 1439px) and (min-width: 1100px) {
       width: 7vw;
-      justify-self: start;
+      justify-self: flex-start;
       @include flexcenter;
       left: 0;
       margin: 0;
@@ -2487,7 +2479,7 @@ div.user-page {
     @media screen and (max-width: 1439px) and (min-width: 1100px) {
       width: 17vw;
       min-width: 200px;
-      justify-self: start;
+      justify-self: flex-start;
       @include flexcenter;
       left: 0;
       top: 5rem;

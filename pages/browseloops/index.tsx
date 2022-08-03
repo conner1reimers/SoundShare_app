@@ -2,7 +2,7 @@ import React, { useEffect, useReducer, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import BrowseHead from '../../components/browse/BrowseHead';
 import ChartSection from '../../components/browse/NewBrowse/ChartSection';
-import { BrowseState } from '../../store/reducers/browseReducer';
+import { BrowseState } from '../../store/reducers/sounds/browseReducer';
 import { isBrowseLoading, isBrowseRefreshing } from '../../store/selectors';
 import { useGlobalMsg } from '../../util/hooks/useGlobalMsg';
 

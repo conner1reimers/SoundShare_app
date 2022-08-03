@@ -61,7 +61,7 @@ const EditBtn: React.FC<Props> = ({ img }) => {
   <div className="sound-list-item--circle singlesound-edit-btns">
         <button
           type="button"
-          className={`btn nohover heart-absolute`}
+          className="btn nohover"
         >
         <Image src={finalImg} alt="" height={20} width={20}/>
         </button>

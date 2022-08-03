@@ -11,7 +11,7 @@ import Media from 'react-media';
 import { useHttpClient } from '../../../util/hooks/http-hook';
 import { saveXtraBrowseOptions } from "../../../store/actions";
 import { useGlobalMsg } from '../../../util/hooks/useGlobalMsg';
-import { BrowseState } from '../../../store/reducers/browseReducer';
+import { BrowseState } from '../../../store/reducers/sounds/browseReducer';
 import Input from '../../common_reusable/Input';
 import Image from 'next/image';
 import { FilterMsg } from './FilterMsg';

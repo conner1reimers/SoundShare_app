@@ -226,11 +226,6 @@ const TopNav: React.FC = () => {
               </MouseOverLabel>
 
               
-              {/* <Link to="/browse" className="top-nav-big--links--item">
-                <div className="bell-icon--contain">
-                  <Image src={browse} alt="" />
-                </div>
-              </Link> */}
 
               
            
@@ -393,7 +388,7 @@ const NavItem: React.FC<Props> = React.memo(({children}) => {
     <Fragment>
       <a onClick={setOpen} className="top-nav-big--links--item bell-icon">
         <div className="bell-icon--contain">
-          <Image className="down-top" src={!isOpen ? down : down2} alt="" />
+          <Image height={20} width={20} className="down-top" src={!isOpen ? down : down2} alt="" />
         </div>
       </a>
       {isOpen && children}
@@ -478,22 +473,22 @@ const DropDownMenu: React.FC<DropDownMenuProps> = React.memo(({openUpload, userI
       <div className="dropdown-top">
         <DropDownItem
           click={openUpload}
-          leftIcon={<Image src={cloud} alt="" />}
+          leftIcon={<Image height={20} width={20} layout="intrinsic" src={cloud} alt="" />}
         >
           Upload Sound
         </DropDownItem>
         <DropDownItem
           link={`/feed/${userId}`}
-          leftIcon={<Image src={feed} alt="" />}
+          leftIcon={<Image height={20} width={20} layout="intrinsic" src={feed} alt="" />}
         >
           Following Feed
         </DropDownItem>
-        <DropDownItem link="/about" leftIcon={<Image src={help} alt="" />}>
+        <DropDownItem link="/about" leftIcon={<Image height={20} width={20} layout="intrinsic" src={help} alt="" />}>
           Contact
         </DropDownItem>
         <DropDownItem
           click={logout}
-          leftIcon={<Image src={padlock} alt="" />}
+          leftIcon={<Image height={20} width={20} layout="intrinsic" src={padlock} alt="" />}
         >
           Logout
         </DropDownItem>

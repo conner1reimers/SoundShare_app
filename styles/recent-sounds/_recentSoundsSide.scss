@@ -47,7 +47,9 @@
   @media screen and (max-width: 1500px) {
     right: 0;
   }
-
+  @media screen and (min-width: 2000px) {
+    align-items: flex-start;
+  }
   &--box {
     width: 80%;
     height: min-content;
@@ -159,19 +161,27 @@
         &--title {
           width: 100%;
           margin: 0 1rem;
-          display: flex;
+          @include flexcenter;
           text-overflow: ellipsis;
+          max-height: 30px;
+          max-width: 200px;
+
 
           p {
+            @include flexcenter;
+            justify-content: flex-start;
             position: relative;
             left: 1vw;
             vertical-align: center;
             text-overflow: ellipsis;
             width: 7rem;
             overflow: hidden;
+            white-space: nowrap;
+
             @media screen and (min-width: 1450px) {
               width: 11rem;
             }
+
           }
           img {
             background-color: rgba(67, 73, 75, 0);
@@ -352,4 +362,11 @@ div.sound-list-item--circle.recent-side--circle {
       
     }
   }
+}
+
+
+div.wrapper {
+  height: 30px;
+  width: 30px;
+
 }

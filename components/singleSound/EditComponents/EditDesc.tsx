@@ -5,7 +5,7 @@ import { useHttpClient } from '../../../util/hooks/http-hook'
 import { useForm } from '../../../util/hooks/useForm'
 import { useGlobalMsg } from '../../../util/hooks/useGlobalMsg'
 import { VALIDATOR_MAXLENGTH, VALIDATOR_REQUIRE } from '../../../util/validators'
-import { UserState } from "../../../store/reducers/user";
+import { UserState } from "../../../store/reducers/user/user";
 import Input from '../../common_reusable/Input'
 import BallLoader from '../../animatedLoaders/BallLoader/BallLoader'
 

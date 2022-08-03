@@ -1,18 +1,18 @@
 import { combineReducers } from "redux";
-import recentSoundReducer from "./recentSound";
-import globalPlayingReducer from "./globalPlaying";
-import userReducer from "./user";
-import progressStateReducer from "./progressState";
-import userPageReducer from "./userPageInfo";
-import globalMsgReducer from "./globalMsg";
-import uploadReducuer from "./uploadReducer";
-import browseReducer from "./browseReducer";
-import uiReducer from "./uiStateReducer";
-import feedReducer from "./feedReducer";
-import navbarReducer from "./navbarReducer";
-import sideDrawerReducer from "./sideDrawerReducer";
-import soundpageReducer from "./soundPageReducer";
-import authReducer from "./authReducer";
+import recentSoundReducer from "./sounds/recentSound";
+import globalPlayingReducer from "./global/globalPlaying";
+import userReducer from "./user/user";
+import progressStateReducer from "./global/progressState";
+import userPageReducer from "./user/userPageInfo";
+import globalMsgReducer from "./global/globalMsg";
+import uploadReducuer from "./ui/uploadReducer";
+import browseReducer from "./sounds/browseReducer";
+import uiReducer from "./ui/uiStateReducer";
+import feedReducer from "./user/feedReducer";
+import navbarReducer from "./user/navbarReducer";
+import sideDrawerReducer from "./ui/sideDrawerReducer";
+import soundpageReducer from "./sounds/soundPageReducer";
+import authReducer from "./global/authReducer";
 
 
 export const allReducers = combineReducers({

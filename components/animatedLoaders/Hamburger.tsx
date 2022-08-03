@@ -5,8 +5,8 @@ import lottie from 'lottie-web';
 import { Fragment } from 'react';
 import LoadingAnimation from './LoadingAnimation/LoadingAnimation';
 import { useSelector } from 'react-redux';
-import { UiState } from '../../store/reducers/uiStateReducer';
-import { GlobalMsgState } from '../../store/reducers/globalMsg';
+import { UiState } from '../../store/reducers/ui/uiStateReducer';
+import { GlobalMsgState } from '../../store/reducers/global/globalMsg';
 
 interface Root {
     ui: UiState,

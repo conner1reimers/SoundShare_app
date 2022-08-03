@@ -1,4 +1,4 @@
-import * as actionTypes from "../actions/actionTypes";
+import * as actionTypes from "../../actions/actionTypes";
 
 const OPEN_MAIN_BROWSE_OPTIONS = 'OPEN_MAIN_BROWSE_OPTIONS';
 const CLOSE_MAIN_BROWSE_OPTIONS = 'CLOSE_MAIN_BROWSE_OPTIONS';

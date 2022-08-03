@@ -6,7 +6,7 @@ import React, {
     useReducer,
   } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { BrowseState } from '../../../store/reducers/browseReducer';
+import { BrowseState } from '../../../store/reducers/sounds/browseReducer';
 
 interface Props {
   openMenu: boolean,

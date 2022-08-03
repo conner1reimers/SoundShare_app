@@ -5,7 +5,7 @@ import LoginByGoogle from '../googleLogin/LoginByGoogle';
 import AuthForm from './AuthComponents/AuthForm';
 import UsernameCreate from './AuthComponents/UsernameCreate';
 import ForgotPassEmail from './AuthComponents/ForgotPassEmail';
-import { AuthState } from '../../store/reducers/authReducer';
+import { AuthState } from '../../store/reducers/global/authReducer';
 import Modal from '../shared/Modals/Modal';
 
 interface AuthProps {

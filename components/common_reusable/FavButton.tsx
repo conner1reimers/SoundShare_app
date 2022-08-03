@@ -150,11 +150,14 @@ const FavButton: React.FC<Props> = ({soundId, setCount, global}) => {
                 transition={redTransition}
                 key="red"
               >
-                <Image 
-                  src={redHeart}
-                  alt=""
-                  className="action-heart-img"
-                />
+                <div className="circle-img-wrapper2">
+                  <Image 
+                    src={redHeart}
+                    alt=""
+                    className="action-heart-img"
+                    layout="fill"
+                    />
+                </div>
               </motion.div>
             )}
             {!isLiked && (
@@ -167,11 +170,14 @@ const FavButton: React.FC<Props> = ({soundId, setCount, global}) => {
                 transition={pageTransition}
                 key="blue"
               >
-                <Image
-                  className="action-heart-img"
-                  src={heartItem}
-                  alt=""
-                />
+                <div className="circle-img-wrapper2">
+                  <Image
+                    className="action-heart-img"
+                    src={heartItem}
+                    alt=""
+                    layout="fill"
+                  />
+                </div>
               </motion.div>
             )}
           </AnimatePresence>

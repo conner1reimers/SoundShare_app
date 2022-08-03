@@ -204,19 +204,26 @@ const SoundListItem: React.FC<Props> = ({category, sound_id, img_path, date, nam
           </div>
 
           <div className="user-page--loopList--item--img">
-            {img_path && img_path !== "none" ? (
-                <Image
-                  width={35}
-                  height={35}
-                  className="img-shine"
-                  src={`https://soundshare-bucket.s3.us-east-2.amazonaws.com/${img_path}`}
-                  loader={myLoader}
-                  alt=""
-              />
-            ) : category === "fx" ? ( <div className="img-shine"> 
-              <Image className="img-shine" height={35} width={35} src={game} alt="" /> </div>
-              ) : (<div className="img-shine">
-                <Image height={35} width={35} className="img-shine" src={music} alt="" /></div>
+                {img_path && img_path !== "none" ? (
+                <div className="img-shine">
+                  <Image
+                    width={35}
+                    height={35}
+                    className="img-shine"
+                    src={`https://soundshare-bucket.s3.us-east-2.amazonaws.com/${img_path}`}
+                    loader={myLoader}
+                    alt=""
+                    layout="fill"
+                  />
+                </div>)
+                : category === "fx" ? (
+                    <div className="img-shine"> 
+                      <Image layout="fill" className="img-shine" height={35} width={35} src={game} alt="" />
+                    </div>
+                  ) : (
+                    <div className="img-shine">
+                      <Image layout="fill" height={35} width={35} className="img-shine" src={music} alt="" />
+                    </div>
                 )}
           </div>
 
@@ -290,12 +297,13 @@ const SoundListItem: React.FC<Props> = ({category, sound_id, img_path, date, nam
                 height={35}
                 src={`https://soundshare-bucket.s3.us-east-2.amazonaws.com/${img_path}`}
                 loader={myLoader}
-                alt="agsd"
+                alt=""
+                layout="fill"
               />
               </div>
             ) : (
               <div className="feedlist-img-contain">
-                <Image  className="img-shine" src={music} alt="" />
+                <Image  className="img-shine" src={music} alt="" layout="fill" />
               </div>
             )}
             <div className="feedlist-item-playbtn-contain">

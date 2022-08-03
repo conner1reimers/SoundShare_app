@@ -1,4 +1,6 @@
 import React from 'react'
+import { useSelector } from 'react-redux'
+import { RootState } from '../../../store/reducers'
 import CommentInput from './CommentInput'
 import Comments from './Comments'
 
@@ -7,14 +9,16 @@ interface Props {
     setSoundInfo: any
 }
 
-const CommentSection: React.FC<Props> = ({soundInfo, setSoundInfo}) => {
+const CommentSection: React.FC = () => {
+    const commentLength = useSelector((state: RootState) => state.singleSound.comments.length);
+
     return (
         <div className="single-sound--comments">
             <div className="single-sound--comments--head">
-            {soundInfo.comments.length === 1 ? <h1>1 Comment</h1> : <h1>{soundInfo.sound.comments.length} Comments</h1>}
+            {commentLength === 1 ? <h1>1 Comment</h1> : <h1>{commentLength} Comments</h1>}
             </div>
-            <CommentInput setSoundInfo={setSoundInfo} soundInfo={soundInfo}/>
-            <Comments setSoundInfo={setSoundInfo} soundInfo={soundInfo}/>
+            <CommentInput />
+            <Comments />
         </div>
     )
 }

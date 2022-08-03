@@ -1,15 +1,17 @@
 import { AnimatePresence, motion } from 'framer-motion'
 import React, { useCallback } from 'react'
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { useHttpClient } from '../../../util/hooks/http-hook'
 import { useForm } from '../../../util/hooks/useForm'
 import { VALIDATOR_REQUIRE } from '../../../util/validators'
-import { UserState } from "../../../store/reducers/user";
+import { UserState } from "../../../store/reducers/user/user";
 import Input from '../../common_reusable/Input'
 import BallLoader from '../../animatedLoaders/BallLoader/BallLoader'
+import { SoundState } from '../../../store/reducers/sounds/soundPageReducer'
 
 interface Root {
-  user: UserState
+  user: UserState,
+  singleSound: SoundState
 }
 
 const optionsVariants = {
@@ -48,24 +50,23 @@ const optionsTransition = {
 
 interface Props {
     setEditMode: any,
-    setSoundInfo: any,
-    id: any,
-    open: any,
-    name?: any
-
+    open: any
 }
 
 
-const EditSoundName: React.FC<Props> = ({setEditMode, setSoundInfo, id, open, name}) => {
+const EditSoundName: React.FC<Props> = ({setEditMode, open}) => {
     const [editSoundState, inputHandler] = useForm({
         edit: {
             value: '',
             isValid: false
         }
     }, false);
+    const dispatch = useDispatch();
     const {isLoading, sendRequest} = useHttpClient();
     const token = useSelector((state: Root) => state.user.token);
     const uid = useSelector((state: Root) => state.user.userId);
+    const name = useSelector((state: Root) => state.singleSound.sound.name);
+    const id = useSelector((state: Root) => state.singleSound.sound.id);
 
 
     const submitEditName = async (e: any) => {
@@ -77,15 +78,7 @@ const EditSoundName: React.FC<Props> = ({setEditMode, setSoundInfo, id, open, na
                     name: editSoundState.inputs.edit.value
                 }),
                 {'Content-Type': 'application/json', 'Authorization': 'Bearer '+token});
-                setSoundInfo((prevState: any) => {
-                    return {
-                        ...prevState,
-                        sound: {
-                            ...prevState.sound,
-                            name: editSoundState.inputs.edit.value
-                        }
-                    }
-                });
+                dispatch({type: "EDIT_SOUND_NAME", payload: editSoundState.inputs.edit.value})
                 closeMode();
             } catch (err) {}
         }

@@ -6,7 +6,7 @@ import heart from '../../util/img/heart2.svg';
 import msg from '../../util/img/chat.svg';
 import getDaysSince from '../../util/functions/getDaysSince';
 import FeedItemFollow from './FeedItemFollow';
-import { FeedState } from '../../store/reducers/feedReducer';
+import { FeedState } from '../../store/reducers/user/feedReducer';
 import Image from 'next/image';
 import SoundListItem from '../common_reusable/SoundListItem';
 

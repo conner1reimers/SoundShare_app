@@ -8,7 +8,7 @@ import SoundListItem from "../common_reusable/SoundListItem";
 import { RefreshTopDownloadsLoading, refreshTopLikedLoading } from "../../store/selectors";
 import InPageLoadSpinner from "../animatedLoaders/InPageLoad/InPageLoadSpinner";
 import { useGlobalMsg } from "../../util/hooks/useGlobalMsg";
-import { RecentSoundState } from "../../store/reducers/recentSound";
+import { RecentSoundState } from "../../store/reducers/sounds/recentSound";
 import Image from "next/image";
 
 
@@ -64,7 +64,9 @@ const RecentSide: React.FC = () => {
                   className="recent-sounds--side-big--box--list--item"
                 >
                   <div className="recent-sounds--side-big--box--list--item--title">
-                    <Image className="recent-img" src={folder} alt="" />
+                    <div className="wrapper">
+                      <Image className="recent-img" src={folder} alt="" />
+                    </div>
                     <p>{name}</p>
                   </div>
                   <div className="recent-sounds--side-big--box--list--item--info">
@@ -78,7 +80,7 @@ const RecentSide: React.FC = () => {
           <div className="recent-sounds--side--more">
             <button onClick={allTopLiked} className="btn nohover">
               <span>See more</span>
-              <div>
+              <div className="wrapper">
                 <Image src={eye} alt=""/>
               </div>
             </button>
@@ -112,7 +114,9 @@ const RecentSide: React.FC = () => {
                   className="recent-sounds--side-big--box--list--item"
                 >
                   <div className="recent-sounds--side-big--box--list--item--title">
-                    <Image className="recent-img" src={folder} alt="" />
+                    <div className="wrapper">
+                      <Image className="recent-img" src={folder} alt="" />
+                    </div>
                     <p>{name}</p>
                   </div>
                   <div className="recent-sounds--side-big--box--list--item--info">
@@ -127,7 +131,7 @@ const RecentSide: React.FC = () => {
           <div className="recent-sounds--side--more">
             <button onClick={allDownloads} className="btn nohover">
               <span>See more</span>
-              <div>
+              <div className="wrapper">
                 <Image src={eye} alt=""/>
               </div>
             </button>

@@ -4,7 +4,7 @@ import { VALIDATOR_REQUIRE } from '../../../util/validators';
 import { useHttpClient } from '../../../util/hooks/http-hook';
 import { useDispatch, useSelector } from 'react-redux';
 import { useGlobalMsg } from '../../../util/hooks/useGlobalMsg';
-import { UserState } from "../../../store/reducers/user";
+import { UserState } from "../../../store/reducers/user/user";
 import Input from '../../common_reusable/Input';
 import BallLoader from '../../animatedLoaders/BallLoader/BallLoader';
 import EditImgModal from '../../shared/Modals/EditImgModal';

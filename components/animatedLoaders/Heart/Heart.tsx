@@ -11,26 +11,24 @@ import { useHttpClient } from "../../../util/hooks/http-hook";
 import { useSelector, useDispatch } from "react-redux";
 import { useGlobalMsg } from "../../../util/hooks/useGlobalMsg";
 import BallLoader from "../BallLoader/BallLoader";
-import { UserState } from '../../../store/reducers/user';
+import { UserState } from '../../../store/reducers/user/user';
+import { SoundState } from "../../../store/reducers/sounds/soundPageReducer";
 
-interface Props {
-  soundInfo: any,
-  soundId: any,
-  setSoundInfo: any,
-  setFav: any,
-  fav: any
-
-}
 
 interface RootStateConst {
-  user: UserState
+  user: UserState,
+  singleSound: SoundState
 };
 
-const Heart: React.FC<Props> = ({soundId, soundInfo, setSoundInfo, setFav, fav}) => {
+const Heart: React.FC = () => {
   let anim: any;
   const container = useRef<any>(null);
   const userId = useSelector((state: RootStateConst) => state.user.userId);
   const token = useSelector((state: RootStateConst) => state.user.token);
+  const sid = useSelector((state: RootStateConst) => state.singleSound.sound.id);
+  const isFavorited = useSelector((state: RootStateConst) => state.singleSound.sound.isFavorited);
+
+
   const { isLoading, sendRequest } = useHttpClient();
   const setGlobalMsgs = useGlobalMsg();
   const dispatch = useDispatch();
@@ -40,51 +38,27 @@ const Heart: React.FC<Props> = ({soundId, soundInfo, setSoundInfo, setFav, fav})
     let response;
     if (userId) {
       try {
-        response = await sendRequest(
-          `${process.env.NEXT_PUBLIC_REACT_APP_MY_ENV}/sounds/fav/${soundInfo.sound.id}/${userId}`,
+        response =
+          await sendRequest(`${process.env.NEXT_PUBLIC_REACT_APP_MY_ENV}/sounds/fav/${sid}/${userId}`,
           "POST",
           JSON.stringify({
             userId: userId,
-            soundId: soundInfo.sound.id,
+            soundId: sid,
           }),
           { "Content-Type": "application/json",
             "Authorization": "Bearer "+token }
         );
 
         if (response.msg === "unfav") {
-          dispatch({type: "USER_UNFAV_SOUND", id: soundId});
+          dispatch({type: "USER_UNFAV_SOUND", id: sid});
+          dispatch({ type: "SINGLESOUND_UNFAV", payload: userId });
 
-          setSoundInfo((prev: any) => {
-            const newLikes = prev.sound.favs.filter((el: any) => {
-              return el !== userId.toString();
-            })
-            return {
-              ...prev,
-              sound: {
-                ...prev.sound,
-                favs: newLikes
-              }
-            }
-          })
         } else if (response.msg === "fav") {
-          setSoundInfo((prev: any) => {
-            const newFav = [...prev.sound.favs, userId.toString()];
-            return {
-              ...prev,
-              sound: {
-                ...prev.sound,
-                favs: newFav
-              }
-            }
-          })
-          dispatch({type: "USER_FAV_SOUND", id: soundId});
-
+          dispatch({type: "USER_FAV_SOUND", sid});
+          dispatch({ type: "SINGLESOUND_NEW_FAV", payload: userId });
         }
-        setFav((prevState: any) => !prevState);
 
-      } catch (err) {
-       
-      }
+      } catch (err) {}
     } else {
       setGlobalMsgs(`Please login to like a sound.`, 'error');
     }
@@ -102,7 +76,7 @@ const Heart: React.FC<Props> = ({soundId, soundInfo, setSoundInfo, setFav, fav})
       },
     });
 
-    if (fav) {
+    if (isFavorited) {
       anim.setDirection(1);
       anim.play();
     }
@@ -110,7 +84,7 @@ const Heart: React.FC<Props> = ({soundId, soundInfo, setSoundInfo, setFav, fav})
       anim.addEventListener("enterFrame", enteredFrameHandler);
     } catch (error) {}
 
-    if (!fav) {
+    if (!isFavorited) {
       anim.currentFrame = 55;
       anim.setDirection(-1);
       anim.play();
@@ -119,12 +93,12 @@ const Heart: React.FC<Props> = ({soundId, soundInfo, setSoundInfo, setFav, fav})
     return () => {
       anim.destroy();
     };
-  }, [fav]);
+  }, [isFavorited]);
 
   const enteredFrameHandler = () => {
-    if (anim.currentFrame > 55 && fav) {
+    if (anim.currentFrame > 55 && isFavorited) {
       anim.pause();
-    } else if (!fav) {
+    } else if (!isFavorited) {
       anim.setDirection(-1);
       anim.play();
     }

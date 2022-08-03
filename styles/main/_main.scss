@@ -928,16 +928,19 @@ div.sound-list-item--circle.global-circle-btns--inner {
 
 
 .bell-icon {
+  position: relative;
+
   &--contain {
     position: relative;
     @include heightWidth100;
     @include flexcenter;
     background-color: rgb(41, 41, 38);
-    @include heightWidthSame(2rem);
+    @include heightWidthSame(1.8rem);
     border-radius: 50%;
     padding: 0.2rem;
     box-shadow: $shadow-newer-2;
     transition: all 0.2s;
+    position: relative;
    
     @media (hover: hover) and (pointer: fine) {
       &:hover {
@@ -1398,7 +1401,7 @@ div.userpic-contain-top {
     }
 
     &--icon {
-      align-self: start;
+      align-self: flex-start;
       background-color: rgb(22, 22, 20);
       padding: 0.2rem;
       @include flexcenter;
@@ -1672,9 +1675,12 @@ div.notifications-list--textcontain.notifications-list--textcontain--comment.not
 div.sidedrawer-navlink.sidedrawer-notific {
   button.btn.nohover {
     div.bell-icon--contain {
+      max-height: 40px;
+      max-width: 40px;
       position: relative;
       padding: 0.7rem;
       left: 2vw;
+
       div.top-nav-big--links--notifications {
         transform: scale(1.1);
         span {
@@ -1764,4 +1770,55 @@ div.hamburger-contain-open {
 
   }
 
+}
+
+div.sound-list-item--circle {
+  div.circle-img-wrapper {
+    @include flexcenter;
+    max-width: 20px;
+    max-height: 20px;
+    min-width: 10px;
+    min-height: 10px;
+  }
+}
+
+div.circle-img-wrapper2 {
+  @include heightWidth100;
+  @include flexcenter;
+  max-width: 20px;
+  max-height: 20px;
+  min-width: 10px;
+  min-height: 10px;
+  span {
+    @include heightWidth100;
+  }
+}
+
+.circle-img {
+  max-width: 20px;
+  max-height: 20px;
+  min-width: 10px;
+  min-height: 10px;
+}
+
+.volume-img-wrapper {
+  position: relative;
+}
+
+.edit-img-wrapper {
+
+}
+
+
+.license-wrapper {
+  // background-color: yellow;
+  left: 0;
+  position: relative;
+  // max-width: 70px;
+  // max-height: 60px;
+
+  span {
+    left: 0;
+
+  }
 }

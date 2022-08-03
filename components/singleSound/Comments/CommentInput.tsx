@@ -3,15 +3,17 @@ import { useForm } from '../../../util/hooks/useForm';
 import { VALIDATOR_REQUIRE } from '../../../util/validators';
 import { useHttpClient } from '../../../util/hooks/http-hook';
 import { motion, AnimatePresence } from 'framer-motion';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { useGlobalMsg } from '../../../util/hooks/useGlobalMsg';
-import { UserState } from "../../../store/reducers/user";
+import { UserState } from "../../../store/reducers/user/user";
 import Input from '../../common_reusable/Input';
 import LoadingAnimation from '../../animatedLoaders/LoadingAnimation/LoadingAnimation';
+import { SoundState } from '../../../store/reducers/sounds/soundPageReducer';
 
 
 interface Root {
-  user: UserState
+  user: UserState,
+  singleSound: SoundState
 }
 const optionsVariants = {
     initial: {
@@ -40,13 +42,8 @@ const optionsTransition = {
     
 };
 
-interface Props {
-    soundInfo: any,
-    setSoundInfo: any
-}
 
-
-const CommentInput: React.FC<Props> = ({soundInfo, setSoundInfo}) => {
+const CommentInput: React.FC = () => {
     const [formState, inputHandler] = useForm({
         comment: {
             value: '',
@@ -55,8 +52,10 @@ const CommentInput: React.FC<Props> = ({soundInfo, setSoundInfo}) => {
     }, false);
 
     const setGlobalMsg = useGlobalMsg();
-
+    const dispatch = useDispatch();
     const auth = useSelector((state: Root) => state.user);
+    const sid = useSelector((state: Root) => state.singleSound.sound.id);
+
     const {isLoading, sendRequest} = useHttpClient();
 
     const [showBtn, setShowBtn] = useState(false);
@@ -68,24 +67,13 @@ const CommentInput: React.FC<Props> = ({soundInfo, setSoundInfo}) => {
 
         if (auth.isLoggedIn && !isLoading) {
             try {
-                response = await sendRequest(`${process.env.NEXT_PUBLIC_REACT_APP_MY_ENV}/sounds/comment/${soundInfo.sound.id}/${auth.userId}`, 'POST',
-                JSON.stringify({
-                    comment: formState.inputs.comment.value
-                }),
-                {'Content-Type':'application/json', 'Authorization': 'Bearer '+auth.token});
+                response = await sendRequest(`${process.env.NEXT_PUBLIC_REACT_APP_MY_ENV}/sounds/comment/${sid}/${auth.userId}`, 'POST',
+                    JSON.stringify({comment: formState.inputs.comment.value}),
+                    { 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + auth.token });
+                
                 if (response.msg === "comment-success") {
-                    let newComments = [response.comment, ...soundInfo.comments];
-    
-                    setSoundInfo((prevState: any) => {
-                        return {
-                            ...prevState,
-                            comments: newComments,
-                            offset: prevState.offset + 1
-                        }
-                    });
-
+                    dispatch({type: "SINGLESOUND_NEW_COMMENT", payload: response.comment})
                     setGlobalMsg('Comment submitted.', 'success');
-        
                 } else {
                     setGlobalMsg('There was some sort of error', 'error')
                 }
@@ -100,14 +88,14 @@ const CommentInput: React.FC<Props> = ({soundInfo, setSoundInfo}) => {
 
         let inputEl: any;
         useEffect(() => {
-            if (soundInfo.sound.id && !showBtn) {
+            if (sid && !showBtn) {
                inputEl = document.querySelector('.single-sound--comments--input');
                inputEl.classList.remove('single-sound--comments--buttonshow');
             } else if (showBtn) {
                 inputEl = document.querySelector('.single-sound--comments--input');
                 inputEl.classList.add('single-sound--comments--buttonshow');
             }
-        }, [soundInfo, showBtn])
+        }, [sid, showBtn])
         
 
     return (

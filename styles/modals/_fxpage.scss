@@ -745,7 +745,7 @@
 
 						img {
 							@include heightWidthSame(1rem);
-							justify-self: start;
+							justify-self: flex-start;
 							align-self: center;
 							background: none;
 							position: relative;
@@ -767,7 +767,7 @@
 						
 						span {
 							align-self: center;
-							justify-self: start;
+							justify-self: flex-start;
 							background: none;
 							background-image: none;
 							display: flex;
@@ -1459,8 +1459,6 @@ div.fx-sliders-4slides {
 			width: 80rem;
 			max-width: 20rem;
 			left: 0;
-
-
 		}
 
 		@media screen and (max-height: 750px) {
@@ -1476,7 +1474,6 @@ div.fx-sliders-4slides {
 
 	div.fx-bottomwindow--compare.uploadmodal-big--fxpage--box--playpause.fx-playpause-mobile {
 		top: 64vh;
-
 	}
 
 }

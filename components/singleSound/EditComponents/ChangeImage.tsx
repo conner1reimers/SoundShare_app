@@ -1,17 +1,20 @@
 import { AnimatePresence, motion } from 'framer-motion'
 import React, { useState } from 'react'
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { useHttpClient } from '../../../util/hooks/http-hook'
 import { useForm } from '../../../util/hooks/useForm'
-import { UserState } from "../../../store/reducers/user";
+import { UserState } from "../../../store/reducers/user/user";
 import BallLoader from '../../animatedLoaders/BallLoader/BallLoader'
 import ImageUpload from '../../ImageUpload'
 import EditImgModal from '../../shared/Modals/EditImgModal'
 import Image from 'next/image'
+import { SoundState } from '../../../store/reducers/sounds/soundPageReducer'
+import music from "../../../public/loop-background.svg";
 
 
 interface Root {
-  user: UserState
+user: UserState
+  singleSound: SoundState
 }
 
 const optionsVariants = {
@@ -50,16 +53,12 @@ const optionsTransition = {
 
 interface Props {
     setEditMode: any,
-    oldpath: any,
-    setSoundInfo: any,
-    id: any,
     open: any,
-    imgSrc: any
 
 }
 
 
-const EditImage: React.FC<Props> = ({setEditMode, setSoundInfo, oldpath, open, id, imgSrc}) =>  {
+const EditImage: React.FC<Props> = ({setEditMode, open}) =>  {
     const [editSoundState, inputHandler] = useForm({
         image: {
             value: '',
@@ -67,9 +66,12 @@ const EditImage: React.FC<Props> = ({setEditMode, setSoundInfo, oldpath, open, i
         } 
     }, false);
     const {isLoading, sendRequest} = useHttpClient();
+
+    const sid = useSelector((state: Root) => state.singleSound.sound.id);
+    const oldpath = useSelector((state: Root) => state.singleSound.sound.img_path);
     const uid = useSelector((state: Root) => state.user.userId);
     const token = useSelector((state: Root) => state.user.token);
-
+    const dispatch = useDispatch();
 
     const closeMode = () => {
         setEditMode(null);
@@ -80,28 +82,18 @@ const EditImage: React.FC<Props> = ({setEditMode, setSoundInfo, oldpath, open, i
         let response: any;
         
         if (editSoundState.inputs.image.value) {
-            const newOldpath: string = oldpath ? oldpath : 'none';
+            const newoldpath: string = oldpath ? oldpath : 'none';
             const formData = new FormData();
 
             formData.append('image', editSoundState.inputs.image.value);
             
             try {
-                response = await sendRequest(`${process.env.NEXT_PUBLIC_REACT_APP_MY_ENV}/sounds/changeimage/${id}/${uid}/${newOldpath}`, 
+                response = await sendRequest(`${process.env.NEXT_PUBLIC_REACT_APP_MY_ENV}/sounds/changeimage/${sid}/${uid}/${newoldpath}`, 
                 'POST', 
                 formData,
                 { "Authorization": "Bearer "+token})
 
-                
-              
-                setSoundInfo((prevState: any) => {
-                    return {
-                        ...prevState,
-                        sound: {
-                            ...prevState.sound,
-                            img_path: response.path
-                        }
-                    }
-                });
+                dispatch({type: "SINGLESOUND_CHANGE_IMG", payload: response.path})
                 closeMode();
             } catch (err) {}
         }
@@ -142,7 +134,12 @@ const EditImage: React.FC<Props> = ({setEditMode, setSoundInfo, oldpath, open, i
                             </div>
                         ) : (
                             <div className="single-edit-img--upload--prev">
-                                <Image height={50} width={50} src={imgSrc} alt="x"/>
+                                <Image height={50} width={50} 
+                                    src={
+                                    oldpath ? `https://soundshare-bucket.s3.us-east-2.amazonaws.com/${oldpath}` : music} 
+                                    alt="x"
+                                />
+                                
                             </div>)}
                         <ImageUpload
                             pass={passImgPrev}

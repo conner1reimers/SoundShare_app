@@ -175,12 +175,16 @@ const RepostButton: React.FC<Props> = ({soundId, username, creator: creatorProp,
                 transition={redTransition}
                 key="red"
               >
-                <Image
-                  src={repostRed}
-                  alt=""
-                  height={20}
-                  width={20}
-                />
+                <div className="circle-img-wrapper2">
+                  <Image
+                    src={repostRed}
+                    alt=""
+                    height={20}
+                    width={20}
+                    className="circle-img"
+                    layout="fill"
+                    />
+                </div>
 
               
               </motion.div>
@@ -196,12 +200,16 @@ const RepostButton: React.FC<Props> = ({soundId, username, creator: creatorProp,
                 transition={pageTransition}
                 key="blue"
               >
-                <Image
-                  src={repost}
-                  alt=""
-                  height={20}
-                  width={20}
-                />
+                <div className="circle-img-wrapper2">
+                  <Image
+                    src={repost}
+                    alt=""
+                    height={20}
+                    width={20}
+                    className="circle-img"
+                    layout="fill"
+                    />
+                </div>
              </motion.div>
             )}
           </AnimatePresence>

@@ -6,7 +6,7 @@ import {useHttpClient} from '../../../util/hooks/http-hook'
 import {  useSelector } from 'react-redux'
 import { useGlobalMsg } from '../../../util/hooks/useGlobalMsg'
 import closeImg from '/public/close.svg';
-import { UserState } from "../../../store/reducers/user";
+import { UserState } from "../../../store/reducers/user/user";
 import Input from '../../common_reusable/Input'
 import Modal from '../../shared/Modals/Modal'
 import Image from 'next/image'

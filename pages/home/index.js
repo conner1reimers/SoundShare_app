@@ -22,8 +22,6 @@ export const getServerSideProps = wrapper.getServerSideProps((store) =>
     // end the saga
     store.dispatch(END);
     await store.sagaTask.toPromise();
-
-    
   }
 );
 

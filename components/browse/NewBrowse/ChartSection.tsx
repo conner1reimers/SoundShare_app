@@ -3,7 +3,7 @@ import { useSelector } from "react-redux";
 import { isBrowseLoading, isBrowseRefreshing } from "../../../store/selectors";
 import Media from "react-media";
 import { useGlobalMsg } from "../../../util/hooks/useGlobalMsg";
-import { BrowseState } from '../../../store/reducers/browseReducer';
+import { BrowseState } from '../../../store/reducers/sounds/browseReducer';
 import InPageLoadSpinner from "../../animatedLoaders/InPageLoad/InPageLoadSpinner";
 import SoundListItem from "../../common_reusable/SoundListItem";
 import Dropdown from "./Dropdown/Dropdown";

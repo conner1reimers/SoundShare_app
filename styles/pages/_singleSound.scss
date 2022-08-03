@@ -182,6 +182,7 @@
       padding: 0;
       min-width: 129px;
       pointer-events: stroke;
+      max-height: 50px;
 
       @media screen and (max-width: 1099px) {
         min-width: 135px;
@@ -211,6 +212,7 @@
         @include flexcenter;
         height: 100%;
         pointer-events: none;
+        overflow: visible;
       }
       img {
         position: relative;
@@ -1781,8 +1783,10 @@ div.sound-list-item--circle.circle-btn-single-sound.circle-btn-single-sound--dow
   left: 0;
   padding: 0;
   width: 90%;
-  @include flexcenter;
+  max-height: 50px;
   min-width: 149px;
+
+  @include flexcenter;
 
   @media screen and (max-width: 1099px) {
     margin-top: 2rem;
@@ -1826,7 +1830,10 @@ div.sound-list-item--circle.circle-btn-single-sound.circle-btn-single-sound--dow
   }
   div {
     pointer-events: none;
-
+    left: 0;
+    button.btn.nohover {
+      left: 0;
+    }
   }
 
   @media screen and (max-width: 1099px) {
@@ -1875,30 +1882,6 @@ div.sound-list-item--circle.circle-btn-single-sound.circle-btn-single-sound--dow
   }
   
 }
-// div.sound-list-item--circle.circle-btn-single-sound.circle-btn-single-sound--download.singlesound-btn.move-down {
-//   @media screen and (max-width: 450px) {
-//     margin-top: 8rem;
-//   }
-//   @media screen and (min-width: $bp-large) {
-//     margin-top: 4rem;
-//   }
-// }
-
-// div.sound-list-item--circle.circle-btn-single-sound.circle-btn-single-sound--download.singlesound-btn.move-down.move-down-more {
-//   @media screen and (min-width: 451px) {
-//     margin-top: 3rem;
-//   }
-//   @media screen and (max-width: 750px) {
-//     margin-top: 8rem;
-//   }
-//   @media screen and (max-width: 450px) {
-//     margin-top: 12rem;
-//   }
-//   @media screen and (min-width: $bp-large) {
-//     margin-top: 6rem;
-//   }
-  
-// }
 
 
 
@@ -2462,7 +2445,7 @@ div.single-sound {
         
         
           background: none;
-          justify-content: start;
+          justify-content: flex-start;
         }
         div.sound-list-item--circle.singlesound-edit-btns {
           
@@ -3406,7 +3389,7 @@ div.single-sound--info--desc.single-sound--info--desc--small-desc {
     
     }
 
-    span {
+    p {
       width: 50%;
       position: relative;
       left: 10px;

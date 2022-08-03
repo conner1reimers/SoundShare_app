@@ -129,7 +129,7 @@ const BrowseOptionModal: React.FC<Props> = ({setOpen, searchTxt, mobile, search,
 
                                 <div className="browse-modal--inner-window--box" onClick={goToEffects}>
                                     <div className="browse-modal-image-container">
-                                        <Image src={game_controller} alt="" />
+                                        <Image height={80} width={80} src={game_controller} alt="" />
                                     </div>
 
                                     <span className="browse-modal-category-name">
@@ -150,7 +150,7 @@ const BrowseOptionModal: React.FC<Props> = ({setOpen, searchTxt, mobile, search,
                                 </div>
                                 <div className="browse-modal--inner-window--box" onClick={goToLoops}>
                                     <div className="browse-modal-image-container">
-                                        <Image src={headphones} alt="" />
+                                        <Image height={80} width={80} src={headphones} alt="" />
                                     </div>
 
                                     <span className="browse-modal-category-name">
@@ -171,7 +171,7 @@ const BrowseOptionModal: React.FC<Props> = ({setOpen, searchTxt, mobile, search,
                                 <div className="browse-modal--inner-window--box" onClick={goToVocals}>
 
                                     <div className="browse-modal-image-container">
-                                        <Image src={microphone} alt="" />
+                                        <Image height={80} width={80} src={microphone} alt="" />
                                     </div>
 
                                     <span className="browse-modal-category-name">

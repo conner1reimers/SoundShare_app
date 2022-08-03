@@ -5,34 +5,23 @@ import { fetchMoreRecentSoundsloading } from "../../store/selectors";
 import InPageLoadSpinner from "../animatedLoaders/InPageLoad/InPageLoadSpinner";
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
-import { RecentSoundState } from "../../store/reducers/recentSound";
+import { RecentSoundState } from "../../store/reducers/sounds/recentSound";
+import SeeMoreBtn from './SeeMoreBtn';
+import { RootState } from '../../store/reducers';
 
-interface Root {
-  recentSounds: RecentSoundState,
-}
 
 const SoundList: React.FC = () => {
-    const recentSounds = useSelector((state: Root) => state.recentSounds.sounds);
-    const category = useSelector((state: Root) => state.recentSounds.category)
-
-    const refreshFinished = useSelector(
-      (state: Root) => state.recentSounds.refreshFinished
-    );
-  
-    const offset = useSelector((state: Root) => state.recentSounds.offset);
+    const recentSounds = useSelector((state: RootState) => state.recentSounds.sounds);
+    const category = useSelector((state: RootState) => state.recentSounds.category)
     const dispatch = useDispatch();
-  
-    
-  
-    const getMoreSounds = () => {
-      const header: any = document.querySelector(".recent-sounds--head");
-      header.classList.add("recent-sounds--moreSoundsOpen");
-      dispatch({ type: "FETCH_RECENT_MORE", offset: offset, category: category });
-    };
-  
+
     const isRefreshing = useSelector((state) => {
       return fetchMoreRecentSoundsloading(state);
     });
+  
+    const refreshFinished = useSelector(
+      (state: RootState) => state.recentSounds.refreshFinished
+    );
   
     useEffect(() => {
       if (category) {
@@ -41,10 +30,12 @@ const SoundList: React.FC = () => {
       }
       
     }, [category, dispatch]);
-  
+    
     return (
       <ul className="recent-sounds--list">
+
         <div className="recent-sounds--list--border"></div>
+
         {recentSounds &&
           recentSounds.map((el: any) => {
             if (category !== "vocal") {
@@ -89,21 +80,13 @@ const SoundList: React.FC = () => {
             
           })}
         
-        {!isRefreshing && !refreshFinished && (
-          <div className="recent-sounds--seemore">
-            <button
-              onClick={getMoreSounds}
-              className="btn nohover upload-sound-button"
-              type="button"
-            >
-              SEE MORE
-            </button>
-          </div>
-        )}
+        {!isRefreshing && !refreshFinished && <SeeMoreBtn/>}
   
         <div className="refresh-browse-spinner">
           <InPageLoadSpinner loading={isRefreshing} />
         </div>
+
+
       </ul>
     
     )}

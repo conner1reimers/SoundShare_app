@@ -257,7 +257,9 @@ const GlobalSound: React.FC = React.memo(() => {
                       onClick={closeHidden}
                       className="btn nohover global-player--hidebtn"
                     >
-                      <Image src={downArrow} alt=""/>
+                      <div className="circle-img-wrapper">
+                        <Image height={30} width={30} layout="fill" src={downArrow} alt="" />
+                      </div>
                     </button>
 
                     <motion.div
@@ -333,7 +335,7 @@ const GlobalSound: React.FC = React.memo(() => {
                     {!active && hiddenOpen && (
                       <div className="global-player--hidden--close">
                         <div>
-                          <Image onClick={closeHidden} src={blueX} alt="" />
+                          <Image height={30} width={30} onClick={closeHidden} src={blueX} alt="" />
                         </div>
                       </div>
                     )}
@@ -344,16 +346,12 @@ const GlobalSound: React.FC = React.memo(() => {
                       <Fragment>
                         <div className="global-player--volume">
                           <div className="global-player--volume--contain">
-                            {/* <MouseOverHandler
-                                            noSpan
-                                            variants={volumeVariants}
-                                            transition={volumeTransition}
-                                            activatedClass="volume-activated"
-                                            label='' */}
+                           
 
-                            <div onClick={muteVolume}>
-                              <div>
-                              <Image height={20} width={20} src={volume === 0 ? mute : vol} alt="" />
+                            <div onClick={muteVolume} className="volume-btn">
+
+                              <div className="volume-img-wrapper">
+                                <Image layout="fill" height={50} width={50} src={volume === 0 ? mute : vol} alt="" />
                               </div>
                               
                             </div>
@@ -413,7 +411,7 @@ const GlobalSound: React.FC = React.memo(() => {
                           onClick={closePlayer}
                           className="btn nohover global-player--hidebtn"
                         >
-                          <Image src={downArrow} alt=""></Image>
+                          <Image height={30} width={30} src={downArrow} alt=""></Image>
                         </button>
 
                         <div className="global-player--controls">

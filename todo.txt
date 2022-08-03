@@ -17,5 +17,15 @@ DOING Incremental Static Regeneration
 
 
 
+
+
+
+LOADABLE COMPONENTS
+
+useSWR for data fetching
+
+MAKE MAIN PAGE MORE CENTERED
+
 CSS changes
 
+CHANGE ALL PLAY_SET_GLOBAL_SOUND - so that we only are passing the sound URL so nothing is re rendering (sound player on single sound)

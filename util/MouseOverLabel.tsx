@@ -1,7 +1,7 @@
 import React, { useState, Fragment, useEffect, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useSelector } from "react-redux";
-import { UiState } from '../store/reducers/uiStateReducer';
+import { UiState } from '../store/reducers/ui/uiStateReducer';
 import { aniVariants } from '../interfaces/animationInterface';
 import { transition } from '../interfaces/animationInterface';
 

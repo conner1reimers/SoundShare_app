@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react'
 import { DefaultRootState, useDispatch, useSelector } from 'react-redux';
-import { AuthState } from '../../../store/reducers/authReducer';
+import { AuthState } from '../../../store/reducers/global/authReducer';
 import { useHttpClient } from '../../../util/hooks/http-hook';
 import { useForm } from '../../../util/hooks/useForm';
 import { useGlobalMsg } from '../../../util/hooks/useGlobalMsg';

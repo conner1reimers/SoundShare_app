@@ -1,10 +1,10 @@
 import React, { useEffect } from 'react'
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { useHttpClient } from '../../../util/hooks/http-hook';
 import {useForm} from '../../../util/hooks/useForm'
 import { useGlobalMsg } from '../../../util/hooks/useGlobalMsg';
 import {VALIDATOR_REQUIRE} from '../../../util/validators'
-import { UserState } from "../../../store/reducers/user";
+import { UserState } from "../../../store/reducers/user/user";
 import Input from '../../common_reusable/Input';
 
 
@@ -13,15 +13,13 @@ interface Root {
 }
 
 interface Props {
-    soundInfo: any,
-    setSoundInfo: any,
     id: any,
     indx: any,
     close: any
 }
 
 
-const EditComment: React.FC<Props> = ({soundInfo, setSoundInfo, id, indx, close}) => {
+const EditComment: React.FC<Props> = ({ id, indx, close}) => {
     const [formState, inputHandler] = useForm(
         {
             comment: {
@@ -34,7 +32,7 @@ const EditComment: React.FC<Props> = ({soundInfo, setSoundInfo, id, indx, close}
     const setGlobalMsg = useGlobalMsg();
     const token = useSelector((state: Root) => state.user.token);
     const userId = useSelector((state: Root) => state.user.userId);
-
+    const dispatch = useDispatch();
 
     const submitEditComment = async () => {
         try {
@@ -49,19 +47,7 @@ const EditComment: React.FC<Props> = ({soundInfo, setSoundInfo, id, indx, close}
                     });
                 if (result.msg === "UPDATED") {
                 
-                    let items = [...soundInfo.comments];
-                    let item = {
-                        ...items[indx],
-                        message: formState.inputs.comment.value
-                    }
-
-                    items[indx] = item;
-                    setSoundInfo((prevState: any) => {
-                        return {
-                            ...prevState,
-                            comments: items
-                        }
-                    });
+                    dispatch({type: "SINGLESOUND_UPDATE_COMMENT", payload: {indx, msg: formState.inputs.comment.value}})
                     close();
 
                 } else {

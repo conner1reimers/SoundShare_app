@@ -69,7 +69,7 @@ const userPageReducer = (state = initialState, action: any) => {
           return {...state}
       }
       
-  }
+    }
     case 'FETCH_USER_ASYNC':
         return {
           ...action.results,

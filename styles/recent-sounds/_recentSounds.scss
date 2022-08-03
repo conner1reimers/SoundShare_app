@@ -13,6 +13,13 @@
   @media screen and (max-width: 1099px) {
     top: 5rem;
   }
+  @media screen and (min-width: $bp-large) {
+    grid-row: 3/5;
+    display: grid;
+    grid-template-rows: 6.5% 92.5%;
+    grid-template-columns: 65% 35%;
+  }
+  
 
   &--head-contain {
     @include heightWidth100;
@@ -28,7 +35,7 @@
     @media screen and (min-width: $bp-large) {
       grid-column: 1/2;
       grid-row: 1/2;
-      align-self: start;
+      align-self: flex-start;
       top: -1.81rem;
     }
     @media screen and (max-width: 1099px) and (min-height: 751px) {
@@ -381,7 +388,7 @@
         grid-column: 2 / 3;
         @include flexcenter;
         justify-content: space-around;
-        justify-self: start;
+        justify-self: flex-start;
         align-self: center;
         font-size: 1.8rem;
         color: $color-white;
@@ -492,12 +499,7 @@
       }
     }
   }
-  @media screen and (min-width: $bp-large) {
-    grid-row: 3/5;
-    display: grid;
-    grid-template-rows: 6.5% 92.5%;
-    grid-template-columns: 65% 35%;
-  }
+  
 
 
 }

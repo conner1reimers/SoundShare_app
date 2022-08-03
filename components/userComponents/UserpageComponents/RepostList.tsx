@@ -1,6 +1,6 @@
 import React, { Fragment, useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
-import { UserpageState } from '../../../store/reducers/userPageInfo';
+import { UserpageState } from '../../../store/reducers/user/userPageInfo';
 import { useHttpClient } from '../../../util/hooks/http-hook';
 import InPageLoadSpinner from '../../animatedLoaders/InPageLoad/InPageLoadSpinner';
 import SoundListItem from '../../common_reusable/SoundListItem';

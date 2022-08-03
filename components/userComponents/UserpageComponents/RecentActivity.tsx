@@ -8,7 +8,7 @@ import heart from "/public/heart2.svg";
 import msg from "/public/chat.svg";
 import follow from "/public/followers.svg";
 import { useChangePage } from "../../../util/hooks/changePage";
-import { UserpageState } from '../../../store/reducers/userPageInfo';
+import { UserpageState } from '../../../store/reducers/user/userPageInfo';
 import Image from 'next/image';
 
 
@@ -60,7 +60,7 @@ const RecentActivity = () => {
                                 onClick={(e) => gotoSingleSoundPage(e, id)}
                               >
                                 <div className="user-page--left--list--item--img">
-                                  <Image src={heart} />
+                                  <Image layout="fill" alt="" src={heart} />
                                 </div>
                                 <span className="user-page--left--list--item--text">
                                   Favorited sound:{" "}
@@ -97,7 +97,7 @@ const RecentActivity = () => {
                                 onClick={(e) => goToUserPage(e, id)}
                               >
                                 <div className="user-page--left--list--item--img">
-                                  <Image src={follow} alt="" />
+                                  <Image layout="fill" alt="" src={follow} />
                                 </div>
                                 <span className="user-page--left--list--item--text">
                                   Followed user:{" "}
@@ -134,7 +134,7 @@ const RecentActivity = () => {
                                 onClick={(e) => gotoSingleSoundPage(e, id)}
                               >
                                 <div className="user-page--left--list--item--img">
-                                  <Image src={refresh} />
+                                  <Image layout="fill" alt="" src={refresh} />
                                 </div>
                                 <span className="user-page--left--list--item--text">
                                   Reposted sound:{" "}
@@ -171,7 +171,7 @@ const RecentActivity = () => {
                                 onClick={(e) => gotoSingleSoundPage(e, id)}
                               >
                                 <div className="user-page--left--list--item--img">
-                                  <Image src={cloud} />
+                                  <Image layout="fill" alt="" src={cloud} />
                                 </div>
                                 <span className="user-page--left--list--item--text">
                                   Uploaded sound:{" "}
@@ -209,7 +209,7 @@ const RecentActivity = () => {
                                     onClick={(e) => gotoSingleSoundPage(e, id)}
                                   >
                                     <div className="user-page--left--list--item--img">
-                                      <Image src={msg} />
+                                      <Image layout="fill" alt="" src={msg} />
                                     </div>
                                     <span className="user-page--left--list--item--text">
                                       Commented on sound:{" "}

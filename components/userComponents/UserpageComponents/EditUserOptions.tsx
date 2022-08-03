@@ -1,7 +1,7 @@
 import React, { Fragment } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
-import { UiState } from '../../../store/reducers/uiStateReducer';
-import { UserpageState } from '../../../store/reducers/userPageInfo';
+import { UiState } from '../../../store/reducers/ui/uiStateReducer';
+import { UserpageState } from '../../../store/reducers/user/userPageInfo';
 import MouseOverLabel from "../../../util/MouseOverLabel";
 import more from "/public/more2.svg";
 import { AnimatePresence } from "framer-motion";

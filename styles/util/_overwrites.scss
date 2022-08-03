@@ -173,7 +173,8 @@ div.sound-list-item--circle {
   }
 
   @include actionBtnActive;
-  span {
+
+  span.followerLength {
     position: relative;
     align-items: flex-end;
     top: 1vh;
@@ -189,16 +190,9 @@ div.sound-list-item--circle {
   }
 }
 
-button.btn.nohover.heart-absolute {
-  img {
-    position: absolute;
-  }
-}
 
 div.refresh-browse-spinner {
   position: relative;
-  // height: 100vh;
-  // width: 100vw;
   @include heightWidth100;
   @include flexcenter;
   align-items: flex-start;
@@ -207,8 +201,6 @@ div.refresh-browse-spinner {
     top: -24vh;
   }
 }
-
-// make hearts red
 
 div.sound-list-item--circle.circle-btn-single-sound {
   background-color: rgba(198, 225, 236, 0.082);
@@ -856,7 +848,6 @@ div.recent-sounds--list--item--player {
   @include flexcenter;
   left: 0;
   button.btn.nohover {
-    padding: 0;
     left: 0;
     @include heightWidthSame(6rem);
     
@@ -1345,7 +1336,7 @@ div.refresh-comment-spinner {
 div.action-heart-img.action-heart-img-contain {
   @include heightWidth100;
   @include flexcenter;
-  div {
+  span {
     @include heightWidthSame(59%);
     @include flexcenter;
   }

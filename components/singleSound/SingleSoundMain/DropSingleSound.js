@@ -1,6 +1,6 @@
 import React, { Fragment } from 'react'
-import { UserState } from "../../../store/reducers/user";
-import { UiState } from "../../../store/reducers/uiStateReducer";
+import { UserState } from "../../../store/reducers/user/user";
+import { UiState } from "../../../store/reducers/ui/uiStateReducer";
 import { useDispatch, useSelector } from 'react-redux';
 import { useHttpClient } from '../../../util/hooks/http-hook';
 import { motion } from 'framer-motion';
@@ -42,12 +42,20 @@ const optionsTransition = {
 
 
 
-const DropSinglesound = ({cancel, setEditMode, isMyPage, soundInfo, soundId}) => {
+const DropSinglesound = ({cancel, setEditMode, isMyPage }) => {
   const { sendRequest } = useHttpClient();
   const history = useRouter();
   const gpuTier = useSelector((state) => state.ui.gpuTier);
   const myPageOptionsOpen = useSelector((state) => state.ui.singlesoundOptionsOpen);
   const token = useSelector((state) => state.user.token);
+  const soundId = useSelector((state) => state.singleSound.sound.id);
+  const creatorId = useSelector((state) => state.singleSound.sound.creator_id);
+  const path = useSelector((state) => state.singleSound.sound.path);
+  const img_path = useSelector((state) => state.singleSound.sound.img_path);
+
+
+
+
   const dispatch = useDispatch();
 
   const editName = (e) => {
@@ -74,12 +82,11 @@ const DropSinglesound = ({cancel, setEditMode, isMyPage, soundInfo, soundId}) =>
       try {
         dispatch({ type: "MAIN_LOADER_START" });
         result = await sendRequest(
-          `${process.env.NEXT_PUBLIC_REACT_APP_MY_ENV}/sounds/delete/${soundId}/${soundInfo.sound.creator_id}/`,
+          `${process.env.NEXT_PUBLIC_REACT_APP_MY_ENV}/sounds/delete/${soundId}/${creatorId}/`,
           "DELETE",
           JSON.stringify({
-            path: soundInfo.sound.path,
-            imgpath: soundInfo.sound.img_path,
-            
+            path: path,
+            imgpath: img_path
           }),
           {
             'Content-Type': 'application/json',  

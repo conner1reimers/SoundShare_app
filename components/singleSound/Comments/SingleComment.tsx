@@ -2,14 +2,15 @@ import React, { Fragment, useCallback, useEffect, useRef, useState } from 'react
 import dots from "../../../public/more3.svg";
 import unknown from '../../../public/question3.jpg';
 import { useChangePage } from '../../../util/hooks/changePage';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import EditComment from './EditComment';
 import { cancel } from 'redux-saga/effects';
 import { useHttpClient } from '../../../util/hooks/http-hook';
 import { useGlobalMsg } from '../../../util/hooks/useGlobalMsg';
 import ReportComment from './ReportComment';
-import { UserState } from "../../../store/reducers/user";
-import { UiState } from "../../../store/reducers/uiStateReducer";
+import { UserState } from "../../../store/reducers/user/user";
+import { UiState } from "../../../store/reducers/ui/uiStateReducer";
+import { SoundState } from '../../../store/reducers/sounds/soundPageReducer';
 import BallLoader from '../../animatedLoaders/BallLoader/BallLoader';
 import MobileModal from '../../shared/Modals/MobileModal';
 import Image from 'next/image';
@@ -17,14 +18,13 @@ import Image from 'next/image';
 
 interface Root {
     user: UserState,
-    ui: UiState
+    ui: UiState,
+    singleSound: SoundState
 }
 
 interface Props {
     creator_id: any,
     indx: any,
-    soundInfo: any,
-    setSoundInfo: any,
     message: any,
     id: any,
     path: any,
@@ -33,12 +33,14 @@ interface Props {
 
 }
 
-const SingleComment: React.FC<Props> = ({indx, id, creator_id, soundInfo, setSoundInfo, message, path, username, date}) => {
+const SingleComment: React.FC<Props> = ({indx, id, creator_id, message, path, username, date}) => {
     const [myComment, setMyComment] = useState(false);
     const [commentOptionsOpen, setCommentOptionsOpen] = useState(false);
     const [editCommentOpen, setEditCommentOpen] = useState(false);
     const [reportOptionsOpen, setReportOptionsOpen] = useState(false);
 
+    const dispatch = useDispatch();
+    
     const fullUser = useSelector((state: Root) => state.user.full);
     const {goToUserPage} = useChangePage();
     const isLoggedIn = useSelector((state: Root) => state.user.isLoggedIn);
@@ -49,6 +51,8 @@ const SingleComment: React.FC<Props> = ({indx, id, creator_id, soundInfo, setSou
     const gpuTier = useSelector((state: Root) => state.ui.gpuTier)
     const {isLoading, sendRequest} = useHttpClient();
 
+    const comments = useSelector((state: Root) => state.singleSound.comments);
+    const sid = useSelector((state: Root) => state.singleSound.sound.id);
     
     const goToUser = useCallback((e: any) => {
         goToUserPage(e, creator_id)
@@ -77,7 +81,7 @@ const SingleComment: React.FC<Props> = ({indx, id, creator_id, soundInfo, setSou
         let result;
         try {
             result = await sendRequest(
-                `${process.env.NEXT_PUBLIC_REACT_APP_MY_ENV}/sounds/delete-comment/${soundInfo.sound.id}/${creator_id}/${id}`, 'DELETE', 
+                `${process.env.NEXT_PUBLIC_REACT_APP_MY_ENV}/sounds/delete-comment/${sid}/${creator_id}/${id}`, 'DELETE', 
                 null,
                 {
                     'Content-Type': 'application/json',
@@ -86,21 +90,7 @@ const SingleComment: React.FC<Props> = ({indx, id, creator_id, soundInfo, setSou
            
             
             if (result.msg === "comment-deleted") {
-             
-                let items = [...soundInfo.comments];
-
-                let newComments = items.filter(el => {
-                    return el !== items[indx]
-                })
-                setSoundInfo((prevState: any) => {
-                    return {
-                        ...prevState,
-                        comments: newComments,
-                        offset: prevState.offset - 1
-                    }
-                });
-                
-    
+                dispatch({ type: "SINGLESOUND_DELETE_COMMENT", payload: indx });
             } else {
                 setGlobalMsg('There was some sort of error', 'error')
             }
@@ -265,9 +255,7 @@ const SingleComment: React.FC<Props> = ({indx, id, creator_id, soundInfo, setSou
             </Fragment>)}
 
             {editCommentOpen && (
-                <EditComment   
-                    setSoundInfo={setSoundInfo} 
-                    soundInfo={soundInfo} 
+                <EditComment 
                     indx={indx}
                     id={id} 
                     close={cancelEditComment}

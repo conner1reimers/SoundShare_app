@@ -1,5 +1,5 @@
 import { useRouter } from 'next/router'
-import React, {Fragment, useEffect, useState} from "react";
+import React, {Fragment, useEffect} from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { isUserPageLoading } from "../../store/selectors";
 // import Media from "react-media";
@@ -14,7 +14,7 @@ import { fetchUserServer } from '../../store/actions/user';
 import { Media, MediaContextProvider } from "../../util/media"
 
 
-export default function User(props) {
+export default function User() {
  const isPageLoading = useSelector((state) => {
   return isUserPageLoading(state);
  });
@@ -68,9 +68,7 @@ export default function User(props) {
 
 export async function getStaticPaths() {
   const getUsers = "SELECT id FROM users";  
-
   let foundUsers;
-  let response;
 
   try {
     foundUsers = await db.query(getUsers);

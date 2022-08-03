@@ -8,11 +8,11 @@ import Media from 'react-media';
 import ReactDOM from 'react-dom';
 import { isObjectEmpty } from '../../util/functions/useDownloadFile';
 import { useGlobalMsg } from '../../util/hooks/useGlobalMsg';
-import { UploadState } from '../../store/reducers/uploadReducer';
-import { GlobalMsgState } from '../../store/reducers/globalMsg';
-import { ProgressState } from '../../store/reducers/progressState';
-import { UiState } from '../../store/reducers/uiStateReducer';
-import { GlobalPlayingState } from '../../store/reducers/globalPlaying';
+import { UploadState } from '../../store/reducers/ui/uploadReducer';
+import { GlobalMsgState } from '../../store/reducers/global/globalMsg';
+import { ProgressState } from '../../store/reducers/global/progressState';
+import { UiState } from '../../store/reducers/ui/uiStateReducer';
+import { GlobalPlayingState } from '../../store/reducers/global/globalPlaying';
 import { styled } from '@material-ui/core/styles';
 
 const optionsVariants = {

@@ -64,7 +64,6 @@ const handler = nc()
   try {
     foundUserFavs = await client.query(findUserFavs, findUserFavsVal);
     if (!foundUserFavs.rows[0].favs || foundUserFavs.rows[0].favs < 1) {
-      console.log("HELLO")
       hasNoFavs = true;
       userFavs = [];
     } else {

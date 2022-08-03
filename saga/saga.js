@@ -10,7 +10,7 @@ import {
   watchFetchRecentSounds, watchFetchRecentSoundsServer, 
   watchrecentSoundsFetchMore, watchFetchRecentSoundsCategory,
   watchFetchTopDownloads, watchRefreshAllDownloads,
-  watchFetchTopLiked, watchRefreshAllLikes 
+  watchFetchTopLiked, watchRefreshAllLikes, watchFetchSingleSound, watchFetchSingleSoundServer 
 } from "./soundSagas";
 
 import { 
@@ -39,6 +39,9 @@ function* rootSaga() {
   yield fork(watchBPMSearch);
   yield fork(watchFetchRecentSoundsServer);
   yield fork(watchFetchUserServer);
+  yield fork(watchFetchSingleSound);
+  yield fork(watchFetchSingleSoundServer);
+
 }
 
 export default rootSaga;

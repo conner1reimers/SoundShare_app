@@ -31,7 +31,7 @@
     height: 13vh;
     min-height: 98px;
     background-color: rgba(67, 72, 73, 0.288);
-    justify-self: start;
+    justify-self: flex-start;
 
     @media screen and (max-width: 500px) {
       max-height: 75px;
@@ -486,7 +486,7 @@ $bg: #242526;
   span {
     grid-column: 2/3;
     @include flexcenter;
-    justify-content: start;
+    justify-content: flex-start;
     font-size: 0.91rem;
     white-space: nowrap;
     @media screen and (max-width: 1099px) {

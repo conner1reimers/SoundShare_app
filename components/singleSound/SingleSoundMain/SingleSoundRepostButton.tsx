@@ -1,26 +1,29 @@
 import React, { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
-import { UserState } from "../../../store/reducers/user";
+import { SoundState } from '../../../store/reducers/sounds/soundPageReducer';
+import { UserState } from "../../../store/reducers/user/user";
 import { useHttpClient } from '../../../util/hooks/http-hook';
 import { useGlobalMsg } from '../../../util/hooks/useGlobalMsg';
 import BallLoader from '../../animatedLoaders/BallLoader/BallLoader';
 import RepostButton from '../../common_reusable/RepostButton';
 
 interface Root {
-    user: UserState,
+  user: UserState,
+  singleSound: SoundState  
 }
 
 interface Props {
-  creator2: any,
-  setSoundInfo: any,
-  id: any,
   moveDown: any,
   further: any
 }
 
-const SingleSoundRepostButton: React.FC<Props> = ({creator2, moveDown, setSoundInfo, id, further}) => {
+const SingleSoundRepostButton: React.FC<Props> = ({moveDown, further}) => {
   const userId = useSelector((state: Root) => state.user.userId);
   const token = useSelector((state: Root) => state.user.token);
+  const id = useSelector((state: Root) => state.singleSound.sound.id);
+  const creator = useSelector((state: Root) => state.singleSound.sound.creator_id);
+
+
   const dispatch = useDispatch();
   const [isReposted, setIsReposted] = useState<boolean>(false);
   const { isLoading, sendRequest } = useHttpClient();
@@ -28,54 +31,26 @@ const SingleSoundRepostButton: React.FC<Props> = ({creator2, moveDown, setSoundI
 
   const repostSound = async (e: any) => {
     let response;
-    let creator;
-    e.preventDefault();
-    e.stopPropagation();
-    if (!creator) {
-      creator = 1;
-    } else {
-      creator = creator2;
-    }
-
+    let creatorID;
+    if (!creator) creatorID = 1;
+    else creatorID = creator;
+    
     if (userId) {
       
         try {
           response = await sendRequest(
-            `${process.env.NEXT_PUBLIC_REACT_APP_MY_ENV}/sounds/repost/${userId}/${id}/${creator}/`,
+            `${process.env.NEXT_PUBLIC_REACT_APP_MY_ENV}/sounds/repost/${userId}/${id}/${creatorID}/`,
             "POST",
             null,
           { "Authorization": "Bearer "+token}
           );
           if (response.msg === "removed") {
-            setSoundInfo((prev: any) => {
-              const newReposts = prev.sound.reposts.filter((el: any) => {
-                return el !== userId.toString()
-              })
-              return {
-                ...prev,
-                sound: {
-                  ...prev.sound,
-                  reposts: newReposts
-                }
-              }
-            })
-          
-            dispatch({type: "USER_UNREPOST_SOUND", id: id});
+            dispatch({ type: "USER_UNREPOST_SOUND", id: id });
+            dispatch({ type: "SINGLESOUND_REMOVE_REPOST", payload: userId });
             setIsReposted(false);
-  
           } else if (response.msg === "reposted") {
-            
-            setSoundInfo((prev: any) => {
-              const newReposts = [...prev.sound.reposts, userId.toString()];
-              return {
-                ...prev,
-                sound: {
-                  ...prev.sound,
-                  reposts: newReposts
-                }
-              }
-            })
-            dispatch({type: "USER_REPOST_SOUND", id: id});
+            dispatch({ type: "USER_REPOST_SOUND", id: id });
+            dispatch({ type: "SINGLESOUND_REPOST", payload: userId });
             setIsReposted(true);
           }
           

@@ -3,8 +3,7 @@ import { useForm } from '../../util/hooks/useForm';
 import { Box, Typography } from '@material-ui/core';
 import listening2 from '../../public/listening-new.svg';
 import listening4 from '../../public/listening-new3.svg';
-import soundWaves from '../../public/sound-waves.svg';
-import soundWaves2 from '../../public/sound-waves2.svg';
+
 import { VALIDATOR_REQUIRE } from '../../util/validators';
 import Media from 'react-media';
 import { motion, AnimatePresence } from 'framer-motion';
@@ -18,6 +17,7 @@ import Image from 'next/image';
 import FirstLottie from '../animatedLoaders/FirstLottie';
 import BrowseOptionModal from '../shared/Modals/BrowseOptions/BrowseOptionModal';
 import { useRouter } from 'next/router';
+import MainBtn from './MainBtn';
 
 const optionsVariants = {
   initial: {
@@ -270,48 +270,3 @@ const FirstpageBox: React.FC = () => {
 export default React.memo(FirstpageBox);
 
 
-const MainBtn: React.FC = () => {
-  const [moused, setMoused] = useState<boolean>(false);
-
-  const hoverListen = () => {
-    setMoused(true);
-  }
-  const hoverLeave = () => {
-    setMoused(false);
-  }
-
-  return (
-      <div onMouseOver={hoverListen} onMouseLeave={hoverLeave}>
-        <AnimatePresence>
-          {moused && <motion.div 
-            initial="initial"
-            animate="in"
-            exit="out"
-            variants={optionsVariants}
-            transition={optionsTransition}
-            className="uploadbtn-image-contain"
-        >
-          <Image
-            height={10}
-            width={10}
-            src={soundWaves} 
-            alt=""
-          />
-        </motion.div>}
-          {!moused && <motion.div 
-            initial="initial"
-            animate="in"
-            exit="out"
-            variants={optionsVariants}
-            className="uploadbtn-image-contain"
-            transition={optionsTransition}>
-            <Image 
-            src={soundWaves2} 
-            alt=""
-            height={10}
-            width={10}/>
-        </motion.div>}
-        </AnimatePresence>
-      </div>
-  )
-}

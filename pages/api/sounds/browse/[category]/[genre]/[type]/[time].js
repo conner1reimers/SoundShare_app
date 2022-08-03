@@ -173,16 +173,11 @@ const handler = nc()
         }
       }
   
-      // findSoundQuery = 'SELECT * FROM sounds WHERE genre = $1 OR $2 like any(tags)';
-      // soundValues = [genre, type];
   
       findSoundQuery += " LIMIT 15";
       foundSound = await client.query(findSoundQuery, timeVals);
   
-      // if (!foundSound.rows[0] || !foundSound.rows[0].id) {
-      //   const error = HttpError("ERR", 500);
-      //   return next(error);
-      // }
+ 
     } catch (err) {
       return next(err);
     } finally {

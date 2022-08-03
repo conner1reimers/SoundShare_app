@@ -11,7 +11,6 @@ const withPlugins = require('next-compose-plugins')
 // const plugins = [[withPurgeCss()]]
 
 module.exports = withPurgeCss({ 
-  webpack5: true,
   reactStrictMode: true,
   images: {
     domains: ['soundshare-bucket.s3.us-east-2.amazonaws.com', 'licensebuttons.net']
@@ -37,15 +36,18 @@ module.exports = withPurgeCss({
   
 
   webpack: (config, { isServer }) => {
+
     if (!isServer) {
       config.resolve.fallback.fs = false;
       config.resolve.fallback.net = false;
       config.resolve.fallback.tls = false;
       config.resolve.alias['pg-native'] = false;
     }
+
     return config;
 
   },
+
   async headers() {
     return [
       {
@@ -60,6 +62,9 @@ module.exports = withPurgeCss({
       }
     ]
   },
+
+  
+
   env: {
     NEXT_PUBLIC_REACT_APP_MY_ENV: 'http://localhost:3000/api',
     NEXT_PUBLIC_REACT_APP_MASTER_EMAIL: 'connerreimers@gmail.com',

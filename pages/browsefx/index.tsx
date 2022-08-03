@@ -2,7 +2,7 @@ import React, { useEffect, useReducer, useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux';
 import BrowseHead from '../../components/browse/BrowseHead';
 import ChartSection from '../../components/browse/NewBrowse/ChartSection';
-import { BrowseState } from '../../store/reducers/browseReducer';
+import { BrowseState } from '../../store/reducers/sounds/browseReducer';
 import { useGlobalMsg } from '../../util/hooks/useGlobalMsg';
 
 const optionsReducer = (state:any, action:any) => {
