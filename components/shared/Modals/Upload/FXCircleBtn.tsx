@@ -23,7 +23,11 @@ const FXCircleBtn: React.FC<Props> = ({back, click, refresh, save}) => {
                 classname="user-page--loopList--item--moreBtn--mouse circlebtn-fx--mouseover  goback-fxbtn"
             >
                 <div className="circleSave" >
-                    <button onClick={click} className="btn nohover"><Image src={back1} alt=""/></button>
+                        <button onClick={click} className="btn nohover">
+                            <div className='fxsave-btn-contain'>
+                                <Image layout="fill" height={20} width={20} src={back1} alt="" />
+                            </div>
+                        </button>
                 </div>
             </MouseOverLabel>
             )}
@@ -34,7 +38,11 @@ const FXCircleBtn: React.FC<Props> = ({back, click, refresh, save}) => {
                 classname="user-page--loopList--item--moreBtn--mouse circlebtn-fx--mouseover"
             >
                 <div className="circleSave" >
-                    <button onClick={click} className="btn nohover"><Image src={save1} alt=""/></button>
+                        <button onClick={click} className="btn nohover">
+                            <div className='fxsave-btn-contain'>
+                                <Image layout="fill" height={20} width={20} src={save1} alt="" />
+                            </div>
+                        </button>
                 </div>
             </MouseOverLabel>
             )}
@@ -45,7 +53,11 @@ const FXCircleBtn: React.FC<Props> = ({back, click, refresh, save}) => {
                 classname="user-page--loopList--item--moreBtn--mouse circlebtn-fx--mouseover refresh-fxbtn"
             >
                 <div className="circleSave" >
-                    <button onClick={click} className="btn nohover"><Image src={refresh1} alt=""/></button>
+                        <button onClick={click} className="btn nohover">
+                            <div className='fxsave-btn-contain'>
+                                <Image layout="fill" height={20} width={20} src={refresh1} alt="" />
+                            </div>
+                        </button>
                 </div>
             </MouseOverLabel>
             )}

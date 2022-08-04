@@ -1,51 +1,39 @@
 import { useRouter } from 'next/router'
-import React, { useState, useRef, useCallback, useEffect,  } from 'react';
+import React, { useState, useEffect,  } from 'react';
 import Media from 'react-media';
 import { useSelector, useDispatch } from 'react-redux';
 import LoadingAnimation from '../../components/animatedLoaders/LoadingAnimation/LoadingAnimation';
 import FollowerModal from '../../components/shared/Modals/FollowerModal';
-import BPMComponent from '../../components/singleSound/BPMComponent';
 import CommentSection from '../../components/singleSound/Comments/CommentSection';
 import DescriptionModal from '../../components/singleSound/DescriptionModal';
-import Download from '../../components/singleSound/Download';
 import EditImage from '../../components/singleSound/EditComponents/ChangeImage';
 import EditDesc from '../../components/singleSound/EditComponents/EditDesc';
 import EditSoundName from '../../components/singleSound/EditComponents/EditSoundName';
 import LikeSoundList from '../../components/singleSound/SingleSoundMain/LikeSoundList';
-import ReportSound from '../../components/singleSound/SingleSoundMain/ReportSound';
-import SingleSoundRepostButton from '../../components/singleSound/SingleSoundMain/SingleSoundRepostButton';
-import SoundTags from '../../components/singleSound/SingleSoundMain/SoundTags';
 import { resetGlobalSound} from '../../store/actions';
 import { setGlobalSound } from '../../store/actions/globalSound';
-import { useHttpClient } from '../../util/hooks/http-hook';
-import music from "../../public/loop-background.svg";
-import Licesnse from '../../components/singleSound/Licesnse';
 import db from '../../server/util/queries';
 import SoundImg from '../../components/singleSound/SoundInfo/SoundImg';
 import SoundName from '../../components/singleSound/SoundInfo/SoundName';
 import SoundUsername from '../../components/singleSound/SoundInfo/SoundUsername';
-import SoundLikes from '../../components/singleSound/SoundInfo/SoundLikes';
 import SoundPlayer from '../../components/singleSound/SingleSoundMain/SoundPlayer';
 import { END } from 'redux-saga';
 import { wrapper } from '../../store/wrapper';
+import { singlesoundLoading } from '../../store/selectors';
+import SoundDescription from '../../components/singleSound/SoundInfo/SoundDescription';
 
 
 export default function Sounds() {
-  const { isLoading, sendRequest } = useHttpClient();
   const router = useRouter();
   let soundId = router.query;
 
   const [faved, setFaved] = useState(false);
   const [isMyPage, setIsMyPage] = useState(false);
-  const [moveBtnDown, setMoveBtnDown] = useState(false);
-  const [smallDesc, setSmallDesc] = useState(false);
   const [descOpen, setDescOpen] = useState(false);
   const [editMode, setEditMode] = useState<any>(null);
   const [likeModalOpen, setLikeModalOpen] = useState<any>(false);
-  const [reportComment, setReportComment] = useState(false);
   
   const dispatch = useDispatch();
-
   const gpuTier = useSelector((state: any) => state.ui.gpuTier);
   const userId = useSelector((state: any) => state.user.userId);
   const isMaster = useSelector((state: any) => state.user.master);
@@ -53,8 +41,13 @@ export default function Sounds() {
   const soundInfo = useSelector((state: any) => state.singleSound.sound);
 
   
+  const isLoading = useSelector((state:any) => singlesoundLoading(state));
 
-  const descRef: any = useRef();
+  const seeLikes = () => setLikeModalOpen('likes');
+  const seeReposts = () => setLikeModalOpen('reposts');
+  const openDescription = () => setDescOpen(true);
+  const closeLikesModal = () => setLikeModalOpen(false);
+  const closeDescription = () => setDescOpen(false);
 
   
 
@@ -70,16 +63,7 @@ export default function Sounds() {
   }, [dispatch]);
 
 
-  const gotoCategory = () => {
-    const category = soundInfo.category;
-    if (category === 'loops') {
-      router.push('/browseloops');
-    } else if (category === 'fx') {
-      router.push('/browsefx');
-    } else if (category === 'vocal') {
-      router.push('/browsevocal');
-    }
-  }
+  
 
   useEffect(() => {
     if (soundInfo) {
@@ -112,30 +96,6 @@ export default function Sounds() {
   }
 
 
-  const seeLikes = () => setLikeModalOpen('likes');
-  const seeReposts = () => setLikeModalOpen('reposts');
-  const openDescription = () => setDescOpen(true);
-  const closeLikesModal = () => setLikeModalOpen(false);
-  const closeDescription = () => setDescOpen(false);
-  const reportSound = () => setReportComment(true);
-  const closeReportSound = () => setReportComment(false);
-
-
-  useEffect(() => {
-    if (descRef.current) {
-      if (descRef.current.offsetHeight > 159) {
-        setMoveBtnDown(true);
-      } else if (descRef.current.offsetHeight < 61) {
-        setSmallDesc(true);
-      }
-    }
-  }, [soundInfo, descRef]);
-
-
-  
-  
-  
-
   useEffect(() => {
     let try1: any = document.querySelector('.singlesound-img-container');
     if (try1) {
@@ -147,7 +107,6 @@ export default function Sounds() {
       }
     }
   }, [soundInfo]);
-
 
   useEffect(() => {
     if (gpuTier && !gpuTier.isMobile && soundInfo) {
@@ -174,8 +133,7 @@ export default function Sounds() {
 
   return (
     <>
-      {isLoading && <LoadingAnimation loading={isLoading} />}
-      {soundInfo && (
+
         <Media
           queries={{
             smaller: "(max-width: 500px)",
@@ -186,7 +144,8 @@ export default function Sounds() {
           {(matches) => (
             <>
               
-                <div className="single-sound">
+              <div className="single-sound">
+                
                   <div className="single-sound--info">
                     
                     <SoundImg img={soundInfo.img_path} category={soundInfo.category}/>
@@ -201,81 +160,15 @@ export default function Sounds() {
                       {editMode !== "name" && <SoundUsername  setFaved={setFaved} faved={faved} smaller={matches.smaller}/>}
                     </div>
 
-                    {editMode !== "desc" && (
-                      <div className={`single-sound--info--desc ${smallDesc ? 'single-sound--info--desc--small-desc' : ''} ${(moveBtnDown && nameLong) ? 'single-sound--info--desc-longname-desc' : ''}`}>
-                        {soundInfo.description ? (
-                          <div>
-                            {soundInfo.name.length > 24 && (
-                              <span className="single-sound-longname">{soundInfo.name}</span>
-                            )}
-                            <p className="single-description" ref={descRef} onClick={openDescription}>{soundInfo.description}</p>
-                            {moveBtnDown && (
-                              <div className="seemore-desc-btn-singlesound">
-                                <div className="outline-btn">
-                                  <button onClick={openDescription} className="btn nohover">SEE MORE</button>
-                                </div>
-                              </div>
-                            )}
-                          </div>
-                        ) : (
-                          <div>
-                            {soundInfo.name.length > 24 && (
-                              <span>{soundInfo.name}</span>
-                            )}
-                            <p>
-                              The user did not give a description for this
-                              sound.
-                            </p>
-                          </div>
-                        )}
-                        {(soundInfo.tags && soundInfo.tags.length > 0) ? (
-                          <div className="sound-tags">
-                            <span className="tagword">Tags: </span>
-                            {soundInfo.tags.map((el, i) => (
-                              <SoundTags category={soundInfo.category} key={el} tag={el} notLast={soundInfo.tags[i + 1]} />
-                            ))}
-                          </div>
-                        ) : (
-                          <div></div>
-                        )}
-                        <div className="counter-singlesound">
-                          <span>{soundInfo.downloads} Downloads</span>
-                          <span onClick={seeReposts} className="repost-singlesound-count">{soundInfo.reposts.length} Reposts</span>
-                          {matches.smaller && (
-                            <span onClick={seeLikes} className="like-txt-single likesingle"> {soundInfo.favs.length} Likes</span>
-                          )}
-                          {soundInfo.category !== 'fx' && (
-                            <BPMComponent category={soundInfo.category} bpm={soundInfo.bpm}/>
-                          )}
-                          {!matches.smaller && (
-                            <span onClick={gotoCategory} className="repost-singlesound-count">Category: {soundInfo.category}</span>
-                          )}
-                        </div>
-                        
-                        {matches.smaller && (
-                          <div className="counter-singlesound singlesound-small-category">
-                            <span onClick={gotoCategory} className="repost-singlesound-count">Category: {soundInfo.category}</span>
-                          </div>
-                        )}
-                        
-                      </div>
-                    )}
+                    {editMode !== "desc" &&  <SoundDescription seeLikes={seeLikes} openDescription={openDescription} smaller={matches.smaller} seeReposts={seeReposts}/>}
 
                     <EditDesc setEditMode={setEditMode} id={soundInfo.id}
                       desc={soundInfo.description} open={editMode === "desc"}
-                      
+                     
                     />
+                    
 
-                    <Download soundInfo={soundInfo}  further={moveBtnDown} 
-                      moveDown={nameLong && !moveBtnDown}
-                    />
-
-                    {(!matches.smaller && gpuTier)? <SoundLikes setFaved={setFaved} soundInfo={soundInfo} seeLikes={seeLikes} faved={faved}  nameLong={nameLong} moveBtnDown={moveBtnDown}/> : null}
-
-
-                    <SingleSoundRepostButton moveDown={nameLong && !moveBtnDown} further={moveBtnDown}/>
-
-                    <Licesnse reportSound={reportSound}/>
+                    
                   
                   </div>
 
@@ -283,13 +176,14 @@ export default function Sounds() {
                   <SoundPlayer matches={matches} soundInfo={soundInfo}/>
 
                   <CommentSection />
-                </div>
+                  
+              </div>
               
             </>
           )}
         </Media>
-      )}
-      {soundInfo && (
+      
+
         <>
 
           <FollowerModal likeList closeModal={closeLikesModal} header={likeModalOpen} open={likeModalOpen}>
@@ -302,10 +196,10 @@ export default function Sounds() {
             open={descOpen} 
           />
 
-          {reportComment && <ReportSound id={soundInfo.id} close={closeReportSound}/>}
+          
 
         </>)
-      }
+      
 
       
 

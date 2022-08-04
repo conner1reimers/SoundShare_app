@@ -1,10 +1,16 @@
 import React from 'react'
 import Image from 'next/image';
 
-const Licesnse = (props) => {
+
+interface Props {
+  reportSound: any
+}
+
+const Licesnse:React.FC<Props> = ({reportSound}) => {
     return (
         <div className="commons-license">
-          <div>
+
+          <div className='cc-contain'>
           <a rel="noreferrer"
             target="_blank"
                 href="http://creativecommons.org/publicdomain/zero/1.0/">
@@ -13,7 +19,7 @@ const Licesnse = (props) => {
                 </div>
               </a>
               <br />
-              <span>
+              <span className='license-span'>
                 <a href="http://creativecommons.org/publicdomain/zero/1.0/" className="text-license-link" rel="noreferrer" target="_blank">
                   <p>This work is licensed under the Creative Commons 0 License.</p>
                 </a>
@@ -23,7 +29,7 @@ const Licesnse = (props) => {
           <div className="commons-license-report-sound">
             <div>
               <p>Is this sound offensive or in violation of copyright?</p>
-              <button onClick={props.reportSound} className="btn nohover">Report it</button>
+              <button onClick={reportSound} className="btn nohover">Report it</button>
             </div>
           </div>
 

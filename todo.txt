@@ -1,26 +1,10 @@
-NEXT HYDRATION (user page)
-
-It is mentioned in the doc that if you use getInitialProps in _app.js, you will lose the static optimization. I don't know why you are using redux on the server side, personally I will advise you to only 
-use it on the client side and you won't need to use next-redux-wrapper anymore because it uses getInitialProps under the hood.
-I have read the docs about the App.getInitialProps but I am not sure how to avoid it in this case. For some pages I am using getServerSideProps to fetch data for SSR. I am using redux-thunk for API calls 
-and they route responses directly into redux. I would not like to skip redux as a single source of truth. Is that maybe a bad reasoning? – 
-How would we go by restoring redux state from local storage when the app reloads? – 
-
-If you have a layout as wrapper, you can do it in layout with useEffect – 
-enoch
-and i will suggest you to store your token in cookies not in localStorage
-
-getStaticProps(): A method that tells the Next component to populate props and render into a static HTML page at build time. 
-getServerSideProps(): A method that tells the Next component to populate the props and render into a static HTML page at run time.
+FEED IS FUCKED 
 
 DOING Incremental Static Regeneration
 
+MASSIVE DOM SIZE react-window is a library that allows large lists to be rendered efficiently. --- DO FOR BROWSE, TOP LIKES/DOWNLOADS, LIKE/FOLLOWER LIST
 
-
-
-
-
-LOADABLE COMPONENTS
+LOADABLE COMPONENTS - look into whats needed for SSR
 
 useSWR for data fetching
 
@@ -29,3 +13,13 @@ MAKE MAIN PAGE MORE CENTERED
 CSS changes
 
 CHANGE ALL PLAY_SET_GLOBAL_SOUND - so that we only are passing the sound URL so nothing is re rendering (sound player on single sound)
+
+MAKE REPOST & DOWNLOAD BUTTONS SAME
+
+
+GO THRU ALL CSS AND MAKE ALL IN 1 SELECTOR (unless you actually need to overwrite it)
+
+
+DOUBLE LOAD ON SINGLESOUND 
+
+UNDO JWT EXPIRATION

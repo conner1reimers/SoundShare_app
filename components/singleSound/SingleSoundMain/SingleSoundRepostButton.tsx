@@ -12,12 +12,8 @@ interface Root {
   singleSound: SoundState  
 }
 
-interface Props {
-  moveDown: any,
-  further: any
-}
 
-const SingleSoundRepostButton: React.FC<Props> = ({moveDown, further}) => {
+const SingleSoundRepostButton: React.FC = () => {
   const userId = useSelector((state: Root) => state.user.userId);
   const token = useSelector((state: Root) => state.user.token);
   const id = useSelector((state: Root) => state.singleSound.sound.id);
@@ -66,7 +62,7 @@ const SingleSoundRepostButton: React.FC<Props> = ({moveDown, further}) => {
       <BallLoader loading={isLoading} repost />
       <div
         onClick={repostSound}
-        className={`sound-list-item--circle circle-btn-single-sound singlesound-btn ${moveDown ? 'move-down' : ''} ${further ? 'move-down-more' : ''}`}
+        className={`sound-list-item--circle circle-btn-single-sound singlesound-btn `}
       >
         <span>Repost</span>
         <RepostButton isReposted={isReposted} singlesound soundId={id} />

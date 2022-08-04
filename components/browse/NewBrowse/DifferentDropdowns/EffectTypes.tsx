@@ -24,7 +24,7 @@ const EffectTypes: React.FC<Props> = ({curOptions, open, setIsBigger, optionSele
                   option="dark"
                   type="type"
                   rightIcon={
-                    curOptions.type.dark && <Image src={check} alt="" />
+                    curOptions.type.dark && <Image height={20} width={20} src={check} alt="" />
                   }
                 >
                   <span>Dark</span>
@@ -38,7 +38,7 @@ const EffectTypes: React.FC<Props> = ({curOptions, open, setIsBigger, optionSele
                   type="type"
                   setIsBigger={setIsBigger}
                   rightIcon={
-                    curOptions.type.crisp && <Image src={check} alt="" />
+                    curOptions.type.crisp && <Image height={20} width={20} src={check} alt="" />
                   }
                 >
                   <span>Crisp</span>
@@ -52,7 +52,7 @@ const EffectTypes: React.FC<Props> = ({curOptions, open, setIsBigger, optionSele
                   type="type"
                   setIsBigger={setIsBigger}
                   rightIcon={
-                    curOptions.type.pretty && <Image src={check} alt="" />
+                    curOptions.type.pretty && <Image height={20} width={20} src={check} alt="" />
                   }
                 >
                   <span>Pretty</span>
@@ -66,7 +66,7 @@ const EffectTypes: React.FC<Props> = ({curOptions, open, setIsBigger, optionSele
                   type="type"
                   setIsBigger={setIsBigger}
                   rightIcon={
-                    curOptions.type.harsh && <Image src={check} alt="" />
+                    curOptions.type.harsh && <Image height={20} width={20} src={check} alt="" />
                   }
                 >
                   <span>Harsh</span>
@@ -80,7 +80,7 @@ const EffectTypes: React.FC<Props> = ({curOptions, open, setIsBigger, optionSele
                   type="type"
                   setIsBigger={setIsBigger}
                   rightIcon={
-                    curOptions.type.loud && <Image src={check} alt="" />
+                    curOptions.type.loud && <Image height={20} width={20} src={check} alt="" />
                   }
                 >
                   <span>Loud</span>
@@ -94,7 +94,7 @@ const EffectTypes: React.FC<Props> = ({curOptions, open, setIsBigger, optionSele
                   type="type"
                   setIsBigger={setIsBigger}
                   rightIcon={
-                    curOptions.type.unique && <Image src={check} alt="" />
+                    curOptions.type.unique && <Image height={20} width={20} src={check} alt="" />
                   }
                 >
                   <span>Unique</span>

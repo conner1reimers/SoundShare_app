@@ -665,7 +665,6 @@ label.form-label.form-label--labelUp {
   button.btn.nohover {
     @include flexcenter;
     background-color: rgba(76, 85, 87, 0.164);
-    // box-shadow: $shadow-new;
     padding: 0rem;
     border-radius: 50%;
     @include heightWidthSame(2rem);
@@ -933,4 +932,16 @@ div.uploadmodal-big--info-form--input--formcontrol.auth-grid--inputSection--inpu
   position: relative;
   transition: all 0.2s;
 
+}
+
+
+
+
+.global-msg--contain {
+  div.global-msg-img {
+    position: relative;
+    padding: 0;
+    left: 1rem;
+    padding-right: 1rem;
+  }
 }

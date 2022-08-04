@@ -8,9 +8,12 @@ import { useEffect } from 'react';
 import { RecentSoundState } from "../../store/reducers/sounds/recentSound";
 import SeeMoreBtn from './SeeMoreBtn';
 import { RootState } from '../../store/reducers';
+import { FixedSizeList as List } from 'react-window';
+import SoundListItemRenderer from '../common_reusable/SoundListItemRenderer';
+import Media from 'react-media';
 
 
-const SoundList: React.FC = () => {
+const SoundList: React.FC = (props: any) => {
     const recentSounds = useSelector((state: RootState) => state.recentSounds.sounds);
     const category = useSelector((state: RootState) => state.recentSounds.category)
     const dispatch = useDispatch();
@@ -30,13 +33,15 @@ const SoundList: React.FC = () => {
       }
       
     }, [category, dispatch]);
+  
+    console.log(props)
     
     return (
-      <ul className="recent-sounds--list">
+      // <ul className="recent-sounds--list">
+      <>
+        {/* <div className="recent-sounds--list--border"></div> */}
 
-        <div className="recent-sounds--list--border"></div>
-
-        {recentSounds &&
+        {/* {recentSounds &&
           recentSounds.map((el: any) => {
             if (category !== "vocal") {
               return el.category !== "vocal" && (
@@ -78,16 +83,34 @@ const SoundList: React.FC = () => {
               );
             }
             
-          })}
+          })} */}
+        <Media queries={{small: "(max-width: 1099px)", smallish: "(max-width: 1250px)", big: "(min-width: 1100px)", med: "(max-width: 1600px)", bigger: "(min-width: 1601px)" }}>
+          {matches => (<>
         
-        {!isRefreshing && !refreshFinished && <SeeMoreBtn/>}
-  
-        <div className="refresh-browse-spinner">
-          <InPageLoadSpinner loading={isRefreshing} />
-        </div>
+            {recentSounds && <List
+              itemSize={88}
+              itemCount={recentSounds.length}
+              style={{ overflowX: 'hidden' }}
+              height={2000}
+              width={matches.small ? "100%" : (matches.big && matches.smallish) ? "100%" : (matches.big && matches.med) ? "90%" : "80%"}
+              itemData={recentSounds}
+              location="recent"
+              userPage
+              className="recent-sounds--list no-scrollbars"
+            >
+              {SoundListItemRenderer}
+            </List>}
+            
+            {!isRefreshing && !refreshFinished && <SeeMoreBtn/>}
+      
+            <div className="recent-sound-refresh">
+              <InPageLoadSpinner loading={isRefreshing} />
+              </div>
+              </>
+            )}
 
-
-      </ul>
+        </Media>
+      </>
     
     )}
 

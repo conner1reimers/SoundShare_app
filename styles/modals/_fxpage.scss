@@ -93,16 +93,23 @@
 							img {
 								opacity: 0.8;
 							}
+							padding: .25rem;
+
 						}
 						button.rotate {
-							transform: scale(0.75);
+							// transform: scale(0.75);
 							top: 0.5vh;
 							left: 0.1vw;
+							padding: .5rem;
+
 						}
 						button.right-fx {
-							transform: scale(0.75);
+							// transform: scale(0.55);
 							top: 0.5vh;
+							padding: .5rem;
+
 						}
+						
 					}
 				}
 
@@ -121,13 +128,24 @@
 			&--reloadTextbox {
 				grid-row: 1/2;
 				grid-column: 3/4;
-				@include flexcenter;
-				right: 1vw;
-				justify-content: flex-end;
-				transform: scale(0.7);
+				display: flex;
+				justify-content: flex-start;
+				align-items: flex-start;
 				position: relative;
 				top: 12.5vh;
 				z-index: 999999;
+				min-width: 400px;
+				right: 7vw;
+
+				@media screen and (max-width: 2500px) {
+					right: 10vw;
+				}
+				@media screen and (max-width: 2000px) {
+					right: 15vw;
+				}
+				@media screen and (max-width: 1400px) {
+					right: 20vw;
+				}
 				@media screen and (max-width: 1099px) {
 					top: 7.25rem;
 					right: 2rem;
@@ -138,7 +156,6 @@
 						top: 10.7rem;
 						right: 1.8rem;
 						
-
 					}
 	
 				}
@@ -155,10 +172,13 @@
 					z-index: 999;
 				}
 				span {
+					position: relative;
+					right: 1rem;
+				}
+				span.fx-label {
 					color: $color-white-3;
 					font-size: 1rem;
 					position: relative;
-					right: 2rem;
 					font-family: $font-3;
 					font-weight: 600;
 					white-space: nowrap;
@@ -235,7 +255,7 @@
 					position: absolute;
 					z-index: 999;
 				}
-				span {
+				span.fx-label {
 					color: $color-white-3;
 					font-size: 1rem;
 					position: relative;
@@ -295,8 +315,6 @@
 						overflow: visible;
 						@include heightWidthSame(1.2rem);
 						position: relative;
-
-						// left: 1.5vw;
 						border-radius: 50%;
 						padding: 0.5rem;
 					}
@@ -336,10 +354,6 @@
 				overflow-y: auto;
 				overflow-x: hidden;
 				z-index: 2;
-				
-
-				// overflow-x: hidden;
-				// overflow-y: auto;
 				scrollbar-width: thin;
 				scrollbar-color: rgba(82, 90, 92, 0.151);
 
@@ -354,12 +368,6 @@
 					border-radius: 0.4rem;
 					background-clip: content-box;
 				}
-				// @media screen and (min-width: $bp-large) and (max-height: 600px) {
-				// 	overflow-x: hidden;
-				// 	overflow-y: auto;
-				// }
-
-				
 
 				@media screen and (max-width: 1099px) {
 					grid-template-columns: 30% 65%;
@@ -490,19 +498,17 @@
 						}
 
 						&--checkbox {
-							@include beforeTrick;
-							width: 12%;
+							@include heightWidth100;
 							@include flexcenter;
+							justify-content: flex-start;
 							transition: all 0.2s;
 
 							div {
-								@include beforeTrick;
 								@include flexcenter;
 								min-width: 20px;
 								max-width: 30px;
 								min-height: 30px;
 								max-height: 30px;
-								top: 20%;
 								left: 50%;
 								height: 50%;
 								background-color: $color-white;
@@ -545,6 +551,7 @@
 							box-shadow: none;
 							border-radius: 0.7rem;
 							min-height: 52px;
+							
 
 
 							&:before {
@@ -775,7 +782,6 @@
 							align-items: center;
 							position: relative;
 							position: relative;
-							left: 2rem;
 							font-family: $font-3;
 							font-weight: 300;
 							white-space: nowrap;
@@ -787,9 +793,13 @@
 								width: 100%;
 							}
 						}
+						span.fx-label {
+							left: 1rem;
+						}
 					}
 
 					&--btn {
+						
 					}
 				}
 			}
@@ -1488,4 +1498,24 @@ div.fx-sliders-4slides {
 			}
 		}
 	}
+}
+
+.fxsave-btn-contain {
+	height: 30px;
+	width: 30px;
+	position: relative;
+	
+}
+
+.fx-arrow-container {
+	height: 30px;
+	width: 30px;
+	position: relative;
+	left: 1rem;
+	bottom: .25rem;
+}
+
+.move-down {
+	left: -1rem;
+	bottom: 0rem;
 }

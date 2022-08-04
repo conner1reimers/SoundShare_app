@@ -49,9 +49,17 @@ export const refreshTopLikedLoading = (state) => {
     return state.ui.loader.actions.some(action => action.name === 'REFRESH_ALL_LIKES')
 }
 
-export const RefreshTopDownloadsLoading = (state) => {
-    return state.ui.loader.actions.some(action => action.name === 'REFRESH_ALL_DOWNLOADS')
+export const RefreshTopDownloadsLoading = (state) => {return state.ui.loader.actions.some(action => action.name === 'REFRESH_ALL_DOWNLOADS');}
+
+export const singlesoundLoading = (state) =>{ 
+    return state.ui.loader.actions.some(action => 
+       action.name === "__NEXT_REDUX_WRAPPER_HYDRATE__" 
+        || action.name === "FETCH_SINGLE_SOUND_SERVER" 
+        || action.name === "FETCH_SINGLE_SOUND"
+    );
 }
+
+    
 
 export const getCurrentListForm = (state, index) => {
     return state.find((el) => {

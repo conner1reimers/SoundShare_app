@@ -1,12 +1,17 @@
 import React, { Fragment, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import CloseUpload from '../shared/Modals/Upload/CloseUpload';
-import LoginByGoogle from '../googleLogin/LoginByGoogle';
-import AuthForm from './AuthComponents/AuthForm';
-import UsernameCreate from './AuthComponents/UsernameCreate';
-import ForgotPassEmail from './AuthComponents/ForgotPassEmail';
 import { AuthState } from '../../store/reducers/global/authReducer';
-import Modal from '../shared/Modals/Modal';
+
+import loadable from '@loadable/component'
+
+const Modal = loadable(() => import('../shared/Modals/Modal'))
+const LoginByGoogle = loadable(() => import('../googleLogin/LoginByGoogle'))
+const AuthForm = loadable(() => import('./AuthComponents/AuthForm'))
+const ForgotPassEmail = loadable(() => import('./AuthComponents/ForgotPassEmail'))
+const UsernameCreate = loadable(() => import('./AuthComponents/UsernameCreate'))
+
+
 
 interface AuthProps {
     open: boolean,

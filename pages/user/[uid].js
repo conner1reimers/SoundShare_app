@@ -4,8 +4,6 @@ import { useDispatch, useSelector } from "react-redux";
 import { isUserPageLoading } from "../../store/selectors";
 // import Media from "react-media";
 import LoadingAnimation from '../../components/animatedLoaders/LoadingAnimation/LoadingAnimation';
-import UserBig from '../../components/userComponents/UserPageVersions/UserBig';
-import UserSmall from '../../components/userComponents/UserPageVersions/UserSmall';
 import { END } from 'redux-saga';
 import { wrapper } from '../../store/wrapper';
 import { fetchUser } from '../../store/actions';
@@ -13,6 +11,9 @@ import db from '../../server/util/queries';
 import { fetchUserServer } from '../../store/actions/user';
 import { Media, MediaContextProvider } from "../../util/media"
 
+import loadable from '@loadable/component'
+const UserBig = loadable(() => import('../../components/userComponents/UserPageVersions/UserBig'))
+const UserSmall = loadable(() => import('../../components/userComponents/UserPageVersions/UserSmall'))
 
 export default function User() {
  const isPageLoading = useSelector((state) => {

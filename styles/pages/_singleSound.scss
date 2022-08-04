@@ -13,28 +13,23 @@
 
   @media screen and (min-width: $bp-large) {
     grid-template-columns: 3% 90% 3%;
-    grid-template-rows: 2vh 70vh 0vh max-content 15vh;
+    grid-template-rows: 2vh 70vh max-content 15vh;
     grid-gap: 1rem;
   }
 
   @media screen and (min-width: $bp-largest) {
     grid-template-columns: 12% 74% 14%;
-    grid-template-rows: 2vh 80vh 0vh max-content 15vh;
+    grid-template-rows: 2vh 80vh max-content 15vh;
   }
 
   @media screen and (min-width: $bp-superLarge) {
     grid-template-columns: 17% 62% 20%;
-    grid-template-rows: 2vh 70vh 0vh max-content 15vh;
+    grid-template-rows: 2vh 70vh max-content 15vh;
   }
 
   @media screen and (min-width: 1750px) {
     padding: 4rem 0;
   }
-
-  // @media screen and (min-width: $bp-height-small) {
-  //   grid-template-columns: 17% 62% 20%;
-  //   grid-template-rows: 2vh 70vh 15vh max-content 15vh;
-  // }
 
   
 
@@ -168,12 +163,13 @@
   }
 
   &--repost {
-    grid-row: 5/6;
-    grid-column: 2/3;
     @include flexcenter;
+    justify-content: flex-start;
     position: relative;
     width: 100%;
     pointer-events: none;
+    min-width: 190px;
+
     div.sound-list-item--circle.circle-btn-single-sound.singlesound-btn {
       margin: 0;
       left: 0;
@@ -188,6 +184,7 @@
         min-width: 135px;
         min-height: 30px;
         margin-top: 2rem;
+        span {font-size: 1.9rem;}
       }
       @media screen and (max-width: 500px) {
         min-width: 145px;
@@ -214,64 +211,15 @@
         pointer-events: none;
         overflow: visible;
       }
+
       img {
         position: relative;
         left: 0.5vw;
         box-shadow: none;
         pointer-events: none;
       }
-      // div {
-      //   pointer-events: none;
-      // }
-    }
-
-    
-    div.sound-list-item--circle.circle-btn-single-sound.singlesound-btn.move-down.move-down-more {
-      @media screen and (min-width: 451px) {
-        margin-top: 2.75rem;
-      }
-      @media screen and (min-width: 1100px) {
-        margin-top: 2.85rem;
-      }
-      
-    }
-
-
-    @media screen and (max-width: 1099px) {
-      grid-column: 3/4;
-      div.sound-list-item--circle.circle-btn-single-sound.singlesound-btn {
-        padding: 0;
-        @include flexcenter;
-        span {
-          font-size: 1.9rem;
-          right: 1.5vw;
-          @include flexcenter;
-          top: 0.1vh;
-        }
-        button.btn {
-          left: 0vw;
-        }
-      }
-    }
-
-    @media screen and (max-width: 750px) {
-      grid-row: 5/6;
-      grid-column: 2/3;
-    }
-
-    @media screen and (max-width: 500px) {
-      grid-column: 2/4;
-      left: 0;
     }
     
-    @media screen and (min-height: 801px) {
-      bottom: .8rem;
-      position: relative;
-    }
-    @media screen and (max-height: 800px) {
-      bottom: 2rem;
-      position: relative;
-    }
   }
 
   &--info {
@@ -284,12 +232,11 @@
     @media screen and (min-width: $bp-large) {
       grid-column: 2/3;
       grid-row: 2/4;
-
       height: 100%;
       width: 100%;
       display: grid;
-      grid-template-columns: 45% 129px 129px 5.5% 159px 5%;
-      grid-template-rows: 117.7px 49.9px 118.25px 113px 191.25px 76.5px 23px;
+      grid-template-columns: 40% 16% 19% 2.5% 10% 5%;
+      grid-template-rows: 18% 6% 23% 20% 15% 3%;
 
       img {
         @include heightWidthSame(22rem);
@@ -303,8 +250,6 @@
     @media screen and (min-width: $bp-largest) {
       grid-column: 2/3;
       grid-row: 2/3;
-      grid-template-columns: 40% 16% 19% 2.5% 10% 5%;
-      grid-template-rows: 18% 6% 23% 20% 15% 3%;
       img {
         @include heightWidthSame(25rem);
         grid-row: 1/6;
@@ -328,6 +273,7 @@
         transition: 0.2s;
       }
     }
+
     @media screen and (max-width: 750px) {
       grid-template-columns: 5% 18% 13% 17% 24% 9%;
       grid-template-rows: 18% 6% 23% 20% 20% 10% 3%;
@@ -337,7 +283,6 @@
     }
 
     img {
-      // @include heightWidthSame(calc(20vh + 20vw));
       border-radius: 1rem;
       box-shadow: $shadow-new;
     }
@@ -526,26 +471,24 @@
     &--desc {
       position: relative;
       left: 0.3vw;
-      top: 1rem;
       pointer-events: none;
+      grid-row: 2/6;
+      height: 100%;
 
+      
+      @media screen and (min-width: $bp-large) {
+        grid-column: 2/6;
+      }
+      @media screen and (min-width: $bp-largest) {
+        grid-column: 2/6;
+      }
+      @media screen and (max-width: 1099px) {
+        grid-column: 3/6;
+      }
       @media screen and (max-width: 750px) {
+        grid-column: 2/6;
         width: 100%;
         top: 4rem;
-      }
-
-      p {
-        pointer-events: stroke;
-        position: relative;
-        top: 2vh;
-        @media screen and (max-width: 1437px) {
-          width: 100%;
-          top: 5vh;
-        }
-        @media screen and (max-width: 1099px) {
-          width: 100%;
-          top: 0vh;
-        }
       }
 
       div {
@@ -605,86 +548,10 @@
         }
       }
 
-      div.seemore-desc-btn-singlesound {
-        position: absolute;
-        @include heightWidth100;
-        top: 3.8rem;
-        opacity: .95;
-
-        @media screen and (max-width: 750px) { 
-          display: none;
-        }
-
-        @media screen and (min-width: 1440px) {
-          &::before {
-            @include beforeTrick;
-            position: absolute;
-            border-bottom: 1px solid $color-new-grey;
-            top: 2px;
-            left: -7px;
-          }
-        }
-
-        
-
-        div.outline-btn {
-          bottom: 0;
-          position: absolute;
-          background: none;
-          justify-content: flex-start;
-          button {
-            background: none;
-            white-space: nowrap;
-            pointer-events: stroke;
-            justify-content: flex-start;
-            padding: 0;
-            font-size: .8rem;
-            transition: all .2s;
-
-            @media (hover: hover) and (pointer: fine) {
-              &:hover {
-                color: $color-red;
-                transition: all .2s;
-              }
-            } 
-          }
-        }
-        @media screen and (max-width: 1439px) {
-          top: 4.75rem;
-          div.outline-btn {
-            button {
-              font-size: .7rem;
-            }
-          }
-        }
-        @media screen and (max-width: 1099px) {
-          top: 3rem;
-          div.outline-btn {
-            button {
-              font-size: 1.4rem;
-            }
-          }
-        }
-
-      }
+      
       
 
-      @media screen and (min-width: $bp-large) {
-        grid-row: 2/4;
-        grid-column: 2/6;
-      }
-      @media screen and (min-width: $bp-largest) {
-        grid-row: 2/4;
-        grid-column: 2/6;
-      }
-      @media screen and (max-width: 1099px) {
-        grid-row: 2/4;
-        grid-column: 3/6;
-      }
-      @media screen and (max-width: 750px) {
-        grid-column: 2/6;
-        max-height: 215px;
-      }
+      
     }
 
     div.single-edit-desc {
@@ -760,16 +627,8 @@
         }
         
         span.edit-desc-counterspan.invalid-count {
-          @media screen and (max-width: 575px) {
-            right: 3rem;
-          }
-          @media screen and (max-width: 505px) {
-            right: -7rem;
-          }
           height: 15px;
           @include flexcenter;
-          
-          
         }
 
       }
@@ -786,26 +645,31 @@
       transition: all 0.2s;
     }
   }
-  @media screen and (max-width: 550px) {
+  @media screen and (max-width: 1099px) {
     img.singlesoundimg {
-      transform: translateX(-50px);
+      transform: none;
     }
   }
-  @media screen and (max-width: 425px) {
-    img.singlesoundimg {
-      transform: translateX(-45px);
-    }
-  }
-  @media screen and (max-width: 400px) {
-    img.singlesoundimg {
-      transform: translateX(-40px);
-    }
-  }
-  @media screen and (max-width: 350px) {
-    img.singlesoundimg {
-      transform: translateX(-40px);
-    }
-  }
+  // @media screen and (max-width: 550px) {
+  //   img.singlesoundimg {
+  //     transform: translateX(-50px);
+  //   }
+  // }
+  // @media screen and (max-width: 425px) {
+  //   img.singlesoundimg {
+  //     transform: translateX(-45px);
+  //   }
+  // }
+  // @media screen and (max-width: 400px) {
+  //   img.singlesoundimg {
+  //     transform: translateX(-40px);
+  //   }
+  // }
+  // @media screen and (max-width: 350px) {
+  //   img.singlesoundimg {
+  //     transform: translateX(-40px);
+  //   }
+  // }
 
   &--likes {
     position: relative;
@@ -817,9 +681,7 @@
     white-space: nowrap;
     min-width: 140px;
 
-    @media screen and (max-width: 1099px) {
-      margin-top: 2rem;
-    }
+    
     &--lottie {
       @include heightWidth100;
       cursor: pointer;
@@ -837,19 +699,11 @@
         }
       }
 
-      @media screen and (min-width: $bp-large) and (max-width: 1439px) {
-        &--contain {
-          transform: scale(0.28);
-        }
-      }
+      
 
       @media screen and (max-width: 1099px) {
-        @include heightWidthSame(2.4rem);
+        @include heightWidthSame(4rem);
 
-        &--contain {
-          justify-self: flex-start;
-          transform: scale(0.35);
-        }
       }
     }
 
@@ -863,39 +717,31 @@
     }
 
     @media screen and (max-width: 1099px) {
-      position: relative;
-      left: -1vw;
-      grid-row: 5/6;
-      grid-column: 5/6;
       span.like-txt-single.likesingle {
-        position: relative;
         right: 3.2vw;
-        
       }
       min-width: 129px;
+      height: 100%;
+      min-height: 65px;
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+
     }
     
 
     @media screen and (max-width: 750px) {
       @include flexcenter;
-      grid-row: 5/6;
-      grid-column: 4/6;
-      span.like-txt-single.likesingle {
-        position: relative;
-        right: 5.2vw;
-      }
     }
 
-    
-
     div {
-      @include flexcenter;
-      @include heightWidth100;
 
       span {
         font-weight: 500;
         font-family: $font-1;
+        pointer-events: stroke;
       }
+
       @media screen and (min-width: $bp-large) {
         span {
           color: #efede6ee;
@@ -1654,7 +1500,6 @@ div.singlesound-imgupload {
   @include flexcenter;
   justify-content: flex-start;
   position: relative;
-  top: 3rem;
   height: 2.5rem;
   @media screen and (max-width: 1099px) {
     top: 2rem;
@@ -1705,6 +1550,9 @@ div.singlesound-imgupload {
 }
 
 div.single-sound--likes {
+  @media screen and (max-width: 1099px) and (min-width: 750px) {
+    margin-top: 1.2rem;  
+  }
   span.like-txt-single.likesingle {
     cursor: pointer;
     font-size: 0.95rem;
@@ -1723,8 +1571,9 @@ div.single-sound--likes {
       @include niceTxt;
       font-size: 1.6rem;
     }
-    @media screen and (max-width: 1099px) and (min-width: 881px) {
-      left: -2rem;
+
+    @media screen and (max-width: 1099px) and (min-width: 801px) {
+      left: -1rem;
     }
   }
 }
@@ -1735,25 +1584,24 @@ div.singlesound-img {
   overflow: visible;
   position: relative;
   min-height: 200px;
-  // div.singlesound-img-container {
-  //   position: absolute;
-  //   overflow: visible;
-  //   @include heightWidth100;
-  //   min-height: 200px;
-  // }
 
   @media screen and (max-width: 1099px) {
     position: relative;
-    grid-column: 2/4;
+    grid-column: 1/3;
+    width: 100%;
+    
   }
   @media screen and (max-width: 750px) {
     grid-row: 1/3;
+    max-width: 150px;
+
     img {
-      @include heightWidthSame(12rem);
       border-radius: 50%;
     }
   }
   @media screen and (max-width: 425px) {
+    max-width: 150px;
+    right: 1rem;
     img {
       position: relative;
       left: 2rem;
@@ -1776,6 +1624,19 @@ div.singlesound-img {
   // }
 }
 
+.singlesound-img-container {
+  @media screen and (max-width: 1099px) {
+    max-width: 300px;
+  }
+  @media screen and (max-width: 850px) {
+    max-width: 250px;
+  }
+  @media screen and (max-width: 750px) {
+    max-width: 130px;
+  }
+
+}
+
 div.sound-list-item--circle.circle-btn-single-sound.circle-btn-single-sound--download.singlesound-btn {
   min-width: 129px;
   min-height: 30px;
@@ -1784,7 +1645,7 @@ div.sound-list-item--circle.circle-btn-single-sound.circle-btn-single-sound--dow
   padding: 0;
   width: 90%;
   max-height: 50px;
-  min-width: 149px;
+  min-width: 190px;
 
   @include flexcenter;
 
@@ -1799,14 +1660,7 @@ div.sound-list-item--circle.circle-btn-single-sound.circle-btn-single-sound--dow
   @media screen and (min-width: 751px) and (max-width: 880px) {
     left: 2vw;
   }
-  @media screen and (min-height: 801px) {
-    bottom: .8rem;
-    position: relative;
-  }
-  @media screen and (max-height: 800px) {
-    bottom: 2rem;
-    position: relative;
-  }
+
   @media screen and (max-width: 380px) {
     min-width: 125px;
   }
@@ -1884,58 +1738,7 @@ div.sound-list-item--circle.circle-btn-single-sound.circle-btn-single-sound--dow
 }
 
 
-
-div.sound-list-item--circle.circle-btn-single-sound.circle-btn-single-sound--download.singlesound-btn.move-down-more {
-  @media screen and (min-width: 451px) {
-    margin-top: 3rem;
-  }
-  
-}
-
-div.sound-list-item--circle.circle-btn-single-sound.circle-btn-single-sound--download.singlesound-btn.move-down-more {
-  @media screen and (min-width: 451px) {
-    margin-top: 3rem;
-  }
-}
-div.sound-list-item--circle.circle-btn-single-sound.circle-btn-single-sound--download.singlesound-btn.move-down-more {
-  @media screen and (max-width: 750px) {
-    margin-top: 8rem;
-  }
-  @media screen and (max-width: 450px) {
-    margin-top: 8rem;
-  }
-  @media screen and (min-width: $bp-large) {
-    margin-top: 6rem;
-  }
-  @media screen and (min-width: 1600px) and (max-height: 980px) {
-    margin-top: 8.25rem;
-  }
-  @media screen and (max-width: 400px) {
-    margin-top: 12rem;
-  }
-}
-div.sound-list-item--circle.circle-btn-single-sound.circle-btn-single-sound--download.singlesound-btn.move-down {
-  @media screen and (min-width: $bp-large) {
-    margin-top: 4rem;
-  }
-  
-}
-
-
 div.single-sound--repost {
-  div.action-heart-img.action-heart-img-contain {
-    @media screen and (min-width: $bp-large) {
-      @include heightWidthSame(2rem);
-      
-    }
-    @media screen and (max-width: 1099px) {
-      div {
-        transform: scale(1.4);
-      }
-      
-    }
-  }
- 
   div.sound-list-item--circle.circle-btn-single-sound.singlesound-btn.move-down-more {
     @media screen and (min-width: 451px) {
       margin-top: 3rem;
@@ -1972,58 +1775,7 @@ div.single-sound--repost {
   
 }
 
-div.single-sound--likes {
-  div.outline-btn.outline-btn--heart.move-down {
-    @media screen and (min-width: 451px) {
-      margin-top: 6rem;
-    }
-    @media screen and (min-width: 751px) and (max-width: 1099px) {
-      margin-top: .75rem;
-    }
-    @media screen and (min-width: $bp-large) {
-      margin-top: 3rem;
-    }
-    @media screen and (max-width: 750px) {
-      margin-top: 5.75rem;
-    }
-    @media screen and (min-width: 1600px) and (max-height: 979px) {
-      margin-top: 4.1rem;
-    }
-  }
-}
 
-
-div.single-sound--likes {
-  div.outline-btn.outline-btn--heart.move-down-other {
-    @media screen and (min-width: $bp-large) {
-      margin-top: 2.2rem;
-    }
-  }
-}
-
-div.single-sound--likes {
-  div.outline-btn.outline-btn--heart.move-down-more {
-    @media screen and (min-width: 451px) {
-      margin-top: 3rem;
-    }
-    @media screen and (min-width: 751px) and (max-width: 1099px) {
-      margin-top: .75rem;
-    }
-    @media screen and (min-width: $bp-large) {
-      margin-top: 3rem;
-    }
-    @media screen and (max-width: 750px) {
-      margin-top: 5.75rem;
-    }
-    @media screen and (min-width: 1600px) and (max-height: 980px) {
-      margin-top: 4.2rem;
-    }
-    
-    
-   
-    
-  }
-}
 
 div.sound-list-item--circle.singlesound-edit-btns {
   margin: 0 0vw;
@@ -2122,15 +1874,19 @@ div.single-sound--player--container {
 }
 
 div.counter-singlesound {
-  margin-top: 6rem;
   position: absolute;
   width: 100%;
   display: flex;
   align-items: center;
+  z-index: 3;
+  margin-top: .75rem;
 
-  @media screen and (min-width: $bp-large) {
-    margin-top: 5rem;
+  @media screen and (max-width: 500px) {
+    width: 100%;
+    display: flex;
+    align-items: flex-start;
   }
+
 
   span {
     position: relative;
@@ -2158,16 +1914,7 @@ div.counter-singlesound {
       }
     } 
   }
-}
 
-div.counter-singlesound {
-  position: absolute;
-  z-index: 3;
-  @media screen and (max-width: 500px) {
-    width: 100%;
-    display: flex;
-    align-items: flex-start;
-  }
   span.repost-singlesound-count {
     cursor: pointer;
     pointer-events: stroke;
@@ -2182,6 +1929,7 @@ div.counter-singlesound {
     } 
   }
 }
+
 
 div.global-player--time--moveOver--followingTile--contain.singlesound-sound-mouseover--tile {
   span.global-player--time--moveOver--followingTile {
@@ -2198,30 +1946,23 @@ div.global-player--time--moveOver--textcontain.singlesound-sound-mouseover--text
 }
 
 div.single-sound--likes {
- 
-
   div.outline-btn.outline-btn--heart {
     @include flexcenter;
-    justify-content: flex-start;
-    @media screen and (min-height: 801px) {
-      bottom: .8rem;
-      position: relative;
-    }
-    @media screen and (max-height: 800px) {
-      bottom: 2rem;
-      position: relative;
-    }
+    max-height: 45px;
+    column-gap: 1rem;
+
     div.single-sound--likes--lottie--contain {
-      width: 50vw;
       pointer-events: stroke;
+
       @media screen and (min-width: $bp-large) and (max-height: 800px) {
         height: auto;
       }
+
       @media screen and (max-width: 750px) {
-        @include heightWidthSame(22rem);
+        @include heightWidthSame(5rem);
         
         div.lottie.single-sound--likes--lottie {
-          @include heightWidthSame(21.5rem);
+          @include heightWidthSame(5rem);
         }
       }
 
@@ -2231,24 +1972,23 @@ div.single-sound--likes {
         @include flexcenter;
         justify-content: flex-start;
         right: 0;
-        @include heightWidthSame(19rem);
+        @include heightWidthSame(5rem);
+        
         div.lottie.single-sound--likes--lottie {
-          @include heightWidthSame(17rem);
+          @include heightWidthSame(5rem);
         }
       }
       
     }
+
     @media screen and (max-width: 750px) {
       span {
         font-size: 1.6rem;
-        left: -8vw;
+        left: -1vw;
       }
     }
-    @media screen and (max-width: 650px) {
-      span {
-        left: -10vw;
-      }
-    }
+
+
     @media screen and (max-width: 500px) {
       max-height: 40px;
       left: 0;
@@ -2362,13 +2102,6 @@ div.single-sound--info {
       left: 1rem;
     }
   }
-  div.sound-list-item--circle.circle-btn-single-sound.circle-btn-single-sound--download.singlesound-btn {
-    @media screen and (max-width: 425px) {
-      left: 3rem;
-    }
-  }
-  
-  
 }
 
 div.single-sound--player--container {
@@ -2413,10 +2146,6 @@ div.smaller-like-singlesound-container {
   justify-content: flex-start;
   left: 0;
   position: relative;
-  // @media screen and (max-width: 500px) {
-  //   height: 100%;
-  // }
-
 }
 
 div.single-sound {
@@ -2438,12 +2167,7 @@ div.single-sound {
 
           }
         }
-        
-  
-      
       span.dropdown-top--item--icon {
-        
-        
           background: none;
           justify-content: flex-start;
         }
@@ -2770,15 +2494,12 @@ span.comment-readmore {
   justify-content: flex-start;
   position: relative;
   left: 1rem;
-  
-
 }
 
 .singlesound-likes-smaller {
   @include flexcenter;
   @include heightWidth100;
   justify-content: flex-start;
-
   pointer-events: stroke;
   span {
     @include flexcenter;
@@ -2786,7 +2507,6 @@ span.comment-readmore {
     
   }
   div.single-sound--likes--lottie--contain {
-    transform: scale(2.25) translateX(.25rem) translateY(-1px);
     @include flexcenter;
   }
 
@@ -2889,6 +2609,7 @@ div.single-sound--info--desc.single-sound-desc-first-longname {
 
   @media screen and (max-width: 1099px) {
     margin-top: 2rem;
+
     span.single-sound-longname {
       line-height: 3rem;
       top: 1rem;
@@ -3150,43 +2871,39 @@ div.auth-modal-close-contain.modal-close-report {
 } 
 
 
-p.single-description {
+.single-description {
   cursor: pointer;
   white-space: pre-line;
   overflow: hidden;
   text-overflow: ellipsis;
   max-height: 180px;
-  // background-color: rgba(53, 53, 59, 0.068);
   padding-left: 1rem;
   padding-top: 1rem;
-  top: 1.5rem;
   right: 1rem;
+  top: -.5rem;
   border-radius: .5rem;
+  pointer-events: stroke;
+  position: relative;
+  width: 100%;
 
+  @media screen and (max-width: 1437px) {
+    width: 100%;
+  }
 
+  @media screen and (min-width: $bp-large) {
+    transform: translateY(1rem);
+  }
+  
   @media screen and (max-width: 1099px) {
     max-height: 160px;
   } 
 
+  @media screen and (max-width: 328px) {
+    overflow: hidden;
+    max-height: 179px;
+    text-overflow: ellipsis;
+  } 
 
-}
-
-
-
-
-div.single-sound--info--desc.single-sound-desc-first-longname.single-sound-desc-longname {
-
-  p.single-description {
-
-    
-    @media screen and (max-width: 328px) {
-      overflow: hidden;
-      max-height: 179px;
-      text-overflow: ellipsis;
-    } 
-  
-  }
-  
 }
 
 div.mobile-modal-box-desc {
@@ -3259,16 +2976,11 @@ div.single-sound--info {
 
 div.single-sound--info--desc.single-sound--info--desc-longname-desc {
   @media screen and (min-width: $bp-large) {
-    margin-top: 1.5rem;
-    
     span.single-sound-longname {
       top: 1.5rem;
     }
-
-    p.single-description {
-      transform: translateY(1rem);
-    }
   }
+
   @media screen and (min-width: $bp-large) and (min-height: 650px) {
     span.single-sound-longname {
       top: 2rem;
@@ -3296,54 +3008,28 @@ div.counter-singlesound.singlesound-small-category {
 
 div.single-sound--info--desc.single-sound--info--desc--small-desc {
   margin-top: 0;
-
-
-  p.single-description {
-    top: -.5rem;
-    @media screen and (max-width: 1099px) {
-      top: -2rem;
-    }
-    @media screen and (max-width: 450px) {
-      top: -4rem;
-    }
-  }
 }
 
 
 .commons-license {
-  // background-color: rgba(76, 201, 51, 0.222);
   bottom: 0;
   height: 20%;
   width: 100%;
-  right: 0;
-  grid-row: 5/7;
-  grid-column: 2/-1;
   position: relative;
-  top: 50px;
-  display: flex;
-  max-width: 500px;
-
-  @media screen and (min-width: 1440px) {
-    left: .5rem;
+  @include flexcenter;
+  justify-content: flex-start;
+  align-items: flex-start;
+  margin-top: 2rem;
+  min-width: 640px;
+  @media screen and (max-width: 1099px) {
+    max-width: 500px;
+    margin-right: 0;
   }
 
   @media screen and (max-width: 1439px)  {
     max-width: 400px;
-
   }
   
-  @media screen and (max-width: 865px) {
-    right: 7rem;
-  }
-  @media screen and (min-height: 800px) {
-    top: 110px;
-  }
-  @media screen and (min-height: 800px) and (max-width: 1439px)  {
-    top: 60px;
-  }
-  @media screen and (min-height: 800px) and (max-width: 1099px) {
-    top: 40px;
-  }
 
   @media screen and (max-width: 650px) {
     flex-direction: column;
@@ -3353,19 +3039,22 @@ div.single-sound--info--desc.single-sound--info--desc--small-desc {
     min-width: 457px;
   }
 
-  @media screen and (min-height: 800px) and (min-width: 1100px) {
-    right: 10px;
-  }
 
   div {
     @include heightWidth100;
     @include flexcenter;
     justify-content: flex-start;
-    padding: 10px;
     position: relative;
-    right: 5px;
+    padding: 0;
+
     @media screen and (max-width: 1099px) {
       min-height: 30px;
+    }
+
+    span.license-span {
+      @include flexcenter;
+      min-width: 180px;
+      max-width: 220px;
     }
     img {
       width: 5.2rem;
@@ -3390,35 +3079,46 @@ div.single-sound--info--desc.single-sound--info--desc--small-desc {
     }
 
     p {
-      width: 50%;
+      width: 100%;
       position: relative;
-      left: 10px;
       line-height: 15px;
+      margin: 0;
+      font-size: .7rem;
       @media screen and (min-width: 1100px) {
         min-width: 126px;
+      }
+      @media screen and (max-width: 1099px) {
+        font-size: 1.2rem;
       }
 
       min-width: 113px;
 
     }
-    @media screen and (min-height: 800px) and (min-width: 1100px) {
-      padding: 20px;
-    }
+
   }
 
   a.text-license-link {
     color: $color-white;
     text-decoration: none;
+    width: 100%;
+    height: 100%;
+    position: relative;
     @media (hover: hover) and (pointer: fine) {
       &:hover {
         text-decoration: underline;
       }
     } 
-
+    max-height: 32px;
+    min-height: 32px;
+    min-width: 250px;
+    max-width: 290px;
+    @media screen and (max-width: 1099px) {
+      min-width: 200px;
+      max-width: 220px;
+    }
   }
 
   @media screen and (max-width: 1099px) {
-    grid-column: 3/-1;
     div {
       img {
         width: 8rem;
@@ -3430,30 +3130,50 @@ div.single-sound--info--desc.single-sound--info--desc--small-desc {
     max-width: 80%;
   }
 
+  div.cc-contain {
+   column-gap: 1rem;
+   max-width: 350px;
+   @media screen and (max-width: 1099px) {
+    max-width: 250px;
+   }
 
-
-  @media screen and (max-width: 750px) {
-    grid-column: 2/-1;
-    left: 1vw;
+   p {
+    max-width: 290px;
+    max-height: 30px;
+    @media screen and (max-width: 1099px) {
+      max-width: 170px;
+    }
+   }
   }
 
+
+
   div.commons-license-report-sound {
-    // border: 1px solid black;
-    padding: 10px;
-    min-width: 300px;    
-    max-width: 300px;
+    min-width: 200px;    
+    max-width: 290px;
+    max-height: 100px;
+    min-height: 70px;
+
+    div {
+      max-height: 100px;
+      min-height: 70px;
+      max-width: 290px;
+      p {
+        max-width: 290px;
+        max-height: 80px;
+        white-space: pre-line;
+        @media screen and (max-width: 1099px) {
+          max-width: 170px;
+        }
+      }
+    }
     
     @media screen and (max-width: 650px) {
-      margin-top: 2rem;
       position: relative;
-      right: 2rem;
-      min-width: 300px;    
+      min-width: 200px;    
       max-width: 300px;
     }
     
-    @media screen and (min-height: 800px) and (min-width: 1100px) {
-      padding: 20px;
-    }
 
     
     span {
@@ -3476,19 +3196,18 @@ div.single-sound--info--desc.single-sound--info--desc--small-desc {
       padding: 0;
       height: min-content;
       position: relative;
-      left: 20px;
       line-height: 20px;
       background-color: $color-new-grey;
-      padding: 7px;
-      font-size: .91rem;
+      padding: 3px;
       white-space: nowrap;
       border-radius: .2rem;
+      font-size: .7rem;
+      pointer-events: stroke;
 
       @media screen and (max-width: 1099px) {
-        font-size: 1.7rem;
+        font-size: 1.5rem;
         width: 70px;
         border-radius: .35rem;
-
       }
 
       @media (hover: hover) and (pointer: fine) {
@@ -3499,4 +3218,71 @@ div.single-sound--info--desc.single-sound--info--desc--small-desc {
     }
   }
 
+}
+
+.seemore-desc-btn-singlesound {
+  @include heightWidth100;
+  opacity: .95;
+
+  @media screen and (max-width: 750px) { 
+    display: none;
+  }  
+
+  div.outline-btn {
+    bottom: 0;
+    background: none;
+    justify-content: flex-start;
+
+    button {
+      background: none;
+      white-space: nowrap;
+      pointer-events: stroke;
+      justify-content: flex-start;
+      padding: 0;
+      font-size: .8rem;
+      transition: all .2s;
+
+      @media (hover: hover) and (pointer: fine) {
+        &:hover {
+          color: $color-red;
+          transition: all .2s;
+        }
+      } 
+    }
+  }
+  @media screen and (max-width: 1439px) {
+    div.outline-btn {button {font-size: .7rem;}}
+  }
+  
+  @media screen and (max-width: 1099px) {
+    top: 3rem;
+    div.outline-btn {
+      button {
+        font-size: 1.4rem;
+      }
+    }
+  }
+
+}
+
+.single-desc-container {
+  width: 100%;
+  max-height: 70%;
+  min-height: 250px;
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  flex-direction: column;
+  border-bottom: 1px solid $color-new-grey;
+}
+
+.singlesound-action-container {
+  position: relative;
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  max-height: 120px;
+  @media screen and (max-width: 1099px) {
+    margin-top: 2rem;
+  }
 }

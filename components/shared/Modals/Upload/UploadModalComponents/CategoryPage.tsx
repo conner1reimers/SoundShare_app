@@ -66,7 +66,7 @@ const CategoryPage: React.FC<Props> = ({reset}) => {
 
                 <div className="browse-modal--inner-window--box" onClick={chooseCategory} data-option="fx">
                     <div className="browse-modal-image-container">
-                        <Image src={game_controller} alt=""/>
+                        <Image height={80} width={80} src={game_controller} alt=""/>
                     </div>
 
                     <span className="browse-modal-category-name">
@@ -87,7 +87,7 @@ const CategoryPage: React.FC<Props> = ({reset}) => {
                 </div>
                 <div className="browse-modal--inner-window--box" onClick={chooseCategory} data-option="loops">
                     <div className="browse-modal-image-container">
-                        <Image src={headphones} alt=""/>
+                        <Image height={80} width={80} src={headphones} alt=""/>
                     </div>
 
                     <span className="browse-modal-category-name">
@@ -107,7 +107,7 @@ const CategoryPage: React.FC<Props> = ({reset}) => {
                 <div className="browse-modal--inner-window--box" onClick={chooseCategory} data-option="vocal">
 
                     <div className="browse-modal-image-container">
-                        <Image src={microphone} alt=""/>
+                        <Image height={80} width={80} src={microphone} alt=""/>
                     </div>
 
                     <span className="browse-modal-category-name">

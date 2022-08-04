@@ -1743,14 +1743,14 @@ const LeftMsg: React.FC = () => {
 	const msgShown = useSelector((state: any) => state.upload.fxState.tutorialShown2);
 	const dispatch = useDispatch();
 
-	useEffect(() => {
-		if (startSecondHint) {
-			setTimeout(() => {
-				setStartSecondHint(false);
-				dispatch({type: 'FX_TUTORIAL_DONE2'})
-			}, 3000);
-		}
-	}, [startSecondHint]);
+	// useEffect(() => {
+	// 	if (startSecondHint) {
+	// 		setTimeout(() => {
+	// 			setStartSecondHint(false);
+	// 			dispatch({type: 'FX_TUTORIAL_DONE2'})
+	// 		}, 3000);
+	// 	}
+	// }, [startSecondHint]);
 
 	useEffect(() => {
 		setTimeout(() => {
@@ -1771,12 +1771,16 @@ const LeftMsg: React.FC = () => {
 					variants={msgVariants2}
 					transition={msgTrans}
 				>
-					<Image
-						className="uploadmodal-big--fxpage--box--playpause--leftarrow"
-						src={right}
-						alt=""
-					/>
-					<span>Play your sound with new effects applied!</span>
+					<div className="fx-arrow-container move-down">
+						<Image
+							className="uploadmodal-big--fxpage--box--playpause--leftarrow"
+							src={right}
+							height={25}
+							width={25}
+							alt=""
+						/>
+					</div>
+					<span className="fx-label">Play your sound with new effects applied!</span>
 					<div className="fx-backdrop"></div>
 				</motion.div>
 			)}
@@ -1820,8 +1824,10 @@ const RightMsg = () => {
 						transition={msgTrans}
 						className="uploadmodal-big--fxpage--box--reloadTextbox"
 					>
-						<span>Click to reload your sound with new effects!</span>
-						<Image src={right} alt="" />
+						<span className="fx-label">Click to reload your sound with new effects!</span>
+						<div className="fx-arrow-container">
+							<Image height={25} width={25} src={right} alt="" />
+						</div>
 						<div className="fx-backdrop"></div>
 					</motion.div>
 				)}
@@ -1852,7 +1858,10 @@ const PresetMenu: React.FC = React.memo(() => {
 						>
 							<Image
 								src={fx3}
-							alt=""/>
+								height={25}
+								width={25}
+								alt=""
+							/>
 						</motion.div>
 					) : (
 						<motion.div
@@ -1864,6 +1873,8 @@ const PresetMenu: React.FC = React.memo(() => {
 							transition={presetImgTransition}
 							>
 								<Image
+									height={25}
+									width={25}
 									src={fx2}
 									alt=""
 								/>

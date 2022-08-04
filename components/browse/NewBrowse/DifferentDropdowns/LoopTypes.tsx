@@ -24,7 +24,7 @@ const LoopTypes: React.FC<Props> = ({curOptions, open, setIsBigger, optionSelect
                 curOptions={curOptions}
                 setIsBigger={setIsBigger}
                 rightIcon={
-                  curOptions.type.loops && <Image src={check} alt="" />
+                  curOptions.type.loops && <Image height={20} width={20} src={check} alt="" />
                 }
               >
                 <span>Loops</span>
@@ -38,7 +38,7 @@ const LoopTypes: React.FC<Props> = ({curOptions, open, setIsBigger, optionSelect
                 curOptions={curOptions}
                 setIsBigger={setIsBigger}
                 rightIcon={
-                  curOptions.type.acapella && <Image src={check} alt="" />
+                  curOptions.type.acapella && <Image height={20} width={20} src={check} alt="" />
                 }
               >
                 <span>Accapella</span>
@@ -52,7 +52,7 @@ const LoopTypes: React.FC<Props> = ({curOptions, open, setIsBigger, optionSelect
                 curOptions={curOptions}
                 setIsBigger={setIsBigger}
                 rightIcon={
-                  curOptions.type.samples && <Image src={check} alt="" />
+                  curOptions.type.samples && <Image height={20} width={20} src={check} alt="" />
                 }
               >
                 <span>Samples</span>
@@ -66,7 +66,7 @@ const LoopTypes: React.FC<Props> = ({curOptions, open, setIsBigger, optionSelect
                 curOptions={curOptions}
                 setIsBigger={setIsBigger}
                 rightIcon={
-                  curOptions.type.synth && <Image src={check} alt="" />
+                  curOptions.type.synth && <Image height={20} width={20} src={check} alt="" />
                 }
               >
                 <span>Synth</span>
@@ -80,7 +80,7 @@ const LoopTypes: React.FC<Props> = ({curOptions, open, setIsBigger, optionSelect
                 curOptions={curOptions}
                 setIsBigger={setIsBigger}
                 rightIcon={
-                  curOptions.type.guitar && <Image src={check} alt="" />
+                  curOptions.type.guitar && <Image height={20} width={20} src={check} alt="" />
                 }
               >
                 <span>Guitar</span>
@@ -94,7 +94,7 @@ const LoopTypes: React.FC<Props> = ({curOptions, open, setIsBigger, optionSelect
                 curOptions={curOptions}
                 setIsBigger={setIsBigger}
                 rightIcon={
-                  curOptions.type.unique && <Image src={check} alt="" />
+                  curOptions.type.unique && <Image height={20} width={20} src={check} alt="" />
                 }
               >
                 <span>Unique</span>

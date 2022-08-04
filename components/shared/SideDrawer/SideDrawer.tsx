@@ -233,7 +233,7 @@ const SideDrawer: React.FC<Props> = ({open}) => {
     
 
 
-    const finalEl = process.browser ? ReactDOM.createPortal(
+    const finalEl = typeof window != 'undefined' ? ReactDOM.createPortal(
         <Fragment>
             <AnimatePresence exitBeforeEnter>
                 {sideDrawerOpen &&

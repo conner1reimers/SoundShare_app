@@ -74,6 +74,7 @@
     "react-media": "^1.10.0",
     "react-redux": "^7.2.4",
     "react-tag-autocomplete": "^6.2.0",
+    "react-window": "^1.8.7",
     "redux": "^4.1.1",
     "redux-devtools-extension": "^2.13.9",
     "redux-logger": "^3.0.6",

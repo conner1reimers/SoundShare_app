@@ -102,21 +102,21 @@ const CategoryDropdown: React.FC<Props> = ({ setGenre, setChosen, duration }) =>
           option="loop"
           key="loop"
         >
-          <span>Loop <Image src={djMixer} alt=""/></span>
+          <span>Loop <Image height={20} width={20} src={djMixer} alt=""/></span>
         </DropdownItem>
 
         <DropdownItem
           option="fx"
           key="fx"
         >
-          <span>Short Sound <Image src={soundwaves} alt=""/></span>
+          <span>Short Sound <Image height={20} width={20} src={soundwaves} alt=""/></span>
         </DropdownItem>
 
         <DropdownItem
           option="vocal"
           key="vocal"
         >
-          <span>Vocals <Image src={popGenre} alt=""/></span>
+          <span>Vocals <Image height={20} width={20} src={popGenre} alt=""/></span>
           
         </DropdownItem>
 

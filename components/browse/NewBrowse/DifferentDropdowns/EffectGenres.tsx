@@ -24,7 +24,7 @@ const EffectGenres: React.FC<Props> = ({curOptions, open, setIsBigger, optionSel
                   open={open}
                   curOptions={curOptions}
                   rightIcon={
-                    curOptions.genre.all && <Image src={check} alt="" />
+                    curOptions.genre.all && <Image height={20} width={20} src={check} alt="" />
                   }
                 >
                   {" "}
@@ -39,7 +39,7 @@ const EffectGenres: React.FC<Props> = ({curOptions, open, setIsBigger, optionSel
                   open={open}
                   curOptions={curOptions}
                   rightIcon={
-                    curOptions.genre.aggressive && <Image src={check} alt="" />
+                    curOptions.genre.aggressive && <Image height={20} width={20} src={check} alt="" />
                   }
                 >
                   <span>Aggressive</span>
@@ -52,7 +52,7 @@ const EffectGenres: React.FC<Props> = ({curOptions, open, setIsBigger, optionSel
                   open={open}
                   curOptions={curOptions}
                   rightIcon={
-                    curOptions.genre.calm && <Image src={check} alt="" />
+                    curOptions.genre.calm && <Image height={20} width={20} src={check} alt="" />
                   }
                 >
                   <span>Calm</span>
@@ -65,7 +65,7 @@ const EffectGenres: React.FC<Props> = ({curOptions, open, setIsBigger, optionSel
                   open={open}
                   curOptions={curOptions}
                   rightIcon={
-                    curOptions.genre.alerts && <Image src={check} alt="" />
+                    curOptions.genre.alerts && <Image height={20} width={20} src={check} alt="" />
                   }
                 >
                   <span>Alerts</span>
@@ -78,7 +78,7 @@ const EffectGenres: React.FC<Props> = ({curOptions, open, setIsBigger, optionSel
                   open={open}
                   curOptions={curOptions}
                   rightIcon={
-                    curOptions.genre.digital && <Image src={check} alt="" />
+                    curOptions.genre.digital && <Image height={20} width={20} src={check} alt="" />
                   }
                 >
                   <span>Digital</span>
@@ -91,7 +91,7 @@ const EffectGenres: React.FC<Props> = ({curOptions, open, setIsBigger, optionSel
                   open={open}
                   curOptions={curOptions}
                   rightIcon={
-                    curOptions.genre.nature && <Image src={check} alt="" />
+                    curOptions.genre.nature && <Image height={20} width={20} src={check} alt="" />
                   }
                 >
                   <span>Nature</span>
@@ -104,7 +104,7 @@ const EffectGenres: React.FC<Props> = ({curOptions, open, setIsBigger, optionSel
                   open={open}
                   curOptions={curOptions}
                   rightIcon={
-                    curOptions.genre.other && <Image src={check} alt="" />
+                    curOptions.genre.other && <Image height={20} width={20} src={check} alt="" />
                   }
                 >
                   <span>other</span>

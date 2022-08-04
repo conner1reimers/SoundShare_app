@@ -76,7 +76,7 @@ const PlayPauseBtns: React.FC<Props> = ({small, noarrow, global, fxglobe, fx, up
           type="button"
           onClick={nextSound}
         >
-          <Image src={FF} alt="" />
+          <Image height={30} width={30} src={FF} alt="" />
         </button>
       )}
     </div>
@@ -118,7 +118,7 @@ const PlayPause: React.FC<Props> = React.memo(({global, sound, singleSound}) => 
             type="button"
             onClick={pauseOrPlay}
           >
-            <Image src={pause} alt="yhy" />
+            <Image height={45} width={45} src={pause} alt="yhy" />
           </button>
         ) : (
           <button className="btn nohover" type="button" onClickCapture={pauseOrPlay}>
@@ -132,11 +132,11 @@ const PlayPause: React.FC<Props> = React.memo(({global, sound, singleSound}) => 
             type="button"
             onTouchStart={pauseOrPlay}
           >
-            <Image src={pause} alt="mmm" />
+            <Image height={20} width={20} src={pause} alt="mmm" />
           </button>
         ) : (
           <button className="btn nohover" type="button" onTouchStartCapture={pauseOrPlay}>
-            <Image src={play} alt="vvv" />
+            <Image height={20} width={20} src={play} alt="vvv" />
           </button>
         )}
       </Fragment>)}
@@ -166,11 +166,11 @@ const PlayPauseFx: React.FC<Props> = React.memo(({global}) => {
       type="button"
       onClick={pauseOrPlay}
     >
-      <Image src={pause} alt="" />
+      <Image height={20} width={20} src={pause} alt="" />
     </button>
   ) : (
     <button className="btn nohover" type="button" onClick={pauseOrPlay}>
-      <Image src={play} alt="" />
+      <Image height={20} width={20} src={play} alt="" />
     </button>
   )
 

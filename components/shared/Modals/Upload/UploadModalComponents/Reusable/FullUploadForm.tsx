@@ -24,6 +24,7 @@ import LoadingAnimation from '../../../../../animatedLoaders/LoadingAnimation/Lo
 import PlayPauseBtns from '../../../../../common_reusable/playPauseBtn/PlayPauseBtns'
 import ImageUpload from '../../../../../ImageUpload'
 import Input from '../../../../../common_reusable/Input'
+import UploadSubmit from '../UploadSubmit'
 
 const tagClasses = {
   root: 'upload-tags uploadmodal-big--info-form--input--tags',
@@ -433,7 +434,7 @@ const FullUploadForm: React.FC<Props> = ({goToFx, resetUpload, sound, isList, cu
     <Fragment>
       {(isLoading || listLoader) && <LoadingAnimation loading={isLoading || listLoader }/>}
        
-      {!isList && <SubmitUpload goToFx={goToFx} submitSound={submitSound}/>}
+      
       
 
       <ResetButton click={resetUpload}/>
@@ -553,11 +554,12 @@ const FullUploadForm: React.FC<Props> = ({goToFx, resetUpload, sound, isList, cu
                         </NavItem>
                     </XtraOptionDropdown>
                 </div>)}
-          </form>
-              
+      </form>
+
+      {!isList && <UploadSubmit isMobile={gpuTier.isMobile} goToFx={goToFx} submitSound={submitSound}/>}
               
       </Fragment>
   )
 }
 
-export default FullUploadForm
+export default FullUploadForm;

@@ -1123,10 +1123,9 @@ $bg: #242526;
 div.sound-list-item {
   &--btn-contain {
     @include flexcenter;
-    grid-column: 7/9;
+    grid-column: 6/9;
     grid-row: 1/2;
     position: relative;
-    right: 2vw;
   }
   &--circle {
     @include circleActionBtn;

@@ -120,8 +120,8 @@ const XtraDropdowns: React.FC<XtraDropProps> = React.memo(({setXtraOptions, inpu
             <div className="xtraOption-dropdown--li--main--col">
 
               <DropItem
-                rightIcon={<Image className="unstretch" src={pop} alt=""/>}
-                leftIcon={<Image className="unstretch" src={pop2} alt=""/>}
+                rightIcon={<Image height={20} width={20} className="unstretch" src={pop} alt=""/>}
+                leftIcon={<Image height={20} width={20} className="unstretch" src={pop2} alt=""/>}
                 option="loop"
               >
                 <div className="uploadmodal-big--fxpage--box--fxMenu--preset-page--item--checkbox check checkbox-upload">
@@ -131,7 +131,7 @@ const XtraDropdowns: React.FC<XtraDropProps> = React.memo(({setXtraOptions, inpu
                 <span className="unstretch">Loop</span>
               </DropItem>
 
-              <DropItem rightIcon={<Image className="unstretch" src={pop} alt=""/>} leftIcon={<Image className="unstretch" src={pop2} alt=""/>}
+              <DropItem rightIcon={<Image height={20} width={20} className="unstretch" src={pop} alt=""/>} leftIcon={<Image height={20} width={20} className="unstretch" src={pop2} alt=""/>}
                 option="synth">
                 <div className="uploadmodal-big--fxpage--box--fxMenu--preset-page--item--checkbox check checkbox-upload">
                   <div className="checkbox-contain-upload"> <div className="inner-dot"></div> </div>
@@ -140,8 +140,8 @@ const XtraDropdowns: React.FC<XtraDropProps> = React.memo(({setXtraOptions, inpu
               </DropItem>
 
               <DropItem
-                rightIcon={<Image className="unstretch" src={pop} alt=""/>}
-                leftIcon={<Image className="unstretch" src={pop2} alt=""/>}
+                rightIcon={<Image height={20} width={20} className="unstretch" src={pop} alt=""/>}
+                leftIcon={<Image height={20} width={20} className="unstretch" src={pop2} alt=""/>}
                 option="trap"
               >
                 <div className="uploadmodal-big--fxpage--box--fxMenu--preset-page--item--checkbox check checkbox-upload">
@@ -151,8 +151,8 @@ const XtraDropdowns: React.FC<XtraDropProps> = React.memo(({setXtraOptions, inpu
                 <span className="unstretch">Trap</span>
               </DropItem>
 
-              <DropItem rightIcon={<Image className="unstretch" src={pop} alt=""/>}
-                        leftIcon={<Image className="unstretch" src={pop2} alt=""/>}
+              <DropItem rightIcon={<Image height={20} width={20} className="unstretch" src={pop} alt=""/>}
+                        leftIcon={<Image height={20} width={20} className="unstretch" src={pop2} alt=""/>}
                     option="lofi">
                     <div className="uploadmodal-big--fxpage--box--fxMenu--preset-page--item--checkbox check checkbox-upload">
                       <div className="checkbox-contain-upload"> <div className="inner-dot"></div> </div>
@@ -161,8 +161,8 @@ const XtraDropdowns: React.FC<XtraDropProps> = React.memo(({setXtraOptions, inpu
                 </DropItem>
 
                 <DropItem
-                rightIcon={<Image className="unstretch" src={pop} alt=""/>}
-                leftIcon={<Image className="unstretch" src={pop2} alt=""/>}
+                rightIcon={<Image height={20} width={20} className="unstretch" src={pop} alt=""/>}
+                leftIcon={<Image height={20} width={20} className="unstretch" src={pop2} alt=""/>}
                 option="dark"
               >
                 <div className="uploadmodal-big--fxpage--box--fxMenu--preset-page--item--checkbox check checkbox-upload">
@@ -172,8 +172,8 @@ const XtraDropdowns: React.FC<XtraDropProps> = React.memo(({setXtraOptions, inpu
                 <span className="unstretch">Dark</span>
               </DropItem>
               
-              <DropItem rightIcon={<Image className="unstretch" src={pop} alt=""/>}
-                        leftIcon={<Image className="unstretch" src={pop2} alt=""/>}
+              <DropItem rightIcon={<Image height={20} width={20} className="unstretch" src={pop} alt=""/>}
+                        leftIcon={<Image height={20} width={20} className="unstretch" src={pop2} alt=""/>}
                         option="strings">
                 <div className="uploadmodal-big--fxpage--box--fxMenu--preset-page--item--checkbox check checkbox-upload">
                   <div className="checkbox-contain-upload"> <div className="inner-dot"></div> </div>
@@ -186,8 +186,8 @@ const XtraDropdowns: React.FC<XtraDropProps> = React.memo(({setXtraOptions, inpu
             
 
               <DropItem
-                rightIcon={<Image className="unstretch" src={pop} alt=""/>}
-                leftIcon={<Image className="unstretch" src={pop2} alt=""/>}
+                rightIcon={<Image height={20} width={20} className="unstretch" src={pop} alt=""/>}
+                leftIcon={<Image height={20} width={20} className="unstretch" src={pop2} alt=""/>}
                 option="acappella"
               >
                 <div className="uploadmodal-big--fxpage--box--fxMenu--preset-page--item--checkbox check checkbox-upload">
@@ -197,8 +197,8 @@ const XtraDropdowns: React.FC<XtraDropProps> = React.memo(({setXtraOptions, inpu
                 <span className="unstretch">Acappella</span>
               </DropItem>
 
-              <DropItem rightIcon={<Image className="unstretch" src={pop} alt=""/>}
-                        leftIcon={<Image className="unstretch" src={pop2} alt=""/>}
+              <DropItem rightIcon={<Image height={20} width={20} className="unstretch" src={pop} alt=""/>}
+                        leftIcon={<Image height={20} width={20} className="unstretch" src={pop2} alt=""/>}
                 option="sample">
                 <div className="uploadmodal-big--fxpage--box--fxMenu--preset-page--item--checkbox check checkbox-upload">
                   <div className="checkbox-contain-upload"> <div className="inner-dot"></div> </div>
@@ -207,8 +207,8 @@ const XtraDropdowns: React.FC<XtraDropProps> = React.memo(({setXtraOptions, inpu
               </DropItem>
 
               <DropItem
-                rightIcon={<Image className="unstretch" src={pop} alt=""/>}
-                leftIcon={<Image className="unstretch" src={pop2} alt=""/>}
+                rightIcon={<Image height={20} width={20} className="unstretch" src={pop} alt=""/>}
+                leftIcon={<Image height={20} width={20} className="unstretch" src={pop2} alt=""/>}
                 option="pluck"
               >
                 <div className="uploadmodal-big--fxpage--box--fxMenu--preset-page--item--checkbox check checkbox-upload">
@@ -218,8 +218,8 @@ const XtraDropdowns: React.FC<XtraDropProps> = React.memo(({setXtraOptions, inpu
                 <span className="unstretch">Pluck</span>
               </DropItem>
 
-              <DropItem rightIcon={<Image className="unstretch" src={pop} alt=""/>}
-                        leftIcon={<Image className="unstretch" src={pop2} alt=""/>}
+              <DropItem rightIcon={<Image height={20} width={20} className="unstretch" src={pop} alt=""/>}
+                        leftIcon={<Image height={20} width={20} className="unstretch" src={pop2} alt=""/>}
                 option="bells">
                 <div className="uploadmodal-big--fxpage--box--fxMenu--preset-page--item--checkbox check checkbox-upload">
                   <div className="checkbox-contain-upload"> <div className="inner-dot"></div> </div>
@@ -228,8 +228,8 @@ const XtraDropdowns: React.FC<XtraDropProps> = React.memo(({setXtraOptions, inpu
               </DropItem>
 
               <DropItem
-                rightIcon={<Image className="unstretch" src={pop} alt=""/>}
-                leftIcon={<Image className="unstretch" src={pop2} alt=""/>}
+                rightIcon={<Image height={20} width={20} className="unstretch" src={pop} alt=""/>}
+                leftIcon={<Image height={20} width={20} className="unstretch" src={pop2} alt=""/>}
                 option="electronic"
               >
                   <div className="uploadmodal-big--fxpage--box--fxMenu--preset-page--item--checkbox check checkbox-upload">
@@ -237,8 +237,8 @@ const XtraDropdowns: React.FC<XtraDropProps> = React.memo(({setXtraOptions, inpu
                   </div>
                   <span className="unstretch">Electronic</span>
               </DropItem>
-              <DropItem rightIcon={<Image className="unstretch" src={pop} alt=""/>}
-                        leftIcon={<Image className="unstretch" src={pop2} alt=""/>}
+              <DropItem rightIcon={<Image height={20} width={20} className="unstretch" src={pop} alt=""/>}
+                        leftIcon={<Image height={20} width={20} className="unstretch" src={pop2} alt=""/>}
                 option="loop"> 
                 <div className="uploadmodal-big--fxpage--box--fxMenu--preset-page--item--checkbox check checkbox-upload">
                     <div className="checkbox-contain-upload"> <div className="inner-dot"></div> </div>
@@ -255,8 +255,8 @@ const XtraDropdowns: React.FC<XtraDropProps> = React.memo(({setXtraOptions, inpu
             <div className="xtraOption-dropdown--li--main--col">
 
               <DropItem
-                rightIcon={<Image className="unstretch" src={pop} alt=""/>}
-                leftIcon={<Image className="unstretch" src={pop2} alt=""/>}
+                rightIcon={<Image height={20} width={20} className="unstretch" src={pop} alt=""/>}
+                leftIcon={<Image height={20} width={20} className="unstretch" src={pop2} alt=""/>}
                 option="loop"
               >
                 <div className="uploadmodal-big--fxpage--box--fxMenu--preset-page--item--checkbox check checkbox-upload">
@@ -266,7 +266,7 @@ const XtraDropdowns: React.FC<XtraDropProps> = React.memo(({setXtraOptions, inpu
                 <span className="unstretch">Loop</span>
               </DropItem>
 
-              <DropItem rightIcon={<Image className="unstretch" src={pop} alt=""/>} leftIcon={<Image className="unstretch" src={pop2} alt=""/>}
+              <DropItem rightIcon={<Image height={20} width={20} className="unstretch" src={pop} alt=""/>} leftIcon={<Image height={20} width={20} className="unstretch" src={pop2} alt=""/>}
                 option="synth">
                 <div className="uploadmodal-big--fxpage--box--fxMenu--preset-page--item--checkbox check checkbox-upload">
                   <div className="checkbox-contain-upload"> <div className="inner-dot"></div> </div>
@@ -275,8 +275,8 @@ const XtraDropdowns: React.FC<XtraDropProps> = React.memo(({setXtraOptions, inpu
               </DropItem>
 
               <DropItem
-                rightIcon={<Image className="unstretch" src={pop} alt=""/>}
-                leftIcon={<Image className="unstretch" src={pop2} alt=""/>}
+                rightIcon={<Image height={20} width={20} className="unstretch" src={pop} alt=""/>}
+                leftIcon={<Image height={20} width={20} className="unstretch" src={pop2} alt=""/>}
                 option="trap"
               >
                 <div className="uploadmodal-big--fxpage--box--fxMenu--preset-page--item--checkbox check checkbox-upload">
@@ -286,8 +286,8 @@ const XtraDropdowns: React.FC<XtraDropProps> = React.memo(({setXtraOptions, inpu
                 <span className="unstretch">Trap</span>
               </DropItem>
 
-              <DropItem rightIcon={<Image className="unstretch" src={pop} alt=""/>}
-                        leftIcon={<Image className="unstretch" src={pop2} alt=""/>}
+              <DropItem rightIcon={<Image height={20} width={20} className="unstretch" src={pop} alt=""/>}
+                        leftIcon={<Image height={20} width={20} className="unstretch" src={pop2} alt=""/>}
                     option="lofi">
                     <div className="uploadmodal-big--fxpage--box--fxMenu--preset-page--item--checkbox check checkbox-upload">
                       <div className="checkbox-contain-upload"> <div className="inner-dot"></div> </div>
@@ -296,8 +296,8 @@ const XtraDropdowns: React.FC<XtraDropProps> = React.memo(({setXtraOptions, inpu
                 </DropItem>
 
                 <DropItem
-                rightIcon={<Image className="unstretch" src={pop} alt=""/>}
-                leftIcon={<Image className="unstretch" src={pop2} alt=""/>}
+                rightIcon={<Image height={20} width={20} className="unstretch" src={pop} alt=""/>}
+                leftIcon={<Image height={20} width={20} className="unstretch" src={pop2} alt=""/>}
                 option="dark"
               >
                 <div className="uploadmodal-big--fxpage--box--fxMenu--preset-page--item--checkbox check checkbox-upload">
@@ -307,8 +307,8 @@ const XtraDropdowns: React.FC<XtraDropProps> = React.memo(({setXtraOptions, inpu
                 <span className="unstretch">Dark</span>
               </DropItem>
               
-              <DropItem rightIcon={<Image className="unstretch" src={pop} alt=""/>}
-                        leftIcon={<Image className="unstretch" src={pop2} alt=""/>}
+              <DropItem rightIcon={<Image height={20} width={20} className="unstretch" src={pop} alt=""/>}
+                        leftIcon={<Image height={20} width={20} className="unstretch" src={pop2} alt=""/>}
                         option="strings">
                 <div className="uploadmodal-big--fxpage--box--fxMenu--preset-page--item--checkbox check checkbox-upload">
                   <div className="checkbox-contain-upload"> <div className="inner-dot"></div> </div>
@@ -321,8 +321,8 @@ const XtraDropdowns: React.FC<XtraDropProps> = React.memo(({setXtraOptions, inpu
               <div className="xtraOption-dropdown--li--main--col">
 
               <DropItem
-                rightIcon={<Image className="unstretch" src={pop} alt=""/>}
-                leftIcon={<Image className="unstretch" src={pop2} alt=""/>}
+                rightIcon={<Image height={20} width={20} className="unstretch" src={pop} alt=""/>}
+                leftIcon={<Image height={20} width={20} className="unstretch" src={pop2} alt=""/>}
                 option="acappella"
               >
                 <div className="uploadmodal-big--fxpage--box--fxMenu--preset-page--item--checkbox check checkbox-upload">
@@ -332,8 +332,8 @@ const XtraDropdowns: React.FC<XtraDropProps> = React.memo(({setXtraOptions, inpu
                 <span className="unstretch">Acappella</span>
               </DropItem>
 
-              <DropItem rightIcon={<Image className="unstretch" src={pop} alt=""/>}
-                        leftIcon={<Image className="unstretch" src={pop2} alt=""/>}
+              <DropItem rightIcon={<Image height={20} width={20} className="unstretch" src={pop} alt=""/>}
+                        leftIcon={<Image height={20} width={20} className="unstretch" src={pop2} alt=""/>}
                 option="sample">
                 <div className="uploadmodal-big--fxpage--box--fxMenu--preset-page--item--checkbox check checkbox-upload">
                   <div className="checkbox-contain-upload"> <div className="inner-dot"></div> </div>
@@ -342,8 +342,8 @@ const XtraDropdowns: React.FC<XtraDropProps> = React.memo(({setXtraOptions, inpu
               </DropItem>
 
               <DropItem
-                rightIcon={<Image className="unstretch" src={pop} alt=""/>}
-                leftIcon={<Image className="unstretch" src={pop2} alt=""/>}
+                rightIcon={<Image height={20} width={20} className="unstretch" src={pop} alt=""/>}
+                leftIcon={<Image height={20} width={20} className="unstretch" src={pop2} alt=""/>}
                 option="pluck"
               >
                 <div className="uploadmodal-big--fxpage--box--fxMenu--preset-page--item--checkbox check checkbox-upload">
@@ -353,8 +353,8 @@ const XtraDropdowns: React.FC<XtraDropProps> = React.memo(({setXtraOptions, inpu
                 <span className="unstretch">Pluck</span>
               </DropItem>
 
-              <DropItem rightIcon={<Image className="unstretch" src={pop} alt=""/>}
-                        leftIcon={<Image className="unstretch" src={pop2} alt=""/>}
+              <DropItem rightIcon={<Image height={20} width={20} className="unstretch" src={pop} alt=""/>}
+                        leftIcon={<Image height={20} width={20} className="unstretch" src={pop2} alt=""/>}
                 option="bells">
                 <div className="uploadmodal-big--fxpage--box--fxMenu--preset-page--item--checkbox check checkbox-upload">
                   <div className="checkbox-contain-upload"> <div className="inner-dot"></div> </div>
@@ -363,8 +363,8 @@ const XtraDropdowns: React.FC<XtraDropProps> = React.memo(({setXtraOptions, inpu
               </DropItem>
 
               <DropItem
-                rightIcon={<Image className="unstretch" src={pop} alt=""/>}
-                leftIcon={<Image className="unstretch" src={pop2} alt=""/>}
+                rightIcon={<Image height={20} width={20} className="unstretch" src={pop} alt=""/>}
+                leftIcon={<Image height={20} width={20} className="unstretch" src={pop2} alt=""/>}
                 option="electronic"
               >
                   <div className="uploadmodal-big--fxpage--box--fxMenu--preset-page--item--checkbox check checkbox-upload">
@@ -372,8 +372,8 @@ const XtraDropdowns: React.FC<XtraDropProps> = React.memo(({setXtraOptions, inpu
                   </div>
                   <span className="unstretch">Electronic</span>
               </DropItem>
-              <DropItem rightIcon={<Image className="unstretch" src={pop} alt=""/>}
-                        leftIcon={<Image className="unstretch" src={pop2} alt=""/>}
+              <DropItem rightIcon={<Image height={20} width={20} className="unstretch" src={pop} alt=""/>}
+                        leftIcon={<Image height={20} width={20} className="unstretch" src={pop2} alt=""/>}
                 option="loop"> 
                 <div className="uploadmodal-big--fxpage--box--fxMenu--preset-page--item--checkbox check checkbox-upload">
                     <div className="checkbox-contain-upload"> <div className="inner-dot"></div> </div>
@@ -389,8 +389,8 @@ const XtraDropdowns: React.FC<XtraDropProps> = React.memo(({setXtraOptions, inpu
             <div className="xtraOption-dropdown--li--main--col">
 
               <DropItem
-                rightIcon={<Image className="unstretch" src={pop} alt=""/>}
-                leftIcon={<Image className="unstretch" src={pop2} alt=""/>}
+                rightIcon={<Image height={20} width={20} className="unstretch" src={pop} alt=""/>}
+                leftIcon={<Image height={20} width={20} className="unstretch" src={pop2} alt=""/>}
                 option="loop"
               >
                 <div className="uploadmodal-big--fxpage--box--fxMenu--preset-page--item--checkbox check checkbox-upload">
@@ -400,7 +400,7 @@ const XtraDropdowns: React.FC<XtraDropProps> = React.memo(({setXtraOptions, inpu
                 <span className="unstretch">Loop</span>
               </DropItem>
               
-              <DropItem rightIcon={<Image className="unstretch" src={pop} alt=""/>} leftIcon={<Image className="unstretch" src={pop2} alt=""/>}
+              <DropItem rightIcon={<Image height={20} width={20} className="unstretch" src={pop} alt=""/>} leftIcon={<Image height={20} width={20} className="unstretch" src={pop2} alt=""/>}
                 option="synth">
                 <div className="uploadmodal-big--fxpage--box--fxMenu--preset-page--item--checkbox check checkbox-upload">
                   <div className="checkbox-contain-upload"> <div className="inner-dot"></div> </div>
@@ -409,8 +409,8 @@ const XtraDropdowns: React.FC<XtraDropProps> = React.memo(({setXtraOptions, inpu
               </DropItem>
 
               <DropItem
-                rightIcon={<Image className="unstretch" src={pop} alt=""/>}
-                leftIcon={<Image className="unstretch" src={pop2} alt=""/>}
+                rightIcon={<Image height={20} width={20} className="unstretch" src={pop} alt=""/>}
+                leftIcon={<Image height={20} width={20} className="unstretch" src={pop2} alt=""/>}
                 option="trap"
               >
                 <div className="uploadmodal-big--fxpage--box--fxMenu--preset-page--item--checkbox check checkbox-upload">
@@ -420,8 +420,8 @@ const XtraDropdowns: React.FC<XtraDropProps> = React.memo(({setXtraOptions, inpu
                 <span className="unstretch">Trap</span>
               </DropItem>
               
-              <DropItem rightIcon={<Image className="unstretch" src={pop} alt=""/>}
-                        leftIcon={<Image className="unstretch" src={pop2} alt=""/>}
+              <DropItem rightIcon={<Image height={20} width={20} className="unstretch" src={pop} alt=""/>}
+                        leftIcon={<Image height={20} width={20} className="unstretch" src={pop2} alt=""/>}
                     option="lofi">
                     <div className="uploadmodal-big--fxpage--box--fxMenu--preset-page--item--checkbox check checkbox-upload">
                       <div className="checkbox-contain-upload"> <div className="inner-dot"></div> </div>
@@ -434,8 +434,8 @@ const XtraDropdowns: React.FC<XtraDropProps> = React.memo(({setXtraOptions, inpu
             <div className="xtraOption-dropdown--li--main--col">
 
               <DropItem
-                rightIcon={<Image className="unstretch" src={pop} alt=""/>}
-                leftIcon={<Image className="unstretch" src={pop2} alt=""/>}
+                rightIcon={<Image height={20} width={20} className="unstretch" src={pop} alt=""/>}
+                leftIcon={<Image height={20} width={20} className="unstretch" src={pop2} alt=""/>}
                 option="acappella"
               >
                 <div className="uploadmodal-big--fxpage--box--fxMenu--preset-page--item--checkbox check checkbox-upload">
@@ -445,8 +445,8 @@ const XtraDropdowns: React.FC<XtraDropProps> = React.memo(({setXtraOptions, inpu
                 <span className="unstretch">Acappella</span>
               </DropItem>
               
-              <DropItem rightIcon={<Image className="unstretch" src={pop} alt=""/>}
-                        leftIcon={<Image className="unstretch" src={pop2} alt=""/>}
+              <DropItem rightIcon={<Image height={20} width={20} className="unstretch" src={pop} alt=""/>}
+                        leftIcon={<Image height={20} width={20} className="unstretch" src={pop2} alt=""/>}
                 option="sample">
                 <div className="uploadmodal-big--fxpage--box--fxMenu--preset-page--item--checkbox check checkbox-upload">
                   <div className="checkbox-contain-upload"> <div className="inner-dot"></div> </div>
@@ -455,8 +455,8 @@ const XtraDropdowns: React.FC<XtraDropProps> = React.memo(({setXtraOptions, inpu
               </DropItem>
 
               <DropItem
-                rightIcon={<Image className="unstretch" src={pop} alt=""/>}
-                leftIcon={<Image className="unstretch" src={pop2} alt=""/>}
+                rightIcon={<Image height={20} width={20} className="unstretch" src={pop} alt=""/>}
+                leftIcon={<Image height={20} width={20} className="unstretch" src={pop2} alt=""/>}
                 option="pluck"
               >
                 <div className="uploadmodal-big--fxpage--box--fxMenu--preset-page--item--checkbox check checkbox-upload">
@@ -466,8 +466,8 @@ const XtraDropdowns: React.FC<XtraDropProps> = React.memo(({setXtraOptions, inpu
                 <span className="unstretch">Pluck</span>
               </DropItem>
               
-              <DropItem rightIcon={<Image className="unstretch" src={pop} alt=""/>}
-                        leftIcon={<Image className="unstretch" src={pop2} alt=""/>}
+              <DropItem rightIcon={<Image height={20} width={20} className="unstretch" src={pop} alt=""/>}
+                        leftIcon={<Image height={20} width={20} className="unstretch" src={pop2} alt=""/>}
                 option="bells">
                 <div className="uploadmodal-big--fxpage--box--fxMenu--preset-page--item--checkbox check checkbox-upload">
                   <div className="checkbox-contain-upload"> <div className="inner-dot"></div> </div>
@@ -479,8 +479,8 @@ const XtraDropdowns: React.FC<XtraDropProps> = React.memo(({setXtraOptions, inpu
 
             <div className="xtraOption-dropdown--li--main--col">
               <DropItem
-                rightIcon={<Image className="unstretch" src={pop} alt=""/>}
-                leftIcon={<Image className="unstretch" src={pop2} alt=""/>}
+                rightIcon={<Image height={20} width={20} className="unstretch" src={pop} alt=""/>}
+                leftIcon={<Image height={20} width={20} className="unstretch" src={pop2} alt=""/>}
                 option="electronic"
               >
                   <div className="uploadmodal-big--fxpage--box--fxMenu--preset-page--item--checkbox check checkbox-upload">
@@ -488,8 +488,8 @@ const XtraDropdowns: React.FC<XtraDropProps> = React.memo(({setXtraOptions, inpu
                   </div>
                   <span className="unstretch">Electronic</span>
               </DropItem>
-              <DropItem rightIcon={<Image className="unstretch" src={pop} alt=""/>}
-                        leftIcon={<Image className="unstretch" src={pop2} alt=""/>}
+              <DropItem rightIcon={<Image height={20} width={20} className="unstretch" src={pop} alt=""/>}
+                        leftIcon={<Image height={20} width={20} className="unstretch" src={pop2} alt=""/>}
                 option="loop"> 
                 <div className="uploadmodal-big--fxpage--box--fxMenu--preset-page--item--checkbox check checkbox-upload">
                     <div className="checkbox-contain-upload"> <div className="inner-dot"></div> </div>
@@ -498,8 +498,8 @@ const XtraDropdowns: React.FC<XtraDropProps> = React.memo(({setXtraOptions, inpu
               </DropItem>
 
               <DropItem
-                rightIcon={<Image className="unstretch" src={pop} alt=""/>}
-                leftIcon={<Image className="unstretch" src={pop2} alt=""/>}
+                rightIcon={<Image height={20} width={20} className="unstretch" src={pop} alt=""/>}
+                leftIcon={<Image height={20} width={20} className="unstretch" src={pop2} alt=""/>}
                 option="dark"
               >
                 <div className="uploadmodal-big--fxpage--box--fxMenu--preset-page--item--checkbox check checkbox-upload">
@@ -509,8 +509,8 @@ const XtraDropdowns: React.FC<XtraDropProps> = React.memo(({setXtraOptions, inpu
                 <span className="unstretch">Dark</span>
               </DropItem>
               
-              <DropItem rightIcon={<Image className="unstretch" src={pop} alt=""/>}
-                        leftIcon={<Image className="unstretch" src={pop2} alt=""/>}
+              <DropItem rightIcon={<Image height={20} width={20} className="unstretch" src={pop} alt=""/>}
+                        leftIcon={<Image height={20} width={20} className="unstretch" src={pop2} alt=""/>}
                         option="strings">
                 <div className="uploadmodal-big--fxpage--box--fxMenu--preset-page--item--checkbox check checkbox-upload">
                   <div className="checkbox-contain-upload"> <div className="inner-dot"></div> </div>

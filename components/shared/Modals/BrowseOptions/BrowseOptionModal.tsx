@@ -101,7 +101,7 @@ const BrowseOptionModal: React.FC<Props> = ({setOpen, searchTxt, mobile, search,
         }
     }, [open]);
 
-    const finalEl = process.browser ? ReactDOM.createPortal(
+    const finalEl = typeof window != 'undefined' ? ReactDOM.createPortal(
         
                 <Fragment>
                     <div className={`browse-modal ${mobile ? 'mobile-browse-options' : ''}`}>

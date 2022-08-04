@@ -442,7 +442,6 @@
       background-size: 10%;
       @media screen and (max-width: 1099px) {
         background-size: 7%;
-
       }
     }
     &::after {
@@ -479,18 +478,30 @@
     width: 100vw;
     display: flex;
     justify-content: center;
-    align-items: flex-start;
+    align-items: center;
+    // align-items: flex-start;
     pointer-events: none;
 
     &--big {
-      height: 45vh;
+      height: 10%;
       width: 75vw;
       border-radius: 0.5rem;
       position: fixed;
       background-image: linear-gradient(85deg, #1b1f1f, #1b1f1f, #1b1f1f);
       pointer-events: auto;
       max-width: 982px;
+      top: 14%;
+
+      @media screen and (min-height: 1375px) {
+        top: 17%;
+      }
+      @media screen and (max-height: 1230px) {
+        top: 12%;
+      }
       
+      @media screen and (max-height: 1130px) {
+        top: 8%;
+      }
       &::before {
         @include beforeTrick();
         border-radius: 0.3rem;
@@ -507,7 +518,6 @@
         @include beforeShadow(1rem, transparent, $shadow-new, 0.31);
       }
       
-      top: 2.5vh;
         
       
     }

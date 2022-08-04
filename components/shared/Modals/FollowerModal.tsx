@@ -36,7 +36,7 @@ const FollowerModal: React.FC<Props> = ({open, likeList, children, closeModal, f
     }, [open])
 
 
-    const finalEl = process.browser ? ReactDOM.createPortal(
+    const finalEl = typeof window != 'undefined' ? ReactDOM.createPortal(
         <Fragment>
             {open && <BackdropMain onClick={closeModal}/>}
             {open && (

@@ -75,7 +75,7 @@ const Hamburger: React.FC<Props> = ({on}) => {
 
     
 
-    const finalEl = process.browser ? ReactDOM.createPortal(
+    const finalEl = typeof window != 'undefined' ? ReactDOM.createPortal(
         <Fragment>
 
             <div className={`hamburger-container ${(modalOpen && gpuTier && gpuTier.isMobile) ? 'hamburger-contain-openmodal' : ''} ${(on || (modalOpen && gpuTier && !gpuTier.isMobile)) ? 'hamburger-contain-open' : ''}`}>

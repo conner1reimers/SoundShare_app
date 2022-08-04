@@ -1,14 +1,16 @@
 import React, { Fragment } from 'react'
-import GlobalMsg from './GlobalMsg';
-import SideContain from './shared/SideDrawer/SideContain'
-import TopNav from './shared/SideDrawer/TopNav'
 import { useDispatch, useSelector } from 'react-redux'
 import { useRouter } from 'next/router'
 import { useCallback, useEffect } from "react";
 import { getGPUTier } from "detect-gpu";
 import * as ga from '../lib/ga'
-import LoadingAnimation from './animatedLoaders/LoadingAnimation/LoadingAnimation';
 import { Media, MediaContextProvider } from "../util/media";
+import loadable from '@loadable/component'
+
+const TopNav = loadable(() => import('./shared/NavBar/TopNav'))
+const SideContain = loadable(() => import('./shared/SideDrawer/SideContain'))
+const LoadingAnimation = loadable(() => import('./animatedLoaders/LoadingAnimation/LoadingAnimation'))
+const GlobalMsg = loadable(() => import('./GlobalMsg'))
 
 
 const MainHead = () => {

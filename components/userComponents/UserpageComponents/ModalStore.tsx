@@ -39,7 +39,7 @@ interface Props {
 
 const ModalStore: React.FC<Props> = ({ open, children, closeModal }) => {
   
-  const final = process.browser ? ReactDOM.createPortal(
+  const final = typeof window != 'undefined' ? ReactDOM.createPortal(
     <Fragment>
       {open && (
         <Fragment>

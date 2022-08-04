@@ -60,7 +60,6 @@ const SoundListItem: React.FC<Props> = ({category, sound_id, img_path, date, nam
         if (globalSoundPlaying.playing) {
           dispatch(pauseGlobalSound());
           if (activeSound) {
-            // activeSound.children[0].children[1].src = playBtn;
             setActiveSound(null);
             setPlaying(false);
           }
@@ -73,16 +72,6 @@ const SoundListItem: React.FC<Props> = ({category, sound_id, img_path, date, nam
     }
     setPlaying(true);
   
-    // if (activeSound) {
-    //   // activeSound.children[0].children[1].src = playBtn;
-    //   setActiveSound(event.currentTarget);
-    //   // event.currentTarget.children[0].children[1].src = pause;
-    //   setPlaying(true);
-    // } else if (!activeSound) {
-    //   setActiveSound(event.currentTarget);
-    //   // event.currentTarget.children[0].children[1].src = pause;
-    //   setPlaying(true);
-    // }
   }, [el, globalSoundPlaying.sound.id, globalSoundPlaying.active, globalSoundPlaying.playing]);
 
 

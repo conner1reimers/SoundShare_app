@@ -64,7 +64,7 @@ const GlobalMsg: React.FC = (props: any) => {
         longest = true;
     }
 
-    const finalEl = process.browser ? ReactDOM.createPortal(
+    const finalEl = typeof window != 'undefined' ? ReactDOM.createPortal(
         <AnimatePresence>
             {globalMsg.active && (
             <motion.div 
@@ -77,14 +77,16 @@ const GlobalMsg: React.FC = (props: any) => {
             >
                 <div className={`global-msg--contain ${(longer && !longest) ? 'global-msg--contain--longer' : longest ? 'global-msg--contain--longest' : ''}`}>
                     <div>
-                        <span>{globalMsg.msg}</span>
-                            <Image
-                                src={imgSrc}
-                                alt="sdf"
-                                height={21}
-                                layout="fixed"
-                                width={21}
-                            />
+                            <span>{globalMsg.msg}</span>
+                            <div className="global-msg-img">
+                                <Image
+                                    src={imgSrc}
+                                    alt="sdf"
+                                    height={18}
+                                    layout="fixed"
+                                    width={18}
+                                    />
+                            </div>
                     </div>
                 </div>
                 

@@ -986,6 +986,7 @@ div.feed-list {
     @include heightWidth100;
     height: 3rem;
     transform: scale(1);
+
     button.btn.nohover.user-loops-play {
       @include heightWidthSame(3.5rem);
       background-color: $color-darker;
@@ -993,6 +994,7 @@ div.feed-list {
       transform: scale(1);
       box-shadow: $shadow-newer-2;
       opacity: .8;
+
       img {
         @include heightWidthSame(2rem);
         border-radius: 0;
@@ -1007,6 +1009,7 @@ div.feed-list {
           @include heightWidthSame(4rem);
         }
       }
+      
       @media screen and (max-width: 750px) {
         @include heightWidthSame(5rem);
         img {

@@ -7,32 +7,10 @@ import Media from 'react-media';
 import { useDispatch, useSelector } from 'react-redux';
 import { setModalClosed } from '../../../store/actions';
 
+import loadable from '@loadable/component'
+const ModalVarientSmall = loadable(() => import('./MainModals/ModalVarientSmall'))
+const ModalVarientBig = loadable(() => import('./MainModals/ModalVarientBig'))
 
-const optionsVariants = {
-    initial: {
-        y: '150%',
-        opacity: 0.9
-    },
-    out: {
-        y: '200%',
-        opacity: 0
-    },
-    in: {
-
-        y: '0%',
-        opacity: 1
-
-    }
-}
-
-const optionsTransition = {
-    type: 'spring',
-    mass: .5,
-    damping: 27,
-    stiffness: 220,
-    velocity: 1
-    
-}
 
 interface Props {
     auth?: any,
@@ -72,7 +50,7 @@ const Modal: React.FC<Props> = ({auth, upload, open, children, backdropHeader, b
         
     };
 
-    const finalEl = process.browser ? ReactDOM.createPortal(
+    const finalEl = typeof window != 'undefined' ? ReactDOM.createPortal(
         <Fragment>
             <Media queries={{
               small: "(max-width: 1099px)",
@@ -82,133 +60,20 @@ const Modal: React.FC<Props> = ({auth, upload, open, children, backdropHeader, b
                 <Fragment>
 
                     {matches.small && gpuTier && (
-                        <Fragment>
-                            <AnimatePresence exitBeforeEnter>
-                                    {open &&(
-                                    <Fragment>
-                                        
-                                    
-                                    {gpuTier.isMobile ? (
-                                    
-                                        <motion.div
-                                            initial="initial"
-                                            animate="in"
-                                            exit="out"
-                                            variants={optionsVariants}
-                                            transition={optionsTransition}
-                                            className={`modal ${fxOpen ? 'fx-modal-small' : ''} modal-mobile`}
-                                        >
-                                            {children}
-                                            
-                                        </motion.div>
-                                    )
-                                :    (
-                                    <motion.div
-                                        initial="initial"
-                                        animate="in"
-                                        exit="out"
-                                        variants={optionsVariants}
-                                        transition={optionsTransition}
-                                        className={`modal ${fxOpen ? 'fx-modal-small' : ''}`}
-                                    >
-                                        {children}
-                                        
-                                    </motion.div>)
-                                }
-                                    
-                                    </Fragment>)}
-                            </AnimatePresence>
-
-                            {open && <Backdrop onClick={cancelHandler}/>}
-
-                            <Backdrop2 
-                                open={open} 
-                                onClick={cancelHandler}
-                                header={backdropHeader}
-                                headClass={backdropHeadClass}
-                                tier={gpuTier.tier}
-                            />
-
-                        </Fragment>
+                        <ModalVarientSmall open={open} backdropHeader={backdropHeader} backdropHeadClass={backdropHeadClass} cancelHandler={cancelHandler} fxOpen={fxOpen}>{children}</ModalVarientSmall>
                     )}
 
                     {matches.big && gpuTier && (
-                        <Fragment>
-                            
-                            {gpuTier.tier > 2 ? (
-                            <Fragment>
-                                {!fxOpen && <AnimatePresence exitBeforeEnter>
-                                    {open &&
-                                    (<motion.div
-                                    initial="initial"
-                                    animate="in"
-                                    exit="out"
-                                    variants={optionsVariants}
-                                    transition={optionsTransition}
-                                    className={`modal ${upload ? 'modal-upload' : ''}`}>
-                                        <div 
-                                            className={`modal--big fx-modal-mobile-big ${big ? 'upload' : ''} ${auth ? 'auth-modal' : ''} 
-                                                ${(gpuTier.isMobile && auth) ? 'fx-modal-mobile-big' : ''} ${(gpuTier.isMobile && upload) ? 'upload-modal-mobile-big' : ''}`}
-                                                
-                                        >
-                                            {children}
-                                        </div>
-                                    </motion.div>)}</AnimatePresence>}
-                                {fxOpen && 
-                                <AnimatePresence exitBeforeEnter>
-                                    {open && (
-                                    <motion.div
-                                        initial="initial"
-                                        animate="in"
-                                        exit="out"
-                                        variants={optionsVariants}
-                                        transition={optionsTransition}
-                                        className="modal fx-modal--contain">
-                                            <div className={`fx-modal ${gpuTier.isMobile ? 'fxmodal-overwrite-mobile' : ''}`}>
-                                                {children}
-                                            </div>
-                                        </motion.div>)}
-                                    </AnimatePresence>}
+                            <ModalVarientBig big={big} upload={upload} auth={auth}
+                                tier={gpuTier.tier} isMobile={gpuTier.isMobile} open={open}
+                                nohead={nohead} backdropVisibility={backdropVisibility}
+                                backdropHeader={backdropHeader} backdropHeadClass={backdropHeadClass}
+                                cancelHandler={cancelHandler} fxOpen={fxOpen}>
                                 
-                            
-                            </Fragment>)
-                            : (<Fragment>
-                                {!fxOpen && open &&
-                                    (<div className={`modal ${upload ? 'modal-upload' : ''}`}>
-                                        <div className={`modal--big fx-modal-mobile-big ${big ? 'upload' : ''} ${auth ? 'auth-modal' : ''} 
-                                            ${(gpuTier.isMobile && auth) ? 'fx-modal-mobile-big' : ''} ${(gpuTier.isMobile && upload) ? 'upload-modal-mobile-big' : ''}`}>
-                                            {children}
-                                        </div>
-                                    </div>)}
+                                {children}
 
-                                    {fxOpen && open && (
-                                    <div className="modal">
-                                            <div className={`fx-modal ${gpuTier.isMobile ? 'fxmodal-overwrite-mobile' : ''}`}>
-                                                {children}
-                                            </div>
-                                    </div>)}
-                                    
-                                
-                                </Fragment>)}
-                            
-                            
-                            
-                            
-                            
-                            
-                            <Backdrop2 
-                                open={open} 
-                                onClick={cancelHandler}
-                                header={backdropHeader}
-                                headClass={backdropHeadClass}
-                                visible={backdropVisibility}
-                                nohead={nohead}
-                                tier={gpuTier.tier}
-                            />
-
-                            {open && <Backdrop onClick={cancelHandler}/>}
-                            
-                        </Fragment>)}
+                            </ModalVarientBig>
+                    )}
                     
                     <Fragment/>
 

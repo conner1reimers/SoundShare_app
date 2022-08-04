@@ -222,8 +222,6 @@ div.sound-list-item--circle.circle-btn-single-sound {
 
   button.btn {
     position: relative;
-    right: 1vw;
-    transform: scale(0.9);
     transition: all 0.2s;
     @media screen and (max-width: 750px) {
       transform: scale(0.7) translateX(0.5vw);

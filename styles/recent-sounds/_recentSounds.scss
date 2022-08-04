@@ -8,7 +8,6 @@
   overflow: visible;
   grid-row: 3 / 5;
   position: relative;
-  padding-bottom: 13rem;
   
   @media screen and (max-width: 1099px) {
     top: 5rem;
@@ -16,7 +15,7 @@
   @media screen and (min-width: $bp-large) {
     grid-row: 3/5;
     display: grid;
-    grid-template-rows: 6.5% 92.5%;
+    grid-template-rows: 5% 92.5%;
     grid-template-columns: 65% 35%;
   }
   
@@ -188,12 +187,18 @@
     height: 95%;
     width: 100%;
     @include flexcenter;
+    flex-direction: column;
     margin: 0;
     position: relative;
-    // padding-bottom: 15rem;
     
     max-width: 1570px;
 
+    @media screen and (min-width: $bp-large) {
+      bottom: 4rem;    
+    }
+    @media screen and (max-width: 1099px) {
+      bottom: -1.5rem;    
+    }
     
 
     &--vocal {
@@ -215,6 +220,7 @@
     position: relative;
     top: 1rem;
     margin-left: 0;
+
     
     justify-content: flex-start;
     max-width: 1570px;
@@ -229,6 +235,11 @@
       min-width: 100%;
       top: 3.5vh;
       align-items: flex-start;
+    }
+    @media screen and (min-width: $bp-large) {
+      grid-column: 1/2;
+      grid-row: 2/3;
+      width: 80%;
     }
 
     @-moz-document url-prefix() {
@@ -264,11 +275,7 @@
       height: 150%;
     }
 
-    @media screen and (min-width: $bp-large) {
-      grid-column: 1/2;
-      grid-row: 2/3;
-      width: 80%;
-    }
+    
 
     &--item {
       z-index: 2;
@@ -329,9 +336,8 @@
         }
         button.btn {
           background-color: rgba(0, 0, 0, 0.0475);
-          
+          padding: 0;
           @include flexcenter();
-          padding: 3.5rem 3.5rem;
           transition: all 0.12s ease-in;
           border-radius: 50%;
           right: 1vw;
@@ -699,4 +705,50 @@ div.recent-sound-options.recent-sound-options-mobile {
       transform: scale(1);
     }
   }  
+}
+
+.recent-sound-refresh {
+  position: absolute;
+  @include heightWidth100;
+  @include flexcenter;
+  align-items: flex-end;
+  bottom: 0;
+  pointer-events: none;
+  div.inpage-loader {
+    position: relative;
+  }
+}
+
+.no-scrollbars{
+  scrollbar-width: thin;
+  overflow-x: hidden;
+  overflow-y: auto;
+
+
+  &::-webkit-scrollbar {
+    background: rgba(82, 90, 92, 0.151);
+    width: 4px;
+    border-radius: 0.4rem;
+    position: relative;
+    left: 3rem;
+  }
+  &::-webkit-scrollbar-track {
+    background: rgba(82, 90, 92, 0.151);
+    border-radius: 0.4rem;
+    background-clip: content-box;
+    position: relative;
+    left: 3rem;
+
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: rgba(68, 140, 156, 0.89);
+    scrollbar-face-color: rgba(68, 140, 156, 0.89);
+    transform: translateY(0.4);
+    border-radius: 0.4rem;
+    border: 1px solid rgba(36, 32, 32, 0.082);
+    position: relative;
+    left: 3rem;
+
+  }
 }

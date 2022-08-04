@@ -15,7 +15,7 @@ interface Props {
 }
 const EditImgModal: React.FC<Props> = ({social, closeModal, open, alldownloads, children}) => {
     
-    const final = process.browser ? ReactDOM.createPortal(
+    const final = typeof window != 'undefined' ? ReactDOM.createPortal(
         <Fragment>
             {open && (
             <div className={`followers-modal edit-img-modal ${social ? 'edit-social-modal' : ''} ${alldownloads ? 'all-downloads-modal' : ''}`}>

@@ -47,8 +47,8 @@ export const useChangePage = () => {
   }, [location, dispatch, globalSoundIsPlaying]);
 
   const goToUserPage = useCallback((event, id) => {
-    const regex = /user/.test(location.pathname);
-    if(!regex) dispatch({type: "MAIN_LOADER_START"});
+    // const regex = /user/.test(location.pathname);
+    dispatch({type: "MAIN_LOADER_START"});
     event.preventDefault();
     event.stopPropagation();
     location.push(`/user/${id}`);

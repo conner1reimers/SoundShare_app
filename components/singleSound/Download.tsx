@@ -12,14 +12,8 @@ interface Root {
   singleSound: SoundState
 }
 
-interface Props {
-    soundInfo: any,
-    moveDown?: boolean,
-    further?: boolean,
-}
 
-
-const Download: React.FC<Props> = ({soundInfo, moveDown, further}) => {
+const Download: React.FC = () => {
     let ref = useRef();
     const dispatch = useDispatch();
     const downloadList = useSelector((state: Root) => state.ui.downloads);
@@ -53,11 +47,11 @@ const Download: React.FC<Props> = ({soundInfo, moveDown, further}) => {
             dispatch({type: "MAIN_LOADER_FINISH"});
           }, 1000);
 
-    }, [soundInfo, downloadList]);
+    }, [sid, path, name, downloadList, dispatch, downloadFile, setGlobalMsg]);
 
     return (
         <Fragment>
-            <div onClick={downloadFiles} className={`sound-list-item--circle circle-btn-single-sound circle-btn-single-sound--download singlesound-btn ${moveDown ? 'move-down' : ''} ${further ? 'move-down-more' : ''}`}>
+            <div onClick={downloadFiles} className={`sound-list-item--circle circle-btn-single-sound circle-btn-single-sound--download singlesound-btn`}>
                 <span>Download</span>
                 <DownloadButton
                     singlepage

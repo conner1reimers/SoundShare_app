@@ -1,16 +1,19 @@
-import React from "react";
+import React, { useRef } from "react";
+import loadable from '@loadable/component'
 import { Typography } from "@material-ui/core";
 import Media from "react-media";
-import RecentSide from "./RecentSide";
 import { useSelector, useDispatch } from "react-redux";
-import SoundList from "./SoundList";
-import SoundTypes from "./SoundTypes";
 import { RootState } from "../../store/reducers";
+
+const RecentSide = loadable(() => import('./RecentSide'))
+const SoundTypes = loadable(() => import('./SoundTypes'))
+const SoundList = loadable(() => import('./SoundList'))
 
 
 const RecentSounds: React.FC = () => {
   const category = useSelector((state: RootState) => state.recentSounds.category);
-  
+  const listRef = useRef(null);
+
   return (
     <div className="recent-sounds">
 
@@ -27,8 +30,8 @@ const RecentSounds: React.FC = () => {
         </div>
       </div>
 
-      <div className={`recent-sounds--listcontainer ${category === 'vocal' ? 'recent-sounds--listcontainer--vocal' : ''}`}>
-        <SoundList />
+      <div ref={listRef} className={`recent-sounds--listcontainer ${category === 'vocal' ? 'recent-sounds--listcontainer--vocal' : ''}`}>
+        <SoundList size={listRef} />
       </div>
 
       <Media query="(min-width: 1100px)">

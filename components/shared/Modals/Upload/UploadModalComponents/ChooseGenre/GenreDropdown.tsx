@@ -88,21 +88,21 @@ const GenreDropdown: React.FC<GenreDropProps> = ({ setGenre, setChosen, isList, 
           option="hip"
           key="hip"
         >
-          <span>Hip-Hop <Image src={djMixer} alt=""/></span>
+          <span>Hip-Hop <Image height={30} width={30} src={djMixer} alt=""/></span>
         </DropdownItem>
 
         <DropdownItem
           option="elect"
           key="elect"
         >
-          <span>Electronic <Image src={soundwaves} alt=""/></span>
+          <span>Electronic <Image height={30} width={30} src={soundwaves} alt=""/></span>
         </DropdownItem>
 
         <DropdownItem
           option="pop"
           key="pop"
         >
-          <span>Pop <Image src={popGenre} alt=""/></span>
+          <span>Pop <Image height={30} width={30} src={popGenre} alt=""/></span>
           
         </DropdownItem>
 
@@ -110,28 +110,28 @@ const GenreDropdown: React.FC<GenreDropProps> = ({ setGenre, setChosen, isList, 
           option="rnb"
           key="rnb"
         >
-          <span>RnB<Image src={rnbBox} alt=""/></span>
+          <span>RnB<Image height={30} width={30} src={rnbBox} alt=""/></span>
         </DropdownItem>
 
         <DropdownItem
           option="rock"
           key="rock"
         >
-          <span>Rock<Image src={rock} alt=""/></span>
+          <span>Rock<Image height={30} width={30} src={rock} alt=""/></span>
         </DropdownItem>
 
         <DropdownItem
           option="country"
           key="count"
         >
-          <span>Country<Image src={rock} alt=""/></span>
+          <span>Country<Image height={30} width={30} src={rock} alt=""/></span>
         </DropdownItem>
 
         <DropdownItem
           option="other"
           key="other"
         >
-          <span>Other<Image src={ipod} alt=""/></span>
+          <span>Other<Image height={30} width={30} src={ipod} alt=""/></span>
         </DropdownItem>
       </Fragment>
     )
@@ -144,21 +144,21 @@ const GenreDropdown: React.FC<GenreDropProps> = ({ setGenre, setChosen, isList, 
           option="aggressive"
           key="aggressive"
         >
-          <span>Aggressive <Image src={anger} alt=""/></span>
+          <span>Aggressive <Image height={30} width={30} src={anger} alt=""/></span>
         </DropdownItem>
 
         <DropdownItem
           option="calm"
           key="calm"
         >
-          <span>Calm <Image src={water} alt=""/></span>
+          <span>Calm <Image height={30} width={30} src={water} alt=""/></span>
         </DropdownItem>
 
         <DropdownItem
           option="digital"
           key="digital"
         >
-          <span>Digital <Image src={games} alt=""/></span>
+          <span>Digital <Image height={30} width={30} src={games} alt=""/></span>
           
         </DropdownItem>
 
@@ -166,21 +166,21 @@ const GenreDropdown: React.FC<GenreDropProps> = ({ setGenre, setChosen, isList, 
           option="alert"
           key="alert"
         >
-          <span>Alerts<Image src={wedd} alt=""/></span>
+          <span>Alerts<Image height={30} width={30} src={wedd} alt=""/></span>
         </DropdownItem>
 
         <DropdownItem
           option="nature"
           key="nature"
         >
-          <span>Nature<Image src={bird} alt=""/></span>
+          <span>Nature<Image height={30} width={30} src={bird} alt=""/></span>
         </DropdownItem>
 
         <DropdownItem
           option="other"
           key="other"
         >
-          <span>Other<Image src={ipod} alt=""/></span>
+          <span>Other<Image height={30} width={30} src={ipod} alt=""/></span>
         </DropdownItem>
       </Fragment>
     )

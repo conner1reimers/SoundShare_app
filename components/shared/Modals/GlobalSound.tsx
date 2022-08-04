@@ -200,7 +200,7 @@ const GlobalSound: React.FC = React.memo(() => {
     }
   }
 
-  let final = process.browser ? ReactDOM.createPortal(
+  let final = typeof window != 'undefined' ? ReactDOM.createPortal(
     <Media
       queries={{
         small: "(max-width: 1099px)",

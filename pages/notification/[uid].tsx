@@ -2,7 +2,7 @@ import { useRouter } from 'next/router'
 import React, { useState, useEffect, Fragment } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import BallLoader from '../../components/animatedLoaders/BallLoader/BallLoader';
-import DropDownItem from '../../components/shared/SideDrawer/Notifications/DropDownItem';
+import DropDownItem from '../../components/shared/NavBar/Notifications/DropDownItem';
 import { RootState } from '../../store/reducers';
 import { useHttpClient } from '../../util/hooks/http-hook';
 
