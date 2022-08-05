@@ -150,7 +150,27 @@ const globalPlayingReducer = (state = initialState, action: any) => {
             ...state,
             ended: true,
             playing: false
-          }
+        }
+        case "SET_GLOBALSOUND_SINGLESOUND":
+          return {
+            ...state,
+            sound: {
+              ...state.sound,
+              id: action.sid,
+              path: action.path,
+              type: action.soundType
+            }
+        }
+        case "PLAY_SET_GLOBALSOUND_SINGLESOUND":
+          return {
+            ...state,
+            playing: true,
+            sound: {
+              id: action.sid,
+              path: action.path,
+              type: action.soundType
+            }
+         }
         case 'unend-global': 
           return {
             ...state,

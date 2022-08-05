@@ -179,8 +179,6 @@ const RepostButton: React.FC<Props> = ({soundId, username, creator: creatorProp,
                   <Image
                     src={repostRed}
                     alt=""
-                    height={20}
-                    width={20}
                     className="circle-img"
                     layout="fill"
                     />
@@ -204,8 +202,6 @@ const RepostButton: React.FC<Props> = ({soundId, username, creator: creatorProp,
                   <Image
                     src={repost}
                     alt=""
-                    height={20}
-                    width={20}
                     className="circle-img"
                     layout="fill"
                     />

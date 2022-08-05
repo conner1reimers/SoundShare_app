@@ -258,7 +258,7 @@ const GlobalSound: React.FC = React.memo(() => {
                       className="btn nohover global-player--hidebtn"
                     >
                       <div className="circle-img-wrapper">
-                        <Image height={30} width={30} layout="fill" src={downArrow} alt="" />
+                        <Image layout="fill" src={downArrow} alt="" />
                       </div>
                     </button>
 
@@ -351,7 +351,7 @@ const GlobalSound: React.FC = React.memo(() => {
                             <div onClick={muteVolume} className="volume-btn">
 
                               <div className="volume-img-wrapper">
-                                <Image layout="fill" height={50} width={50} src={volume === 0 ? mute : vol} alt="" />
+                                <Image layout="fill" src={volume === 0 ? mute : vol} alt="" />
                               </div>
                               
                             </div>
@@ -581,6 +581,7 @@ const UserImg: React.FC<UserProps> = ({creator}) => {
             width={45}
             height={45}
             loader={myLoader}
+            unoptimized={true}
           />
       ) : (
             <Image

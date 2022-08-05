@@ -319,6 +319,7 @@ const UserBig: React.FC = () => {
                               loader={myLoader}
                               height={130}
                               width={130}
+                              unoptimized={true}
                               className="user-page--userpic--main"
                               src={`https://soundshare-bucket.s3.us-east-2.amazonaws.com/${userInfo.user.user_img_path}`}
                               
@@ -364,6 +365,7 @@ const UserBig: React.FC = () => {
                               height={130}
                               width={130}
                               alt=""
+                              unoptimized={true}
                             />
                           ) : (
                             <Image

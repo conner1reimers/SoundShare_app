@@ -5,8 +5,6 @@ import Backdrop from '../../../Backdrop';
 import Backdrop2 from '../Backdrop2';
 import SmallModal from './SmallModal'
 
-type Props = {}
-
 const ModalVarientSmall = (props: any) => {
   const gpuTier = useSelector((state: any) => state.ui.gpuTier);
 

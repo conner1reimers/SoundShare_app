@@ -5,9 +5,9 @@ import Media from "react-media";
 import { useSelector, useDispatch } from "react-redux";
 import { RootState } from "../../store/reducers";
 
-const RecentSide = loadable(() => import('./RecentSide'))
-const SoundTypes = loadable(() => import('./SoundTypes'))
-const SoundList = loadable(() => import('./SoundList'))
+const RecentSide = loadable(() => import('./Side/RecentSide'));
+const SoundTypes = loadable(() => import('./SoundTypes'));
+const SoundList = loadable(() => import('./SoundList'));
 
 
 const RecentSounds: React.FC = () => {

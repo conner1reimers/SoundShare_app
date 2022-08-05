@@ -16,36 +16,36 @@ import Image from 'next/image';
 const genreFinderLoops = (val: any) => {
   switch (val) {
     case 'hip':
-      return <span>Hip-Hop <Image height={30} width={30} layout="fill" src={djMixer} alt=""/></span>
+      return <span>Hip-Hop <Image layout="fill" src={djMixer} alt=""/></span>
     case 'elect':
-      return <span>Electronic <Image height={30} width={30} layout="fill" src={soundwaves} alt=""/></span>
+      return <span>Electronic <Image layout="fill" src={soundwaves} alt=""/></span>
     case 'pop':
-      return <span>Pop <Image height={30} width={30} layout="fill" src={popGenre} alt=""/></span>
+      return <span>Pop <Image layout="fill" src={popGenre} alt=""/></span>
     case 'rnb':
-      return <span>RnB<Image height={30} width={30} layout="fill" src={rnbBox} alt=""/></span>
+      return <span>RnB<Image layout="fill" src={rnbBox} alt=""/></span>
     case 'rock':
-      return <span>Rock<Image height={30} width={30} layout="fill" src={rock} alt=""/></span>
+      return <span>Rock<Image layout="fill" src={rock} alt=""/></span>
     case 'country':
-      return <span>Country<Image height={30} width={30} layout="fill" src={rock} alt=""/></span>
+      return <span>Country<Image layout="fill" src={rock} alt=""/></span>
     case 'other':
-      return <span>Other<Image height={30} width={30} layout="fill" src={ipod} alt=""/></span>
+      return <span>Other<Image layout="fill" src={ipod} alt=""/></span>
   }
 }
 
 const genreFinderFx = (val: any) => {
   switch (val) {
     case 'aggressive':
-      return <span>Aggressive <Image height={30} width={30} layout="fill" src={anger} alt="" /></span>
+      return <span>Aggressive <Image layout="fill" src={anger} alt="" /></span>
     case 'calm':
-      return <span>Calm <Image height={30} width={30} layout="fill" src={water} alt=""/></span>
+      return <span>Calm <Image layout="fill" src={water} alt=""/></span>
     case 'digital':
-      return <span>Digital <Image height={30} width={30} layout="fill" src={games} alt=""/></span>
+      return <span>Digital <Image layout="fill" src={games} alt=""/></span>
     case 'alert':
-      return <span>Alerts<Image height={30} width={30} layout="fill" src={wedd} alt=""/></span>
+      return <span>Alerts<Image layout="fill" src={wedd} alt=""/></span>
     case 'nature':
-      return <span>Nature<Image height={30} width={30} layout="fill" src={bird} alt=""/></span>
+      return <span>Nature<Image layout="fill" src={bird} alt=""/></span>
     case 'other':
-      return <span>Other<Image height={30} width={30} layout="fill" src={ipod} alt=""/></span>
+      return <span>Other<Image layout="fill" src={ipod} alt=""/></span>
   }
 }
 
@@ -138,12 +138,12 @@ const DropdownClick: any = (props: any) => {
 
   useEffect(() => {
     if (props.chosen === "loop") {
-      setGenreIsChosen(<span>Loop <Image height={30} width={30} layout="fill" src={rock} alt="" /></span>)
+      setGenreIsChosen(<span>Loop <Image layout="fill" src={rock} alt="" /></span>)
     } else if (props.chosen === "fx") {
-      setGenreIsChosen(<span>Effect <Image height={30} width={30} layout="fill" src={soundwaves} alt="" /></span>
+      setGenreIsChosen(<span>Effect <Image layout="fill" src={soundwaves} alt="" /></span>
       )
     } else if (props.chosen === "vocal") {
-      setGenreIsChosen(<span>Vocals <Image height={30} width={30} layout="fill" src={popGenre} alt="" /></span>)
+      setGenreIsChosen(<span>Vocals <Image layout="fill" src={popGenre} alt="" /></span>)
     }
   }, [props.chosen]);
 

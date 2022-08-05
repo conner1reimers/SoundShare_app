@@ -196,22 +196,22 @@ const SoundListItem: React.FC<Props> = ({category, sound_id, img_path, date, nam
                 {img_path && img_path !== "none" ? (
                 <div className="img-shine">
                   <Image
-                    width={35}
-                    height={35}
                     className="img-shine"
                     src={`https://soundshare-bucket.s3.us-east-2.amazonaws.com/${img_path}`}
                     loader={myLoader}
                     alt=""
                     layout="fill"
+                    unoptimized={true}
+                      
                   />
                 </div>)
                 : category === "fx" ? (
                     <div className="img-shine"> 
-                      <Image layout="fill" className="img-shine" height={35} width={35} src={game} alt="" />
+                      <Image layout="fill" className="img-shine" src={game} alt="" />
                     </div>
                   ) : (
                     <div className="img-shine">
-                      <Image layout="fill" height={35} width={35} className="img-shine" src={music} alt="" />
+                      <Image layout="fill" className="img-shine" src={music} alt="" />
                     </div>
                 )}
           </div>
@@ -282,17 +282,17 @@ const SoundListItem: React.FC<Props> = ({category, sound_id, img_path, date, nam
               <div className="feedlist-img-contain">
               <Image
                 className="img-shine"
-                width={35}
-                height={35}
                 src={`https://soundshare-bucket.s3.us-east-2.amazonaws.com/${img_path}`}
                 loader={myLoader}
                 alt=""
                 layout="fill"
+                unoptimized={true}
+                
               />
               </div>
             ) : (
               <div className="feedlist-img-contain">
-                <Image  className="img-shine" src={music} alt="" layout="fill" />
+                <div className='flexcenter feed-img-wrapper'><Image width={35} height={35}className="img-shine" src={music} alt="" layout="fill" /></div>
               </div>
             )}
             <div className="feedlist-item-playbtn-contain">

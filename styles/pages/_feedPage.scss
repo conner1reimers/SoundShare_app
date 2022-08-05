@@ -89,9 +89,9 @@
 
         &--follow-user {
           @include heightWidth100;
-          display: grid;
-          grid-template-columns: 30% 20% 20% 20% 10%;
-          grid-template-rows: 20% 60% 10% 10%;
+          display: flex;
+          justify-content: flex-start;
+          align-items: center;
 
           &--img {
             @include flexcenter;
@@ -100,10 +100,12 @@
             position: relative;
             right: 1rem;
             bottom: 1vh;
+            justify-content: flex-end;
             img {
-              @include heightWidthSame(5.7rem);
+              @include heightWidthSame(5rem);
               border-radius: 50%;
               box-shadow: $shadow-new;
+              transform: scale(.8);
               @media screen and (max-width: 1099px) {
                 @include heightWidthSame(11rem);
               }
@@ -327,7 +329,7 @@
           bottom: .5rem;
           min-height: 17px;
           min-width: 17px;
-
+          
           position: relative;
           @media screen and (min-width: $bp-large) {
             transform: translateY(.25rem);
@@ -1225,5 +1227,12 @@ span.feed-soundname {
     top: -2rem;
 
   }
+
+}
+
+
+.feed-img-wrapper {
+  overflow: visible;
+  border-radius: 50%;
 
 }

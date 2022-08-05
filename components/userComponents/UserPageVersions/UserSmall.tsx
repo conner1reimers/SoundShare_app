@@ -327,6 +327,7 @@ const UserSmall: React.FC = () => {
                                   className="user-page--userpic--main"
                                   src={`https://soundshare-bucket.s3.us-east-2.amazonaws.com/${userInfo.user.user_img_path}`}
                                   alt=""
+                                  unoptimized={true}
                                 />
                               ) : (
                                 <Image
@@ -397,6 +398,7 @@ const UserSmall: React.FC = () => {
                                   width={130}
                                   src={`https://soundshare-bucket.s3.us-east-2.amazonaws.com/${userInfo.user.user_img_path}`}
                                   alt=""
+                                  unoptimized={true}
                                 />
                               ) : (
                                 <Image

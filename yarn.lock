@@ -7084,6 +7084,11 @@
   dependencies:
     "has-flag" "^4.0.0"
 
+"swr@^1.3.0":
+  "integrity" "sha512-dkghQrOl2ORX9HYrMDtPa7LTVHJjCTeZoB1dqTbnnEDlSvN8JEKpYIYurDfvbQFUUS8Cg8PceFVZNkW0KNNYPw=="
+  "resolved" "https://registry.npmjs.org/swr/-/swr-1.3.0.tgz"
+  "version" "1.3.0"
+
 "table@^6.0.9":
   "integrity" "sha512-ZGum47Yi6KOOFDE8m223td53ath2enHcYLgOCjGr5ngu8bdIARQk6mN/wRMv4yMRcHnCSnHbCEha4sobQx5yWg=="
   "resolved" "https://registry.npmjs.org/table/-/table-6.7.1.tgz"

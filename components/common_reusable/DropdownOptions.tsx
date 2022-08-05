@@ -118,7 +118,7 @@ const EditBtn: React.FC<EditProps> = ({img}) => {
             className="btn nohover"
         >
             <div className='edit-img-wrapper'>
-              <Image src={img} alt="" />
+              <Image height={23} width={23} src={img} alt="" />
             </div>
           
           </button>

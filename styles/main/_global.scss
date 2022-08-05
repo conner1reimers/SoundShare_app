@@ -945,3 +945,13 @@ div.uploadmodal-big--info-form--input--formcontrol.auth-grid--inputSection--inpu
     padding-right: 1rem;
   }
 }
+
+
+.flexcenter {
+  @include flexcenter;
+}
+
+span.move-right {
+  position: relative;
+  left: 1rem;
+}

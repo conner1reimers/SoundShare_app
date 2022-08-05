@@ -71,7 +71,7 @@ const DownloadButton: React.FC<DownloadBtnProps> = ({soundId, path, name, setCou
     >
       <button onClick={downloadSound} type="button" className="btn nohover">
         <div className="circle-img-wrapper">
-          <Image className="download-btn" src={download} alt="" />
+          <Image height={18} width={18} className="download-btn" src={download} alt="" />
         </div>
       </button>
     </MouseOverLabel>

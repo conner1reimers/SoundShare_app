@@ -731,6 +731,9 @@ div.recent-sound-options.recent-sound-options-mobile {
     border-radius: 0.4rem;
     position: relative;
     left: 3rem;
+    @media screen and (max-width: 1335px) {
+      display: none;
+    }
   }
   &::-webkit-scrollbar-track {
     background: rgba(82, 90, 92, 0.151);
@@ -738,7 +741,9 @@ div.recent-sound-options.recent-sound-options-mobile {
     background-clip: content-box;
     position: relative;
     left: 3rem;
-
+    @media screen and (max-width: 1335px) {
+      display: none;
+    }
   }
 
   &::-webkit-scrollbar-thumb {
@@ -749,6 +754,6 @@ div.recent-sound-options.recent-sound-options-mobile {
     border: 1px solid rgba(36, 32, 32, 0.082);
     position: relative;
     left: 3rem;
-
+    
   }
 }

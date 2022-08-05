@@ -125,8 +125,11 @@ const FollowerListItem: React.FC<Props> = ({id, desc2, imgPath, closeModal, user
                       width={50}
                       height={50}
                       loader={myLoader}
-                      className="img-shine" src={`https://soundshare-bucket.s3.us-east-2.amazonaws.com/${imgPath}`}
-                      alt="" />
+                      className="img-shine"
+                      src={`https://soundshare-bucket.s3.us-east-2.amazonaws.com/${imgPath}`}
+                      unoptimized={true}
+                      alt=""
+                    />
                         ) : (
                           <Image width={50}
                           height={50} className="img-shine" src={unknown} alt=""/>

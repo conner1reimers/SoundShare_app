@@ -219,7 +219,7 @@ function* fetchTopLikedAsync(action) {
   try {
     yield call(loadAndCall, async () => await sendRequest('/sounds/top/likes'),
       startAction(action.type), stopAction(action.type),
-      "FETCH_TOP_LIKED_ASYNC", null, false
+      "FETCH_TOP_LIKES_ASYNC", null, false
     );
   } catch(err) {
     console.log(err)
@@ -227,7 +227,7 @@ function* fetchTopLikedAsync(action) {
 }
 
 export function* watchFetchTopLiked() {
-  yield takeLatest("FETCH_TOP_LIKED", fetchTopLikedAsync);
+  yield takeLatest("FETCH_TOP_LIKES", fetchTopLikedAsync);
 }
 
 

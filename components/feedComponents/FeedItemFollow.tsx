@@ -44,7 +44,7 @@ const FeedItemFollow: React.FC<FeedItemFollowProps> = ({id, usernameFollow, days
                     <div className="feed-page--feed-list--item--name-contain--follow-user">
 
                         <div className="feed-page--feed-list--item--name-contain--follow-user--img">
-                            {path ? <Image loader={myLoader} height={60} width={60} src={`https://soundshare-bucket.s3.us-east-2.amazonaws.com/${path}`} alt=""/> : <Image src={unknown} alt=""/>}
+                            {path ? <Image unoptimized={true} loader={myLoader} height={60} width={60} src={`https://soundshare-bucket.s3.us-east-2.amazonaws.com/${path}`} alt=""/> : <Image src={unknown} alt=""/>}
                         </div>
 
                         <div className="feed-page--feed-list--item--name-contain--follow-user--username">

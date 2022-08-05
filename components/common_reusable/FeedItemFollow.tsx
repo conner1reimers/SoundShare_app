@@ -27,7 +27,7 @@ const FeedItemFollow: React.FC<FeedItemFollowProps> = ({id, usernameFollow, days
                 
                 <div className="feed-page--feed-list--item--user-contain">
                     <div className="feed-page--feed-list--item--user-contain--img">
-                        <Image src={follow} alt=""/>
+                        <Image height={15} width={15} src={follow} alt=""/>
                     </div>
                     <div className="feed-page--feed-list--item--user-contain--text">
                         <span className="action-username">{usernameFollow} Followed: </span>
@@ -40,14 +40,28 @@ const FeedItemFollow: React.FC<FeedItemFollowProps> = ({id, usernameFollow, days
                 <div className="feed-page--feed-list--item--name-contain feed-page--feed-list--item--name-contain--follow">
                     <div className="feed-page--feed-list--item--name-contain--follow-user">
 
-                        <div className="feed-page--feed-list--item--name-contain--follow-user--img">
-                        {path ? <Image
-                            src={`https://soundshare-bucket.s3.us-east-2.amazonaws.com/${path}`}
-                            alt=""
-                            width={50}
-                            height={50}
-                        /> : <Image src={unknown} alt="" />}
-                        </div>
+                    <div className="feed-page--feed-list--item--name-contain--follow-user--img">
+                        
+                        {path ? (
+                            <div className='flexcenter feed-img-wrapper'>
+
+                                <Image
+                                    src={`https://soundshare-bucket.s3.us-east-2.amazonaws.com/${path}`}
+                                    alt=""
+                                    width={150}
+                                    height={150}
+                                />
+                            </div>) : (
+                                
+                                <div className='flexcenter feed-img-wrapper'>
+                                    
+                                    <Image height={150} width={150} src={unknown} alt="" />
+                        
+                                </div>
+                            )
+                        }
+                    </div>
+
 
                         <div className="feed-page--feed-list--item--name-contain--follow-user--username">
                             

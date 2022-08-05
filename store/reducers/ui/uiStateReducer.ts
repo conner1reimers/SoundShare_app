@@ -15,7 +15,8 @@ export interface UiState {
     mainLoader: boolean,
     initialLoad: boolean,
     adShow: boolean,
-    homeLoader: boolean
+    homeLoader: boolean,
+    modalRef: null | React.MutableRefObject<any>
 }
 
 
@@ -31,7 +32,8 @@ const initState: UiState = {
     mainLoader: false,
     initialLoad: false,
     adShow: false,
-    homeLoader: false
+    homeLoader: false,
+    modalRef: null
 }
 
 
@@ -156,6 +158,11 @@ const uiReducer = (state = initState, action: ActionTypes) => {
             return {
                 ...state,
                 initialLoad: true
+            }
+        case "SET_MODAL_REF":
+            return {
+                ...state,
+                modalRef: action.payload
             }
         default:
             return state

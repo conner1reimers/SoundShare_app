@@ -42,14 +42,14 @@ export const fetchTopDownloadsLoading = (state) => {
 }
 
 export const fetchTopLikedLoading = (state) => {
-    return state.ui.loader.actions.some(action => action.name === 'FETCH_TOP_LIKED')
+    return state.ui.loader.actions.some(action => action.name === 'FETCH_TOP_LIKES')
 }
 
 export const refreshTopLikedLoading = (state) => {
     return state.ui.loader.actions.some(action => action.name === 'REFRESH_ALL_LIKES')
 }
 
-export const RefreshTopDownloadsLoading = (state) => {return state.ui.loader.actions.some(action => action.name === 'REFRESH_ALL_DOWNLOADS');}
+export const RefreshTopDownloadsLoading = (state) => {return state.ui.loader.actions.some(action => action.name === 'REFRESH_ALL_DOWNLOADS' || action.name === 'REFRESH_ALL_LIKES');}
 
 export const singlesoundLoading = (state) =>{ 
     return state.ui.loader.actions.some(action => 

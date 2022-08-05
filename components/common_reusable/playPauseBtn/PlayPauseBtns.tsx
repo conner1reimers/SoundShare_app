@@ -15,6 +15,7 @@ import Image from "next/image";
 import play from "../../../public/newplay.svg";
 import pause from "../../../public/newpause.svg";
 import FF from "../../../public/FF.svg";
+import { playAndSetGlobalSingleSound } from "../../../store/actions/globalSound";
 
 
 interface Props {
@@ -24,8 +25,10 @@ interface Props {
   fxglobe?: any,
   fx?: any,
   uploadPrev?: any,
-  sound?: any,
-  singleSound?: any
+  singleSound?: any,
+  sid?: any,
+  path?: any,
+  soundType?: any,
 }
 
 interface Root {
@@ -37,7 +40,7 @@ interface Root {
 
 
 
-const PlayPauseBtns: React.FC<Props> = ({small, noarrow, global, fxglobe, fx, uploadPrev, sound, singleSound}) =>  {
+const PlayPauseBtns: React.FC<Props> = ({small, noarrow, global, fxglobe, fx, uploadPrev, sid, path, soundType, singleSound}) =>  {
   const { nextSound, prevSound } = useChangeSound();
 
   return (
@@ -57,7 +60,7 @@ const PlayPauseBtns: React.FC<Props> = ({small, noarrow, global, fxglobe, fx, up
         </button>
       )}
 
-      {!fx && <PlayPause uploadPrev={uploadPrev} singleSound={singleSound} sound={sound} global={global} />}
+      {!fx && <PlayPause uploadPrev={uploadPrev} singleSound={singleSound} sid={sid} path={path} soundType={soundType} global={global} />}
 
       {fx && <PlayPauseFx global={global} />}
 
@@ -83,7 +86,7 @@ const PlayPauseBtns: React.FC<Props> = ({small, noarrow, global, fxglobe, fx, up
   );
 };
 
-const PlayPause: React.FC<Props> = React.memo(({global, sound, singleSound}) => {
+const PlayPause: React.FC<Props> = React.memo(({global, sid, path, soundType, singleSound}) => {
   const isPlaying = useSelector((state: Root) => state.globalSound.playing);
   const dispatch = useDispatch();
   const gpuTier = useSelector((state: Root) => state.ui.gpuTier);
@@ -94,7 +97,7 @@ const PlayPause: React.FC<Props> = React.memo(({global, sound, singleSound}) => 
     e.stopPropagation();
     if (gpuTier.isMobile && singleSound && !singleStarted) {
       setSingleStarted(true);
-      dispatch(playAndSetGlobalSound(sound))
+      dispatch(playAndSetGlobalSingleSound(sid, path, soundType))
     }
 
     else {

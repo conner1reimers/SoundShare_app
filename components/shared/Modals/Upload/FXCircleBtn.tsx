@@ -25,7 +25,7 @@ const FXCircleBtn: React.FC<Props> = ({back, click, refresh, save}) => {
                 <div className="circleSave" >
                         <button onClick={click} className="btn nohover">
                             <div className='fxsave-btn-contain'>
-                                <Image layout="fill" height={20} width={20} src={back1} alt="" />
+                                <Image layout="fill" src={back1} alt="" />
                             </div>
                         </button>
                 </div>
@@ -40,7 +40,7 @@ const FXCircleBtn: React.FC<Props> = ({back, click, refresh, save}) => {
                 <div className="circleSave" >
                         <button onClick={click} className="btn nohover">
                             <div className='fxsave-btn-contain'>
-                                <Image layout="fill" height={20} width={20} src={save1} alt="" />
+                                <Image layout="fill" src={save1} alt="" />
                             </div>
                         </button>
                 </div>
@@ -55,7 +55,7 @@ const FXCircleBtn: React.FC<Props> = ({back, click, refresh, save}) => {
                 <div className="circleSave" >
                         <button onClick={click} className="btn nohover">
                             <div className='fxsave-btn-contain'>
-                                <Image layout="fill" height={20} width={20} src={refresh1} alt="" />
+                                <Image layout="fill" src={refresh1} alt="" />
                             </div>
                         </button>
                 </div>

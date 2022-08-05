@@ -23,7 +23,7 @@ const EditBtn: React.FC<Props> = ({click, label, img}) => {
             type="button"
             className={`btn nohover heart-absolute`}
           >
-            <Image src={img} alt=""/>
+            <Image height={23} width={23} src={img} alt=""/>
           </button>
   
         </MouseOverLabel>

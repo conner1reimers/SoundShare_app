@@ -7,6 +7,8 @@ MASSIVE DOM SIZE react-window is a library that allows large lists to be rendere
 LOADABLE COMPONENTS - look into whats needed for SSR
 
 useSWR for data fetching
+https://levelup.gitconnected.com/data-fetching-in-react-and-next-js-with-useswr-to-impress-your-friends-at-parties-ec2db732ca6b
+
 
 MAKE MAIN PAGE MORE CENTERED
 
@@ -23,3 +25,5 @@ GO THRU ALL CSS AND MAKE ALL IN 1 SELECTOR (unless you actually need to overwrit
 DOUBLE LOAD ON SINGLESOUND 
 
 UNDO JWT EXPIRATION
+
+FIX NEXT BUTTON

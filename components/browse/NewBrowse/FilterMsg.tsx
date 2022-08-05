@@ -79,7 +79,7 @@ export const FilterMsg: React.FC<FilterMsgProps> = ({ }) => {
                 alt=""
                   />
             </div>
-					<span>Magnifying Glass to Filter Sounds!</span>
+					<span className='fx-label move-right'>Magnifying Glass to Filter Sounds!</span>
 					<div className="fx-backdrop"></div>
 				</motion.div>
 			)}

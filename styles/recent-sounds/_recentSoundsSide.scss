@@ -13,13 +13,13 @@
         background: none;
         box-shadow: none;
       }
-
+      span.seemore-label {
+        white-space: nowrap;
+      }
       div {
         position: relative;
         left: .2rem;
         @include flexcenter;
-        
-
       }
       img {
         @include heightWidthSame(1.5rem);
@@ -28,6 +28,7 @@
         position: relative;
         
       }
+
     }
   }
 }
@@ -249,8 +250,9 @@ div.followers-modal.edit-img-modal.all-downloads-modal {
   box-shadow: none;
   overflow: hidden;
   div.change-img-modal--contain.edit-img-modal--children {
-    height: 80vh;
+    height: 100%;
     width: 51vw;
+    grid-row: 2/5;
 
     div.all-downloads {
       ul.globalList.all-downloads-list {
@@ -276,6 +278,12 @@ div.followers-modal.edit-img-modal.all-downloads-modal {
           }
         }
       }
+    }
+
+    div.all-downloads-refreshing {
+      position: absolute;
+      pointer-events: none;
+      max-height: 100px;
     }
   }
 }
@@ -368,5 +376,5 @@ div.sound-list-item--circle.recent-side--circle {
 div.wrapper {
   height: 30px;
   width: 30px;
-
+  @include flexcenter;
 }

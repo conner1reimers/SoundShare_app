@@ -195,7 +195,15 @@ const soundpageReducer = (state = initState, action: ActionTypes) => {
           reposts: newReposts
         }
       }
- 
+    
+    case "SINGLESOUND_UPDATE_DESC":
+      return {
+        ...state,
+        sound: {
+            ...state.sound,
+            description: action.payload
+        }
+    }
     default: 
           return state
   }

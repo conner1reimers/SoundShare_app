@@ -183,17 +183,18 @@ const SoundListItemRenderer: React.FC = (props: any) => {
                       className="img-shine"
                       src={`https://soundshare-bucket.s3.us-east-2.amazonaws.com/${item.img_path}`}
                       loader={myLoader}
+                      unoptimized={true}  
                       alt=""
-                      layout="fill"
+                      
                     />
                   </div>)
                   : item.category === "fx" ? (
                       <div className="img-shine"> 
-                        <Image layout="fill" className="img-shine" height={35} width={35} src={game} alt="" />
+                        <Image layout="fill" className="img-shine" src={game} alt="" />
                       </div>
                     ) : (
                       <div className="img-shine">
-                        <Image layout="fill" height={35} width={35} className="img-shine" src={music} alt="" />
+                        <Image layout="fill" className="img-shine" src={music} alt="" />
                       </div>
                   )}
             </div>
@@ -268,8 +269,9 @@ const SoundListItemRenderer: React.FC = (props: any) => {
                   height={35}
                   src={`https://soundshare-bucket.s3.us-east-2.amazonaws.com/${item.img_path}`}
                   loader={myLoader}
+                  unoptimized={true}
                   alt=""
-                  layout="fill"
+                  
                 />
                 </div>
               ) : (

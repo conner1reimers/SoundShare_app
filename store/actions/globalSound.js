@@ -69,6 +69,16 @@ export const playAndSetGlobalSound = (sound, location) => {
     }
 }
 
+export const playAndSetGlobalSingleSound = (sid, path, soundType) => {
+    return {
+        type: "PLAY_SET_GLOBALSOUND_SINGLESOUND",
+        sid,
+        path,
+        soundType
+        
+    }
+}
+
 export const setGlobalSound = (sound, location) => {
     return {
         type: actionTypes.SET_GLOBAL_SOUND,

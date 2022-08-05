@@ -50,13 +50,11 @@ const optionsTransition = {
 interface Props {
     setEditMode: any,
     user?: any,
-    setSoundInfo?: any,
-    id: any,
+    id?: any,
     open: any,
     desc?: any
-
 }
-const EditDesc: React.FC<Props> = ({setEditMode, setSoundInfo, user, id, open, desc}) => {
+const EditDesc: React.FC<Props> = ({setEditMode, user, id, open, desc}) => {
     const [editSoundState, inputHandler] = useForm({
         edit: {
             value: '',
@@ -68,6 +66,8 @@ const EditDesc: React.FC<Props> = ({setEditMode, setSoundInfo, user, id, open, d
     const token = useSelector((state: Root) => state.user.token);
     const setGlobalMsg = useGlobalMsg();
     const uid = useSelector((state: Root) => state.user.userId);
+    const sid = useSelector((state: Root) => state.user.userId);
+
 
     const closeMode = () => {
         setEditMode(null);
@@ -79,19 +79,12 @@ const EditDesc: React.FC<Props> = ({setEditMode, setSoundInfo, user, id, open, d
 
             if (!user) {
                 try {
-                    await sendRequest(`${process.env.NEXT_PUBLIC_REACT_APP_MY_ENV}/sounds/description/${id}/${uid}`, 'PATCH', JSON.stringify({
+                    await sendRequest(`${process.env.NEXT_PUBLIC_REACT_APP_MY_ENV}/sounds/description/${sid}/${uid}`, 'PATCH', JSON.stringify({
                         description: editSoundState.inputs.edit.value
                     }),
                     {'Content-Type': 'application/json', 'Authorization': 'Bearer '+token });
-                    setSoundInfo((prevState: any) => {
-                        return {
-                            ...prevState,
-                            sound: {
-                                ...prevState.sound,
-                                description: editSoundState.inputs.edit.value
-                            }
-                        }
-                    });
+                    
+                    dispatch({type: "SINGLESOUND_UPDATE_DESC", payload: editSoundState.inputs.edit.value})
                     closeMode();
                 } catch (err) {}
             } else if (user) {

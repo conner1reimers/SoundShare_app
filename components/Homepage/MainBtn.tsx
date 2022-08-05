@@ -52,8 +52,6 @@ const MainBtn: React.FC = () => {
         >
           <Image
             layout="fill"
-            height={10}
-            width={10}
             src={soundWaves} 
             alt=""
           />
@@ -68,9 +66,7 @@ const MainBtn: React.FC = () => {
             <Image
             layout="fill" 
             src={soundWaves2} 
-            alt=""
-            height={10}
-            width={10}/>
+            alt=""/>
         </motion.div>}
         </AnimatePresence>
       </div>

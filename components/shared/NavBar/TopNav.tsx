@@ -123,9 +123,9 @@ const TopNav: React.FC = () => {
                             alt=""
                             height={35}
                             width={35}
+                            unoptimized={true}
                             loader={myLoader}
-                            
-                            />
+                          />
                         </div>
                       ) : (
                       <div className="usperpic-main-container-nav">

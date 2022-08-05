@@ -167,7 +167,7 @@ const SingleComment: React.FC<Props> = ({indx, id, creator_id, message, path, us
         <li className={`single-sound-comments--item ${fullCom ? 'long-comment-singlesound' : '' } ${littleComment ? 'little-comment' : ''}`}>
 
             <div onClick={goToUser} className="single-sound-comments--item--pic">
-                {path ? <Image loader={myLoader} height={30} width={30} src={`https://soundshare-bucket.s3.us-east-2.amazonaws.com/${path}`} alt=""/> : <Image height={30} width={30} src={unknown} alt=""/>}
+                {path ? <Image unoptimized={true} loader={myLoader} height={30} width={30} src={`https://soundshare-bucket.s3.us-east-2.amazonaws.com/${path}`} alt=""/> : <Image height={30} width={30} src={unknown} alt=""/>}
             </div>
 
             {!editCommentOpen && (

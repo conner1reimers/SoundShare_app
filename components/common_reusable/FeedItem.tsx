@@ -36,7 +36,7 @@ const FeedItem: React.FC<FeeditemProps> = ({target, type, date, userId, second_t
             <li className="feed-page--feed-list--item feed-item--fav">
                 <div className="feed-page--feed-list--item--user-contain">
                     <div className="feed-page--feed-list--item--user-contain--img">
-                        <Image src={heart} alt=""/>
+                        <Image height={15} width={15} src={heart} alt=""/>
                     </div>
                     <div className="feed-page--feed-list--item--user-contain--text">
                         <span className="action-username">{follwedUser.username} Favorited: </span>
@@ -75,7 +75,7 @@ const FeedItem: React.FC<FeeditemProps> = ({target, type, date, userId, second_t
             <li className="feed-page--feed-list--item feed-item--repost">
                  <div className="feed-page--feed-list--item--user-contain">
                     <div className="feed-page--feed-list--item--user-contain--img">
-                        <Image src={cloud} alt=""/>
+                        <Image height={15} width={15} src={cloud} alt=""/>
                     </div>
                     <div className="feed-page--feed-list--item--user-contain--text">
                         <span className="action-username">{follwedUser.username} Uploaded: </span>
@@ -117,7 +117,7 @@ const FeedItem: React.FC<FeeditemProps> = ({target, type, date, userId, second_t
                 <div className="feed-page--feed-list--item--user-contain">
 
                     <div className="feed-page--feed-list--item--user-contain--img">
-                        <Image src={refresh} alt=""/>
+                        <Image height={15} width={15} src={refresh} alt=""/>
                     </div>
 
                     <div className="feed-page--feed-list--item--user-contain--text">
@@ -190,7 +190,7 @@ const FeedItem: React.FC<FeeditemProps> = ({target, type, date, userId, second_t
 
                 <div className="feed-page--feed-list--item--user-contain">
                     <div className="feed-page--feed-list--item--user-contain--img">
-                        <Image src={msg} alt=""/>
+                        <Image height={15} width={15} src={msg} alt=""/>
                     </div>
                     <div className="feed-page--feed-list--item--user-contain--text">
                         <span className="action-username">{follwedUser.username} commented: </span>

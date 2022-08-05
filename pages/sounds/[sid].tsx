@@ -21,30 +21,23 @@ import { END } from 'redux-saga';
 import { wrapper } from '../../store/wrapper';
 import { singlesoundLoading } from '../../store/selectors';
 import SoundDescription from '../../components/singleSound/SoundInfo/SoundDescription';
+import SingleSoundInfo from '../../components/singleSound/SoundInfo';
 
 
 export default function Sounds() {
   const router = useRouter();
   let soundId = router.query;
 
-  const [faved, setFaved] = useState(false);
-  const [isMyPage, setIsMyPage] = useState(false);
   const [descOpen, setDescOpen] = useState(false);
-  const [editMode, setEditMode] = useState<any>(null);
   const [likeModalOpen, setLikeModalOpen] = useState<any>(false);
   
   const dispatch = useDispatch();
-  const gpuTier = useSelector((state: any) => state.ui.gpuTier);
-  const userId = useSelector((state: any) => state.user.userId);
-  const isMaster = useSelector((state: any) => state.user.master);
   const mainLoader = useSelector((state: any) => state.ui.mainLoader);
   const soundInfo = useSelector((state: any) => state.singleSound.sound);
 
-  
   const isLoading = useSelector((state:any) => singlesoundLoading(state));
 
   const seeLikes = () => setLikeModalOpen('likes');
-  const seeReposts = () => setLikeModalOpen('reposts');
   const openDescription = () => setDescOpen(true);
   const closeLikesModal = () => setLikeModalOpen(false);
   const closeDescription = () => setDescOpen(false);
@@ -60,23 +53,8 @@ export default function Sounds() {
       dispatch(resetGlobalSound());
       dispatch({ type: "RESET_SINGLE_SOUND" });
     };
+    
   }, [dispatch]);
-
-
-  
-
-  useEffect(() => {
-    if (soundInfo) {
-      if (soundInfo.creator_id == userId) {
-        if (!isMyPage) setIsMyPage(true);
-      } else if (isMaster) {
-        if (!isMyPage) setIsMyPage(true);
-      }
-
-      document.title = `${soundInfo.name} - Soundshare`
-    }
-  }, [soundId, soundInfo, userId, isMaster]);
-
 
 
   let name;
@@ -108,19 +86,6 @@ export default function Sounds() {
     }
   }, [soundInfo]);
 
-  useEffect(() => {
-    if (gpuTier && !gpuTier.isMobile && soundInfo) {
-        dispatch(setGlobalSound(soundInfo));
-    } 
-          
-    if (userId && soundInfo) {
-      if (soundInfo.favs.indexOf(userId.toString()) !== -1) {
-        if (!faved) {
-          setFaved(true);
-        }
-      }
-    }
-  }, [userId, gpuTier, dispatch, faved, soundInfo]);
 
 
   useEffect(() => {
@@ -129,6 +94,7 @@ export default function Sounds() {
     if(mainLoader) 
       dispatch({type: "MAIN_LOADER_FINISH"})
   }, [soundId, soundInfo, dispatch, mainLoader])
+
   
 
   return (
@@ -145,38 +111,9 @@ export default function Sounds() {
             <>
               
               <div className="single-sound">
-                
-                  <div className="single-sound--info">
-                    
-                    <SoundImg img={soundInfo.img_path} category={soundInfo.category}/>
-                    
-                    <EditImage open={editMode === "image"} setEditMode={setEditMode}/>
-
-                    <SoundName setEditMode={setEditMode} editMode={editMode} isMyPage={isMyPage}/>
-
-                    <EditSoundName open={editMode === "name"} setEditMode={setEditMode}/>
-
-                    <div className="single-sound--info--username-contain">
-                      {editMode !== "name" && <SoundUsername  setFaved={setFaved} faved={faved} smaller={matches.smaller}/>}
-                    </div>
-
-                    {editMode !== "desc" &&  <SoundDescription seeLikes={seeLikes} openDescription={openDescription} smaller={matches.smaller} seeReposts={seeReposts}/>}
-
-                    <EditDesc setEditMode={setEditMode} id={soundInfo.id}
-                      desc={soundInfo.description} open={editMode === "desc"}
-                     
-                    />
-                    
-
-                    
-                  
-                  </div>
-
-
+                  <SingleSoundInfo setLikeModalOpen={setLikeModalOpen} smaller={matches.smaller}  seeLikes={seeLikes} openDescription={openDescription} />
                   <SoundPlayer matches={matches} soundInfo={soundInfo}/>
-
                   <CommentSection />
-                  
               </div>
               
             </>
