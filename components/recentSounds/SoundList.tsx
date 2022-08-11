@@ -34,7 +34,6 @@ const SoundList: React.FC = (props: any) => {
       
     }, [category, dispatch]);
   
-    console.log(props)
     
     return (
       

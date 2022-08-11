@@ -35,7 +35,6 @@ const ChartSection: React.FC<Props> = ({type, dispatch, optionState}) => {
         return isBrowseRefreshing(state);
     });
   
-  console.log(isRefreshing)
   
     
     return (

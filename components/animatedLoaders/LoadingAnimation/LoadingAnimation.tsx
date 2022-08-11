@@ -13,9 +13,6 @@ interface Props {
     loading: boolean
 }
 const LoadingAnimation: React.FC<Props> = ({ loading }) => {
-
-    console.log("HI")
-
     
 
     const final = typeof window != 'undefined' ? ReactDOM.createPortal(

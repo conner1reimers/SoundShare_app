@@ -51,7 +51,6 @@ const SoundListItem: React.FC<Props> = ({category, sound_id, img_path, date, nam
   const [downloadCount, setDownloadCount] = useState<any>(parseInt(propDownloadCount));
   const [playing, setPlaying] = useState<boolean>(false);
 
-  console.log(actiontype);
 
 
   const playSound = useCallback((event) => {

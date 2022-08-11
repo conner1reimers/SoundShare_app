@@ -120,7 +120,6 @@ const UserBig: React.FC = () => {
   useEffect(() => {
     if (!isPageLoading && params.uid) {
       if (!userInfo.user || !userInfo.user.id || userInfo.user.id !== params.uid) {
-        console.log("get use");
         dispatch(fetchUser(params.uid));
       }
     }

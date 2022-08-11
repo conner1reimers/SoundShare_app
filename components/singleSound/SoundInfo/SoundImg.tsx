@@ -10,7 +10,6 @@ const SoundImg: React.FC = () => {
   const img = useSelector((state: any) => state.singleSound.sound.img_path);
   const category = useSelector((state: any) => state.singleSound.sound.category);
 
-  console.log(img)
 
   const myLoader = ({ src, width, quality }) => {
     return `https://soundshare-bucket.s3.us-east-2.amazonaws.com/${img}`;

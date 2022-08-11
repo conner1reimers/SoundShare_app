@@ -79,7 +79,6 @@ const fetchUser = async (id) => {
 
 function* fetchUserAsync(action) {
   try {
-    console.log("GOING!")
     yield call(loadAndCall, fetchUser, startAction(action.type),
       stopAction(action.type), "FETCH_USER_ASYNC", action.id, false);
   } catch(err) {}

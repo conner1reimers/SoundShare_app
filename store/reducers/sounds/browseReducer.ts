@@ -94,7 +94,6 @@ const browseReducer = (state = initialState, action: BrowseActionTypes) => {
           options: action.options
         }
     case FETCH_BROWSE_ASYNC:
-      console.log(action)
       if (!action.results.results) {
         
         return {
