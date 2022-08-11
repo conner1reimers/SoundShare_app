@@ -517,7 +517,7 @@ const UserImg: React.FC<UserProps> = ({creator}) => {
     let result;
     try {
       result = await sendRequest(
-        `${process.env.NEXT_PUBLIC_REACT_APP_MY_ENV}/users/userimg/${creator}`
+        `/users/userimg/${creator}`
       );
       setUserImg(result.user_img_path);
     } catch (err) {}

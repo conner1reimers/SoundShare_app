@@ -4,6 +4,7 @@ import { call, put } from "redux-saga/effects";
 export const sendRequest = async (url: string, method = "GET", body = null, headers = {}) => {
 
   try {
+    console.log(`${process.env.NEXT_PUBLIC_REACT_APP_MY_ENV}${url}`)
     const response: any = await fetch(
       `${process.env.NEXT_PUBLIC_REACT_APP_MY_ENV}${url}`,
       { method, body, headers }

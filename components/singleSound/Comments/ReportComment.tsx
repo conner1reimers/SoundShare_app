@@ -40,7 +40,7 @@ const ReportComment: React.FC<Props> = ({id, close}) => {
         let response;
 
         try {
-            response = await sendRequest(`${process.env.NEXT_PUBLIC_REACT_APP_MY_ENV}/sounds/report-comment/${userId}/${id}`, 'POST', 
+            response = await sendRequest(`/sounds/report-comment/${userId}/${id}`, 'POST', 
             JSON.stringify({
                 msg: formState.inputs.report.value
             }),

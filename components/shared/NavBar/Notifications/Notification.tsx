@@ -25,7 +25,7 @@ const Notification: React.FC = () => {
       if (uid) {
         try {
           result = await sendRequest(
-            `${process.env.NEXT_PUBLIC_REACT_APP_MY_ENV}/users/notification/check`,
+            `/users/notification/check`,
             "PATCH",
             JSON.stringify({
               uid: uid,
@@ -51,7 +51,7 @@ const Notification: React.FC = () => {
       {notifications && notifications.length > 0 ? (
         <a className="top-nav-big--links--item bell-icon" onClick={openNotif}>
           <div className="bell-icon--contain">
-            <Image src={bell} alt="" width={25} height={25}/>
+            <Image src={bell} alt="" height={20} width={20}/>
 
             <div className="top-nav-big--links--notifications">
               <span>{notifications.length}</span>
@@ -61,7 +61,7 @@ const Notification: React.FC = () => {
       ) : (
         <a className="top-nav-big--links--item bell-icon" onClick={openNotif}>
           <div className="bell-icon--contain">
-              <Image src={bell2} alt="" width={25} height={25}/>
+              <Image src={bell2} alt="" height={20} width={20}/>
           </div>
         </a>
       )}

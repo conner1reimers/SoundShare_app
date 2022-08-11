@@ -51,11 +51,13 @@ const Download: React.FC = () => {
 
     return (
         <Fragment>
-            <div onClick={downloadFiles} className={`sound-list-item--circle circle-btn-single-sound circle-btn-single-sound--download singlesound-btn`}>
-                <span>Download</span>
-                <DownloadButton
-                    singlepage
-                />
+            <div className='single-sound--repost download'>
+                <div onClick={downloadFiles} className={`sound-list-item--circle circle-btn-single-sound singlesound-btn `}>
+                    <span>Download</span>
+                    <DownloadButton
+                        singlepage
+                    />
+                </div>
             </div>
         </Fragment>
     )

@@ -37,7 +37,8 @@ const FeedItemFollow: React.FC<FeedItemFollowProps> = ({id, usernameFollow, days
 
               
 
-                <div className="feed-page--feed-list--item--name-contain feed-page--feed-list--item--name-contain--follow">
+            <div className="feed-page--feed-list--item--name-contain feed-page--feed-list--item--name-contain--follow">
+                
                     <div className="feed-page--feed-list--item--name-contain--follow-user">
 
                     <div className="feed-page--feed-list--item--name-contain--follow-user--img">
@@ -48,14 +49,14 @@ const FeedItemFollow: React.FC<FeedItemFollowProps> = ({id, usernameFollow, days
                                 <Image
                                     src={`https://soundshare-bucket.s3.us-east-2.amazonaws.com/${path}`}
                                     alt=""
-                                    width={150}
-                                    height={150}
+                                    width={100}
+                                    height={100}
                                 />
                             </div>) : (
                                 
                                 <div className='flexcenter feed-img-wrapper'>
                                     
-                                    <Image height={150} width={150} src={unknown} alt="" />
+                                    <Image height={100} width={100} src={unknown} alt="" />
                         
                                 </div>
                             )

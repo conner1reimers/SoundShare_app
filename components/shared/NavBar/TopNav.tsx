@@ -19,10 +19,8 @@ import { useChangePage } from "../../../util/hooks/changePage";
 import NavIcon from "./NavIcon";
 import loadable from '@loadable/component'
 
-const NavItem = loadable(() => import('./NavItem'))
-const Dropdown = loadable(() => import('./DropDownMenu'))
-// const NavIcon = loadable(() => import('./NavIcon'))
-
+const NavItem = loadable(() => import('./NavItem'));
+const Dropdown = loadable(() => import('./DropDownMenu'));
 
 
 
@@ -178,7 +176,7 @@ const TopNav: React.FC = () => {
               >
                 <button onClick={openAuth} className="top-nav-big--links--item">
                   <div className="bell-icon--contain">
-                    <Image src={padlock} alt="" />
+                    <Image height={20} width={20} src={padlock} alt="" />
                   </div>
                 </button>
               </MouseOverLabel>
@@ -194,7 +192,7 @@ const TopNav: React.FC = () => {
                 <Link href="/about">
                   <a className="top-nav-big--links--item">
                     <div className="bell-icon--contain">
-                      <Image src={help} alt="" />
+                      <Image height={20} width={20} src={help} alt="" />
                     </div>
                   </a>
                 </Link>

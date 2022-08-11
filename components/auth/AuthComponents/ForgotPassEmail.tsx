@@ -36,7 +36,7 @@ const ForgotPassEmail: React.FC = () => {
         let response;
 
         try {
-            response = await sendRequest(`${process.env.NEXT_PUBLIC_REACT_APP_MY_ENV}/users/reset-password`, 
+            response = await sendRequest(`/users/reset-password`, 
                 'POST', 
                 JSON.stringify({
                     email: formState.inputs.email.value

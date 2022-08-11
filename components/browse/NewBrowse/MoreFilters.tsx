@@ -197,7 +197,7 @@ const MoreFilters: React.FC<Props> = ({category}) => {
         
         try {
           res = await sendRequest(
-            `${process.env.NEXT_PUBLIC_REACT_APP_MY_ENV}/users/filtersounds/${category}/${keyword}/${author}/${bpm1}/${bpm2}/${activeOrderbyOption}`
+            `/users/filtersounds/${category}/${keyword}/${author}/${bpm1}/${bpm2}/${activeOrderbyOption}`
           );
           dispatch({ type: "SEARCH_BROWSE_HOME", results: res });
         } catch (err) {}

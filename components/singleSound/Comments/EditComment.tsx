@@ -37,7 +37,7 @@ const EditComment: React.FC<Props> = ({ id, indx, close}) => {
     const submitEditComment = async () => {
         try {
             let result = await sendRequest(
-                    `${process.env.NEXT_PUBLIC_REACT_APP_MY_ENV}/sounds/editcomment/${id}/${userId}`, 'PATCH', 
+                    `/sounds/editcomment/${id}/${userId}`, 'PATCH', 
                     JSON.stringify({
                         msg: formState.inputs.comment.value
                     }),

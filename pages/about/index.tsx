@@ -26,7 +26,7 @@ const About: React.FC = () => {
                 <div className="about-square">
 
                     <div className="about-square--img">
-                        <Image src={me} alt=""/>
+                        <Image height={250} width={250} src={me} alt=""/>
                     </div>
 
                     <div className="about-square--desc">
@@ -38,10 +38,6 @@ const About: React.FC = () => {
                         </p>
                         <p className="email-about">
                             connerreimers@gmail.com
-                            {/* <NavLink
-                            to="/test/soundshare/adtest"
-                            
-                        >Test</NavLink> */}
                         </p>
                         
                     </div>

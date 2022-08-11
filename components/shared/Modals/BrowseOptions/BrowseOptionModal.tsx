@@ -41,7 +41,7 @@ const BrowseOptionModal: React.FC<Props> = ({setOpen, searchTxt, mobile, search,
         try {
         dispatch({type: "MAIN_LOADER_START"});
 
-        res = await sendRequest(`${process.env.NEXT_PUBLIC_REACT_APP_MY_ENV}/users/searchsounds/${category}/${searchTxt.value}`);
+        res = await sendRequest(`/users/searchsounds/${category}/${searchTxt.value}`);
             dispatch({ type: "SEARCH_BROWSE_HOME", results: res });
             dispatch({type: "MAIN_LOADER_FINISH"})
             

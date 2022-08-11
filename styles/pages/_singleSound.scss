@@ -13,18 +13,18 @@
 
   @media screen and (min-width: $bp-large) {
     grid-template-columns: 3% 90% 3%;
-    grid-template-rows: 2vh 70vh max-content 15vh;
+    grid-template-rows: 2vh 70vh max-content 65vh;
     grid-gap: 1rem;
   }
 
   @media screen and (min-width: $bp-largest) {
     grid-template-columns: 12% 74% 14%;
-    grid-template-rows: 2vh 80vh max-content 15vh;
+    grid-template-rows: 2vh 80vh max-content 65vh;
   }
 
   @media screen and (min-width: $bp-superLarge) {
     grid-template-columns: 17% 62% 20%;
-    grid-template-rows: 2vh 70vh max-content 15vh;
+    grid-template-rows: 2vh 70vh max-content 65vh;
   }
 
   @media screen and (min-width: 1750px) {
@@ -35,18 +35,21 @@
 
   @media screen and (max-width: 1099px) {
     grid-template-columns: 5% 85% 5%;
-    grid-template-rows: 2vh 60vh 0vh max-content 25vh;
+    grid-template-rows: 2vh 60vh 0vh max-content 55vh;
 
   }
-
+  @media screen and (max-height: 800px) {
+    grid-template-rows: 15px 580px 0px max-content 50px;
+  }
+  @media screen and (max-width: 750px) {
+    grid-template-rows: 15px 680px 0px max-content 50px;
+  }
 
   @media screen and (max-width: 500px) {
     grid-template-columns: 0% 88% 5%;
   }
   
-  @media screen and (max-height: 800px) {
-    grid-template-rows: 15px 580px 0px max-content 50px;
-  }
+  
 
   &--player {
     grid-row: 3/4;
@@ -169,6 +172,9 @@
     width: 100%;
     pointer-events: none;
     min-width: 190px;
+    @media screen and (max-width: 475px) {
+      min-width: 115px;
+    }
 
     div.sound-list-item--circle.circle-btn-single-sound.singlesound-btn {
       margin: 0;
@@ -186,16 +192,20 @@
         margin-top: 2rem;
         span {font-size: 1.9rem;}
       }
+
       @media screen and (max-width: 500px) {
         min-width: 145px;
         left: 0;
       }
-      @media screen and (max-width: 380px) {
-        min-width: 125px;
+
+      @media screen and (max-width: 475px) {
+        min-width: 115px;
       }
+
       @media screen and (max-width: 370px) {
         margin-top: 5rem;
       }
+
       button.btn.nohover {
         height: 5vh;
         min-height: 40px;
@@ -951,6 +961,8 @@
     @include heightWidth100;
     margin-top: 3rem;
     padding-bottom: 3rem;
+    overflow-x: hidden;
+    overflow-y: auto;
   }
 
   &--item {
@@ -962,11 +974,19 @@
     grid-template-columns: 13% 82% 5%;
     overflow: visible;
 
+    
+
     @media screen and (min-width: $bp-large) {
       width: 100%;
       grid-template-columns: 0% 8% 72% 20%;
       margin: 1rem 0;
       margin-top: 2rem;
+    }
+    @media screen and (min-width: $bp-largest) {
+      grid-template-columns: 0% 6.5% 73.5% 20%;
+    }
+    @media screen and (min-width: 2200px) {
+      grid-template-columns: 0% 5% 75% 20%;
     }
     @media screen and (max-width: 1099px) {
       margin-top: 2rem;
@@ -1056,7 +1076,8 @@
       cursor: pointer;
       @include heightWidth100;
       position: relative;
-      top: .5rem;
+      // top: .5rem;
+      // max-width: 80px;
 
       @media screen and (min-width: $bp-large) {
         grid-column: 2/3;
@@ -1637,105 +1658,106 @@ div.singlesound-img {
 
 }
 
-div.sound-list-item--circle.circle-btn-single-sound.circle-btn-single-sound--download.singlesound-btn {
-  min-width: 129px;
-  min-height: 30px;
-  grid-column: 3/4;
-  left: 0;
-  padding: 0;
-  width: 90%;
-  max-height: 50px;
-  min-width: 190px;
+// div.sound-list-item--circle.circle-btn-single-sound.circle-btn-single-sound--download.singlesound-btn {
+//   min-width: 129px;
+//   min-height: 30px;
+//   grid-column: 3/4;
+//   left: 0;
+//   padding: 0;
+//   width: 90%;
+//   max-height: 50px;
+//   min-width: 190px;
 
-  @include flexcenter;
+//   @include flexcenter;
 
-  @media screen and (max-width: 1099px) {
-    margin-top: 2rem;
-  }
-  @media screen and (max-width: 370px) {
-    margin-top: 5rem;
-  }
+//   @media screen and (max-width: 1099px) {
+//     margin-top: 2rem;
+//   }
+//   @media screen and (max-width: 370px) {
+//     margin-top: 5rem;
+//   }
 
 
-  @media screen and (min-width: 751px) and (max-width: 880px) {
-    left: 2vw;
-  }
+//   @media screen and (min-width: 751px) and (max-width: 880px) {
+//     left: 2vw;
+//   }
 
-  @media screen and (max-width: 380px) {
-    min-width: 125px;
-  }
+//   @media screen and (max-width: 475px) {
+//     min-width: 115px;
+//   }
   
 
-  button.btn.nohover {
-    height: 5vh;
-    min-height: 40px;
-  }
-  span {
-    position: relative;
-    right: 0.5vw;
-    width: min-content;
-    pointer-events: none;
-  }
-  img {
-    position: relative;
-    box-shadow: none;
-    pointer-events: none;
+//   button.btn.nohover {
+//     height: 5vh;
+//     min-height: 40px;
+//   }
+//   span {
+//     position: relative;
+//     right: 0.5vw;
+//     width: min-content;
+//     pointer-events: none;
+//     // @include heightWidth100;
+//   }
+//   img {
+//     position: relative;
+//     box-shadow: none;
+//     pointer-events: none;
 
-  }
-  div {
-    pointer-events: none;
-    left: 0;
-    button.btn.nohover {
-      left: 0;
-    }
-  }
+//   }
+//   div {
+//     pointer-events: none;
+//     left: 0;
+//     button.btn.nohover {
+//       left: 0;
+//     }
+//   }
 
-  @media screen and (max-width: 1099px) {
-    grid-column: 4/5;
-    @include flexcenter;
-    span {
-      font-size: 1.9rem;
-      right: 1.5vw;
-      @include flexcenter;
-      top: 0.3vh;
-    }
-    button.btn {
-      left: 1.5vw;
-    }
-  }
+//   @media screen and (max-width: 1099px) {
+//     grid-column: 4/5;
+//     @include flexcenter;
+//     span {
+//       font-size: 1.9rem;
+//       right: 1.5vw;
+//       @include flexcenter;
+//       top: 0.3vh;
+//     }
+//     button.btn {
+//       left: 1.5vw;
+//     }
+//   }
 
-  @media screen and (max-width: 750px) {
-    grid-row: 5/6;
-    grid-column: 3/5;
-    max-width: 150px;
+//   @media screen and (max-width: 750px) {
+//     grid-row: 5/6;
+//     grid-column: 3/5;
+//     max-width: 150px;
 
-    button.btn.nohover {
-      img {
-        @include heightWidthSame(2rem);
-      }
-    }
-  }
-  @media screen and (max-width: 650px) {
-    left: 2vw;
-  }
-  @media screen and (max-width: 575px) {
-    left: 4vw;
-  }
-  @media screen and (max-width: 475px) {
-    left: 6vw;
-  }
-  @media screen and (max-width: 415px) {
-    left: 8vw;
-  }
-  @media screen and (max-width: 370px) {
-    left: 10vw;
-  }
-  @media screen and (max-width: 500px) {
-    grid-column: 4/5;
-    left: 3vw;
-  }
+//     button.btn.nohover {
+//       img {
+//         @include heightWidthSame(2rem);
+//       }
+//     }
+//   }
+//   @media screen and (max-width: 650px) {
+//     left: 2vw;
+//   }
+//   @media screen and (max-width: 575px) {
+//     left: 4vw;
+//   }
+//   @media screen and (max-width: 475px) {
+//     left: 6vw;
+//   }
+//   @media screen and (max-width: 415px) {
+//     left: 8vw;
+//   }
+//   @media screen and (max-width: 370px) {
+//     left: 10vw;
+//   }
+//   @media screen and (max-width: 500px) {
+//     grid-column: 4/5;
+//     left: 3vw;
+//   }
   
-}
+// }
 
 
 div.single-sound--repost {
@@ -1774,6 +1796,18 @@ div.single-sound--repost {
 
   
 }
+
+div.single-sound--info--desc {
+  div.singlesound-action-container {
+    div.single-sound--repost.download {
+      button.btn.nohover {
+        left: 0;
+      }
+    }
+    
+  }
+}
+
 
 
 
@@ -2098,9 +2132,6 @@ div.single-sound--info {
       left: 0;
     }
    
-    @media screen and (max-width: 425px) {
-      left: 1rem;
-    }
   }
 }
 
@@ -3004,6 +3035,10 @@ div.counter-singlesound.singlesound-small-category {
   span {
     color: white;
   }
+  @media screen and (max-width: 500px) {
+    display: none;
+  }
+
 }
 
 div.single-sound--info--desc.single-sound--info--desc--small-desc {
@@ -3021,6 +3056,7 @@ div.single-sound--info--desc.single-sound--info--desc--small-desc {
   align-items: flex-start;
   margin-top: 2rem;
   min-width: 640px;
+
   @media screen and (max-width: 1099px) {
     max-width: 500px;
     margin-right: 0;
@@ -3030,7 +3066,10 @@ div.single-sound--info--desc.single-sound--info--desc--small-desc {
     max-width: 400px;
   }
   
+  @media screen and (max-width: 750px) {
+    margin-top: 5rem;
 
+  }
   @media screen and (max-width: 650px) {
     flex-direction: column;
   }
@@ -3210,6 +3249,12 @@ div.single-sound--info--desc.single-sound--info--desc--small-desc {
         border-radius: .35rem;
       }
 
+      @media screen and (max-width: 750px) {
+        left: 2rem;
+      } 
+
+      
+
       @media (hover: hover) and (pointer: fine) {
         &:hover {
           background-color: #232324a1;
@@ -3282,7 +3327,12 @@ div.single-sound--info--desc.single-sound--info--desc--small-desc {
   align-items: flex-start;
   justify-content: flex-start;
   max-height: 120px;
+
   @media screen and (max-width: 1099px) {
     margin-top: 2rem;
+  }
+
+  @media screen and (max-width: 475px) {
+    min-width: 250px;
   }
 }

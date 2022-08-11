@@ -69,7 +69,7 @@ const handler = nc().use(session)
                 token = await jwt.sign(
                   { userId: user.rows[0].id, email: email, master: false  },
                   process.env.NEXT_PUBLIC_JWTSECRET,
-                  { expiresIn: "7 days" }
+                  { expiresIn: "60 days" }
                 );
                 // req.session.jwt = token;
                 // res.cookie('sessioncook', req.session.id, { expires: new Date(Date.now() + 200000000), httpOnly: true });

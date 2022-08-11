@@ -20,7 +20,7 @@ const LoginByGoogle = () => {
             response = await sendRequest(`https://www.googleapis.com/oauth2/v3/tokeninfo?id_token=${res.tokenId}`);
             if (response.email) {
                 finalResponse = await sendRequest(
-                    `${process.env.NEXT_PUBLIC_REACT_APP_MY_ENV}/users/signin-google`, 
+                    `/users/signin-google`, 
                     'POST', 
                     JSON.stringify({
                         email: response.email
@@ -51,7 +51,7 @@ const LoginByGoogle = () => {
         if (response.email) {
             let finalResponse;
             finalResponse = await sendRequest(
-                `${process.env.NEXT_PUBLIC_REACT_APP_MY_ENV}/users/signin-google`, 
+                `/users/signin-google`, 
                 'POST', 
                 JSON.stringify({
                     email: response.email

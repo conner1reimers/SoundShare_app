@@ -25,7 +25,7 @@ const useDownloadFile = () => {
     
     req.open(
       "GET",
-      `${process.env.NEXT_PUBLIC_REACT_APP_MY_ENV}/sounds/download/${sound.id}/${soundPath}`,
+      `/sounds/download/${sound.id}/${soundPath}`,
       true
     );
     req.responseType = "blob";

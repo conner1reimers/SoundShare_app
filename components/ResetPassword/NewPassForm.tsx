@@ -34,7 +34,7 @@ const NewPassForm: React.FC = () => {
         if (formState.inputs.password.value === formState.inputs.passwordConfirm.value) {
             let response;
             try {
-                response = await sendRequest(`${process.env.NEXT_PUBLIC_REACT_APP_MY_ENV}/users/change-password/`, 'POST', 
+                response = await sendRequest(`/users/change-password/`, 'POST', 
                     JSON.stringify({
                         password: formState.inputs.password.value,
                         token: history.params.token

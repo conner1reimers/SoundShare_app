@@ -741,6 +741,7 @@ div.recent-sound-options.recent-sound-options-mobile {
     background-clip: content-box;
     position: relative;
     left: 3rem;
+
     @media screen and (max-width: 1335px) {
       display: none;
     }
@@ -754,6 +755,7 @@ div.recent-sound-options.recent-sound-options-mobile {
     border: 1px solid rgba(36, 32, 32, 0.082);
     position: relative;
     left: 3rem;
+
     
   }
 }

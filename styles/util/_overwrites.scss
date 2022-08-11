@@ -1183,10 +1183,11 @@ div.uploadmodal-big--info-form--input--side--contain {
         
         @media screen and (max-width: 1099px) {
           margin: 0 1.2rem;
-          @include heightWidthSame(7rem);
-          img {
-            @include heightWidthSame(3.5rem);
+          @include heightWidthSame(7.5rem);
+          span {
+            transform: scale(.75);
           }
+          
         }
 
 

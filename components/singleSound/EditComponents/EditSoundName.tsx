@@ -74,7 +74,7 @@ const EditSoundName: React.FC<Props> = ({setEditMode, open}) => {
         
         if (editSoundState.inputs.edit.value !== "") {
             try {
-                await sendRequest(`${process.env.NEXT_PUBLIC_REACT_APP_MY_ENV}/sounds/name/${id}/${uid}`, 'PATCH', JSON.stringify({
+                await sendRequest(`/sounds/name/${id}/${uid}`, 'PATCH', JSON.stringify({
                     name: editSoundState.inputs.edit.value
                 }),
                 {'Content-Type': 'application/json', 'Authorization': 'Bearer '+token});

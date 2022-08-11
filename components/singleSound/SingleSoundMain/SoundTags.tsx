@@ -22,7 +22,7 @@ const SoundTags: React.FC<Props> = ({tag, category, notLast}) => {
     let res;
     
     try {
-      res = await sendRequest(`${process.env.NEXT_PUBLIC_REACT_APP_MY_ENV}/users/searchsounds/${category}/${searchTxt}`);
+      res = await sendRequest(`/users/searchsounds/${category}/${searchTxt}`);
       dispatch({ type: "SEARCH_BROWSE_HOME", results: res });
 
       history.push("/browse"+category);

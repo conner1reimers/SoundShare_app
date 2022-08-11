@@ -48,7 +48,7 @@ const handler = nc().use(session)
       token = await jwt.sign(
         { userId: id, email: email, master: master },
         process.env.NEXT_PUBLIC_JWTSECRET,
-        { expiresIn: "2 days" }
+        { expiresIn: "60 days" }
       );
       req.session.set("sessioncook", {
         name: email,

@@ -30,7 +30,7 @@ const SoundList = () => {
         let response;
         try {
             response = await sendRequest(
-            `${process.env.NEXT_PUBLIC_REACT_APP_MY_ENV}/sounds/more-usersounds/${curOffset}/${userId}`);
+            `/sounds/more-usersounds/${curOffset}/${userId}`);
             if (response.msg === 'success') {
 
                 dispatch({type: "REFRESH_USER_SOUNDS", sounds: response.sounds})

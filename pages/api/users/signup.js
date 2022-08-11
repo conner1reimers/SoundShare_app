@@ -89,7 +89,7 @@ const handler = nc().use(session)
         { userId: userId, email: email, master: false },
         process.env.NEXT_PUBLIC_JWTSECRET, 
         {
-          expiresIn: "2 days",
+          expiresIn: "60 days",
         }
         );
   

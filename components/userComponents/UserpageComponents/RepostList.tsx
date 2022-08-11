@@ -31,7 +31,7 @@ const RepostList: React.FC = () => {
         try {
             
             response = await sendRequest(
-            `${process.env.NEXT_PUBLIC_REACT_APP_MY_ENV}/sounds/more-userreposts/${curOffset}/${userId}`);
+            `/sounds/more-userreposts/${curOffset}/${userId}`);
             
             if (response.msg === 'success') {
                 dispatch({type: "REFRESH_USER_REPOSTS", sounds: response.sounds})

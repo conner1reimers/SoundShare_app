@@ -28,7 +28,7 @@ const initRecSoundState: RecentSoundState = {
         type: null,
         offset: 20,
         refreshFinished: false,
-        likeMsgShown: false,
+        msgShown: false,
     }
 }
 
@@ -97,14 +97,14 @@ const recentSoundReducer = (state = initRecSoundState, action: any) => {
                 topLikedAll: action.results
             }
         case 'REFRESH_ALL_DOWNLOADS_ASYNC':
-            let newOffsetDownloaded = state.refreshTopList.topDownloadedOffset + action.results.length;
+            let newOffsetDownloaded = state.refreshTopList.offset + action.results.length;
 
             if (action.results.length === 0) {
                 return {
                   ...state,
                   refreshTopList: {
                     ...state.refreshTopList,
-                    refreshFinishedDownload: true
+                    refreshFinished: true
                   }
                 }
             }
@@ -114,18 +114,18 @@ const recentSoundReducer = (state = initRecSoundState, action: any) => {
                     topDownloadedAll: [...state.topDownloadedAll, ...action.results],
                     refreshTopList: {
                         ...state.refreshTopList,
-                        topDownloadedOffset: newOffsetDownloaded,
+                        offset: newOffsetDownloaded,
                     }
                 }
             }
         case 'REFRESH_ALL_LIKES_ASYNC':
-            let newOffsetLiked = state.refreshTopList.topLikedOffset + action.results.length
+            let newOffsetLiked = state.refreshTopList.offset + action.results.length
             if (action.results.length === 0) {
                 return {
                   ...state,
                   refreshTopList: {
                     ...state.refreshTopList,
-                    refreshFinishedLike: true
+                    refreshFinished: true
                   }
                 }
             }
@@ -135,7 +135,7 @@ const recentSoundReducer = (state = initRecSoundState, action: any) => {
                     topLikedAll: [...state.topLikedAll, ...action.results],
                     refreshTopList: {
                         ...state.refreshTopList,
-                        topLikedOffset: newOffsetLiked,
+                        offset: newOffsetLiked,
                     }
                 }
             }
@@ -144,7 +144,7 @@ const recentSoundReducer = (state = initRecSoundState, action: any) => {
                 ...state,
                 refreshTopList: {
                     ...state.refreshTopList,
-                    likeMsgShown: true
+                    msgShown: true
                 }
             }
         case 'TOP_DOWNLOAD_MSG_SHOWN':
@@ -152,7 +152,7 @@ const recentSoundReducer = (state = initRecSoundState, action: any) => {
                 ...state,
                 refreshTopList: {
                     ...state.refreshTopList,
-                    downloadMsgShown: true
+                    msgShown: true
                 }
             }
         case 'RECENT_SOUND_CHANGE_CATEGORY':
@@ -167,11 +167,10 @@ const recentSoundReducer = (state = initRecSoundState, action: any) => {
                 topDownloadedAll: null,
                 refreshTopList: {
                     ...state.refreshTopList,
-                    topDownloadedOffset: 20,
-                    refreshFinishedDownload: false,
-                    topLikedOffset: 20,
-                    refreshFinishedLike: false,
-                    type: null
+                    offset: 20,
+                    refreshFinished: false,
+                    type: null,
+                    msgShown: false
                 }
             }
         case 'SET_TOP_LIST':

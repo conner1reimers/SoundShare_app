@@ -67,8 +67,12 @@
         width: 95vw;
       }
       &--name-contain {
-        @include flexcenter;
+        display: flex;
+        justify-self: flex-start;
+        align-items: flex-start;
+        justify-content: center;
         grid-row: 1/4;
+        width: 100%;
 
         @media screen and (max-width: 550px) {
           grid-column: 2/3;
@@ -85,22 +89,19 @@
 
         &--follow {
           @include heightWidth100;
+          grid-column: 2/-1
         }
 
         &--follow-user {
           @include heightWidth100;
-          display: flex;
-          justify-content: flex-start;
-          align-items: center;
-
+          display: grid;
+          grid-template-columns: 30% 20% 20% 20% 10%; 
+          grid-template-rows: 100%;
+          
           &--img {
             @include flexcenter;
             grid-column: 1/2;
-            grid-row: 1/5;
             position: relative;
-            right: 1rem;
-            bottom: 1vh;
-            justify-content: flex-end;
             img {
               @include heightWidthSame(5rem);
               border-radius: 50%;
@@ -116,24 +117,11 @@
                 @include heightWidthSame(8rem);
               }
             }
-            @media screen and (max-width: 750px) {
-              left: 0;
-              justify-content: center;
-            }
-            @media screen and (max-width: 550px) {
-              transform: translateX(1.5rem);
-              position: relative;
-              bottom: 0;
-              top: 1rem;
-            }
-            @media screen and (min-width: $bp-large) {
-              left: -.35rem;
-            } 
+            
 
           }
           &--username {
             grid-column: 2/3;
-            grid-row: 2/3;
             @include flexcenter;
             flex-direction: column;
             align-items: flex-start;
@@ -176,15 +164,14 @@
           }
 
           &--btn {
-            grid-column: 3/6;
-            grid-row: 2/3;
             @include flexcenter;
+            width: 100%;
             justify-content: flex-end;
             @include mainBTN;
-            margin-right: .8rem;
+            grid-column: 4/6;
             button.btn.nohover.upload-sound-button {
               width: 11.5rem;
-              min-width: 140px;
+              min-width: 170px;
               min-height: 50px;
               max-height: 90px;
               padding: 0;
@@ -214,9 +201,6 @@
               width: 100%;
               height: 100%;
               position: relative;
-              margin: 0;
-              left: 0;
-              top: .4rem;
               justify-content: flex-start;
             }
           }
@@ -411,6 +395,7 @@
 
     div.user-page--loopList--item.feed-soundlist {
       grid-template-columns: 30% 20% 20% 20% 10%;
+
       @media screen and (max-width: 550px) {
         transform: translateY(-1.5rem);
           position: relative;
@@ -421,18 +406,11 @@
         @include heightWidth100;
         justify-content: center;
         position: relative;
-        right: 1rem;
+        justify-self: flex-start;
        
         @media screen and (max-width: 750px) {
           justify-content: center;
         } 
-        @media screen and (min-width: $bp-large) {
-          left: -.25rem;
-  
-        } 
-        @media screen and (max-width: 350px) {
-          transform: translateX(1rem);
-        }
       }
       
       div.user-page--loopList--item--name-contain.feed-soundlist--username {
@@ -441,17 +419,6 @@
         @include flexcenter;
         align-items: flex-start;
 
-        
-        @media screen and (min-width: $bp-large) {
-          left: 2.35rem;
-        } 
-        // @media screen and (max-width: 750px) {
-        //   transform: translateX(-2rem);
-        // }
-        @media screen and (max-width: 550px) {
-          transform: translateY(.25rem);
-            
-        }
         
       }
     }
@@ -534,7 +501,6 @@
   }
 
   &--upload {
-    height: 25vh;
     min-height: 180px;
     div.user-page--loopList--item.feed-soundlist {
 
@@ -553,27 +519,20 @@
   }
 
   &--repost {
-    height: 25vh;
     min-height: 180px;
     div.user-page--loopList--item.feed-soundlist {
 
       div.feedlist-img-contain {
         @include heightWidth100;
-          justify-content: center;
+        justify-content: center;
         position: relative;
         right: 0rem;
         @media screen and (max-width: 750px) {
           justify-content: center;
 
         } 
-        @media screen and (max-width: 550px) {
-          top: -1rem;
-        }
       }
 
-      @media screen and (min-width: $bp-large) {
-        margin-right: 2rem;
-      }
       
     }
     
@@ -581,8 +540,7 @@
   }
 
   &--follow {
-    height: 20vh;
-    min-height: 135px;
+    min-height: 115px;
     @media screen and (max-width: 550px) {
       padding-bottom: 2rem;
     }
@@ -754,11 +712,6 @@ div.feed-list {
   grid-row: 1/4;
   @include heightWidth100;
 
-  &--repost {
-  }
-
-  &--upload {
-  }
 
   div.feed-soundlist {
     &--play {
@@ -1115,7 +1068,7 @@ div.feed-page--feed-list--item--name-contain {
 div.feed-page--feed-list--item--name-contain.feed-list.feed-list--repost {
   // feed soundlist contain
   div.user-page--loopList--item.feed-soundlist {
-
+    min-height: 180px;
     // Feed username contain smaller
     div.user-page--loopList--item--name-contain.feed-soundlist--username {
 
@@ -1236,3 +1189,4 @@ span.feed-soundname {
   border-radius: 50%;
 
 }
+

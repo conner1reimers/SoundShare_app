@@ -39,7 +39,7 @@ const Heart: React.FC = () => {
     if (userId) {
       try {
         response =
-          await sendRequest(`${process.env.NEXT_PUBLIC_REACT_APP_MY_ENV}/sounds/fav/${sid}/${userId}`,
+          await sendRequest(`/sounds/fav/${sid}/${userId}`,
           "POST",
           JSON.stringify({
             userId: userId,

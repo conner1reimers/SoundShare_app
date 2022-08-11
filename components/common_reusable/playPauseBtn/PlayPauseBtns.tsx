@@ -79,7 +79,7 @@ const PlayPauseBtns: React.FC<Props> = ({small, noarrow, global, fxglobe, fx, up
           type="button"
           onClick={nextSound}
         >
-          <Image height={30} width={30} src={FF} alt="" />
+          <Image height={small ? 10 : 30} width={small ? 10 : 30} src={FF} alt="" />
         </button>
       )}
     </div>

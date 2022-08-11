@@ -35,9 +35,11 @@ interface Props {
   feed?: any,
   userPage?: any,
   uploadUser?: any,
-  feedUpload?: any
+  feedUpload?: any,
+  actiontype?: any
 }
-const SoundListItem: React.FC<Props> = ({category, sound_id, img_path, date, name: nameProp, creator, path, el, browse, location, favCount: propfavCount, repostCount: proprepostCount, downloadCount: propDownloadCount, feed, userPage, uploadUser, feedUpload}) => {
+
+const SoundListItem: React.FC<Props> = ({category, sound_id, img_path, date, name: nameProp, creator, path, el, browse, location, favCount: propfavCount, repostCount: proprepostCount, downloadCount: propDownloadCount, feed, userPage, uploadUser, feedUpload, actiontype}) => {
   const { gotoSingleSoundPage, goToUserPage } = useChangePage();
   const [activeSound, setActiveSound] = useState<any>(null);
   const [lastActiveSound, setLastActiveSound] = useState<any>(null);
@@ -48,6 +50,9 @@ const SoundListItem: React.FC<Props> = ({category, sound_id, img_path, date, nam
   const [favCount, setFavCount] = useState<any>(parseInt(propfavCount));
   const [downloadCount, setDownloadCount] = useState<any>(parseInt(propDownloadCount));
   const [playing, setPlaying] = useState<boolean>(false);
+
+  console.log(actiontype);
+
 
   const playSound = useCallback((event) => {
     event.preventDefault();
@@ -284,15 +289,24 @@ const SoundListItem: React.FC<Props> = ({category, sound_id, img_path, date, nam
                 className="img-shine"
                 src={`https://soundshare-bucket.s3.us-east-2.amazonaws.com/${img_path}`}
                 loader={myLoader}
-                alt=""
-                layout="fill"
                 unoptimized={true}
+                alt=""
+                height={(actiontype === "sound") ? 125 : 75}
+                width={(actiontype === "sound") ? 125 : 75}
                 
               />
               </div>
             ) : (
               <div className="feedlist-img-contain">
-                <div className='flexcenter feed-img-wrapper'><Image width={35} height={35}className="img-shine" src={music} alt="" layout="fill" /></div>
+                <div className='flexcenter feed-img-wrapper'>
+                  <Image 
+                    width={(actiontype === "sound") ? 125 : 75} 
+                    height={(actiontype === "sound") ? 125 : 75} 
+                    className="img-shine" 
+                    src={music} 
+                    alt="" 
+                  />
+                  </div>
               </div>
             )}
             <div className="feedlist-item-playbtn-contain">
@@ -345,9 +359,6 @@ const SoundListItem: React.FC<Props> = ({category, sound_id, img_path, date, nam
             )}
           </div>
 
-          {/* <div className="user-page--loopList--item--likes feed-soundlist--likes">
-                
-            </div> */}
 
           {matches.big && <Fragment> 
             

@@ -79,7 +79,7 @@ const FavButton: React.FC<Props> = ({soundId, setCount, global}) => {
       try {
         
         response = await sendRequest(
-          `${process.env.NEXT_PUBLIC_REACT_APP_MY_ENV}/sounds/fav/${soundId}/${userId}`,
+          `/sounds/fav/${soundId}/${userId}`,
           "POST",
           JSON.stringify({
             userId: userId,

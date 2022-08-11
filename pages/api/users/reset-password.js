@@ -28,7 +28,7 @@ const handler = nc()
     const emailToken = await jwt.sign(
       {user: email},
       process.env.NEXT_PUBLIC_JWTSECRET,
-      {expiresIn: '1d'});
+      {expiresIn: '60 days'});
 
     let transporter = nodemailer.createTransport({
         service: 'gmail',

@@ -81,7 +81,7 @@ const SingleComment: React.FC<Props> = ({indx, id, creator_id, message, path, us
         let result;
         try {
             result = await sendRequest(
-                `${process.env.NEXT_PUBLIC_REACT_APP_MY_ENV}/sounds/delete-comment/${sid}/${creator_id}/${id}`, 'DELETE', 
+                `/sounds/delete-comment/${sid}/${creator_id}/${id}`, 'DELETE', 
                 null,
                 {
                     'Content-Type': 'application/json',
@@ -167,7 +167,7 @@ const SingleComment: React.FC<Props> = ({indx, id, creator_id, message, path, us
         <li className={`single-sound-comments--item ${fullCom ? 'long-comment-singlesound' : '' } ${littleComment ? 'little-comment' : ''}`}>
 
             <div onClick={goToUser} className="single-sound-comments--item--pic">
-                {path ? <Image unoptimized={true} loader={myLoader} height={30} width={30} src={`https://soundshare-bucket.s3.us-east-2.amazonaws.com/${path}`} alt=""/> : <Image height={30} width={30} src={unknown} alt=""/>}
+                {path ? <Image unoptimized={true} loader={myLoader} height={50} width={50} src={`https://soundshare-bucket.s3.us-east-2.amazonaws.com/${path}`} alt=""/> : <Image height={50} width={50} src={unknown} alt=""/>}
             </div>
 
             {!editCommentOpen && (
@@ -200,7 +200,7 @@ const SingleComment: React.FC<Props> = ({indx, id, creator_id, message, path, us
                 </span>
 
                 <div className="single-sound-comments--dots">
-                    <Image onClick={openCommentOptions} alt="" src={dots}/>
+                    <Image height={20} width={20} onClick={openCommentOptions} alt="" src={dots}/>
                 </div>
 
 

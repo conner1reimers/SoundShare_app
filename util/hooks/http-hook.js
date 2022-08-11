@@ -2,8 +2,7 @@ import { useState, useCallback, useRef, useEffect } from "react";
 import { useGlobalMsg } from "./useGlobalMsg";
 
 
-
-export const useHttpClient = () => {
+export const useHttpClient = (url) => {
     const [isLoading, setIsLoading] = useState(false);
 
     const setGlobalMsg = useGlobalMsg();
@@ -16,7 +15,7 @@ export const useHttpClient = () => {
         activeHttpRequest.current.push(httpAbortController);
         try {       
 
-        const response = await fetch(url, {
+        const response = await fetch(`${process.env.NEXT_PUBLIC_REACT_APP_MY_ENV}${url}`, {
             method,
             body,
             headers,
@@ -52,7 +51,9 @@ export const useHttpClient = () => {
         return () => {
             activeHttpRequest.current.forEach(abortCtrll => abortCtrll.abort())
         }; 
-    }, [])
+    }, []);
+
+    
 
     return { isLoading, sendRequest }
 };

@@ -18,7 +18,7 @@ export const useSearchSound = async (search) => {
    
     try {
       res = await sendRequest(
-        `${process.env.NEXT_PUBLIC_REACT_APP_MY_ENV}/users/searchsounds/${searchTxt}`
+        `/users/searchsounds/${searchTxt}`
       );
     
 

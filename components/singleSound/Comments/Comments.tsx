@@ -24,7 +24,7 @@ const Comments: React.FC = () => {
         let response: any;
         try {
             response =
-                await sendRequest(`${process.env.NEXT_PUBLIC_REACT_APP_MY_ENV}/sounds/more-comments/${curOffset}/${sid}`);
+                await sendRequest(`/sounds/more-comments/${curOffset}/${sid}`);
             
 
             if (response.msg === 'success' && response.sounds.length > 0) {

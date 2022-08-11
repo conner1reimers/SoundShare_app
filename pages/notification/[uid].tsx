@@ -17,7 +17,7 @@ export default function Notification() {
      let res;
      try {
        res = await sendRequest(
-         `${process.env.NEXT_PUBLIC_REACT_APP_MY_ENV}/users/notifications/${uid}`
+         `/users/notifications/${uid}`
        );
        
        dispatch({ type: "GET_ALL_NOTIFICATIONS", results: res });

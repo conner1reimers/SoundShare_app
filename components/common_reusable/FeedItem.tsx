@@ -61,6 +61,7 @@ const FeedItem: React.FC<FeeditemProps> = ({target, type, date, userId, second_t
                         favCount={sound.favs.length}
                         repostCount={sound.reposts.length}
                         downloadCount={sound.downloads}
+                        actiontype={type}
                      />
                    
                  </div>
@@ -100,7 +101,7 @@ const FeedItem: React.FC<FeeditemProps> = ({target, type, date, userId, second_t
                         repostCount={sound.reposts.length}
                         downloadCount={sound.downloads}
                         location="feed"
-
+                        actiontype="sound"
                      />
                    
                  </div>
@@ -146,7 +147,7 @@ const FeedItem: React.FC<FeeditemProps> = ({target, type, date, userId, second_t
                         favCount={sound.favs.length}
                         repostCount={sound.reposts.length}
                         downloadCount={sound.downloads}
-
+                        actiontype="sound"
                      />
                    
                  </div>
@@ -215,6 +216,7 @@ const FeedItem: React.FC<FeeditemProps> = ({target, type, date, userId, second_t
                         favCount={sound.favs.length}
                         repostCount={sound.reposts.length}
                         downloadCount={sound.downloads}
+                        actiontype={type}
                      />
                    
                  </div>

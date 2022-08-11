@@ -83,7 +83,7 @@ const RepostButton: React.FC<Props> = ({soundId, username, creator: creatorProp,
       try {
         
         response = await sendRequest(
-          `${process.env.NEXT_PUBLIC_REACT_APP_MY_ENV}/sounds/repost/${userId}/${soundId}/${creator}/`,
+          `/sounds/repost/${userId}/${soundId}/${creator}/`,
           "POST",
           null,
           { "Authorization": "Bearer "+token}

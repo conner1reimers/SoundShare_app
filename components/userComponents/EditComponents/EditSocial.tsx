@@ -65,7 +65,7 @@ const EditSocial: React.FC<Props> = ({setEditMode, id, open}) => {
         if (editSoundState.inputs.insta.value !== "") {
             if (reg.test(editSoundState.inputs.insta.value)) {
                 try {
-                    await sendRequest(`${process.env.NEXT_PUBLIC_REACT_APP_MY_ENV}/users/social/insta/${id}`, 'PATCH', JSON.stringify({
+                    await sendRequest(`/users/social/insta/${id}`, 'PATCH', JSON.stringify({
                         link: editSoundState.inputs.insta.value
                     }),
                     {'Content-Type': 'application/json', 'Authorization': 'Bearer '+token});
@@ -87,7 +87,7 @@ const EditSocial: React.FC<Props> = ({setEditMode, id, open}) => {
 
             if (reg.test(editSoundState.inputs.youtube.value)) {
                 try {
-                    await sendRequest(`${process.env.NEXT_PUBLIC_REACT_APP_MY_ENV}/users/social/youtube/${id}`, 'PATCH', JSON.stringify({
+                    await sendRequest(`/users/social/youtube/${id}`, 'PATCH', JSON.stringify({
                         link: editSoundState.inputs.youtube.value
                     }),
                     {'Content-Type': 'application/json', 'Authorization': 'Bearer '+token});
@@ -109,7 +109,7 @@ const EditSocial: React.FC<Props> = ({setEditMode, id, open}) => {
         if (editSoundState.inputs.twitter.value !== "") {
             if (reg.test(editSoundState.inputs.twitter.value)) {
                 try {
-                    await sendRequest(`${process.env.NEXT_PUBLIC_REACT_APP_MY_ENV}/users/social/twitter/${id}`, 'PATCH', JSON.stringify({
+                    await sendRequest(`/users/social/twitter/${id}`, 'PATCH', JSON.stringify({
                         link: editSoundState.inputs.twitter.value
                     }),
                     {'Content-Type': 'application/json', 'Authorization': 'Bearer '+token});
@@ -133,7 +133,7 @@ const EditSocial: React.FC<Props> = ({setEditMode, id, open}) => {
         if (editSoundState.inputs.facebook.value !== "") {
             if (reg.test(editSoundState.inputs.facebook.value)) {
                 try {
-                    await sendRequest(`${process.env.NEXT_PUBLIC_REACT_APP_MY_ENV}/users/social/facebook/${id}`, 'PATCH', JSON.stringify({
+                    await sendRequest(`/users/social/facebook/${id}`, 'PATCH', JSON.stringify({
                         link: editSoundState.inputs.facebook.value
                     }),
                     {'Content-Type': 'application/json', 'Authorization': 'Bearer '+token});

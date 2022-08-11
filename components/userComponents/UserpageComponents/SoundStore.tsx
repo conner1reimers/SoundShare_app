@@ -68,7 +68,7 @@ const SoundStore: React.FC<Props> = ({ isMyPage, id }) => {
     if (editSoundState.inputs.store.value !== "") {
         if (is_url(editSoundState.inputs.store.value)) {
             try {
-                response = await sendRequest(`${process.env.NEXT_PUBLIC_REACT_APP_MY_ENV}/users/storelink/${id}`, 'PATCH', JSON.stringify({
+                response = await sendRequest(`/users/storelink/${id}`, 'PATCH', JSON.stringify({
                     link: editSoundState.inputs.store.value
                 }),
                 {'Content-Type': 'application/json', 'Authorization': 'Bearer '+token});

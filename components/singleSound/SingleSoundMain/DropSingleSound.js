@@ -82,7 +82,7 @@ const DropSinglesound = ({cancel, setEditMode, isMyPage }) => {
       try {
         dispatch({ type: "MAIN_LOADER_START" });
         result = await sendRequest(
-          `${process.env.NEXT_PUBLIC_REACT_APP_MY_ENV}/sounds/delete/${soundId}/${creatorId}/`,
+          `/sounds/delete/${soundId}/${creatorId}/`,
           "DELETE",
           JSON.stringify({
             path: path,

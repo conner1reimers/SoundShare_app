@@ -164,7 +164,7 @@ const UserSmall: React.FC = () => {
     formData.append("image", file);
     try {
       response = await sendRequest(
-        `${process.env.NEXT_PUBLIC_REACT_APP_MY_ENV}/users/user-img/${params.uid}/${userInfo.user.user_img_path}`,
+        `/users/user-img/${params.uid}/${userInfo.user.user_img_path}`,
         "POST",
         formData,
         {'Authorization': 'Bearer '+token});

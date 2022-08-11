@@ -56,7 +56,7 @@ const AuthForm: React.FC = () => {
         if (formState.inputs.password.isValid && (formState.inputs.email.isValid || formState.inputs.username.isValid)) {
             if (isOnLogin) {
                 try {
-                    response = await sendRequest(`${process.env.NEXT_PUBLIC_REACT_APP_MY_ENV}/users/login/`, 'POST', 
+                    response = await sendRequest(`/users/login/`, 'POST', 
                     JSON.stringify({
                         email: formState.inputs.email.value,
                         password: formState.inputs.password.value,
@@ -73,7 +73,7 @@ const AuthForm: React.FC = () => {
 
                 if (checkboxValue) {
                     try {
-                        response = await sendRequest(`${process.env.NEXT_PUBLIC_REACT_APP_MY_ENV}/users/signup/`, 'POST', 
+                        response = await sendRequest(`/users/signup/`, 'POST', 
                         JSON.stringify({
                             email: formState.inputs.email.value,
                             username: formState.inputs.username.value,

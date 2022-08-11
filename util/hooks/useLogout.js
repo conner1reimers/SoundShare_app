@@ -12,7 +12,7 @@ const useLogout = () => {
     
     const logout = useCallback(async () => {
         try {
-            let result = await sendRequest(`${process.env.NEXT_PUBLIC_REACT_APP_MY_ENV}/users/logout`, 'POST', null, {'Authorization': 'Bearer '+token});
+            let result = await sendRequest(`/users/logout`, 'POST', null, {'Authorization': 'Bearer '+token});
             if (result) {
                 dispatch(logoutUser());
                 setGlobalMsgs("Logged out", "goodbye");

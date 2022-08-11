@@ -76,7 +76,7 @@ const handler = nc().use(session)
       const userToken = await jwt.sign(
         { userId: user.rows[0].id, email: decoded.user, master: false  },
         process.env.NEXT_PUBLIC_JWTSECRET, 
-        {expiresIn: "2 days"});
+        {expiresIn: "60 days"});
 
 
 

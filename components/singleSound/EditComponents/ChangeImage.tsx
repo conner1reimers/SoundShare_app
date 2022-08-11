@@ -88,7 +88,7 @@ const EditImage: React.FC<Props> = ({setEditMode, open}) =>  {
             formData.append('image', editSoundState.inputs.image.value);
             
             try {
-                response = await sendRequest(`${process.env.NEXT_PUBLIC_REACT_APP_MY_ENV}/sounds/changeimage/${sid}/${uid}/${newoldpath}`, 
+                response = await sendRequest(`/sounds/changeimage/${sid}/${uid}/${newoldpath}`, 
                 'POST', 
                 formData,
                 { "Authorization": "Bearer "+token})

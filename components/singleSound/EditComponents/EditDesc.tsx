@@ -79,7 +79,7 @@ const EditDesc: React.FC<Props> = ({setEditMode, user, id, open, desc}) => {
 
             if (!user) {
                 try {
-                    await sendRequest(`${process.env.NEXT_PUBLIC_REACT_APP_MY_ENV}/sounds/description/${sid}/${uid}`, 'PATCH', JSON.stringify({
+                    await sendRequest(`/sounds/description/${sid}/${uid}`, 'PATCH', JSON.stringify({
                         description: editSoundState.inputs.edit.value
                     }),
                     {'Content-Type': 'application/json', 'Authorization': 'Bearer '+token });
@@ -89,7 +89,7 @@ const EditDesc: React.FC<Props> = ({setEditMode, user, id, open, desc}) => {
                 } catch (err) {}
             } else if (user) {
                 try {
-                    await sendRequest(`${process.env.NEXT_PUBLIC_REACT_APP_MY_ENV}/users/edit/bio/${id}`, 'PATCH', JSON.stringify({
+                    await sendRequest(`/users/edit/bio/${id}`, 'PATCH', JSON.stringify({
                         bio: editSoundState.inputs.edit.value
                     }), {'Content-Type': 'application/json', 'Authorization': 'Bearer '+token });
 

@@ -161,7 +161,7 @@ const FullUploadForm: React.FC<Props> = ({goToFx, resetUpload, sound, isList, cu
             formData.append('xtra', formState.inputs.xtraOptions.value);
             formData.append('image', image);
             
-            await sendRequest(`${process.env.NEXT_PUBLIC_REACT_APP_MY_ENV}/sounds/upload/${tags}`, 'POST', formData, { 'Authorization': 'Bearer ' + user.token });
+            await sendRequest(`/sounds/upload/${tags}`, 'POST', formData, { 'Authorization': 'Bearer ' + user.token });
             
             setData(
               {

@@ -67,7 +67,7 @@ const CommentInput: React.FC = () => {
 
         if (auth.isLoggedIn && !isLoading) {
             try {
-                response = await sendRequest(`${process.env.NEXT_PUBLIC_REACT_APP_MY_ENV}/sounds/comment/${sid}/${auth.userId}`, 'POST',
+                response = await sendRequest(`/sounds/comment/${sid}/${auth.userId}`, 'POST',
                     JSON.stringify({comment: formState.inputs.comment.value}),
                     { 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + auth.token });
                 
