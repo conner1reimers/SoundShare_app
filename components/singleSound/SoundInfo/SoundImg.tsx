@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useRef } from 'react'
 import game from "../../../public/game-background.svg";
 import music from "../../../public/loop-background.svg";
 import Image from 'next/image';
@@ -14,29 +14,35 @@ const SoundImg: React.FC = () => {
   const myLoader = ({ src, width, quality }) => {
     return `https://soundshare-bucket.s3.us-east-2.amazonaws.com/${img}`;
   }
-  
+
+  const imgRef = useRef(null);
+
+
   return (
-    <div className="singlesound-img">
-    <div className="singlesound-img-container">
-    {img ? (
-      <Image
-          height={450}
-          width={450}
-          objectFit="fill"
-          className="singlesoundimg"
-          src={`https://soundshare-bucket.s3.us-east-2.amazonaws.com/${img}`}
-            loader={myLoader}
-            unoptimized={true}
-          alt=""
-        />) : (
-        <Image
-          height={450}
-          width={450}
-          objectFit="fill"
-          className="singlesoundimg"
-          src={category === "fx" ? game : music }
-          alt=""
-        />)}
+    <div ref={imgRef} className="singlesound-img">
+      
+        <div className="singlesound-img-container">
+          {img ? (
+          <Image
+                lazyBoundary='650px'
+                lazyRoot={imgRef}
+                layout="fill"
+                objectFit="cover"
+                className="singlesoundimg"
+                src={`https://soundshare-bucket.s3.us-east-2.amazonaws.com/${img}`}
+                  loader={myLoader}
+                  unoptimized={true}
+                alt=""
+              />) : (
+            <Image
+                lazyBoundary='650px'
+                layout="fill"
+                lazyRoot={imgRef}
+                objectFit="cover"
+                className="singlesoundimg"
+                src={category === "fx" ? game : music }
+                alt=""
+              />)}
       </div>
     </div>
   )
