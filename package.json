@@ -13,10 +13,6 @@
     "start": "NODE_ENV=production node server.js",
     "lint": "next lint"
   },
-  "engineStrict": true,
-  "engines": {
-    "node": "16.15.1"
-  },
   "dependencies": {
     "@artsy/fresnel": "^1.9.0",
     "@emotion/react": "^11.4.1",
