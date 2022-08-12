@@ -1,0 +1,24 @@
+@import './main/global';
+@import './main/main';
+@import './main/globalSound';
+@import './shared/input';
+@import './pages/homepage/homepage';
+@import './pages/browse/browse';
+@import './pages/userPage/userPage';
+@import './pages/singleSound/singleSound';
+@import './pages/about/about';
+@import './pages/blogPage/blogPage';
+@import './pages/feedPage/feedPage';
+@import './pages/passwordreset/passwordreset';
+@import './components/recent-sounds/recentSounds';
+@import './components/recent-sounds/recentSoundsSide';
+@import './components/mouseover/mouseover';
+@import './modals/upload-modal';
+@import './modals/modalstyles';
+@import './modals/authModal';
+@import './modals/fxpage';
+@import './navbar/top_navbar';
+@import './navbar/sidedrawer';
+@import './util/overwrites';
+
+

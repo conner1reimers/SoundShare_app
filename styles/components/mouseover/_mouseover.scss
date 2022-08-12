@@ -1,0 +1,44 @@
+.mouseover-top-list {
+    
+}
+
+.userpage-followers-mouseover-container {
+    max-width: 70px;
+    position: relative;
+}
+
+
+div.mouseOver.circle-btn-mouseover.userpage-followers-mouseover {
+    left: -2rem;
+    @include flexcenter;
+    padding: .28rem 1.68rem;
+
+    @media screen and (max-width: 1920px) {
+        left: -1.25rem;
+    }
+    
+    @media screen and (max-width: 1099px) {
+        left: 3.25rem;
+    }
+
+    span.mouseOver--label {
+      font-size: 0.7rem;
+      position: relative;
+      @include flexcenter;
+      top: 0vh;
+      font-family: $font-1;
+      @media screen and (max-width: 1099px) {
+        font-size: 1.3rem;
+      }
+    }
+
+    @media screen and (min-height: $bp-height-large) {
+      top: -5vh;
+    }
+
+    @media screen and (max-width: 1099px) {
+        padding: .58rem 3.18rem;
+        left: 7.25rem;
+    }
+  }
+  

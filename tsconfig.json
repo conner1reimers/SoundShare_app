@@ -1,0 +1,32 @@
+{
+  "compilerOptions": {
+    "target": "es5",
+    "types": [
+      "node"
+    ],
+    "lib": [
+      "dom",
+      "dom.iterable",
+      "esnext"
+    ],
+    "allowJs": true,
+    "skipLibCheck": true,
+    "strict": false,
+    "forceConsistentCasingInFileNames": true,
+    "noEmit": true,
+    "esModuleInterop": true,
+    "module": "esnext",
+    "moduleResolution": "node",
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "jsx": "preserve"
+  },
+  "include": [
+    "next-env.d.ts",
+    "**/*.ts",
+    "**/*.tsx"
+, "components/singleSound/SingleSoundMain/DropSingleSound.js", "components/shared/Bottompage.js", "pages/_app.js", "pages/_app.js", "pages/sounds/[sid].tsx", "pages/user/[uid].js", "pages/password-reset/[token].js"  ],
+  "exclude": [
+    "node_modules"
+  ]
+}

@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Layer_1" x="0px" y="0px" viewBox="0 0 496 496" style="enable-background:new 0 0 496 496;" xml:space="preserve" width="512px" height="512px" class=""><g><path style="fill:#1b1f1f" d="M496,320.8c0,96.8-78.4,175.2-175.2,175.2H175.2C78.4,496,0,417.6,0,320.8V175.2  C0,78.4,78.4,0,175.2,0h145.6C417.6,0,496,78.4,496,175.2V320.8z" data-original="#7A61C9" class="active-path" data-old_color="#7A61C9"/><path style="fill:#56C4C7" d="M0,175.2C0,78.4,78.4,0,175.2,0h145.6C417.6,0,496,78.4,496,175.2v145.6  c0,96.8-78.4,175.2-175.2,175.2" data-original="#6752C1" class="" data-old_color="#6752C1"/><g>
+	<path style="fill:#53C9CC" d="M320.8,0C417.6,0,496,78.4,496,175.2v145.6c0,96.8-78.4,175.2-175.2,175.2" data-original="#5349B7" class="" data-old_color="#5349B7"/>
+	<path style="fill:#53C9CC" d="M162.4,248h-5.6c-8.8,0-15.2,7.2-15.2,16s7.2,16,15.2,16h5.6c8.8,0,15.2-7.2,15.2-16   S170.4,248,162.4,248z" data-original="#5349B7" class="" data-old_color="#5349B7"/>
+	<path style="fill:#53C9CC" d="M250.4,248h-5.6c-8.8,0-15.2,7.2-15.2,16s7.2,16,15.2,16h5.6c8.8,0,15.2-7.2,15.2-16   S259.2,248,250.4,248z" data-original="#5349B7" class="" data-old_color="#5349B7"/>
+	<path style="fill:#53C9CC" d="M339.2,248h-5.6c-8.8,0-15.2,7.2-15.2,16s7.2,16,15.2,16h5.6c8.8,0,15.2-7.2,15.2-16   S348,248,339.2,248z" data-original="#5349B7" class="" data-old_color="#5349B7"/>
+</g><g>
+	<path style="fill:#EFEDE6" d="M162.4,232h-5.6c-8.8,0-15.2,7.2-15.2,16c0,8.8,7.2,16,15.2,16h5.6c8.8,0,15.2-7.2,15.2-16   S170.4,232,162.4,232z" data-original="#FFFFFF" class="" data-old_color="#FFFFFF"/>
+	<path style="fill:#EFEDE6" d="M250.4,232h-5.6c-8.8,0-15.2,7.2-15.2,16c0,8.8,7.2,16,15.2,16h5.6c8.8,0,15.2-7.2,15.2-16   S259.2,232,250.4,232z" data-original="#FFFFFF" class="" data-old_color="#FFFFFF"/>
+	<path style="fill:#EFEDE6" d="M339.2,232h-5.6c-8.8,0-15.2,7.2-15.2,16c0,8.8,7.2,16,15.2,16h5.6c8.8,0,15.2-7.2,15.2-16   S348,232,339.2,232z" data-original="#FFFFFF" class="" data-old_color="#FFFFFF"/>
+</g></g> </svg>

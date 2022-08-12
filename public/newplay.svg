@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Capa_1" x="0px" y="0px" viewBox="0 0 512.006 512.006" style="enable-background:new 0 0 512.006 512.006;" xml:space="preserve" width="512px" height="512px" class="">
+
+    <defs>
+    <filter id="displacementFilter">
+                
+
+                <feGaussianBlur in="SourceAlpha" 
+                    stdDeviation="9" result="blr" />
+                
+
+
+                <feOffset dx="20" dy="20" result="offsetblur" />
+
+                <feMerge>
+                    <feMergeNode/>
+                    <feMergeNode in="offsetblur"/>
+                    <feMergeNode in="SourceGraphic"/>
+                </feMerge>
+                
+                
+
+    </filter>
+    </defs>
+
+<g>
+<path filter="url(#displacementFilter)" style="fill:#53C9CC" d="M473.344,233.683l-409.6-230.4c-12.339-6.912-27.955-2.56-34.867,9.779  c-2.15,3.84-3.277,8.141-3.277,12.544v460.8c0,14.131,11.469,25.6,25.6,25.6c4.403,0,8.704-1.126,12.544-3.277l409.6-230.4  c12.339-6.912,16.691-22.528,9.779-34.867C480.819,239.366,477.44,235.987,473.344,233.683z" data-original="#455A64" class="active-path" data-old_color="#455A64"/><path d="M51.2,512.006c-14.131,0-25.6-11.469-25.6-25.6v-460.8c0-14.131,11.469-25.6,25.6-25.6c4.403,0,8.704,1.126,12.544,3.277,6.912,16.691,22.528,9.779,34.867c-2.304,4.096-5.683,7.475-9.779,230.4  C59.904,510.879,55.603,512.006,51.2,512.006z M76.8,69.382V442.63l331.776-186.624L76.8,69.382z" data-original="#000000" class="" style="fill:#afc2ca33" data-old_color="#000000"/></g> </svg>

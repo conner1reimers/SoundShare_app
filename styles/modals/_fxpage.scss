@@ -1,0 +1,1521 @@
+.uploadmodal-big {
+	
+	&--btn {
+		background-color: #7aa376b9;
+		transform: scale(0.7);
+		@include flexcenter;
+		min-height: 50px;
+		white-space: nowrap;
+
+		img {
+			overflow: visible;
+			@include heightWidthSame(1.2rem);
+			position: relative;
+
+			left: 1.5vw;
+			border-radius: 50%;
+			padding: 0.5rem;
+		}
+	}
+
+	&--fx {
+		grid-row: 5 / 6;
+		grid-column: 2 / 3;
+		justify-self: center;
+		align-self: center;
+		@include heightWidth100();
+		font-size: 3rem;
+		@include flexcenter;
+		color: $color-white;
+		text-transform: capitalize;
+		filter: drop-shadow(1.4px 2px 1px rgba(156, 165, 167, 0.13));
+		z-index: 1;
+
+		
+	}
+
+	&--fxpage {
+		width: 100%;
+		height: 100%;
+		position: relative;
+		
+
+		&--box {
+			position: absolute;
+			@include heightWidth100;
+			display: grid;
+			grid-template-rows: 8% 80% 12%;
+			grid-template-columns: 20% 71% 9%;
+			height: 115%;
+			top: -15%;
+			
+			
+			
+			
+			&--playpause {
+				grid-row: 3/4;
+				grid-column: 1/2;
+				position: relative;
+				@include flexcenter;
+				@include heightWidth100;
+				width: 5vw;
+				height: 7.5vh;
+				min-height: 50px;
+				background: none;
+
+				div {
+					@include flexcenter;
+					@include heightWidth100;
+					position: relative;
+					box-shadow: $shadow-newer-2;
+					width: 20vw;
+					min-height: 50px;
+
+					background-color: rgba(148, 164, 167, 0.04);
+					border-radius: 1rem;
+					transform: scale(0.8);
+					height: 5.7vh;
+					padding: 0.6rem 0;
+
+					div.recent-sounds--list--item--player {
+						transform: scale(0.56);
+						position: absolute;
+						@include flexcenter;
+						// bottom: -1vh;
+						background: none;
+						box-shadow: none;
+						min-height: 55px;
+
+						button.btn {
+							transform: scale(1.1) scaleX(1) scaleY(0.9);
+							left: 0.1vw;
+							margin: 0.3rem 0.7rem;
+							img {
+								opacity: 0.8;
+							}
+							padding: .25rem;
+
+						}
+						button.rotate {
+							// transform: scale(0.75);
+							top: 0.5vh;
+							left: 0.1vw;
+							padding: .5rem;
+
+						}
+						button.right-fx {
+							// transform: scale(0.55);
+							top: 0.5vh;
+							padding: .5rem;
+
+						}
+						
+					}
+				}
+
+
+				&--leftarrow {
+					transform: rotate(180deg);
+					@include heightWidthSame(2rem);
+					position: relative;
+					right: 1rem;
+					opacity: 0.7;
+				}
+			}
+
+			
+
+			&--reloadTextbox {
+				grid-row: 1/2;
+				grid-column: 3/4;
+				display: flex;
+				justify-content: flex-start;
+				align-items: flex-start;
+				position: relative;
+				top: 12.5vh;
+				z-index: 999999;
+				min-width: 400px;
+				right: 7vw;
+
+				@media screen and (max-width: 2500px) {
+					right: 10vw;
+				}
+				@media screen and (max-width: 2000px) {
+					right: 15vw;
+				}
+				@media screen and (max-width: 1400px) {
+					right: 20vw;
+				}
+				@media screen and (max-width: 1099px) {
+					top: 7.25rem;
+					right: 2rem;
+				}
+
+				&--mobile {
+					@media screen and (max-width: 1099px) {
+						top: 10.7rem;
+						right: 1.8rem;
+						
+					}
+	
+				}
+
+
+				div.fx-backdrop {
+					height: 500vh;
+					width: 100vw;
+					transform: scale(6);
+					right: 0;
+					top: 0;
+					background-color: rgba(0, 0, 0, 0.336);
+					position: absolute;
+					z-index: 999;
+				}
+				span {
+					position: relative;
+					right: 1rem;
+				}
+				span.fx-label {
+					color: $color-white-3;
+					font-size: 1rem;
+					position: relative;
+					font-family: $font-3;
+					font-weight: 600;
+					white-space: nowrap;
+					z-index: 999999;
+					filter: brightness(2.2);
+					@media screen and (max-width: 1099px) {
+						font-size: 2.1rem;
+	
+					}
+					
+				}
+				img {
+					@include heightWidthSame(1.8rem);
+					position: relative;
+					right: 1vw;
+					opacity: 0.7;
+					transform: rotate(270deg);
+					z-index: 999999;
+					filter: brightness(2.2);
+					@media screen and (max-width: 1099px) {
+						@include heightWidthSame(2.7rem);
+
+					}
+				}
+			}
+
+			&--hearText {
+				grid-row: 3/4;
+				grid-column: 2/3;
+				position: relative;
+				right: 1.4vw;
+				@include flexcenter;
+				justify-content: flex-start;
+				transform: scale(0.7);
+
+				@media screen and (max-width: 1099px) {
+					grid-row: 2/3;
+					align-items: flex-end;
+					top: 4.5rem;
+					right: -2rem;
+
+				}
+				@media screen and (max-width: 850px) {
+					right: -7rem;
+				}
+				@media screen and (max-width: 750px) {
+					right: -12rem;
+				}
+				@media screen and (max-width: 550px) {
+					right: -14rem;
+				}
+				&--mobile {
+					@media screen and (max-width: 1099px) {
+						top: -14.75rem;
+						right: -4rem;
+					}
+					@media screen and (max-width: 790px) {
+						right: -8rem;
+					}
+					@media screen and (max-width: 600px) {
+						right: -14rem;
+					}
+					
+	
+				}
+
+				div.fx-backdrop {
+					height: 500vh;
+					width: 100vw;
+					transform: scale(6);
+					right: 0;
+					top: 0;
+					background-color: rgba(0, 0, 0, 0.336);
+					position: absolute;
+					z-index: 999;
+				}
+				span.fx-label {
+					color: $color-white-3;
+					font-size: 1rem;
+					position: relative;
+					right: 2.5rem;
+					font-family: $font-3;
+					font-weight: 600;
+					left: 0rem;
+					z-index: 9999;
+					filter: brightness(2.2);
+					@media screen and (max-width: 1099px) {
+						font-size: 2.1rem;
+						height: min-content;
+					}
+					
+					@media screen and (max-width: 560px) {
+						white-space: normal;
+						width: 120px;
+						top: 4rem;
+
+	
+	
+					}
+				}
+				img {
+					@include heightWidthSame(1.8rem);
+					position: relative;
+					right: 1rem;
+					opacity: 0.7;
+					z-index: 9999;
+					filter: brightness(2.2);
+					@media screen and (max-width: 1099px) {
+						@include heightWidthSame(2.7rem);
+
+					}
+				}
+			}
+
+			&--reload {
+				grid-row: 3/4;
+				grid-column: 3/4;
+				@include heightWidth100;
+				@include flexcenter;
+				position: absolute;
+
+				button.btn.nohover {
+					position: relative;
+					display: flex;
+					align-items: center;
+					width: 8vw;
+					background-color: rgba(37, 42, 44, 0.473);
+
+					span {
+						position: relative;
+						white-space: nowrap;
+					}
+					img {
+						overflow: visible;
+						@include heightWidthSame(1.2rem);
+						position: relative;
+						border-radius: 50%;
+						padding: 0.5rem;
+					}
+				}
+			}
+
+			&--player {
+				@include heightWidth100;
+				grid-column: 1/2;
+				grid-row: 2/3;
+				display: flex;
+				justify-content: center;
+
+				&--btn {
+					background: none;
+					font-family: $font-3;
+					font-weight: 200;
+				}
+				button {
+					margin-left: 2rem;
+				}
+			}
+
+			&--fxMenu {
+				grid-column: 1/4;
+				grid-row: 2/3;
+				@include heightWidth100;
+				display: grid;
+				grid-template-rows: 10% 90%;
+				grid-template-columns: 30% 70%;
+				position: relative;
+				grid-column-gap: 1.5rem;
+
+				min-height: 500px;
+				max-height: 570px;
+
+				overflow-y: auto;
+				overflow-x: hidden;
+				z-index: 2;
+				scrollbar-width: thin;
+				scrollbar-color: rgba(82, 90, 92, 0.151);
+
+				
+				&::-webkit-scrollbar {
+					background: rgba(82, 90, 92, 0.151);
+					width: 1px;
+					border-radius: 0.4rem;
+				}
+				&::-webkit-scrollbar-track {
+					background: rgba(82, 90, 92, 0.151);
+					border-radius: 0.4rem;
+					background-clip: content-box;
+				}
+
+				@media screen and (max-width: 1099px) {
+					grid-template-columns: 30% 65%;
+
+					&::after {
+						@include beforeTrick;
+						position: relative;
+						display: flex;
+						visibility: hidden;
+						pointer-events: none;
+						height: 50px;
+						margin-top: 275px;
+					  }
+				}
+
+				@media screen and (max-width: 750px) {
+					padding-top: 5rem;
+					grid-template-columns: 30% 60%;
+				}
+				
+				@media screen and (max-width: 375px) {
+					grid-template-columns: 30% 58%;
+				}
+				
+
+				&--head {
+					grid-row: 1/2;
+					grid-column: 1/3;
+					@include flexcenter;
+					z-index: 3;
+					pointer-events: none;
+					h1.headings {
+						font-size: 2.7rem;
+						font-weight: 400;
+						font-family: $font-1;
+						color: $color-white-2;
+						opacity: 0.85;
+						@media screen and (max-width: 1099px) {
+							font-size: 4rem;
+						}
+					}
+				}
+
+				&--preset-page {
+					grid-row: 2/3;
+					grid-column: 1/3;
+					@include heightWidth100;
+					position: relative;
+					height: 115%;
+					top: -15%;
+
+					
+
+					@media screen and (max-width: 1099px) {
+						height: 100%;
+						top: -5%;
+					}
+
+					@media screen and (min-width: $bp-large) {
+						h1 {
+							position: relative;
+							top: 1.5rem;
+						}
+					}
+					div.uploadmodal-big--fxpage--box--fxMenu--head {
+						h1 {
+							@media screen and (max-width: 1099px) {
+								transform: translateY(-2rem);
+							}
+						}
+					}
+					
+					
+					@media screen and (max-width: 1099px) and (max-height: 900px) {
+						padding-bottom: 8rem;
+					}
+					
+					@media screen and (max-width: 575px) and (max-height: 900px) {
+						padding-bottom: 13rem;
+					}
+					@media screen and (max-width: 575px) and (max-height: 575px) {
+						padding-bottom: 18rem;
+					}
+					@media screen and (max-width: 575px) and (max-height: 525px) {
+						padding-bottom: 23rem;
+					}
+				
+
+					&--list {
+						@include heightWidth100;
+						width: 100%;
+						position: relative;
+						display: flex;
+						align-items: center;
+						justify-content: flex-start;
+						top: -5%;
+						display: flex;
+						z-index: 2;
+						justify-content: space-around;
+						align-items: center;
+						pointer-events: none;
+						
+					}
+
+					button.btn.nohover {
+						min-width: 265px;
+						@media screen and (max-width: 1400px) {
+							min-width: 295px;
+						}
+					}
+
+					&--item {
+						display: flex;
+						flex-direction: column;
+						justify-content: flex-start;
+						align-items: center;
+						margin: 0 0rem;
+						padding: 0;
+						width: 20vw;
+						pointer-events: stroke;
+						@media screen and (max-width: 1099px) {
+							max-height: 500px;
+						}
+						@media screen and (max-width: 575px) {
+							@include heightWidth100;
+							position: relative;
+							top: 0%;
+						}
+
+						&--checkbox {
+							@include heightWidth100;
+							@include flexcenter;
+							justify-content: flex-start;
+							transition: all 0.2s;
+
+							div {
+								@include flexcenter;
+								min-width: 20px;
+								max-width: 30px;
+								min-height: 30px;
+								max-height: 30px;
+								left: 50%;
+								height: 50%;
+								background-color: $color-white;
+								border-radius: 50%;
+								transform: scale(0.8);
+								transition: all 0.2s;
+
+								@media screen and (min-width: 1401px) {
+									min-width: 27px;
+								}
+
+								div.inner-dotz {
+									background-color: none;
+									left: 0;
+									border-radius: 50%;
+									transition: all 0.2s;
+									@include flexcenter;
+									transform: scale(0);
+									min-width: 25px;
+									min-height: 25px;
+									max-width: 50px;
+									max-height: 50px;
+									position: absolute;
+								}
+							}
+						}
+
+						.uploadmodal-big--fxpage--box--fxMenu--preset-page--btn {
+							background: none;
+							box-shadow: none;
+							@include flexcenter;
+							@include heightWidth100;
+							justify-content: flex-end;
+							padding: 1rem 1rem;
+							margin: 1rem 0.1rem;
+							width: 15vw;
+							height: 7vh;
+							transform: scale(0.9);
+							transition: all 0.2s;
+							box-shadow: none;
+							border-radius: 0.7rem;
+							min-height: 52px;
+							
+
+
+							&:before {
+								@include beforeTrick;
+								opacity: 1;
+								box-shadow: none;
+							}
+							span {
+								display: flex;
+								justify-content: flex-start;
+								align-items: center;
+								position: absolute;
+								width: 100%;
+								left: 30%;
+								font-size: 1rem;
+								font-family: $font-1;
+								font-weight: 500;
+								color: $color-white-2;
+								opacity: 0.9;
+								@media screen and (max-width: 1099px) {
+									font-size: 1.9rem;
+								}
+							}
+
+							img {
+								@include heightWidthSame(2rem);
+								position: absolute;
+								transition: none;
+								right: 1.2rem;
+
+								@media screen and (max-width: 1099px) {
+									@include heightWidthSame(4rem);
+								}
+							}
+							
+							@media (hover: hover) and (pointer: fine) {
+								&:hover {
+									background-color: rgba(108, 121, 124, 0.64);
+								}
+							}
+							
+						}
+						&--checkbox--active.btn {
+							background-color: #30383a5b;
+
+							&::before {
+								@include beforeTrick;
+								box-shadow: $shadow-newer-2;
+								opacity: 0.5;
+							}
+							div {
+								div {
+									background-color: $color-light-blue;
+									transition: all 0.2s;
+									@include flexcenter;
+
+									div.inner-dotz {
+										background-color: $color-darker;
+										border-radius: 50%;
+										@include heightWidthSame(3rem);
+										top: 0;
+										left: 0;
+										transform: scale(0.4);
+										box-shadow: none;
+										opacity: 1;
+										transition: all 0.2s;
+										@include flexcenter;
+										top: 0;
+										opacity: 0.7;
+										@media screen and (max-width: 1099px) {
+											@include heightWidthSame(3.4rem);
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+
+				&--descriptions {
+					@include heightWidth100;
+					grid-row: 2/3;
+					grid-column: 1/2;
+					display: grid;
+					align-items: center;
+					position: absolute;
+					grid-row-gap: 1rem;
+					padding-bottom: 22vh;
+					overflow: visible;
+					
+					@media screen and (max-height: 600px) {
+						padding-bottom: 30rem;
+					}
+					@media screen and (max-height: 480px) {
+						padding-bottom: 50rem;
+
+					}
+					@media screen and (max-height: 315px) {
+						padding-bottom: 62rem;
+					}
+				}
+
+				&--sliders {
+					@include heightWidth100;
+					grid-row: 2/3;
+					grid-column: 2/3;
+					display: grid;
+					align-items: center;
+					position: absolute;
+					grid-row-gap: 1rem;
+					
+					
+					
+				}
+			}
+
+			&--fxList {
+				grid-column: 2/3;
+				grid-row: 1/3;
+				@include heightWidth100;
+				overflow: hidden;
+				@include flexcenter;
+
+				@media screen and (max-height: 600px) {
+					min-height: 508px;
+				}
+
+				&--list {
+					@include heightWidth100;
+					list-style: none;
+					display: flex;
+					flex-direction: column;
+					justify-content: flex-start;
+					align-items: flex-start;
+					margin: 0;
+					padding: 0;
+					
+
+					@media screen and (max-height: 600px) {
+						min-height: 508px;
+					}
+					@media screen and (max-width: 1300px) {
+						position: relative;
+						top: 6vh;
+					}
+				}
+				&--item {
+					position: relative;
+					@include heightWidth100;
+					background-image: none;
+					margin: 0;
+					padding: 0;
+					margin-left: 2rem;
+					
+					&::-webkit-scrollbar {
+						background: rgba(82, 90, 92, 0.151);
+						width: 3px;
+						border-radius: 0.4rem;
+					}
+					&::-webkit-scrollbar-track {
+						background: rgba(82, 90, 92, 0.151);
+						border-radius: 0.4rem;
+						background-clip: content-box;
+					}
+					@media screen and (max-height: 540px) {
+						overflow-y: auto;
+						padding-bottom: 17rem;
+					}
+					@media screen and (max-height: 400px) {
+						padding-bottom: 37rem;
+					}
+					button.btn {
+						background: none;
+						box-shadow: none;
+						transition: all 0.2s;
+						position: relative;
+						display: block;
+						width: 100%;
+						height: 9.8vh;
+						padding: 0rem 0rem;
+						border: none;
+						transition: cubic-bezier(0.6, -0.28, 0.735, 0.045);
+						filter: none;
+						display: flex;
+						width: 100%;
+
+						@media screen and (max-height: 600px) {
+							min-height: 56px;
+						}
+						&::before {
+							@include beforeTrick;
+							opacity: 0;
+						}
+
+						@media screen and (min-width: $bp-large) {
+							font-size: 1rem;
+						}
+
+						img {
+							@include heightWidthSame(1rem);
+							justify-self: flex-start;
+							align-self: center;
+							background: none;
+							position: relative;
+							left: 1rem;
+							@media screen and (max-width: 1099px) {
+								@include heightWidthSame(2rem);
+							}
+						}
+						
+						@media (hover: hover) and (pointer: fine) {
+							&:hover {
+								color: $color-light-blue;
+								transition: cubic-bezier(0.6, -0.28, 0.735, 0.045);
+								background: none;
+							}
+	
+						}
+
+						
+						span {
+							align-self: center;
+							justify-self: flex-start;
+							background: none;
+							background-image: none;
+							display: flex;
+							justify-content: flex-start;
+							align-items: center;
+							position: relative;
+							position: relative;
+							font-family: $font-3;
+							font-weight: 300;
+							white-space: nowrap;
+							@media screen and (min-width: $bp-large) {
+								font-size: 1rem;
+							}
+							@media screen and (max-width: 1099px) {
+								font-size: 2rem;
+								width: 100%;
+							}
+						}
+						span.fx-label {
+							left: 1rem;
+						}
+					}
+
+					&--btn {
+						
+					}
+				}
+			}
+		}
+	}
+}
+
+.uploadModal {
+	&--fx {
+		grid-row: 2 / 3;
+		grid-column: 2 / 3;
+		justify-self: center;
+		align-self: center;
+		@include heightWidth100();
+		@include flexcenter;
+		font-size: 3rem;
+		font-family: $font-3;
+		color: $color-white;
+		text-transform: capitalize;
+		filter: drop-shadow(1.4px 2px 1px rgba(156, 165, 167, 0.13));
+
+		button {
+			box-shadow: none;
+			width: 15rem;
+			&::before {
+				opacity: 0.1;
+			}
+		}
+	}
+}
+
+#fx-sidewindow-hook {
+	z-index: 9999;
+	display: block;
+	position: relative;
+}
+
+.fx-sidewindow {
+	position: fixed;
+	top: 5vh;
+	left: 3rem;
+	z-index: 999;
+	height: 90vh;
+	width: 13vw;
+	border-radius: 0.5rem;
+
+	background-image: linear-gradient(45deg, #1b1f1f, #1b1f1f, #1b1f1f);
+	min-height: 612.875px;
+
+	&::before {
+		@include beforeTrick;
+		opacity: 1;
+		box-shadow: $shadow-new;
+	}
+
+	@media screen and (max-width: 1400px) {
+		bottom: 0vh;
+		width: 13vw;
+		height: 94vh;
+		left: 1rem;
+	}
+
+	@media screen and (max-width: 1300px) {
+		top: 0vh;
+		border-radius: 0;
+		min-width: 13.75vw;
+		left: 0rem;
+		height: 100vh;
+		border-right: 4px solid $color-new-grey;
+	}
+
+	@media screen and (max-width: 1099px) {
+		width: 25vw;
+	}
+
+	@media screen and (max-height: 600px) {
+		min-height: 508px;
+	}
+
+	@media screen and (max-width: 1099px) {
+		min-width: 245px;
+	}
+}
+
+#fx-bottom-hook {
+	@include heightWidth100;
+	z-index: 995;
+	position: relative;
+	@media screen and (max-width: 1099px) {
+		z-index: 999;
+	}
+}
+.fx-bottomwindow {
+	position: fixed;
+	bottom: 0;
+	right: 0;
+	margin: 0;
+	margin-bottom: 5vh;
+	margin-right: 5vw;
+	z-index: 997;
+	min-width: 78vw;
+	height: 15vh;
+	border-radius: 0.5rem;
+	min-height: 97.8px;
+	background-image: linear-gradient(45deg, #1b1f1f, #1b1f1f, #1b1f1f);
+	display: grid;
+	grid-template-rows: 10% 90%;
+	grid-template-columns: 10% 20% 70%;
+
+	box-shadow: $shadow-new;
+
+	// @media screen and (min-device-width: $bp-large) {
+	//   right: 5vw;
+	// }
+	
+
+	@media screen and (max-width: 1400px) {
+		margin-bottom: .5rem;
+		min-width: 83vw;
+		margin-right: 2rem;
+	}
+
+	@media screen and (max-width: 1300px) {
+		margin-bottom: 0vh;
+		min-width: 86vw;
+		margin-right: 0rem;
+		border-radius: 0;
+	}
+
+	@media screen and (max-width: 1099px) {
+		width: 100%;
+		max-height: 105.8px;
+	}
+
+
+	&--original {
+		grid-row: 1/2;
+		grid-column: 1/2;
+		position: absolute;
+		width: 200%;
+		left: 1rem;
+		top: 0.4rem;
+		min-width: 170px;
+		pointer-events: none;
+		z-index: 5;
+
+		span {
+			position: absolute;
+			font-size: 1rem;
+			color: $color-white-3;
+			font-family: $font-3;
+			font-weight: 600;
+			white-space: nowrap;
+			@media screen and (max-width: 1099px) {
+				font-size: 1.8rem;
+			}
+		}
+		@media screen and (max-width: 1099px) {
+			position: relative;
+		}
+	}
+
+	&--compare {
+		grid-row: 2/3;
+		grid-column: 1/2;
+		@include flexcenter;
+		justify-content: flex-start;
+		position: relative;
+		@include heightWidth100;
+		left: 3.8vw;
+		background: none;
+		min-width: 170px;
+		min-height: 50px;
+		z-index: 6;
+
+		@media screen and (max-width: 1099px) {
+			left: 7rem;
+		}
+		
+
+		div {
+			@include heightWidth100;
+			@include flexcenter;
+			position: relative;
+			border-radius: 1rem;
+			width: 40%;
+			height: 41%;
+			padding: 0;
+			margin: 0;
+			
+
+			div.recent-sounds--list--item--player.globalPlay {
+				@include heightWidth100;
+				@include flexcenter;
+				position: relative;
+				box-shadow: none;
+				background-color: $color-new-grey;
+				padding: -0.8rem 1.6rem;
+				width: 22vw;
+
+				min-width: 170px;
+				min-height: 45px;
+				max-height: 65px;
+
+				@media screen and (max-width: 1099px) {
+					border-radius: 3rem;
+				}
+
+				&::before {
+					background: none;
+					box-shadow: none;
+				}
+				button.btn {
+					margin: 0;
+					position: relative;
+					right: 0;
+					@include flexcenter;
+					transform: scale(0.45) scaleX(1);
+					top: -0.01vh;
+					margin: 0.3rem -1.2rem;
+					pointer-events: stroke;
+
+					img {
+						opacity: 0.8;
+					}
+					@media screen and (max-width: 1099px) {
+						transform: scale(0.6) scaleX(1);
+						margin: 0.3rem -1rem;
+					}
+				}
+
+				button.right {
+					transform: scale(0.31) scaleX(1);
+					top: 0.1vh;
+					@media screen and (max-width: 1099px) {
+						transform: scale(0.41) scaleX(1);
+					}
+				}
+
+				button.rotate {
+					transform: scale(0.31) scaleX(1);
+					top: 0.1vh;
+					@media screen and (max-width: 1099px) {
+						transform: scale(0.41) scaleX(1);
+					}
+					
+				}
+			}
+		}
+	}
+
+	&--player {
+		grid-row: 2/3;
+		grid-column: 3/4;
+		position: relative;
+
+		div.global-player--time {
+			&--line {
+				height: 10%;
+			}
+		}
+		@media screen and (max-width: 1099px) {
+			top: 1.5vh;
+		}
+	}
+}
+
+.fx-modal {
+	@include flexcenter;
+	pointer-events: none;
+	z-index: 998;
+	min-width: 78vw;
+	height: 73.5vh;
+	top: 0;
+	right: 0;
+	margin: 0;
+	margin-top: -5vh;
+	margin-right: 5vw;
+	border-radius: 0.5rem;
+	pointer-events: auto;
+	background-image: linear-gradient(45deg, #1b1f1f, #1b1f1f, #1b1f1f);
+	overflow: hidden;
+	position: absolute;
+	min-height: 508px;
+
+	
+
+	@media screen and (max-width: 1400px) {
+		width: 83vw;
+		height: 78vh;
+		margin-right: 2rem;
+	}
+
+	@media screen and (max-width: 1400px) {
+		width: 83vw;
+		height: 78vh;
+		margin-right: 2rem;
+	}
+	@media screen and (max-width: 1300px) {
+		border-radius: 0;
+		height: 90vh;
+		min-height: 508px;
+		width: 86vw;
+		margin-top: 0;
+		margin-right: 0;
+		margin-top: 0;
+		height: 85vh;
+	}
+
+	
+
+
+	@media screen and (max-height: 650px) {
+		height: 90vh;
+		min-height: 508px;
+	}
+}
+
+div.fx-modal.fxmodal-overwrite-mobile {
+
+	@media screen and (max-height: 650px) and (min-width: 1301px) {
+		margin-top: 5vh;
+	}
+
+	@media screen and (min-width: $bp-large) and (max-width: 1300px) and (min-height: 651px) {
+		margin-top: -10vh;
+	}
+}
+	
+
+
+div.bottom--tobar {
+	grid-row: 1/-1;
+	grid-column: 1/-1;
+	visibility: hidden;
+	@include heightWidth100;
+	display: grid;
+	grid-template-rows: 100%;
+	grid-template-columns: 49% 44% 7%;
+	z-index: 5;
+	pointer-events: none;
+}
+
+div.length-to-end-fx {
+	grid-column: 2/3;
+}
+
+div.circleSave {
+	@include circleActionBtn;
+	background-color: none;
+	button.btn.nohover {
+		padding: 0;
+		@include flexcenter;
+		@include heightWidthSame(2.9rem);
+		background: none;
+		box-shadow: none;
+		&:before {
+			box-shadow: none;
+		}
+		@media screen and (max-width: 1099px) {
+			padding: 0rem;
+			margin-left: 2vw;
+			bottom: 2vh;
+			@include heightWidthSame(5rem);
+		}
+
+
+		
+		img {
+			filter: brightness(1.2);
+			@include heightWidthSame(1.3rem);
+			box-shadow: $shadow-newer-2;
+			@media screen and (max-width: 1099px) {
+				@include heightWidthSame(2.8rem);
+			}
+		}
+	}
+}
+
+
+div.fx-desc--item {
+	span.fx-moveup {
+		position: relative;
+		bottom: 2.5vh;
+	}
+}
+
+button.uploadmodal-big--fxpage--box--fxMenu--preset-page--item--checkbox--active.btn {
+	div.checkbox-circle {
+		@include flexcenter;
+		div.inner-dotz {
+			position: relative;
+			transform: scale(0.5);
+			min-height: 20px;
+			min-width: 20px;
+
+			max-height: 30px;
+			max-width: 30px;
+
+			opacity: 1;
+		}
+	}
+}
+
+div.modal.fx-modal--contain {
+	@media screen and (max-width: 1300px) {
+		top: 0;
+		left: 0;
+	}
+}
+
+div.modal.fx-modal-small {
+	top: 0;
+	right: 0;
+	width: 100%;
+	border-radius: 0;
+	div.uploadmodal-big {
+		@media screen and (max-width: 1099px) {
+			grid-template-rows: 10% 23% 55% 5% 12%;
+
+		}
+	}
+	
+}
+
+.fx-side-small {
+	&--openside-contain {
+		width: 42%;
+		top: 0;
+		left: 0;
+		height: 6.5%;
+		@include flexcenter;
+		background-color: rgba(153, 205, 50, 0);
+		z-index: 999;
+		@include mainBTN;
+		position: fixed;
+
+
+		button.btn.nohover {
+			transform: scale(1.55);
+			background-color: #434949;
+			padding: 0;
+			width: 8rem;
+			height: 2rem;
+			@include flexcenter;	
+			padding-bottom: .2rem;
+			white-space: nowrap;
+
+
+			@media screen and (max-width: 675px) {
+				transform: scale(1.4);
+				bottom: 0.6rem;
+
+			}
+			@media screen and (max-width: 565px) {
+				transform: scale(1.24);
+
+			}
+			@media screen and (max-width: 465px) {
+				transform: scale(1.14);
+				
+			}
+			@media screen and (max-width: 375px) {
+				left: 2rem;
+			}
+		}
+	}
+	&--closeside-contain {
+		width: 90%;
+		top: 0;
+		height: 6.5%;
+		position: absolute;
+		@include flexcenter;
+		justify-content: flex-end;
+		@include mainBTN;
+		position: fixed;
+		button.btn.nohover {
+			transform: scale(1.55);
+			background-color: #434949;
+			span {
+				font-size: 1.05rem;
+			}
+		}
+	}
+}
+
+div.uploadmodal-big--fxpage--box--fxMenu--sliders {
+	min-height: 374px;
+}
+
+div.uploadmodal-big--fxpage--box--fxMenu--descriptions {
+	min-height: 374px;
+}
+
+div.uploadmodal-big--fxpage {
+	@media screen and (max-width: 1099px) {
+		height: 100%;
+		grid-row: 2/5;
+	}
+}
+
+div.uploadmodal-big {
+	min-height: 512px;
+}
+
+div.fx-bottomwindow {
+	min-height: 92px;
+}
+
+div.fx-bottomwindow--original {
+	min-height: 92px;
+
+	@media screen and (max-width: 1099px) {
+		position: absolute;
+	}
+}
+
+div.fx-bottomwindow {
+	div.uploadmodal-big--fxpage--box--player.fx-bottomwindow--player {
+		div.small-progressbar {
+			@media screen and (max-width: 650px) {
+				width: 90%;
+			}
+			@media screen and (max-width: 600px) {
+				width: 82%;
+			}
+			@media screen and (max-width: 550px) {
+				width: 75%;
+			}
+			@media screen and (max-width: 500px) {
+				left: 1rem;
+				width: 70%;
+			}
+			@media screen and (max-width: 450px) {
+				left: 3.6rem;
+				width: 65%;
+			}
+			@media screen and (max-width: 410px) {
+				left: 5rem;
+				width: 65%;
+			}
+			@media screen and (max-width: 370px) {
+				left: 6rem;
+				width: 60%;
+			}
+			@media screen and (max-width: 350px) {
+				left: 7rem;
+				width: 60%;
+			}
+			@media screen and (max-width: 325px) {
+				left: 7rem;
+				width: 50%;
+			}
+		}
+	}
+}
+
+.uploadmodal-fxpage-smallmenu-container {
+	@include flexcenter;
+	grid-column: 1/-1;
+	grid-row: 2/4;
+	@include heightWidth100;
+	flex-direction: column;
+	justify-content: flex-start;
+	align-items: flex-start;
+	width: 90%;
+	position: relative;
+	left: 2rem;
+	top: 5rem;
+}
+
+.fxslider-description-format {
+	margin: 2vh 0;
+	span {
+		color: $color-white-2;
+		font-size: 1.6rem;
+		font-weight: 500;
+		font-family: $font-1;
+		opacity: 0.85;
+		text-shadow: 1.5px 1.5px 7px #111213d0;
+		@media screen and (max-width: 1099px) {
+			font-size: 2.6rem;
+			white-space: nowrap;
+		}
+	}
+	p {
+		color: $color-white-2;
+		font-size: 0.8rem;
+		font-weight: 400;
+		font-family: $font-1;
+		opacity: 0.65;
+		text-shadow: 1.5px 1.5px 7px #111213d0;
+		@media screen and (max-width: 1099px) {
+			font-size: 1.6rem;
+		}
+	}
+}
+
+
+div.fx-bottom-mobile {
+@media screen and (max-width: 1300px) and (min-width: $bp-large) {
+	bottom: 0;
+	width: 86vw;
+	right: 0;
+}
+}
+
+div.fxpage-pitchshift-sliders {
+	top: 4rem;
+	grid-row-gap: 5.6rem;
+	@media screen and (max-height: 600px){
+		grid-row-gap: 5rem;
+
+	}
+}
+
+div.fx-sliders-3slides {
+
+}
+
+div.fx-sliders-4slides {
+	top: 1rem;
+	grid-row-gap: 3.6rem;
+	@media screen and (max-height: 600px){
+		grid-row-gap: 5rem;
+
+	}
+}
+
+
+#fx-play-hook {
+	position: absolute;
+	height: 100vh;
+	width: 100vw;
+	
+	z-index: 999;
+	top: 0;
+	pointer-events: none;
+	left: 0;
+	div.fx-bottomwindow--compare.uploadmodal-big--fxpage--box--playpause {
+		@include heightWidth100;
+		width: 100vw;
+		height: 90px;
+		left: 1rem;
+		position: absolute;
+		@include flexcenter;
+		justify-content: flex-start;
+		align-items: flex-end;
+		top: 75vh;
+		div.fx-player-overwrite {
+			justify-content: flex-start;
+			div.recent-sounds--list--item--player.globalPlay
+			{
+				button.btn.nohover.rotate {
+					box-shadow: none;
+					div {
+						transform: scale(.5);
+						box-shadow: none;
+					}
+					img {
+						box-shadow: none;
+					}
+				}
+			}
+		}
+		div.recent-sounds--list--item--player.globalPlay {
+			width: 80rem;
+			max-width: 20rem;
+			left: 0;
+		}
+
+		@media screen and (max-height: 750px) {
+			top: 70vh;
+		}
+		@media screen and (max-height: 560px) {
+			top: 60vh;
+		}
+                    
+
+	}
+
+
+	div.fx-bottomwindow--compare.uploadmodal-big--fxpage--box--playpause.fx-playpause-mobile {
+		top: 64vh;
+	}
+
+}
+
+.fx-bottomwindow--compare.uploadmodal-big--fxpage--box--playpause {
+	div {
+		button {
+			div {
+				box-shadow: none;
+				background: none;
+				
+			}
+		}
+	}
+}
+
+.fxsave-btn-contain {
+	height: 30px;
+	width: 30px;
+	position: relative;
+	
+}
+
+.fx-arrow-container {
+	height: 30px;
+	width: 30px;
+	position: relative;
+	left: 1rem;
+	bottom: .25rem;
+}
+
+.move-down {
+	left: -1rem;
+	bottom: 0rem;
+}

@@ -1,0 +1,758 @@
+// give a header just like side
+
+.recent-sounds {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  margin: 0.8rem 1rem;
+  overflow: visible;
+  grid-row: 3 / 5;
+  position: relative;
+  
+  @media screen and (max-width: 1099px) {
+    top: 5rem;
+  }
+  @media screen and (min-width: $bp-large) {
+    grid-row: 3/5;
+    display: grid;
+    grid-template-rows: 5% 92.5%;
+    grid-template-columns: 65% 35%;
+  }
+  
+
+  &--head-contain {
+    @include heightWidth100;
+    @include flexcenter;
+    top: 2.81rem;
+    position: relative;
+    max-height: 90px;
+    pointer-events: none;
+    max-width: 1570px;
+
+
+
+    @media screen and (min-width: $bp-large) {
+      grid-column: 1/2;
+      grid-row: 1/2;
+      align-self: flex-start;
+      top: -1.81rem;
+    }
+    @media screen and (max-width: 1099px) and (min-height: 751px) {
+      top: 3rem;
+    }
+    
+  }
+
+  &--seemore {
+    margin-top: 4vh;
+    @include mainBTN;
+    @include flexcenter;
+
+    align-self: center;
+    button.btn.nohover.upload-sound-button {
+      background-color: #272c2c;
+      box-shadow: $shadow-newer-2;
+
+      &::before {
+        box-shadow: none;
+      }
+
+      
+      @media (hover: hover) and (pointer: fine) {
+        &:hover {
+          background-color: #4b5353a1;
+        }
+      } 
+      
+    }
+    @media screen and (max-width: 1099px) {
+      margin-bottom: 15vh;
+    }
+  }
+
+  &--head {
+    position: relative;
+    @include flexcenter;
+    width: 88%;
+    height: 100%;
+
+    left: 1.4vw;
+    top: -1vh;
+    transition: all 0.2s;
+
+    @media screen and (min-width: $bp-large) {
+      grid-column: 1/2;
+      grid-row: 1/2;
+      align-self: flex-start;
+    }
+
+    @media screen and (max-width: 1500px) {
+      width: 100%;
+      left: 0;
+    }
+    @media screen and (max-width: 1099px) {
+      left: 0;
+      width: 100%;
+      top: -4vh;
+      max-height: 50px;
+    }
+    h2 {
+      display: flex;
+      position: relative;
+      justify-content: flex-start;
+      align-items: flex-end;
+      position: relative;
+      right: 1.5vw;
+      font-size: 3rem;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+
+      line-height: 2rem;
+      font-family: $font-1;
+      font-weight: 500;
+      font-size: 1.3rem;
+      text-transform: capitalize;
+      color: $color-white-2;
+      top: -0.5vh;
+      letter-spacing: 0.5px;
+      max-width: 90%;
+      border-bottom: 1px solid $color-white-2;
+
+      @media screen and (min-width: $bp-large) {
+        font-size: 1.4rem;
+      }
+      @media screen and (max-width: $bp-med) {
+        right: 15vw;
+        font-size: 2rem;
+      }
+      @media screen and (max-width: 1600px) {
+        max-width: 94%;
+        right: 0vw;
+
+      }
+      @media screen and (max-width: 1540px) {
+        max-width: 97%;
+        right: -1vw;
+
+      }
+      @media screen and (max-width: 1430px) {
+        max-width: 93%;
+        right: 1vw;
+
+      }
+      @media screen and (max-width: 1360px) {
+        max-width: 95%;
+        right: -1vw;
+      }
+
+      @media screen and (max-width: 1099px) {
+        font-size: 2.5rem;
+        line-height: 4vh;
+        min-width: 100%;
+        right: 0;
+        top: 6vh;
+        justify-content: center;
+        max-height: 25px;
+      }
+    }
+    border-radius: 0.43rem;
+
+    &::before {
+      @include beforeTrick();
+      z-index: -1;
+      opacity: 1;
+      background-size: 11.2%;
+      grid-column: 1/2;
+      grid-row: 1/2;
+
+      height: 9vh;
+      top: 2rem;
+      left: 1vw;
+      margin-left: auto;
+      @include flexcenter;
+      overflow: hidden;
+      position: absolute;
+      padding: 0.4rem 0.3rem;
+      max-width: 88%;
+    }
+  }
+
+  &--listcontainer {
+    grid-column: 1/2;
+    grid-row: 2/3;
+    height: 95%;
+    width: 100%;
+    @include flexcenter;
+    flex-direction: column;
+    margin: 0;
+    position: relative;
+    
+    max-width: 1570px;
+
+    @media screen and (min-width: $bp-large) {
+      bottom: 4rem;    
+    }
+    @media screen and (max-width: 1099px) {
+      bottom: -1.5rem;    
+    }
+    
+
+    &--vocal {
+      align-items: flex-start;
+      top: -4rem;
+    }
+  }
+
+  &--list {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    list-style: none;
+    width: 90%;
+    height: max-content;
+    position: relative;
+    padding: 1rem 0rem;
+    position: relative;
+    top: 1rem;
+    margin-left: 0;
+
+    
+    justify-content: flex-start;
+    max-width: 1570px;
+    
+    @media screen and (max-width: 1500px) {
+      min-width: 95%;
+      left: 0;
+      justify-content: flex-start;
+      top: 3.5vh;
+    }
+    @media screen and (max-width: 1099px) {
+      min-width: 100%;
+      top: 3.5vh;
+      align-items: flex-start;
+    }
+    @media screen and (min-width: $bp-large) {
+      grid-column: 1/2;
+      grid-row: 2/3;
+      width: 80%;
+    }
+
+    @-moz-document url-prefix() {
+      @media screen and (max-width: 1099px) {
+        top: 5vh;
+      }
+    }
+    &--border {
+      @include heightWidth100;
+      @include beforeTrick;
+
+      position: absolute;
+      left: 0.5vw;
+      top: -3vh;
+      z-index: 3;
+      pointer-events: none;
+      opacity: 0.05;
+      transition: all 0.2s;
+      height: 150%;
+    }
+
+    &--border-right {
+      @include beforeTrick;
+      width: 98%;
+
+      position: absolute;
+      right: -4.5vw;
+      top: -3vh;
+      z-index: 3;
+      pointer-events: none;
+      opacity: 0.05;
+      transition: all 0.2s;
+      height: 150%;
+    }
+
+    
+
+    &--item {
+      z-index: 2;
+      cursor: pointer;
+      max-width: 95%;
+      height: 10%;
+      padding: 0rem 0rem;
+      display: grid;
+      grid-template-rows: 100%;
+      grid-template-columns: 30% 20% 30% 20%;
+      margin: 0rem 1.3rem;
+      transition: all 0.12s ease-in;
+      background-image: linear-gradient(45deg, #1b1f1f, #1b1f1f, #1b1f1f);
+      position: relative;
+      border-radius: 0.2rem;
+      transition: all 0.2s ease-in;
+      box-shadow: $shadow-newer;
+
+      
+
+      &--img {
+        grid-column: 3/4;
+        @include flexcenter;
+        justify-content: flex-start;
+      }
+
+      &::before {
+        @include beforeTrick();
+        @include beforeShadow(
+          0.6rem,
+          rgba(236, 242, 243, 0),
+          $shadow-lightblue17,
+          0.12
+        );
+      }
+
+      &:not(::before) {
+        overflow: hidden;
+      }
+      @media screen and (min-width: $bp-large) {
+        font-size: 1.6rem;
+      }
+      &--player {
+        grid-column: 1 / 2;
+        align-self: center;
+        font-size: 1rem;
+        padding: 0.7rem 0.3rem;
+        display: flex;
+
+        @media screen and (min-width: $bp-large) {
+          font-size: 1rem;
+          padding: 0.2rem 1rem;
+        }
+        button.btn.rotate {
+          img {
+            transform: rotate(180deg) scale(0.9);
+          }
+        }
+        button.btn {
+          background-color: rgba(0, 0, 0, 0.0475);
+          padding: 0;
+          @include flexcenter();
+          transition: all 0.12s ease-in;
+          border-radius: 50%;
+          right: 1vw;
+          box-shadow: $shadow-new;
+
+          &::before {
+            @include beforeTrick();
+            @include beforeShadow(
+              50%,
+              rgba(128, 91, 91, 0),
+              $shadow-lightblue7,
+              0.031
+            );
+          }
+          
+          @media (hover: hover) and (pointer: fine) {
+            &:hover {
+              background-color: rgba(0, 0, 0, 0.692);
+              opacity: 0.91;
+              img {
+                opacity: 1;
+              }
+              &::before {
+                @include beforeShadow(
+                  50%,
+                  rgba(128, 91, 91, 0),
+                  $shadow-lightblue7,
+                  0.0931
+                );
+              }
+  
+              transition: all 0.12s ease-in;
+            }
+          } 
+          
+
+          @media screen and (min-width: $bp-large) {
+            padding: 1rem 1rem;
+          }
+          img {
+            @include heightWidthSame(3rem);
+            filter: brightness(1.6);
+            opacity: 0.2675;
+            @include flexcenter();
+            transform: scale(0.9);
+
+            @media screen and (min-width: $bp-large) {
+              @include heightWidthSame(1.99rem);
+            }
+          }
+        }
+      }
+      &--info {
+        grid-column: 2 / 3;
+        @include flexcenter;
+        justify-content: space-around;
+        justify-self: flex-start;
+        align-self: center;
+        font-size: 1.8rem;
+        color: $color-white;
+        font-family: $font-1;
+        font-weight: 500;
+        text-transform: capitalize;
+        position: relative;
+
+        span {
+          width: 20vw;
+        }
+
+        &--img {
+          @include heightWidthSame(1.8rem);
+          border-radius: 0.5rem;
+          position: relative;
+          display: inline-block;
+          right: 1vw;
+          box-shadow: $shadow-new-3;
+        }
+
+        @media screen and (min-width: $bp-large) {
+          font-size: 0.99rem;
+        }
+      }
+      &--author {
+        grid-column: 4/5;
+        @include flexcenter();
+        font-size: 1.2rem;
+        color: #53caccc9;
+        font-family: $font-1;
+        font-weight: 500;
+        text-transform: capitalize;
+        @include heightWidth100;
+       
+        @media (hover: hover) and (pointer: fine) {
+          &:hover {
+            a {
+              color: #172324c9;
+              &:visited {
+                color: #599db9;
+              }
+            }
+            img {
+              filter: brightness(1.2);
+            }
+          }
+        } 
+        
+
+        @media screen and (min-width: $bp-large) {
+          font-size: 0.79rem;
+        }
+        a {
+          font-family: $font-1;
+          font-weight: 500;
+          font-size: 1rem;
+          text-decoration: none;
+          color: #53caccc9;
+          @include heightWidth100;
+          width: 40%;
+          vertical-align: center;
+          @include flexcenter;
+          justify-content: flex-start;
+          text-align: start;
+
+          &:visited {
+            color: #53caccc9;
+            text-decoration: none;
+          }
+          @media screen and (min-width: $bp-large) {
+            font-size: 0.79rem;
+          }
+        }
+        &--text {
+          text-decoration: none;
+          @include heightWidth100;
+          vertical-align: center;
+          @include flexcenter;
+          width: 40%;
+          justify-content: flex-start;
+          text-align: start;
+
+          &:visited {
+            color: #53caccc9;
+            text-decoration: none;
+          }
+        }
+        img {
+          height: 3rem;
+          width: 3rem;
+          border-radius: 50%;
+          margin-left: 1rem;
+
+          @media screen and (min-width: $bp-large) {
+            height: 1.4rem;
+            width: 1.4rem;
+          }
+        }
+      }
+    }
+    li.listitem.recent-sounds--list--item {
+      @media screen and (min-width: $bp-largest) and (min-height: $bp-height-med) {
+        height: 9vh;
+      }
+      @media screen and (min-width: $bp-largest) and (min-height: $bp-height-large) {
+        height: 7.4vh;
+      }
+    }
+  }
+  
+
+
+}
+
+
+div.recent-sounds--seemore {
+  button.btn.nohover.upload-sound-button {
+    @media screen and (max-width: 1099px) {
+      padding: 0.2vh 0.5vw;
+      min-height: 54px;
+      min-width: 150px;
+    }
+  }
+}
+
+.recent-sound-options {
+  position: absolute;
+  white-space: nowrap;
+  bottom: 1rem;
+  right: 7%;
+  @include flexcenter;
+
+  @media screen and (min-width: 1800px) {
+    right: 10%;
+  }
+
+  @media screen and (max-width: 1600px) {
+    right: 2rem;
+  }
+
+  @media screen and (max-width: 1540px) {
+    right: 0rem;
+  }
+
+  @media screen and (max-width: 1500px) {
+    right: 4rem;
+  }
+  @media screen and (max-width: 1415px) {
+    right: 2rem;
+  }
+  @media screen and (max-width: 1360px) {
+    right: 0rem;
+  }
+  @media screen and (max-width: 1335px) {
+    right: 0rem;
+    left: 0.5rem;
+    top: -1rem;
+    width: 90%;
+    justify-content: space-between;
+    align-items: flex-start;
+
+    
+  }
+
+  @media screen and (min-width: $bp-large) and (max-width: 1335px) {
+    left: 2rem;
+  }
+
+  @media screen and (max-width: 1099px) {
+    top: -2.5rem;
+    left: 3rem;
+  }
+  @media screen and (max-width: 475px) {
+    left: 0;
+  }
+  @media screen and (max-width: 360px) {
+    left: -.5rem;
+  }
+  @media screen and (max-width: 335px) {
+    left: -1rem;
+  }
+  @media screen and (max-width: 328px) {
+    left: -.5rem;
+  }
+
+
+  &--contain {
+    padding: .4rem .5rem;
+    background-color: #282e35;
+    width: 5rem;
+    height: 1rem;
+    margin: 0 1rem;
+    @include flexcenter;
+    border-radius: .2rem;
+    cursor: pointer;
+    transition: all .2s;
+    pointer-events: stroke;
+    @media screen and (max-width: 1099px) {
+      width: 12rem;
+      padding: .8rem 1rem;
+      border-radius: .7rem;
+      height: 2.5rem;
+      margin: 0;
+    }
+
+    @media screen and (max-width: 575px) {
+      width: 10rem;
+    }
+    @media screen and (max-width: 485px) {
+      padding: .7rem .9rem;
+    }
+    @media screen and (max-width: 475px) {
+      margin: 0 1.5rem;
+    }
+    @media screen and (max-width: 460px) {
+      margin: 0 1rem;
+    }
+    @media screen and (max-width: 425px) {
+      margin: 0 .75rem;
+    }
+    @media screen and (max-width: 410px) {
+      margin: 0 .5rem;
+    }
+    @media screen and (max-width: 400px) {
+      width: 9rem;
+      margin: 0 .75rem;
+    }
+    @media screen and (max-width: 390px) {
+      width: 8.7rem;
+      margin: 0 .7rem;
+    }
+    @media screen and (max-width: 360px) {
+      padding: .5rem .75rem;
+    }
+    @media screen and (max-width: 360px) {
+      margin: 0 .5rem;
+    }
+    @media screen and (max-width: 328px) {
+      transform: scale(.9);
+    }
+    @media screen and (max-width: 328px) {
+      margin: 0 .25rem;
+    }
+  }
+
+
+  span {
+    @include niceTxt;
+    font-size: .75rem;
+    transition: all .2s;
+    pointer-events: none;
+    @media screen and (max-width: 1099px) {
+      font-size: 1.6rem;
+    }
+    @media screen and (max-width: 575px) {
+      font-size: 1.45rem;
+    }
+    @media screen and (max-width: 400px) {
+      font-size: 1.35rem;
+    }
+    @media screen and (max-width: 380px) {
+      font-size: 1.2rem;
+    }
+    @include flexcenter;
+    
+  }
+  
+}
+
+div.recent-sound-options {
+  overflow: visible;
+  z-index: 5;
+  div.recent-sound-options--active {
+    transition: all .2s;
+    transform: scale(1.15);
+    @media screen and (max-width: 575px) {
+      transform: scale(1.12);
+    }
+    @media screen and (max-width: 480px) {
+      transform: scale(1.1);
+    }
+    @media screen and (max-width: 328px) {
+      transform: scale(1);
+    }
+    
+    span {
+      transition: all .2s;
+      font-weight: 600;
+      color: #53c9cc;
+    }
+  }
+}
+
+div.recent-sound-options.recent-sound-options-mobile {
+
+  div.recent-sound-options--contain {
+    @media screen and (max-width: 575px) {
+      transform: scale(.9);
+      position: relative;
+      margin: 0;
+      left: 1rem;
+    }
+  }
+
+  div.recent-sound-options--contain--active {
+    @media screen and (max-width: 575px) {
+      transform: scale(1);
+    }
+  }  
+}
+
+.recent-sound-refresh {
+  position: absolute;
+  @include heightWidth100;
+  @include flexcenter;
+  align-items: flex-end;
+  bottom: 0;
+  pointer-events: none;
+  div.inpage-loader {
+    position: relative;
+  }
+}
+
+.no-scrollbars{
+  scrollbar-width: thin;
+  overflow-x: hidden;
+  overflow-y: auto;
+  
+
+  &::-webkit-scrollbar {
+    background: rgba(82, 90, 92, 0.151);
+    width: 4px;
+    border-radius: 0.4rem;
+    position: relative;
+    left: 3rem;
+    @media screen and (max-width: 1335px) {
+      display: none;
+    }
+  }
+  &::-webkit-scrollbar-track {
+    background: rgba(82, 90, 92, 0.151);
+    border-radius: 0.4rem;
+    background-clip: content-box;
+    position: relative;
+    left: 3rem;
+
+    @media screen and (max-width: 1335px) {
+      display: none;
+    }
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: rgba(68, 140, 156, 0.89);
+    scrollbar-face-color: rgba(68, 140, 156, 0.89);
+    transform: translateY(0.4);
+    border-radius: 0.4rem;
+    border: 1px solid rgba(36, 32, 32, 0.082);
+    position: relative;
+    left: 3rem;
+
+    
+  }
+}

@@ -1,0 +1,3357 @@
+.single-sound {
+  margin: 0;
+  padding: 3rem 0;
+  font-size: 4rem;
+  height: 100%;
+  width: 100%;
+  grid-row: 2 / -1;
+  display: grid;
+  grid-template-rows: 1vh 52vh 8vh 8vh min-content;
+  grid-template-columns: 100%;
+  grid-gap: 2.5rem;
+
+
+  @media screen and (min-width: $bp-large) {
+    grid-template-columns: 3% 90% 3%;
+    grid-template-rows: 2vh 70vh max-content 65vh;
+    grid-gap: 1rem;
+  }
+
+  @media screen and (min-width: $bp-largest) {
+    grid-template-columns: 12% 74% 14%;
+    grid-template-rows: 2vh 80vh max-content 65vh;
+  }
+
+  @media screen and (min-width: $bp-superLarge) {
+    grid-template-columns: 17% 62% 20%;
+    grid-template-rows: 2vh 70vh max-content 65vh;
+  }
+
+  @media screen and (min-width: 1750px) {
+    padding: 4rem 0;
+  }
+
+  
+
+  @media screen and (max-width: 1099px) {
+    grid-template-columns: 5% 85% 5%;
+    grid-template-rows: 2vh 60vh 0vh max-content 55vh;
+
+  }
+  @media screen and (max-height: 800px) {
+    grid-template-rows: 15px 580px 0px max-content 50px;
+  }
+  @media screen and (max-width: 750px) {
+    grid-template-rows: 15px 680px 0px max-content 50px;
+  }
+
+  @media screen and (max-width: 500px) {
+    grid-template-columns: 0% 88% 5%;
+  }
+  
+  
+
+  &--player {
+    grid-row: 3/4;
+    grid-column: 2/3;
+    @include flexcenter;
+    z-index: 3;
+    pointer-events: none;
+
+    @media screen and (max-width: 750px) {
+      grid-row: 4/5;
+    }
+
+    &--container {
+      position: fixed;
+      display: grid;
+      grid-template-rows: 100%;
+      background-color: $color-new-grey;
+      border-radius: 1rem;
+      height: min-content;
+      width: 80%;
+      left: 10%;
+      pointer-events: stroke;
+
+
+      @media screen and (min-width: $bp-large) {
+        grid-column: 2/3;
+        grid-row: 3/4;
+        grid-template-columns: 6% 25% 2% 67%;
+        height: 11vh;
+        bottom: 2rem;
+      }
+      @media screen and (min-width: $bp-largest) {
+        grid-column: 2/3;
+        grid-row: 3/4;
+        grid-template-columns: 1% 37% 2% 60%;
+        height: 11vh;
+        bottom: 2rem;
+      }
+      @media screen and (max-width: 1099px) {
+        grid-column: 2/3;
+        grid-row: 3/4;
+        grid-template-columns: 6% 25% 2% 67%;
+        height: 11vh;
+        bottom: 2rem;
+      }
+      @media screen and (max-width: 800px) {
+        width: 95%;
+        left: 2.5%;
+      }
+      @media screen and (max-width: 450px) {
+        grid-template-columns: 6% 25% 2% 55%;
+      }
+    }
+
+    &--controls {
+      grid-column: 2/3;
+      @include flexcenter;
+      position: relative;
+      @media screen and (max-width: 1099px) {
+        transform: scale(0.75);
+      }
+      
+      div {
+        button.btn {
+          @media screen and (min-width: $bp-large) {
+            transform: scale(0.6);
+            margin: 0rem 0.1rem;
+          }
+
+          @media screen and (min-width: $bp-largest) {
+            transform: scale(0.75);
+            margin: 0rem 0.5rem;
+          }
+        }
+      }
+    }
+    &--progress {
+      grid-column: 4/5;
+      @include heightWidth100;
+      height: 100%;
+      position: absolute;
+      left: 0rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      div {
+        span {
+          font-size: 0.3em;
+          font-family: $font-1;
+          font-weight: 200;
+        }
+        div.global-player--time {
+          &--line {
+            height: 10%;
+          }
+          &--moveOver {
+            background-color: rgba(30, 34, 36, 0.724);
+            width: 5.4vw;
+            height: 4.3vh;
+            top: -1.3rem;
+
+            span {
+              font-family: $font-1;
+              font-size: 0.8rem;
+              font-weight: 400;
+              color: $color-white-2;
+              opacity: 0.9;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  &--repost {
+    @include flexcenter;
+    justify-content: flex-start;
+    position: relative;
+    width: 100%;
+    pointer-events: none;
+    min-width: 190px;
+    @media screen and (max-width: 475px) {
+      min-width: 115px;
+    }
+
+    div.sound-list-item--circle.circle-btn-single-sound.singlesound-btn {
+      margin: 0;
+      left: 0;
+      width: 95%;
+      left: 0.25rem;
+      padding: 0;
+      min-width: 129px;
+      pointer-events: stroke;
+      max-height: 50px;
+
+      @media screen and (max-width: 1099px) {
+        min-width: 135px;
+        min-height: 30px;
+        margin-top: 2rem;
+        span {font-size: 1.9rem;}
+      }
+
+      @media screen and (max-width: 500px) {
+        min-width: 145px;
+        left: 0;
+      }
+
+      @media screen and (max-width: 475px) {
+        min-width: 115px;
+      }
+
+      @media screen and (max-width: 370px) {
+        margin-top: 5rem;
+      }
+
+      button.btn.nohover {
+        height: 5vh;
+        min-height: 40px;
+      }
+      @include flexcenter;
+
+      span {
+        position: relative;
+        right: 0.5vw;
+        width: min-content;
+        @include flexcenter;
+        height: 100%;
+        pointer-events: none;
+        overflow: visible;
+      }
+
+      img {
+        position: relative;
+        left: 0.5vw;
+        box-shadow: none;
+        pointer-events: none;
+      }
+    }
+    
+  }
+
+  &--info {
+    @include flexcenter;
+    flex-direction: column;
+    position: relative;
+    min-height: 645px;
+
+
+    @media screen and (min-width: $bp-large) {
+      grid-column: 2/3;
+      grid-row: 2/4;
+      height: 100%;
+      width: 100%;
+      display: grid;
+      grid-template-columns: 40% 16% 19% 2.5% 10% 5%;
+      grid-template-rows: 18% 6% 23% 20% 15% 3%;
+
+      img {
+        @include heightWidthSame(22rem);
+        padding: 0;
+        margin: 0;
+        grid-row: 1/6;
+        @include flexcenter;
+      }
+    }
+
+    @media screen and (min-width: $bp-largest) {
+      grid-column: 2/3;
+      grid-row: 2/3;
+      img {
+        @include heightWidthSame(25rem);
+        grid-row: 1/6;
+        @include flexcenter;
+      }
+    }
+    
+
+    @media screen and (max-width: 1099px) {
+      grid-column: 1/-1;
+      grid-row: 2/4;
+      height: 100%;
+      width: 100%;
+      display: grid;
+      grid-template-columns: 0% 45% 18% 19% 10% 13%;
+      grid-template-rows: 18% 6% 23% 20% 20% 10% 3%;
+      img {
+        @include heightWidthSame(35rem);
+        grid-row: 1/6;
+        @include flexcenter;
+        transition: 0.2s;
+      }
+    }
+
+    @media screen and (max-width: 750px) {
+      grid-template-columns: 5% 18% 13% 17% 24% 9%;
+      grid-template-rows: 18% 6% 23% 20% 20% 10% 3%;
+    }
+    @media screen and (min-width: $bp-large) and (max-height: 800px) {
+      grid-template-rows: 117.7px 49.9px 118.25px 113px 191.25px 76.5px 23px;
+    }
+
+    img {
+      border-radius: 1rem;
+      box-shadow: $shadow-new;
+    }
+
+    &--title {
+      grid-column: 2/5;
+      grid-row: 1/2;
+      width: 28vw;
+      
+      white-space: nowrap;
+      @include flexcenter;
+      justify-content: flex-start;
+      position: relative;
+
+      @media screen and (max-width: 1099px) {
+        grid-column: 3/6;
+      }
+
+      
+
+      h1 {
+        font-size: 3.5rem;
+        text-transform: capitalize;
+        color: $color-white;
+        font-weight: 400;
+        font-family: $font-1;
+        line-height: 3rem;
+        @media screen and (min-width: $bp-large) {
+          font-size: 2.8rem;
+        }
+        @media screen and (max-width: 550px) {
+          font-size: 2.3rem;
+        }
+      }
+
+      form {
+        position: relative;
+        bottom: 4.3vh;
+        z-index: 5;
+        width: 22vw;
+        z-index: 3;
+        min-width: 200px;
+
+        div.edit-btn-container-single {
+          pointer-events: none;
+          button.btn {
+            pointer-events: stroke;
+            
+          }
+          
+
+        }
+
+        input {
+          height: 3vh;
+          width: 20vw;
+          min-width: 300px;
+          padding-left: 0.4rem;
+          pointer-events: stroke;
+          border: 1px solid rgba(108, 121, 124, 0.459);
+          @media screen and (max-width: 500px) {
+            min-width: 250px;
+          }
+          @media screen and (max-width: 400px) {
+            min-width: 200px;
+          }
+        }
+      }
+    }
+
+    &--username-contain {
+      height: 100%;
+      width: 100%;
+      grid-row: 2/3;
+      grid-column: 2/4;
+      line-height: 5px;
+      position: relative;
+      left: 0.2vw;
+      bottom: 2.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      white-space: nowrap;
+      pointer-events: none;
+      
+      
+      span {
+        font-size: 1rem;
+        pointer-events: stroke;
+        color: $color-white-3;
+        @include flexcenter;
+        justify-content: flex-start;
+        font-family: $font-1;
+        @include heightWidth100;
+        width: min-content;
+
+        @media screen and (min-width: $bp-large) {
+          font-size: 0.9rem;
+        }
+        
+        
+        @media screen and (max-width: 1099px) {
+          font-size: 1.7rem;
+        }
+
+
+        @media screen and (max-width: 550px) {
+          font-size: 1.5rem;
+          font-weight: 500;
+        }
+        
+      }
+
+      @media screen and (max-width: 1099px) {
+        grid-column: 3/5;
+        bottom: 5rem;
+       
+        
+      }
+      
+      
+      
+      
+
+      &--name {
+        font-size: 1rem;
+        @include heightWidth100;
+        width: 3vw;
+        white-space: nowrap;
+        @include flexcenter;
+        justify-content: flex-start;
+        text-transform: capitalize;
+        text-align: start;
+        font-family: $font-1;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.2s;
+        position: relative;
+        right: -0.5vw;
+
+        
+        
+        @media (hover: hover) and (pointer: fine) {
+          &:hover {
+            color: $color-red;
+            transition: all 0.2s;
+          }
+        } 
+      }
+    }
+
+    &--btn1 {
+      position: absolute;
+      font-size: 0.8rem;
+      @include heightWidthSame(1.5rem);
+      background-color: rgba(188, 200, 202, 0.048);
+      &::before {
+        opacity: 0.02;
+      }
+
+      @media screen and (min-width: $bp-large) {
+        grid-row: 1/3;
+        grid-column: 5/6;
+        @include flexcenter;
+      }
+
+      @media screen and (min-width: $bp-largest) {
+        margin: 0.2rem 2.7rem;
+      }
+    }
+    &--btn2 {
+      position: absolute;
+      font-size: 0.8rem;
+      @include heightWidthSame(1.5rem);
+      background-color: rgba(188, 200, 202, 0.048);
+      @media screen and (min-width: $bp-large) {
+        grid-row: 4/5;
+        grid-column: 5/6;
+        @include flexcenter;
+      }
+      @media screen and (min-width: $bp-largest) {
+        margin: 0.2rem 2.7rem;
+      }
+    }
+
+    &--desc {
+      position: relative;
+      left: 0.3vw;
+      pointer-events: none;
+      grid-row: 2/6;
+      height: 100%;
+
+      
+      @media screen and (min-width: $bp-large) {
+        grid-column: 2/6;
+      }
+      @media screen and (min-width: $bp-largest) {
+        grid-column: 2/6;
+      }
+      @media screen and (max-width: 1099px) {
+        grid-column: 3/6;
+      }
+      @media screen and (max-width: 750px) {
+        grid-column: 2/6;
+        width: 100%;
+        top: 4rem;
+      }
+
+      div {
+        line-height: 0.7vh;
+        position: relative;
+        span {
+          color: $color-white-2;
+          opacity: 0.95;
+          font-size: 1rem;
+          font-family: $font-1;
+          line-height: 0.5rem;
+          height: 2vh;
+          position: relative;
+
+          text-transform: capitalize;
+          @media screen and (max-width: 1099px) {
+            font-size: 1.8rem;
+            line-height: 3rem;
+          }
+        }
+        span.single-sound-longname {
+          @media screen and (min-width: $bp-large) {
+            white-space: nowrap;
+            top: 1rem;
+            margin-bottom: 2rem;
+
+          }
+          @media screen and (max-width: 1099px) {
+            font-size: 1.8rem;
+            line-height: 3.5rem;
+          }
+        }
+
+        p {
+          color: #fff;
+          opacity: 0.7;
+          font-size: 1.05rem;
+          line-height: 2.1rem;
+          font-family: $font-1;
+          font-weight: 400;
+          @media screen and (min-width: $bp-large) {
+            font-size: 0.95rem;
+            line-height: 1.9rem;
+          }
+          @media screen and (max-width: 1099px) {
+            font-size: 2rem;
+            line-height: 2.9rem;
+          }
+          @media screen and (max-width: 450px) {
+            height: min-content;
+            font-size: 1.8rem;
+            line-height: 2.9rem;
+            
+
+            
+          }
+        }
+      }
+
+      
+      
+
+      
+    }
+
+    div.single-edit-desc {
+      width: 35vw;
+      pointer-events: none;
+      min-width: 485px;
+      
+      form {
+        position: relative;
+        right: 0.25vw;
+        width: 35vw;
+        pointer-events: none;
+        z-index: 5;
+        min-width: 485px;
+        @media screen and (max-width: 1099px) {
+          width: 100%;
+          min-width: 200px;
+        }
+        @media screen and (max-width: 875px) {
+          min-width: 305px;
+        }
+        @media screen and (max-width: 750px) {
+          min-width: 525px;
+        }
+        @media screen and (max-width: 625px) {
+          min-width: 325px;
+        }
+        
+        @media screen and (max-width: 525px) {
+          width: 50vw;
+          min-width: 100px;
+         }
+        textarea {
+          pointer-events: stroke;
+          min-width: 485px;
+          position: relative;
+          top: 7.5vh;
+          width: 35vw;
+          padding-left: 1rem;
+          line-height: 1.8;
+          height: 18vh;
+          border: none;
+          background-color: rgba(108, 121, 124, 0.14);
+          margin-bottom: 4.5vh;
+          font-size: 1rem;
+          text-align: start;
+          white-space: normal;
+          @media screen and (max-width: 1099px) {
+            font-size: 2rem;
+          }
+          @media screen and (max-width: 875px) {
+            min-width: 405px;
+          }
+          @media screen and (max-width: 750px) {
+            min-width: 525px;
+          }
+          @media screen and (max-width: 625px) {
+            min-width: 475px;
+          }
+          @media screen and (max-width: 575px) {
+            min-width: 450px;
+          }
+          @media screen and (max-width: 550px) {
+            min-width: 425px;
+          }
+          @media screen and (max-width: 525px) {
+            min-width: 400px;
+          }
+          @media screen and (max-width: 525px) {
+           width: 80vw;
+           min-width: 100px;
+          }
+        }
+        
+        span.edit-desc-counterspan.invalid-count {
+          height: 15px;
+          @include flexcenter;
+        }
+
+      }
+    }
+    
+  }
+ 
+
+  &--likes {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    @include heightWidth100;
+    position: relative;
+    right: 0;
+    white-space: nowrap;
+    min-width: 140px;
+
+    
+    &--lottie {
+      @include heightWidth100;
+      cursor: pointer;
+
+      &--contain {
+        justify-self: flex-start;
+      }
+
+      @media screen and (min-width: $bp-large) {
+        @include heightWidthSame(4.4rem);
+
+        &--contain {
+          justify-self: flex-start;
+          transform: scale(0.55);
+        }
+      }
+
+      
+
+      @media screen and (max-width: 1099px) {
+        @include heightWidthSame(4rem);
+
+      }
+    }
+
+    @media screen and (min-width: $bp-large) {
+      display: flex;
+      justify-content: flex-start;
+      grid-row: 5/6;
+      grid-column: 5/6;
+      position: relative;
+      right: 0;
+    }
+
+    @media screen and (max-width: 1099px) {
+      span.like-txt-single.likesingle {
+        right: 3.2vw;
+      }
+      min-width: 129px;
+      height: 100%;
+      min-height: 65px;
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+
+    }
+    
+
+    @media screen and (max-width: 750px) {
+      @include flexcenter;
+    }
+
+    div {
+
+      span {
+        font-weight: 500;
+        font-family: $font-1;
+        pointer-events: stroke;
+      }
+
+      @media screen and (min-width: $bp-large) {
+        span {
+          color: #efede6ee;
+          font-size: 1.1rem;
+          @include flexcenter;
+          position: relative;
+          @include heightWidth100;
+          display: flex;
+          justify-content: flex-start;
+          right: 1vw;
+        }
+      }
+      @media screen and (max-width: 1439px) {
+        span {
+          right: 2.5vw;
+        }
+      }
+      @media screen and (max-width: 1099px) {
+        span {
+          font-size: 2rem;
+        }
+      }
+      @media screen and (max-width: 750px) {
+        @include heightWidthSame(40%);
+      }
+    }
+  }
+
+  &--comments {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    width: 100%;
+    grid-row: 4/5;
+    display: grid;
+    grid-template-columns: 100%;
+    grid-template-rows: minmax(2vh, 40px) minmax(2.5vh, 40px) 95%;
+    height: max-content;
+
+
+    @media screen and (max-height: 850px) and (min-height: 801px) {
+      margin-top: 3rem;
+    }
+
+    @media screen and (max-width: 650px) {
+      margin-top: 13rem;
+    }
+
+    &--head {
+      @include heightWidth100;
+      grid-row: 1/2;
+      display: inline-block;
+      @include flexcenter;
+      justify-content: flex-start;
+      max-height: 100px;
+      h1 {
+        color: $color-white;
+        font-size: 1.2rem;
+        font-family: $font-1;
+        font-weight: 400;
+        @media screen and (max-width: 1099px) {
+          font-size: 2.5rem;
+        }
+      }
+    }
+    @media screen and (min-width: $bp-large) {
+      grid-column: 2/3;
+      grid-row: 4/5;
+    }
+    @media screen and (max-width: 1099px) {
+      grid-template-rows: minmax(2.5vh, 60px) minmax(5vh, 40px) 95%;
+      grid-column: 2/3;
+      grid-row: 4/5;
+    }
+    
+    &--form {
+      height: 100%;
+      width: 100%;
+      margin: 1.2rem 0rem;
+      grid-row: 2/3;
+      grid-column: 1/2;
+      display: flex;
+      position: relative;
+      max-height: 100px;
+
+    }
+    &--input {
+      width: 80%;
+      @media screen and (min-width: $bp-large) {
+        width: 100%
+      }
+
+      &--formcontrol {
+        justify-self: flex-start;
+        width: 100%;
+
+
+        input {
+         width: 100%;
+         transition: all .2s;
+         padding-left: 0.7rem;
+         @media screen and (min-width: $bp-large) {
+          padding-left: 0.4rem;
+
+          }
+        }
+        @media screen and (max-width: 1099px) {
+          label.form-label.com-label {
+            font-size: 1.8rem;
+          }
+        }
+      }
+
+
+
+      
+    }
+    &--submit {
+      align-self: center;
+      justify-self: flex-end;
+      width: 20%;
+      height: 70%;
+      font-size: 2rem;
+      background-color: $color-deepblue;
+      border-radius: 0.4rem;
+      box-shadow: $shadow-new;
+      
+
+      &::before {
+        @include beforeTrick;
+        box-shadow: none;
+      }
+      
+      
+      @media (hover: hover) and (pointer: fine) {
+        &:hover {
+          border-radius: 0.4rem;
+          box-shadow: $shadow-new;
+          &::before {
+            box-shadow: none;
+            border-radius: 0.4rem;
+          }
+        }
+      } 
+      @media screen and (min-width: $bp-large) {
+        font-size: 1.2rem;
+        @include flexcenter;
+        padding: 1.6rem 3rem;
+      }
+      @media screen and (max-width: 1099px) {
+        font-size: 2rem;
+      }
+    }
+    
+    div.outline-btn {
+      top: 0;
+      position: absolute;
+      height: 100%;
+      width: 70%;
+      @include flexcenter;
+      justify-content: flex-end;
+      pointer-events: none;
+      margin: 0;
+      margin-top: 1rem;
+      
+      @media screen and (max-width: 600px) {
+        width: 90%;
+      }
+
+
+      button.btn.nohover {
+        padding: 0;
+        width: 10rem;
+        pointer-events: stroke;
+        min-height: 44px;
+        @media screen and (max-width: 1099px) {
+          min-height: 28px;
+          min-width: 20%;
+        }
+        @media screen and (max-width: 600px) {
+          min-width: 40%;
+        }
+      }
+
+    }
+    
+
+
+  }
+}
+
+.single-sound-comments {
+  grid-row: 3/4;
+  grid-column: 1/3;
+  margin: 1.2rem 0rem;
+  @include heightWidth100;
+  height: max-content;
+
+  
+
+  &--list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    @include heightWidth100;
+    margin-top: 3rem;
+    padding-bottom: 3rem;
+    overflow-x: hidden;
+    overflow-y: auto;
+  }
+
+  &--item {
+    display: grid;
+    height: min-content;
+    width: 100%;
+    margin-top: 0rem;
+    grid-template-rows: 22% 20% 20% min-content;
+    grid-template-columns: 13% 82% 5%;
+    overflow: visible;
+
+    
+
+    @media screen and (min-width: $bp-large) {
+      width: 100%;
+      grid-template-columns: 0% 8% 72% 20%;
+      margin: 1rem 0;
+      margin-top: 2rem;
+    }
+    @media screen and (min-width: $bp-largest) {
+      grid-template-columns: 0% 6.5% 73.5% 20%;
+    }
+    @media screen and (min-width: 2200px) {
+      grid-template-columns: 0% 5% 75% 20%;
+    }
+    @media screen and (max-width: 1099px) {
+      margin-top: 2rem;
+      grid-template-rows: 40% 40% 25%;
+      grid-template-columns: 8% 87.5% 5%;
+    }
+    @media screen and (max-width: 950px) {
+      grid-template-columns: 10% 85% 5%;
+    }
+    @media screen and (max-width: 750px) {
+      grid-template-columns: 12% 85% 5%;
+    }
+    @media screen and (max-width: 430px) {
+      grid-template-columns: 15% 81% 5%;
+    }
+    @media screen and (max-width: 350px) {
+      grid-template-columns: 17% 78% 5%;
+    }
+    
+    
+
+    &--info {
+      grid-row: 1/2;
+      grid-column: 3/4;
+      display: flex;
+
+      &--username {
+        font-size: 1.8rem;
+        text-transform: capitalize;
+        font-family: $font-1;
+        color: $color-white;
+        font-weight: 600;
+        @include flexcenter;
+        cursor: pointer;
+        transition: all 0.2s;
+
+        @media screen and (min-width: $bp-large) {
+          font-size: 1rem;
+        }
+       
+        @media (hover: hover) and (pointer: fine) {
+          &:hover {
+            color: $color-mainblue;
+            transition: all 0.2s;
+          }
+        }
+
+        @media screen and (max-width: 1099px) {
+          font-size: 2rem;
+        }
+        @media screen and (max-width: 550px) {
+          font-size: 1.7rem;
+        }
+
+      }
+      @media screen and (max-width: 1099px) {
+        grid-column: 2/3;
+      }
+      
+      &--time {
+        font-size: 1.2rem;
+        text-transform: capitalize;
+        color: rgba(186, 192, 194, 0.76);
+        font-weight: 300;
+        @include flexcenter;
+        position: relative;
+        margin-left: 0.8vw;
+        font-family: $font-1;
+        @media screen and (min-width: $bp-large) {
+          font-size: 0.9rem;
+          margin-left: 1rem;
+
+        }
+       
+        @media screen and (max-width: 550px) {
+          margin-left: 1.2rem;
+        }
+      }
+    }
+
+    &--pic {
+      @include flexcenter;
+      border-radius: 50%;
+      grid-row: 1/3;
+      grid-column: 1/2;
+      align-items: flex-start;
+      cursor: pointer;
+      @include heightWidth100;
+      position: relative;
+      // top: .5rem;
+      // max-width: 80px;
+
+      @media screen and (min-width: $bp-large) {
+        grid-column: 2/3;
+        // @include heightWidthSame(3.8rem);
+      }
+      
+      
+
+      @media screen and (max-width: 1099px) {
+       justify-content: flex-start;
+       grid-row: 1/2;
+        align-items: center;
+      }
+
+      img {
+        @include heightWidthSame(4.2rem);
+        @include flexcenter;
+        border-radius: 50%;
+        @media screen and (max-width: 1099px) {
+          @include heightWidthSame(7rem);
+        }
+        @media screen and (max-width: 650px) {
+          @include heightWidthSame(6rem);
+        }
+        @media screen and (max-width: 500px) {
+          @include heightWidthSame(5rem);
+        }
+      }
+    }
+    &--msg {
+      grid-row: 2/-1;
+      grid-column: 2/3;
+
+      font-size: 2rem;
+      text-transform: capitalize;
+      color: $color-white;
+      font-family: $font-1;
+      font-weight: 100;
+
+      display: flex;
+      justify-content: flex-start;
+      align-content: center;
+      height: min-content;
+      flex-direction: column;
+
+      @media screen and (min-width: $bp-large) {
+        font-size: 1.2rem;
+        grid-column: 3/4;
+      }
+      @media screen and (max-width: 1099px) {
+        font-size: 2rem;
+      }
+      @media screen and (max-width: 550px) {
+        font-size: 1.7rem;
+      }
+    }
+    &--controls {
+      grid-row: 3/4;
+      grid-column: 2/3;
+    }
+  }
+  &--dots {
+    grid-row: 1/-1;
+    grid-column: 3/-1;
+    @include heightWidth100;
+    @include flexcenter;
+    justify-content: flex-end;
+    
+    img {
+      @include heightWidthSame(2rem);
+      cursor: pointer;
+      @media screen and (max-width: 1099px) {
+        @include heightWidthSame(3.4rem);
+
+      }
+      @media screen and (max-width: 550px) {
+        @include heightWidthSame(2.3rem);
+
+      }
+    }
+  }
+}
+
+.delete-btn-singlesound {
+  @include flexcenter;
+  position: relative;
+  z-index: 4;
+  transform: scale(0.9);
+  margin-left: 3rem;
+
+  &--inner {
+    position: absolute;
+    @include heightWidth100;
+    display: flex;
+    flex-direction: column;
+    height: 33vh;
+    width: 20vw;
+    min-width: min-content;
+    background-color: rgb(55, 60, 61);
+    box-shadow: $shadow-newer-2;
+    border-radius: 1rem;
+    z-index: 4;
+    padding: 1vh;
+    min-height: 250px;
+    max-height: 255px;
+
+    @media screen and (max-width: 1560px) {
+      position: relative;
+      right: 9rem;
+    }
+
+    @media screen and (max-width: 1440px) {
+      right: 15rem;
+    }
+
+    @media screen and (max-width: 1200px) {
+      right: 16rem;
+    }
+
+    @media screen and (max-width: 1099px) {
+      min-width: 220px;
+    }
+    @media screen and (max-width: 850px) {
+      right: 18rem;
+    }
+    @media screen and (max-width: 800px) {
+      right: 22rem;
+    }
+    @media screen and (max-width: 700px) {
+      position: absolute;
+      right: 2.4rem;
+    }
+    @media screen and (max-width: 400px) {
+      right: 4rem;
+    }
+    @media screen and (max-width: 375px) {
+      right: 10rem;
+    }
+
+    div.dropdown-top--item.dropdown-singlesound--item {
+      @include flexcenter;
+      justify-content: flex-start;
+      span.dropdown-top--item--text {
+        font-size: 1.2rem;
+        @include niceTxt;
+        height: 100%;
+        @include flexcenter;
+        @media screen and (max-width: 1099px) {
+          font-size: 2.2rem;
+          margin-left: 1.5rem;
+        }
+        
+        
+      }
+      span.dropdown-top--item--icon {
+        overflow: visible;
+        border-radius: 50%;
+        padding: 0.3rem;
+        @include flexcenter;
+        @media screen and (max-width: 1099px) {
+          padding: 0;
+          @include heightWidthSame(4.5rem);
+          margin: 1rem 0;
+          
+        }
+        div.sound-list-item--circle.singlesound-edit-btns {
+          // padding: 5rem;
+          overflow: visible;
+          @include flexcenter;
+
+          @media screen and (max-width: 1099px) {
+            padding: 0;
+            @include flexcenter;
+            @include heightWidthSame(6.2rem);
+
+          }
+          button.btn {
+            @include heightWidthSame(3rem);
+            overflow: visible;
+            padding: 0;
+            @media screen and (max-width: 1099px) {
+              padding: 0;
+              @include flexcenter;
+              transform: scale(.71);
+              @include heightWidthSame(6.2rem);
+
+            }
+            
+            img {
+              @include heightWidthSame(1.82rem);
+              background: none;
+              border-radius: 0;
+              padding: 0.5rem;
+              box-shadow: none;
+              @media screen and (max-width: 1099px) {
+                padding: 0;
+                transform: scale(1);
+                @include heightWidthSame(2.8rem);
+                background: none;
+                
+  
+              }
+              
+            }
+          }
+        }
+      }
+    }
+
+
+    div.main-close {
+      right: 2.4vw;
+      top: 0vh;
+      transform: scale(1);
+      position: absolute;
+    }
+    &--btn {
+      margin-top: 2.3vh;
+      left: 0;
+      @include flexcenter;
+
+      div.sound-list-item--circle {
+        width: 100%;
+        @include flexcenter;
+        flex-direction: column;
+        margin-left: 2vw;
+
+        button.btn.nohover {
+          width: 7vw;
+          border-radius: 50%;
+          @include flexcenter;
+          position: relative;
+          bottom: 1vh;
+          right: 0.2vw;
+          justify-content: flex-start;
+          font-family: $font-1;
+          font-weight: 500;
+          color: $color-white-2;
+          opacity: 0.85;
+          text-shadow: $tshadow-black;
+          pointer-events: stroke;
+          z-index: 3;
+          font-size: 0.8rem;
+
+          &::before {
+            box-shadow: none;
+            background: none;
+          }
+
+          @media screen and (max-width: 1099px) {
+            font-size: 2rem;
+          }
+        }
+      }
+    }
+
+
+  }
+  &--btn-activator {
+    @include flexcenter;
+    button.btn {
+      @include flexcenter;
+      position: relative;
+      img {
+        box-shadow: none;
+        @include heightWidthSame(3.5rem);
+      }
+    }
+    @media screen and (max-width: 400px) {
+      position: relative;
+      right: 2rem;
+    }
+    @media screen and (max-width: 380px) {
+      position: relative;
+      right: 3.5rem;
+    }
+
+  }
+
+  
+
+}
+
+.edit-btn-container-single {
+  @include flexcenter;
+  z-index: 3;
+  position: relative;
+  justify-content: flex-start;
+  
+  &--btn {
+    @include flexcenter;
+    justify-content: flex-start;
+    left: 0;
+    @include heightWidth100;
+    position: relative;
+    top: 3.5vh;
+    width: 7.5vw;
+
+    button.btn.nohover.edit-btn-btn {
+      @include flexcenter;
+      pointer-events: stroke;
+      background: none;
+      box-shadow: none;
+      @include niceTxt;
+      background-color: rgba(108, 121, 124, 0.788);
+      padding: 0rem 0.3rem;
+      width: 4.7vw;
+      height: 3vh;
+      height: 3.4vh;
+      top: 0.6vh;
+      border-radius: 0.2rem;
+      margin: 0;
+      font-size: 0.7rem;
+      pointer-events: stroke;
+      
+      
+      @media (hover: hover) and (pointer: fine) {
+        &:hover {
+          background-color: #232324a1;
+        }
+      } 
+
+      @media screen and (max-width: 1099px) {
+        font-size: 1.3rem;
+        border-radius: .4rem;
+        min-width: 50px;
+      }
+      
+
+      &:before {
+        box-shadow: none;
+      }
+    }
+
+    @media screen and (max-width: 725px) {
+      width: 7.5rem;
+    }
+    @media screen and (max-width: 500px) {
+      width: 16.5rem;
+    }
+  }
+}
+
+.ball-loader-singlesound-desc {
+  left: 50vw;
+  bottom: 44vh;
+  position: absolute;
+}
+
+.ball-loader-singlesound-name {
+  left: 40vw;
+  bottom: 67vh;
+  position: absolute;
+}
+
+div.edit-img-modal {
+  background-color: rgba(17, 18, 19, 0.993);
+
+  img {
+    pointer-events: stroke;
+  }
+  &--head {
+    height: 20%;
+    background: none;
+    @include flexcenter;
+    align-items: flex-start;
+    margin-top: 2vh;
+    margin-left: 0.5vw;
+  }
+
+  &--children {
+    height: 60vh;
+    width: 25vw;
+    @include flexcenter;
+    flex-direction: column;
+  }
+}
+
+div.single-edit-img {
+  pointer-events: none;
+  form {
+    height: 60vh;
+    width: 25vw;
+    @include flexcenter;
+    flex-direction: column;
+
+    div.edit-btn-container-single {
+      margin: 0;
+      height: 7vh;
+      width: 100%;
+      position: relative;
+      top: 10vh;
+      @include flexcenter;
+      &--btn {
+        margin: 0;
+        @include flexcenter;
+        position: relative;
+        left: 0;
+        top: 0;
+        button.btn.nohover.edit-btn-btn {
+          margin-right: 0;
+        }
+      }
+    }
+  }
+  &--upload {
+    &--prev {
+      @include flexcenter;
+      img {
+        @include heightWidthSame(20vh);
+        box-shadow: $shadow-new;
+        border-radius: 0.4rem;
+      }
+    }
+  }
+  
+}
+
+div.singlesound-imgupload {
+  @include mainBTN;
+  button {
+    outline: none;
+    height: 2vh;
+    padding: 1.3rem 0.4rem;
+    border-radius: 0.2rem;
+    width: 10vw;
+    white-space: nowrap;
+    top: 2vh;
+    pointer-events: stroke;
+    background-color: rgba(64, 77, 76, 0.411);
+    box-shadow: $shadow-new;
+
+    &::before {
+      box-shadow: none;
+      background: none;
+    }
+  }
+}
+
+.sound-tags {
+  @include flexcenter;
+  justify-content: flex-start;
+  position: relative;
+  height: 2.5rem;
+  @media screen and (max-width: 1099px) {
+    top: 2rem;
+  }
+
+  span {
+    @include flexcenter;
+  }
+  span.tagword {
+    opacity: 0.65;
+    font-size: 0.8rem;
+    @media screen and (max-width: 1099px) {
+      font-size: 1.6rem;
+    }
+  }
+
+  .single-tag {
+    position: relative;
+    left: 0.15vw;
+    transition: all 0.2s;
+    cursor: pointer;
+    pointer-events: stroke;
+    span {
+      margin-left: 0.32vw;
+      transition: all 0.2s;
+      opacity: 0.8;
+      font-size: 0.8rem;
+      @media screen and (max-width: 1099px) {
+        font-size: 1.6rem;
+      }
+      @media screen and (max-width: 750px) {
+        left: 1vw;
+        margin: 0 0.8vw;
+      }
+    }
+    
+    
+    @media (hover: hover) and (pointer: fine) {
+      &:hover {
+        transition: all 0.2s;
+        span {
+          color: $color-light-blue;
+          transition: all 0.2s;
+        }
+      }
+    } 
+  }
+}
+
+div.single-sound--likes {
+  @media screen and (max-width: 1099px) and (min-width: 750px) {
+    margin-top: 1.2rem;  
+  }
+  span.like-txt-single.likesingle {
+    cursor: pointer;
+    font-size: 0.95rem;
+    transition: all 0.2s;
+    height: min-content;
+
+    
+    @media (hover: hover) and (pointer: fine) {
+      &:hover {
+        color: $color-mainblue;
+        transition: all 0.2s;
+      }
+    } 
+    
+    @media screen and (max-width: 1099px) {
+      @include niceTxt;
+      font-size: 1.6rem;
+    }
+
+    @media screen and (max-width: 1099px) and (min-width: 801px) {
+      left: -1rem;
+    }
+  }
+}
+
+div.singlesound-img {
+  grid-row: 1/6;
+  @include flexcenter;
+  overflow: visible;
+  position: relative;
+  transition: all 0.2s;
+  border-radius: 2rem;
+
+  @media screen and(min-width: $bp-large) {
+    min-height: 500px;
+    min-width: 500px;
+    transform: translateX(-90px);
+  }
+  @media screen and (max-width: 1550px) {
+    position: relative;
+    transform: translateX(-60px);
+  }
+
+  @media screen and(min-width: $bp-large) and(max-width: 1250px) {
+    min-height: 400px;
+    min-width: 400px;
+  }
+
+  @media screen and(min-width: 2240px) {
+    min-height: 600px;
+    min-width: 600px;
+  }
+
+  @media screen and (max-width: 1099px) {
+    position: relative;
+    grid-column: 1/3;
+    transform: none;
+    min-height: 350px;
+    min-width: 350px;
+    max-width: 400px;
+    max-height: 400px;
+    transform: translateX(30px);
+
+  }
+  @media screen and (max-width: 1000px) {
+    min-height: 300px;
+    min-width: 300px;
+    max-width: 300px;
+    max-height: 300px;
+    transform: translateX(60px);
+  }
+  @media screen and (max-width: 850px) {
+    max-width: 270px;
+    max-height: 270px;
+    transform: translateX(60px) translateY(-60px);
+  }
+  @media screen and (max-width: 750px) {
+    grid-row: 1/3;
+    min-height: 125px;
+    min-width: 125px;
+    max-width: 125px;
+    max-height: 125px;
+    transform: none;
+    border-radius: 50%;
+
+    img {
+      border-radius: 50%;
+    }
+  }
+  @media screen and (max-width: 549px) {
+    min-height: 90px;
+    min-width: 90px;
+    max-width: 90px;
+    max-height: 90px;
+    transform: translateX(30px);
+  }
+  @media screen and (max-width: 510px) {
+    transform: none;
+  }
+  @media screen and (max-width: 425px) {
+    max-width: 150px;
+    right: 1rem;
+    img {
+      position: relative;
+      left: 2rem;
+      @include heightWidthSame(10rem);
+     
+    }
+  }
+
+  
+
+  span {
+    border-radius: 2rem;
+    @media screen and (max-width: 750px) {
+      border-radius: 50%;
+    }
+    img {
+    border-radius: 2rem;
+
+    }
+  }
+}
+
+// .singlesound-img-container {
+//   @media screen and (max-width: 1099px) {
+//     max-width: 300px;
+//   }
+//   @media screen and (max-width: 850px) {
+//     max-width: 250px;
+//   }
+//   @media screen and (max-width: 750px) {
+//     max-width: 130px;
+//   }
+
+// }
+
+// div.sound-list-item--circle.circle-btn-single-sound.circle-btn-single-sound--download.singlesound-btn {
+//   min-width: 129px;
+//   min-height: 30px;
+//   grid-column: 3/4;
+//   left: 0;
+//   padding: 0;
+//   width: 90%;
+//   max-height: 50px;
+//   min-width: 190px;
+
+//   @include flexcenter;
+
+//   @media screen and (max-width: 1099px) {
+//     margin-top: 2rem;
+//   }
+//   @media screen and (max-width: 370px) {
+//     margin-top: 5rem;
+//   }
+
+
+//   @media screen and (min-width: 751px) and (max-width: 880px) {
+//     left: 2vw;
+//   }
+
+//   @media screen and (max-width: 475px) {
+//     min-width: 115px;
+//   }
+  
+
+//   button.btn.nohover {
+//     height: 5vh;
+//     min-height: 40px;
+//   }
+//   span {
+//     position: relative;
+//     right: 0.5vw;
+//     width: min-content;
+//     pointer-events: none;
+//     // @include heightWidth100;
+//   }
+//   img {
+//     position: relative;
+//     box-shadow: none;
+//     pointer-events: none;
+
+//   }
+//   div {
+//     pointer-events: none;
+//     left: 0;
+//     button.btn.nohover {
+//       left: 0;
+//     }
+//   }
+
+//   @media screen and (max-width: 1099px) {
+//     grid-column: 4/5;
+//     @include flexcenter;
+//     span {
+//       font-size: 1.9rem;
+//       right: 1.5vw;
+//       @include flexcenter;
+//       top: 0.3vh;
+//     }
+//     button.btn {
+//       left: 1.5vw;
+//     }
+//   }
+
+//   @media screen and (max-width: 750px) {
+//     grid-row: 5/6;
+//     grid-column: 3/5;
+//     max-width: 150px;
+
+//     button.btn.nohover {
+//       img {
+//         @include heightWidthSame(2rem);
+//       }
+//     }
+//   }
+//   @media screen and (max-width: 650px) {
+//     left: 2vw;
+//   }
+//   @media screen and (max-width: 575px) {
+//     left: 4vw;
+//   }
+//   @media screen and (max-width: 475px) {
+//     left: 6vw;
+//   }
+//   @media screen and (max-width: 415px) {
+//     left: 8vw;
+//   }
+//   @media screen and (max-width: 370px) {
+//     left: 10vw;
+//   }
+//   @media screen and (max-width: 500px) {
+//     grid-column: 4/5;
+//     left: 3vw;
+//   }
+  
+// }
+
+
+div.single-sound--repost {
+  div.sound-list-item--circle.circle-btn-single-sound.singlesound-btn.move-down-more {
+    @media screen and (min-width: 451px) {
+      margin-top: 3rem;
+    }
+  }
+
+  div.sound-list-item--circle.circle-btn-single-sound.singlesound-btn.move-down-more {
+    @media screen and (max-width: 750px) {
+      margin-top: 8rem;
+    }
+    @media screen and (max-width: 450px) {
+      margin-top: 8rem;
+    }
+    
+    @media screen and (min-width: $bp-large) {
+      margin-top: 6rem;
+
+    }
+    @media screen and (min-width: 1600px) and (max-height: 980px) {
+      margin-top: 8.25rem;
+    }
+    @media screen and (max-width: 400px) {
+      margin-top: 12rem;
+    }
+    
+  }
+  div.sound-list-item--circle.circle-btn-single-sound.singlesound-btn.move-down {
+    @media screen and (min-width: $bp-large) {
+      margin-top: 4rem;
+    }
+    
+  }
+
+  
+}
+
+div.single-sound--info--desc {
+  div.singlesound-action-container {
+    div.single-sound--repost.download {
+      button.btn.nohover {
+        left: 0;
+      }
+    }
+    
+  }
+}
+
+
+
+
+div.sound-list-item--circle.singlesound-edit-btns {
+  margin: 0 0vw;
+
+  button.btn.nohover {
+    @include heightWidthSame(3rem);
+    @include flexcenter;
+    box-shadow: none;
+    padding: 2rem;
+    background: none;
+    transform: scale(0.75);
+    margin: 0;
+    left: 1vw;
+    border-radius: 50%;
+    overflow: visible;
+
+    &::before {
+      box-shadow: none;
+    }
+    img {
+      @include heightWidthSame(1.7rem);
+      padding: 0.6rem;
+      background-color: rgba(14, 15, 15, 0.562);
+      border-radius: 50%;
+    }
+  }
+}
+
+div.mouseOver.circle-btn-mouseover.circle-btn-mouseover--selector.singlesound-deletebtns-mouseover {
+  left: 0.5vw;
+}
+
+div.mouseOver.circle-btn-mouseover.singlesound-options-mouseover.circle-btn-mouseover--singlesound--seemore {
+  right: -15%;
+}
+
+// PROGRESS BAR
+
+div.single-sound--player--container {
+  min-height: 80px;
+
+  div.single-sound--player--controls {
+    div.recent-sounds--list--item--player.globalPlay {
+      button.btn.nohover {
+        @media screen and (max-width: 1440px) {
+          transform: scale(0.8);
+          margin: 0 1vw;
+        }
+        @media screen and (max-width: 1099px) {
+          transform: scale(1);
+          margin: 0 1.5vw;
+        }
+        @media screen and (max-width: 800px) {
+          transform: scale(0.9);
+          margin: 0 1.5vw;
+        }
+        @media screen and (max-width: 750px) {
+          transform: scale(0.7);
+          margin: 0;
+        }
+        @media screen and (max-width: 590px) {
+          transform: scale(0.6);
+          margin: 0 -1rem;
+        }
+        @media screen and (max-width: 400px) {
+          transform: scale(0.5);
+          margin: 0 -1.5rem;
+        }
+        
+      }
+      button.btn.nohover.right {
+        @media screen and (max-width: 590px) {
+          transform: scale(0.5);
+        }
+        @media screen and (max-width: 400px) {
+          transform: scale(0.45);
+        }
+      }
+      button.btn.nohover.rotate {
+        @media screen and (max-width: 590px) {
+          transform: scale(0.5);
+        }
+        @media screen and (max-width: 400px) {
+          transform: scale(0.45);
+        }
+      }
+    }
+  }
+  div.single-sound--player--progress {
+    span.global-player--time--progress {
+      @media screen and (max-width: 1099px) {
+        font-size: 2rem;
+      }
+    }
+  }
+}
+
+div.counter-singlesound {
+  position: absolute;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  z-index: 3;
+  margin-top: .75rem;
+
+  @media screen and (max-width: 500px) {
+    width: 100%;
+    display: flex;
+    align-items: flex-start;
+  }
+
+
+  span {
+    position: relative;
+    margin-right: 3vw;
+    height: 20px;
+    width: max-content;
+    @include niceTxt;
+    @include flexcenter;
+    font-size: 0.75rem;
+    white-space: nowrap;
+    opacity: 0.7;
+    @media screen and (max-width: 1099px) {
+      font-size: 1.6rem;
+    }
+  }
+
+  
+  span.like-txt-single.likesingle {
+    pointer-events: stroke;
+    cursor: pointer;
+    @media (hover: hover) and (pointer: fine) {
+      &:hover {
+        color: $color-light-blue;
+        transition: all 0.2s;
+      }
+    } 
+  }
+
+  span.repost-singlesound-count {
+    cursor: pointer;
+    pointer-events: stroke;
+    transition: all 0.2s;
+    
+    
+    @media (hover: hover) and (pointer: fine) {
+      &:hover {
+        color: $color-light-blue;
+        transition: all 0.2s;
+      }
+    } 
+  }
+}
+
+
+div.global-player--time--moveOver--followingTile--contain.singlesound-sound-mouseover--tile {
+  span.global-player--time--moveOver--followingTile {
+    bottom: 0;
+    background-color: $color-offwhite2;
+  }
+}
+
+div.global-player--time--moveOver--textcontain.singlesound-sound-mouseover--textcontain {
+  span {
+    bottom: 10vh;
+    background-color: $color-new-grey;
+  }
+}
+
+div.single-sound--likes {
+  div.outline-btn.outline-btn--heart {
+    @include flexcenter;
+    max-height: 45px;
+    column-gap: 1rem;
+
+    div.single-sound--likes--lottie--contain {
+      pointer-events: stroke;
+
+      @media screen and (min-width: $bp-large) and (max-height: 800px) {
+        height: auto;
+      }
+
+      @media screen and (max-width: 750px) {
+        @include heightWidthSame(5rem);
+        
+        div.lottie.single-sound--likes--lottie {
+          @include heightWidthSame(5rem);
+        }
+      }
+
+      @media screen and (max-width: 500px) {
+        position: absolute;
+        width: 100%;
+        @include flexcenter;
+        justify-content: flex-start;
+        right: 0;
+        @include heightWidthSame(5rem);
+        
+        div.lottie.single-sound--likes--lottie {
+          @include heightWidthSame(5rem);
+        }
+      }
+      
+    }
+
+    @media screen and (max-width: 750px) {
+      span {
+        font-size: 1.6rem;
+        left: -1vw;
+      }
+    }
+
+
+    @media screen and (max-width: 500px) {
+      max-height: 40px;
+      left: 0;
+      width: 70vw;
+
+      @include flexcenter;
+      justify-content: flex-end;
+      position: relative;
+      span {
+        @include flexcenter;
+        left: -2rem;
+        justify-content: flex-end;
+        position: absolute;
+        width: 100%;
+      }
+    }
+
+    @media screen and (max-width: 400px) {
+      width: 75vw;
+    }
+    @media screen and (max-width: 375px) {
+      width: 78vw;
+      
+    }
+    @media screen and (max-width: 350px) {
+      width: 83vw;
+    }
+    @media screen and (max-width: 330px) {
+      width: 86vw;
+    }
+  }
+
+
+  @media screen and (min-width: 751px) and (max-width: 880px) {
+    left: 2vw;
+    span {
+      left: -2.2vw;
+    }
+  }
+
+  @media screen and (max-width: 750px) {
+    grid-column: 4/5;
+    @include flexcenter;
+  }
+  @media screen and (max-width: 590px) {
+    position: relative;
+    left: 2vw;
+  }
+  @media screen and (max-width: 540px) {
+    position: relative;
+    left: 4vw;
+  }
+  @media screen and (max-width: 500px) {
+    top: 1rem;
+    left: 0;
+    max-height: 21px;
+  }
+  @media screen and (max-width: 500px) and (max-height: 800px) {
+    top: 2.2rem;
+    left: 0;
+    max-height: 21px;
+  }
+}
+
+div.single-sound--info {
+  div.sound-list-item--circle.circle-btn-single-sound.singlesound-btn {
+    @media screen and (max-width: 750px) {
+      max-height: 36px;
+    }
+    button.btn.nohover {
+      font-size: 3rem;
+      background: none;
+      box-shadow: none;
+      border-radius: 0;
+      padding: 0;
+      @include flexcenter;
+      width: 3rem;
+      
+      &::before {
+        box-shadow: none;
+        background: none;
+      }
+      span {
+        font-size: 3rem;
+        
+      }
+      img {
+        border-radius: 0;
+        padding: 0;
+        @media screen and (max-width: 1099px) {
+          border-radius: 0;
+          padding: 0;
+          @include heightWidthSame(2.5rem);
+        }
+      }
+      
+    }
+    span {
+      @media screen and (max-width: 1450px) and (min-width: $bp-large) {
+        margin-left: 1rem;
+      }
+    }
+    @media screen and (max-width: 1099px) {
+      border-radius: .6rem;
+    }
+    @media screen and (min-width: $bp-large) {
+      left: 0;
+    }
+   
+  }
+}
+
+div.single-sound--player--container {
+  div.single-sound--player--progress {
+    grid-row: 1/2;
+    @include flexcenter;
+    span.global-player--time--progress {
+      transform: none;
+    }
+    div.small-progressbar {
+      bottom: 0;
+    }
+  }
+  div.single-sound--player--controls {
+    @media screen and (max-width: 750px) {
+      grid-row: 1/2;
+      height: 100%;
+      @include flexcenter;
+      min-height: 60px;
+      transform: scale(1);
+    }
+    div.recent-sounds--list--item--player.globalPlay {
+      height: 100%;
+
+
+      // @media screen and (max-width: 1099px) {
+      //   height: 100%;
+      //   @include flexcenter;
+      //   margin: 0;
+      //   padding: 0;
+      //   top: 0;
+      //   transform: scale(0.65);
+      // }
+      
+    }
+  }
+}
+
+div.smaller-like-singlesound-container {
+  height: 41px;
+  width: 100px;
+  justify-content: flex-start;
+  left: 0;
+  position: relative;
+}
+
+div.single-sound {
+  
+  .singlesound-edit-btns {
+    pointer-events: none;
+  }
+}
+
+.singlesound-editbtns-mobile {
+  
+  div.dropdown-top--item.dropdown-singlesound--item {
+    a.dropdown-top--item--link {
+      span {
+          font-size: 2rem;
+          @include heightWidth100;
+          @media screen and (min-width: $bp-large) {
+            font-size: 1.2rem;
+
+          }
+        }
+      span.dropdown-top--item--icon {
+          background: none;
+          justify-content: flex-start;
+        }
+        div.sound-list-item--circle.singlesound-edit-btns {
+          
+            @include flexcenter;
+          }
+          
+        
+        button.btn.nohover {
+          
+            @include heightWidthSame(7.2rem);
+            @media screen and (min-width: $bp-large) {
+              @include heightWidthSame(5rem);
+  
+            }
+            img {
+              @include heightWidthSame(3.82rem);
+              padding: 0;
+              border-radius: 0;
+              background: none;
+              @media screen and (min-width: $bp-large) {
+                @include heightWidthSame(2.8rem);
+    
+              }
+            }
+          
+        }
+      
+      span.dropdown-top--item--text {
+        white-space: nowrap;
+        @include niceTxt;
+        color: $color-white-2;
+        font-family: $font-1;
+        
+      }
+    }
+  }
+
+  
+}
+
+
+form.single-sound--comments--form {
+  div.form-control.single-sound--comments--input--formcontrol {
+    height: 100%;
+    margin: 0;
+    margin-top: 1rem;
+
+    input.single-sound--comments--buttonshow {
+      width: 50%;
+      margin-right: 4rem;
+      transition: all .2s;
+    }
+  }
+}
+
+.comment-options-contain {
+  position: relative;
+  grid-row: 1/-1;
+  grid-column: 5/-1;
+  @include heightWidth100;
+  background: none;
+  width: 110%;
+  height: 100%;
+  pointer-events: none;
+  top: 3rem;
+  @include flexcenter;
+  @media screen and (min-width: 1850px) {
+    width: 108%;
+  }
+}
+
+.comment-options {
+  position: absolute;
+  background-color: $color-new-grey;
+  height: 2.5rem;
+  width: 6rem;
+  font-size: .9rem;
+  border-radius: .3rem;
+  color: $color-white-2;
+  @include flexcenter;
+  z-index: 9999;
+  pointer-events: stroke;
+
+  @media screen and (max-width: 1099px) {
+    font-size: 2rem;
+    height: 4rem;
+    width: 10rem;
+    border-radius: .7rem;
+    
+  }
+  @media screen and (max-width: 750px) {
+    margin-right: 7rem;
+    transform: scale(.7);
+    
+  }
+
+  &--list {
+    width: 100%;
+    @include flexcenter;
+    flex-direction: column;
+
+    &--item {
+      @include niceTxt;
+      font-weight: 400;
+      @include flexcenter;
+      flex-direction: column;
+      cursor: pointer;
+      width: 100%;
+      height: 2.5rem;
+      width: 6rem;
+      border-radius: .3rem;
+      font-size: 1rem;
+
+      @media screen and (max-width: 1099px) {
+        font-size: 2rem;
+        height: 4rem;
+        
+      }
+    
+      
+      @media (hover: hover) and (pointer: fine) {
+        &:hover {
+          background-color: $color-deepblue;
+        }
+      } 
+    }
+  }
+}
+
+div.comment-options.comment-options-mycomment {
+  height: 5rem;
+  @media screen and (max-width: 1099px) {
+    height: 10rem;
+    
+  }
+}
+
+
+.edit-comment-contain {
+  position: relative;
+  grid-row: 1/-1;
+  grid-column: 3/-1;
+  display: grid;
+  @include heightWidth100;
+  height: max-content;
+  grid-template-rows: 70% 30%;
+  grid-template-columns: 60% 40%;
+
+  @media screen and (max-width: 1099px) {
+    grid-column: 2/-1;
+    
+  }
+
+}
+
+.edit-comment-inputcontain {
+  @include heightWidth100;
+  grid-row: 1/2;
+  grid-column: 1/-1;
+  position: relative;
+  top: 0;
+  margin: 0;
+  padding: 0;
+
+  div.form-control.filter-menu--inputs--input {
+    top: 0;
+    margin: 0;
+    padding: 0;
+    height: max-content;
+    overflow: hidden;
+
+    textarea {
+      height: min-content;
+      padding: 0rem 1rem;
+      padding-top: .5rem;
+      transition: all .4s;
+      overflow-x: hidden;
+      -ms-overflow-style: none;
+      scrollbar-width: none; 
+      &::-webkit-scrollbar {
+        display: none;
+      }
+      @media screen and (max-width: 1099px) {
+        padding: 1.5rem 1rem;
+        
+      }
+
+    }
+  }
+}
+
+
+.edit-comment-btn-contain {
+  @include heightWidth100;
+  grid-row: 2/3;
+  grid-column: 2/3;
+  position: relative;
+  top: 1.2rem;
+  @include flexcenter;
+  justify-content: flex-end;
+  align-items: flex-end;
+
+  
+  div.outline-btn {
+    position: relative;
+    justify-content: flex-end;
+    align-items: flex-end;
+    
+    button.btn.nohover {
+      background-color: $color-new-grey;
+      box-shadow: $shadow-newer-2;
+      
+      
+      @media (hover: hover) and (pointer: fine) {
+        &:hover {
+          background-color: $color-mainblue;
+        }
+      } 
+    }
+  }
+
+}
+
+.comment-loader {
+  position: relative;
+  top: .5rem;
+  grid-row: 2/5;
+  grid-column: 4/5;
+  @include heightWidth100;
+  @include flexcenter;
+  transform: scale(.7);
+  pointer-events: none;
+
+  @media screen and (min-width: $bp-large) {
+    left: 2rem;
+  }
+  @media screen and (max-width: 1099px) {
+    grid-column: 3/5;
+    justify-content: flex-start;
+    right: 7.5rem;
+    top: -1rem;
+  }
+  @media screen and (max-width: 750px) {
+    right: 10rem;
+  }
+  @media screen and (max-width: 550px) {
+    transform: scale(.5);
+    right: 8rem;
+    top: -4rem;
+  }
+
+  div.inpage-loader--ball {
+    position: relative;
+    @include flexcenter;
+    height: 100%;
+  }
+}
+
+li.single-sound-comments--item.long-comment-singlesound {
+  margin-bottom: 3rem;
+  div.single-sound-comments--item--pic {
+    
+  }
+  @media screen and (max-width: 1099px) {
+    grid-template-rows: 12% 45% 25%;
+    margin-bottom: 1rem;
+  }
+
+}
+li.single-sound-comments--item.little-comment {
+  height: 11rem;
+  margin-bottom: -3rem;  
+
+  @media screen and (max-width: 1099px) {
+    grid-template-rows: 31% 40% 25%;
+    margin-bottom: 1rem;
+  }
+  @media screen and (max-width: 550px) {
+    grid-template-rows: 22% 40% 25%;
+    margin-bottom: 1rem;
+  }
+  div.single-sound-comments--item--pic {
+    @media screen and (max-width: 1099px) {
+      grid-row: 1/3;
+      align-items: flex-start;
+    }
+  }
+  
+
+  
+
+}
+span.comment-readmore {
+  white-space: nowrap;
+  color: $color-offwhite2;
+  font-weight: 600;
+  margin-top: .71rem;
+  margin-bottom: 1.5rem;
+  cursor: pointer;
+  font-size: 1rem;
+  @media screen and (max-width: 1099px) {
+    margin-bottom: 3rem;
+
+  }
+
+
+  
+  @media (hover: hover) and (pointer: fine) {
+    &:hover {
+      color: $color-light-blue;
+    }
+  } 
+  
+}
+
+
+
+.singlesound-likes-smaller-contain {
+  height: 20px;
+  width: 100px;
+  @include flexcenter;
+  justify-content: flex-start;
+  position: relative;
+  left: 1rem;
+}
+
+.singlesound-likes-smaller {
+  @include flexcenter;
+  @include heightWidth100;
+  justify-content: flex-start;
+  pointer-events: stroke;
+  span {
+    @include flexcenter;
+    justify-content: flex-start;
+    
+  }
+  div.single-sound--likes--lottie--contain {
+    @include flexcenter;
+  }
+
+}
+
+
+.edit-desc-countcontain {
+  position: absolute;
+  @include heightWidth100;
+  @include flexcenter;
+  justify-content: flex-end;
+  align-items: flex-end;
+  pointer-events: none;
+  transform: translateX(75%) translateY(1.2%);
+  span {
+    height: 3.5vh;
+    @include niceTxt;
+    font-size: 1.1rem;
+    
+    
+  }
+  span.invalid-count {
+    color: rgb(175, 90, 90);
+    font-weight: 600;
+  }
+}
+
+div.single-sound--info--desc.single-edit-desc {
+  .edit-desc-countcontain {
+    transform: translateX(0%) translateY(1.5%);
+  }
+}
+
+
+.mobile-comment-options-contain {
+  background-image: linear-gradient(45deg, #1b1f1f, #1b1f1f, #1b1f1f);
+
+  @include flexcenter;
+
+}
+
+div.mobile-comment-options {
+  background: none;
+  @include flexcenter;
+  width: 100%;
+  min-width: 100px;
+  margin: 0;
+  padding: 0;
+  
+}
+
+div.single-sound--player--container {
+  span.global-progress-singlesound {
+    @media screen and (max-width: 450px) {
+      display: none;
+    }
+  }
+  div.single-sound--player--progress {
+    @media screen and (max-width: 450px) {
+      margin-left: 4rem;
+    }
+  }
+  
+}
+
+
+span.single-sound-longname {
+  @media screen and (max-width: 1099px) {
+    font-size: 2rem;
+    line-height: 5rem;
+  } 
+  @media screen and (max-width: 375px) {
+    max-width: 150px;
+    max-height: 20px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nor;
+  } 
+}
+
+
+div.single-sound--info--desc.single-sound-desc-first-longname {
+  @media screen and (max-width: 400px) {
+    top: 0;
+  } 
+
+  
+  span.single-sound-longname {
+    transform: translateY(1rem);
+    top: 0rem;
+    
+  }
+
+  div.sound-tags {
+    top: 3rem;
+  }
+  div.counter-singlesound {
+    margin-top: 4rem;
+  }
+
+  @media screen and (max-width: 1099px) {
+    margin-top: 2rem;
+
+    span.single-sound-longname {
+      line-height: 3rem;
+      top: 1rem;
+    }
+    div.sound-tags {
+      top: 4rem;
+    }
+    div.counter-singlesound {
+      margin-top: 6rem;
+    }
+    p{
+      top: 1.5rem;
+    
+    }
+
+  } 
+  @media screen and (max-width: 350px) {
+    div.sound-tags {
+      top: 2rem;
+    }
+    div.counter-singlesound {
+      margin-top: 4rem;
+    }
+  } 
+}
+
+
+
+div.single-sound--info--desc.single-sound-desc-first-longname.single-sound-desc-longname {
+
+  span.single-sound-longname {
+    transform: translateY(1rem);
+    top: 1rem;
+  
+  }
+
+  div.sound-tags {
+    top: 2rem;
+  }
+  
+  div.counter-singlesound {
+    margin-top: 4rem;
+  }
+
+  p{
+    top: 1rem;
+    max-height: 150px;
+    text-overflow: ellipsis;
+  }
+  @media screen and (max-width: 1099px) {
+    margin-top: 2rem;
+    span.single-sound-longname {
+      line-height: 8rem;
+      top: 1rem;
+    }
+    div.sound-tags {
+      top: 4rem;
+    }
+    div.counter-singlesound {
+      margin-top: 6rem;
+    }
+    p{
+      top: -2rem;
+    
+    }
+
+  } 
+
+  @media screen and (max-width: 550px) {
+    
+    span.single-sound-longname {
+      text-overflow: ellipsis;
+      overflow: hidden;
+      white-space: nowrap;
+    }
+  }
+}
+
+div.single-sound--info--desc.single-sound-desc-first-longname.single-sound-desc-longname.single-sound-desc-longest-longname {
+  @media screen and (max-width: 750px) {
+    transform: translateY(1rem);
+  } 
+
+  span.single-sound-longname {
+    transform: translateY(1rem);
+    top: 1.5rem;
+    
+  }
+
+  div.sound-tags {
+    top: 3rem;
+  }
+  
+  div.counter-singlesound {
+    margin-top: 3rem;
+  }
+  p{
+    top: 2rem;
+  }
+
+  @media screen and (max-width: 1099px) {
+    margin-top: 2rem;
+    span.single-sound-longname {
+      line-height: 3rem;
+      top: 1rem;
+    }
+    div.sound-tags {
+      top: 5rem;
+    }
+    div.counter-singlesound {
+      margin-top: 8rem;
+    }
+    p{
+      top: 0rem;
+    
+    }
+
+  } 
+  @media screen and (max-width: 400px) {
+    margin-top: 5rem;
+    span.single-sound-longname {
+      line-height: 3rem;
+      top: 1rem;
+    }
+    div.sound-tags {
+      top: 7rem;
+    }
+    div.counter-singlesound {
+      margin-top: 8rem;
+    }
+  }
+  
+
+}
+
+div.followers-modal.edit-img-modal {
+
+
+  div.change-img-modal--contain.edit-img-modal--children {
+    grid-row: 2/-1;
+    @include heightWidth100;
+    grid-column: 1/-1;
+    @include flexcenter;
+    
+    @media screen and (max-width: 750px) {
+      grid-row: 1/-1;
+    }
+    div.single-sound--info--desc.single-edit-img {
+      max-height: 500px;
+    }
+    
+    button.uploadmodal-big--info-form--input--imgUpload--btn.btn.nohover.upload-sound-button {
+      min-width: 180px;
+      min-height: 45px;
+      padding: 0;
+    }
+  }
+  div.edit-btn-container-single {
+    @media screen and (max-width: 1099px) {
+      @include flexcenter;
+      justify-content: space-around;
+      width: 200px;
+  
+    }
+    button.btn.nohover.edit-btn-btn {
+      min-height: 30px;
+      min-width: 75px;
+      @media screen and (max-width: 1099px) {
+        font-size: 2rem;
+      }
+    }
+  }
+}
+
+
+.report-comment {
+  margin:0;
+  padding:0;
+  @include heightWidth100;
+  position: relative;
+  @include flexcenter;
+  flex-direction: column;
+
+
+  form {
+    // margin-top: 5rem;
+    width: 70%;
+    padding: 5rem;
+    position: relative;
+    div.form-control {  
+      width: 100%;
+
+    }
+    div.edit-btn-container-single {
+      justify-content: center;
+    }
+    textarea {
+      padding-left: .75rem;
+      font-size: 1rem;
+      @media screen and (max-width: 1099px) {
+        font-size: 2rem;
+      }
+    }
+
+    label.form-label {
+      @media screen and (max-width: 1099px) {
+        font-size: 1.75rem;
+      }
+    }
+   
+    div.edit-btn-container-single--btn.edit-desc-countcontain {
+      transform: none;
+      // width: 5rem;
+
+      span {
+        @media screen and (max-width: 1099px) {
+          font-size: 1.75rem;
+        }
+        height: 15px;
+        @include flexcenter;
+      }
+    }
+
+  }
+
+  &--head {
+    width: 100%;
+    @include flexcenter;
+    h1 {
+      font-size: 1.5rem;
+      @media screen and (max-width: 1099px) {
+        font-size: 2.75rem;
+      }
+    }
+  }
+
+}
+
+#__next {
+  span.invalid-count {
+    font-size: 1rem;
+    @media screen and (max-width: 1099px) {
+      font-size: 1.75rem;
+    }
+  }
+}
+
+div.auth-modal-close-contain.modal-close-report {
+  div {
+    position: relative;
+    top: 1rem;
+    right: 1.5rem;
+  
+    @media screen and (max-width: 1099px) {
+      top: 2.5rem;
+      right: 3rem;
+    }
+  }
+} 
+
+
+.single-description {
+  cursor: pointer;
+  white-space: pre-line;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-height: 180px;
+  padding-left: 1rem;
+  padding-top: 1rem;
+  right: 1rem;
+  top: -.5rem;
+  border-radius: .5rem;
+  pointer-events: stroke;
+  position: relative;
+  width: 100%;
+
+  @media screen and (max-width: 1437px) {
+    width: 100%;
+  }
+
+  @media screen and (min-width: $bp-large) {
+    transform: translateY(1rem);
+  }
+  
+  @media screen and (max-width: 1099px) {
+    max-height: 160px;
+  } 
+
+  @media screen and (max-width: 328px) {
+    overflow: hidden;
+    max-height: 179px;
+    text-overflow: ellipsis;
+  } 
+
+}
+
+div.mobile-modal-box-desc {
+  @media screen and (max-width: 550px) {
+    width: 75vw;
+  }
+  @media screen and (max-width: 350px) {
+    width: 85vw;
+  }
+}
+
+.single-desc-modal {
+  @include heightWidth100;
+  @include flexcenter;
+
+
+  &--inner {
+    @include heightWidth100;
+    @include flexcenter;
+    padding: 4rem;
+
+    p {
+      @include niceTxt;
+      font-size: .95rem;
+      line-height: 1.52rem;
+      white-space: pre-line;
+
+      @media screen and (max-width: 1099px) {
+        font-size: 1.8rem;
+        line-height: 4rem;
+
+      }
+      @media screen and (max-width: 550px) {
+        font-size: 1.5rem;
+
+        
+      }
+      
+    }
+    
+    
+  }
+  @media screen and (max-width: 550px) {
+    min-width: 220px;
+    
+  }
+  
+}
+
+div.single-sound--info {
+  div.single-sound--info--title.singlesound-title-mypage {
+    @media screen and (max-width: 550px) {
+      min-width: 295px;
+      text-overflow: ellipsis;
+      h1 {
+        max-width: 275px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+    }
+    @media screen and (max-width: 400px) {
+      min-width: 215px;
+      h1 {
+        max-width: 205px;
+      }
+    }
+  }
+}
+
+
+div.single-sound--info--desc.single-sound--info--desc-longname-desc {
+  @media screen and (min-width: $bp-large) {
+    span.single-sound-longname {
+      top: 1.5rem;
+    }
+  }
+
+  @media screen and (min-width: $bp-large) and (min-height: 650px) {
+    span.single-sound-longname {
+      top: 2rem;
+    }
+  }
+
+  @media screen and (min-width: 1438px) {
+    span.single-sound-longname {
+      top: 1rem;
+    }
+  }
+  @media screen and (max-width: 949px) and (min-width: 751px) {
+    span.single-sound-longname {
+      top: 1rem;
+    }
+  }
+}
+
+div.counter-singlesound.singlesound-small-category {
+  margin-top: 10rem;
+  span {
+    color: white;
+  }
+  @media screen and (max-width: 500px) {
+    display: none;
+  }
+
+}
+
+div.single-sound--info--desc.single-sound--info--desc--small-desc {
+  margin-top: 0;
+}
+
+
+.commons-license {
+  bottom: 0;
+  height: 20%;
+  width: 100%;
+  position: relative;
+  @include flexcenter;
+  justify-content: flex-start;
+  align-items: flex-start;
+  margin-top: 2rem;
+  min-width: 640px;
+
+  @media screen and (max-width: 1099px) {
+    max-width: 500px;
+    margin-right: 0;
+  }
+
+  @media screen and (max-width: 1439px)  {
+    max-width: 400px;
+  }
+  
+  @media screen and (max-width: 750px) {
+    margin-top: 5rem;
+
+  }
+  @media screen and (max-width: 650px) {
+    flex-direction: column;
+  }
+
+  @media screen and (min-width: 751px) {
+    min-width: 457px;
+  }
+
+
+  div {
+    @include heightWidth100;
+    @include flexcenter;
+    justify-content: flex-start;
+    position: relative;
+    padding: 0;
+
+    @media screen and (max-width: 1099px) {
+      min-height: 30px;
+    }
+
+    span.license-span {
+      @include flexcenter;
+      min-width: 180px;
+      max-width: 220px;
+    }
+    img {
+      width: 5.2rem;
+      height: 2rem;
+      
+    }
+
+    font-size: .8rem;
+    color: $color-white;
+    
+    a {
+      max-height: 32px;
+      min-height: 32px;
+      min-width: 88px;
+      max-width: 88px;
+      
+      div {
+        padding: 0;
+
+      }
+    
+    }
+
+    p {
+      width: 100%;
+      position: relative;
+      line-height: 15px;
+      margin: 0;
+      font-size: .7rem;
+      @media screen and (min-width: 1100px) {
+        min-width: 126px;
+      }
+      @media screen and (max-width: 1099px) {
+        font-size: 1.2rem;
+      }
+
+      min-width: 113px;
+
+    }
+
+  }
+
+  a.text-license-link {
+    color: $color-white;
+    text-decoration: none;
+    width: 100%;
+    height: 100%;
+    position: relative;
+    @media (hover: hover) and (pointer: fine) {
+      &:hover {
+        text-decoration: underline;
+      }
+    } 
+    max-height: 32px;
+    min-height: 32px;
+    min-width: 250px;
+    max-width: 290px;
+    @media screen and (max-width: 1099px) {
+      min-width: 200px;
+      max-width: 220px;
+    }
+  }
+
+  @media screen and (max-width: 1099px) {
+    div {
+      img {
+        width: 8rem;
+        height: 3rem;
+      }
+      font-size: 1.4rem;
+
+    }
+    max-width: 80%;
+  }
+
+  div.cc-contain {
+   column-gap: 1rem;
+   max-width: 350px;
+   @media screen and (max-width: 1099px) {
+    max-width: 250px;
+   }
+
+   p {
+    max-width: 290px;
+    max-height: 30px;
+    @media screen and (max-width: 1099px) {
+      max-width: 170px;
+    }
+   }
+  }
+
+
+
+  div.commons-license-report-sound {
+    min-width: 200px;    
+    max-width: 290px;
+    max-height: 100px;
+    min-height: 70px;
+
+    div {
+      max-height: 100px;
+      min-height: 70px;
+      max-width: 290px;
+      p {
+        max-width: 290px;
+        max-height: 80px;
+        white-space: pre-line;
+        @media screen and (max-width: 1099px) {
+          max-width: 170px;
+        }
+      }
+    }
+    
+    @media screen and (max-width: 650px) {
+      position: relative;
+      min-width: 200px;    
+      max-width: 300px;
+    }
+    
+
+    
+    span {
+      width: max-content;
+      width: 60%;
+      min-width: 123px;
+
+      @media screen and (min-width: 1100px) {
+        min-width: 139px;
+      }
+
+      @media screen and (max-width: 650px) {
+        width: 45%;
+      }
+
+    }
+
+    button.btn {
+      background: none;
+      padding: 0;
+      height: min-content;
+      position: relative;
+      line-height: 20px;
+      background-color: $color-new-grey;
+      padding: 3px;
+      white-space: nowrap;
+      border-radius: .2rem;
+      font-size: .7rem;
+      pointer-events: stroke;
+
+      @media screen and (max-width: 1099px) {
+        font-size: 1.5rem;
+        width: 70px;
+        border-radius: .35rem;
+      }
+
+      @media screen and (max-width: 750px) {
+        left: 2rem;
+      } 
+
+      
+
+      @media (hover: hover) and (pointer: fine) {
+        &:hover {
+          background-color: #232324a1;
+        }
+      } 
+    }
+  }
+
+}
+
+.seemore-desc-btn-singlesound {
+  @include heightWidth100;
+  opacity: .95;
+
+  @media screen and (max-width: 750px) { 
+    display: none;
+  }  
+
+  div.outline-btn {
+    bottom: 0;
+    background: none;
+    justify-content: flex-start;
+
+    button {
+      background: none;
+      white-space: nowrap;
+      pointer-events: stroke;
+      justify-content: flex-start;
+      padding: 0;
+      font-size: .8rem;
+      transition: all .2s;
+
+      @media (hover: hover) and (pointer: fine) {
+        &:hover {
+          color: $color-red;
+          transition: all .2s;
+        }
+      } 
+    }
+  }
+  @media screen and (max-width: 1439px) {
+    div.outline-btn {button {font-size: .7rem;}}
+  }
+  
+  @media screen and (max-width: 1099px) {
+    top: 3rem;
+    div.outline-btn {
+      button {
+        font-size: 1.4rem;
+      }
+    }
+  }
+
+}
+
+.single-desc-container {
+  width: 100%;
+  max-height: 70%;
+  min-height: 250px;
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  flex-direction: column;
+  border-bottom: 1px solid $color-new-grey;
+}
+
+.singlesound-action-container {
+  position: relative;
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  max-height: 120px;
+
+  @media screen and (max-width: 1099px) {
+    margin-top: 2rem;
+  }
+
+  @media screen and (max-width: 475px) {
+    min-width: 250px;
+  }
+}

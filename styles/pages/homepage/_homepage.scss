@@ -1,0 +1,912 @@
+.firstpage {
+  flex-direction: column;
+  height: 100%;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  transition: all 0.2s;
+
+
+  @media screen and (min-width: $bp-large) and (max-height: 500px) {
+    top: 5vh;
+  }
+  
+  &--input {
+    margin: 0;
+    @include flexcenter;
+    min-height: 30%;
+    width: 100rem;
+    z-index: 2;
+    position: relative;
+    top: 5vh;
+    
+
+    @media screen and (min-width: $bp-large) {
+      margin: 2rem 0 6rem 0;
+    }
+    
+    @media screen and (max-height: 580px) {
+      margin: 0;
+    }
+
+    div.form-control {
+      position: relative;
+      top: -4vh;
+      pointer-events: stroke;
+    }
+    min-height: 245px;
+
+    &--box {
+      width: 90%;
+      display: flex;
+      position: relative;
+      justify-content: center;
+      align-items: center;
+      height: 55%;
+      z-index: 3;
+      min-height: 65px;
+    }
+
+    
+
+    label.homepage-search-label {
+      font-size: 1.8rem;
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      bottom: 0;
+      padding: 0;
+      top: 2.1rem;
+      @include flexcenter;
+      transition: none;
+
+    }
+
+    h1 {
+      position: relative;
+      width: max-content;
+      font-size: 5.4rem;
+      font-family: $font-1;
+      font-weight: 600;
+      color: $color-white-2;
+      z-index: 3;
+      letter-spacing: 3px;
+      pointer-events: none;
+
+      @media screen and (min-width: $bp-large) {
+        font-size: 6.7rem;
+        left: -1.5rem;
+      }
+
+      @media screen and (max-width: 1099px) {
+        font-size: 9rem;
+      }
+      @media screen and (max-width: $bp-med) {
+        font-size: 8rem;
+      }
+      @media screen and (max-width: $bp-small) {
+        font-size: 7rem;
+      }
+      @media screen and (max-width: 450px) {
+        right: 5vw;
+        font-size: 6rem;
+      }
+      @media screen and (max-width: 375px) {
+        right: 8vw;
+        font-size: 5.5rem;
+        top: 0.6vh;
+      }
+      @media screen and (max-width: 340px) {
+        right: 9vw;
+        font-size: 5rem;
+        top: 0.6vh;
+      }
+      // @media screen and (max-width: 420px) {
+      //     right: 5vw;
+      // }
+      @media screen and (min-width: $bp-large) and (max-height: 420px) {
+        font-size: 6rem;
+      }
+    }
+
+    input {
+      height: 2.5vh;
+      width: 50vw;
+      margin: 1rem 2rem;
+      border-radius: 0.7rem;
+      transition: all 0.2s ease;
+      font-size: 2rem;
+      text-transform: capitalize;
+      font-family: $font-1;
+      z-index: 3;
+      position: relative;
+      pointer-events: stroke;
+      padding-left: 1.2vw;
+      min-height: 30px;
+      padding: 0;
+      padding-left: 1.8rem;
+      &:focus {
+        outline: none;
+      }
+
+      
+      
+      @media (hover: hover) and (pointer: fine) {
+        &:hover {
+          &::-webkit-input-placeholder {
+            font-weight: 100;
+            color: rgba(246, 254, 255, 0.664);
+            // font-family: $font-3;
+            transform: translateX(-51rem);
+          }
+        }
+      } 
+      &::-webkit-input-placeholder {
+        font-weight: 100;
+        color: rgba(246, 254, 255, 0.664);
+        // font-family: $font-3;
+        text-align: center;
+        transition: all 0.2s ease;
+      }
+      &::-moz-placeholder {
+        font-weight: 100;
+        color: rgba(246, 254, 255, 0.664);
+        // font-family: $font-3;
+        text-align: center;
+        transition: all 0.2s ease;
+      }
+
+    }
+  }
+
+  &--grid {
+    margin-top: 18vh;
+    grid-template-rows: 50% 50%;
+    grid-template-columns: 50% 50%;
+    height: 25vh;
+    width: 80%;
+    grid-column-gap: 1.3rem;
+    grid-row-gap: 1rem;
+    justify-content: center;
+    position: relative;
+    left: 2%;
+    bottom: 8vh;
+    
+    
+
+    @media screen and (max-height: 580px) {
+      min-height: 150px;
+    }
+
+    @media screen and (min-width: 1100px) {
+      @include flexcenter;
+      margin-top: 0;
+      width: 100vw;
+      left: 0;
+      div.firstpage--box.firstpage--box1{
+        background: none;
+        box-shadow: none;
+        border: none;
+        margin: 0;
+        right: 0;
+        @include flexcenter;
+        div.firstpage-big--box--img {
+          box-shadow: none;
+          background: none;
+          top: 0;
+        }
+      }
+    }
+    @media screen and (min-width: 1100px) and (min-height: 579px) {
+      align-items: flex-start;
+
+    }
+    @media screen and (min-width: 1100px) and (max-height: 580px) {
+      top: 1rem;
+
+    }
+
+  }
+
+  &--box1 {
+    grid-column: 2 / 3;
+    grid-row: 1 / 2;
+    height: 10vh;
+    width: 30vw;
+    display: grid;
+    grid-template-rows: 20% 20% 55% 10%;
+    grid-template-columns: 30% 30% 40%;
+    min-height: 70px;
+    border: 1px solid #10121373;
+    border-radius: 1rem;
+    padding: .8rem .75rem;
+    box-shadow: $shadow-newer-2;
+    background-color: #444a4636;
+    z-index: 9;
+    pointer-events: stroke;
+    cursor: pointer;
+
+
+
+    @media screen and (min-width: 650px) {
+      width: 25vw;
+    }
+
+    @media screen and (min-width: 800px) {
+      width: 20vw;
+    }
+    
+    
+    @media (hover: hover) and (pointer: fine) {
+      &:hover {
+        .firstpage--box1--btn {
+          img {
+            filter: brightness(120%);
+            transition: all 0.2s ease-out;
+          }
+        }
+      }
+    } 
+    h1 {
+      grid-column: 1 / 4;
+      grid-row: 1 / 2;
+      justify-self: center;
+      align-self: center;
+      line-height: 1.5;
+      position: relative;
+      pointer-events: none;
+      @include niceTxt;
+      font-size: 2.2rem;
+      top: 1vh;
+
+      @media screen and (min-width: $bp-med) {
+        white-space: nowrap;
+        grid-row: 1/2;
+        bottom: 1.5vh;
+      }
+      @media screen and (max-width: 450px) {
+        padding: 0.7vh 1.3vw;
+        font-size: 1.8rem;
+        top: 1rem;
+        width: 50%;
+        justify-self: flex-start;
+      }
+    }
+
+    &--btn {
+      justify-self: center;
+      align-self: center;
+      background: none;
+      outline: none;
+      z-index: 3;
+      box-shadow: none;
+
+      grid-row: 3/4;
+      grid-column: 1/4;
+      @media screen and (min-width: 451px) {
+        grid-row: 3/4;
+      }
+      @media screen and (max-width: 450px) {
+        position: relative;
+        top: 8px;
+      }
+
+      
+    }
+
+    filter: none;
+
+    button.btn {
+      box-shadow: none;
+      @include heightWidth100;
+      padding: 0;
+      &:before {
+        box-shadow: none;
+        background: none;
+      }
+      img {
+        @include heightWidthSame(100%);
+        @media screen and (max-width: 450px) {
+          position: relative;
+          @include heightWidthSame(86%);
+        }
+      }
+      
+      @media screen and (max-width: 450px) {
+        grid-column: 2/4;
+
+      }
+    }
+  }
+
+  &--box2 {
+    height: 22.5vh;
+    width: 30vw;
+    display: grid;
+    position: relative;
+    grid-template-rows: 10% 40% 50%;
+    grid-template-columns: 30% 30% 40%;
+    border: 1px solid #10121373;
+    border-radius: 1rem;
+    padding: 1.4vh 1vw;
+    top: 0;
+    box-shadow: $shadow-newer-2;
+    background-color: #444a4636;
+    z-index: 9;
+    pointer-events: stroke;
+    cursor: pointer;
+    filter: none;
+    transition: all 0.2s ease-out;
+    grid-column: 1 / 2;
+    grid-row: 1 / 3;
+    min-height: 150px;
+
+    @media screen and (min-width: 650px) {
+      width: 25vw;
+      left: 5vw;
+    }
+    @media screen and (max-width: 450px) {
+      padding: 1.5vh 2.4vw;
+      top: 0.25vh;
+    }
+    @media screen and (min-width: 800px) {
+      width: 20vw;
+      left: 10vw;
+    }
+
+   
+    
+    @media (hover: hover) and (pointer: fine) {
+      &:hover {
+        .firstpage--box2--testbox {
+          img {
+            filter: brightness(120%);
+            transition: all 0.2s ease-out;
+          }
+        }
+        .firstpage--box2--btn {
+          img {
+            filter: brightness(120%);
+            transition: all 0.2s ease-out;
+          }
+        }
+      }
+    } 
+    button.btn {
+      box-shadow: none;
+      pointer-events: none;
+      @include heightWidth100;
+      padding: 0;
+      
+      &:before {
+        box-shadow: none;
+        background: none;
+      }
+      img {
+        @include heightWidthSame(70%);
+        @media screen and (max-width: 829px) {
+          @include heightWidthSame(100%);
+
+        }
+        @media screen and (max-width: 450px) {
+          position: relative;
+          top: 2.3rem;
+        }
+      }
+    }
+
+    &--testbox {
+      grid-row: 3 / 4;
+      grid-column: 1 / 3;
+      justify-self: center;
+      align-self: center;
+      z-index: 4;
+      pointer-events: none;
+      img {
+        height: 10rem;
+        width: 10rem;
+        position: relative;
+        top: -1.2rem;
+        left: 2rem;
+        transition: all 0.2s ease-out;
+      }
+    }
+
+    &--btn {
+      justify-self: center;
+      align-self: center;
+      background: none;
+      outline: none;
+      z-index: 3;
+      position: relative;
+      bottom: 1vh;
+      pointer-events: none;
+      grid-row: 3/4;
+      grid-column: 2/4;
+      
+      @media screen and (min-width: 830px) {
+        grid-row: 3/4;
+        grid-column: 1/4;
+      }
+      button.btn {
+        box-shadow: none;
+        &:before {
+          box-shadow: none;
+          background: none;
+        }
+      }
+
+      img {
+        transition: all 0.2s ease-out;
+      }
+    }
+
+    h1 {
+      grid-column: 1 / 4;
+      grid-row: 2 / 3;
+      justify-self: center;
+      align-self: center;
+      line-height: 1.5;
+      position: relative;
+      left: 0.1vw;
+      pointer-events: none;
+      @include niceTxt;
+      font-size: 2rem;
+      bottom: 2vh;
+    }
+  }
+
+  &--box3 {
+    grid-column: 2 / 3;
+    grid-row: 2 / 3;
+    filter: none;
+    height: 10vh;
+    width: 30vw;
+    display: grid;
+    grid-template-rows: 10% 40% 50%;
+    grid-template-columns: 30% 30% 40%;
+    box-shadow: $shadow-newer-2;
+    background-color: #444a4636;
+    border: 1px solid #10121373;
+    min-height: 70px;
+    border-radius: 1rem;
+    z-index: 9;
+    pointer-events: stroke;
+    cursor: pointer;
+    padding: .8rem .75rem;
+    
+    @media screen and (min-width: 650px) {
+      width: 25vw;
+    }
+
+    @media screen and (min-width: 800px) {
+      width: 20vw;
+    }
+
+    button.btn {
+      box-shadow: none;
+
+     @include heightWidth100;
+      padding: 0;
+      &:before {
+        box-shadow: none;
+        background: none;
+      }
+      img {
+        @include heightWidthSame(100%);
+        @media screen and (max-width: 450px) {
+          position: relative;
+          @include heightWidthSame(86%);
+        }
+      }
+    }
+
+    
+    
+    @media (hover: hover) and (pointer: fine) {
+      &:hover {
+        .firstpage--box3--btn {
+          img {
+            filter: brightness(120%);
+            transition: all 0.2s ease-out;
+          }
+        }
+      }
+    } 
+
+    h1 {
+      grid-column: 1 / 4;
+      grid-row: 1 / 2;
+      justify-self: center;
+      align-self: center;
+      line-height: 1.5;
+      position: relative;
+      top: 1vh;
+      pointer-events: none;
+      @include niceTxt;
+      font-size: 2.2rem;
+
+      @media screen and (min-width: $bp-med) {
+        white-space: nowrap;
+        grid-row: 1/2;
+        bottom: 1.5vh;
+      }
+
+      @media screen and (max-width: 450px) {
+        padding: 0.7vh 1.3vw;
+        font-size: 1.8rem;
+        top: 1.5rem;
+
+        width: 50%;
+        justify-self: flex-start;
+      }
+    }
+
+    &--testbox {
+      grid-row: 2 / 4;
+      grid-column: 2 / 3;
+      justify-self: center;
+      align-self: center;
+      z-index: 4;
+    }
+
+    &--btn {
+      justify-self: center;
+      align-self: center;
+      background: none;
+      outline: none;
+      z-index: 3;
+      grid-row: 3/4;
+      grid-column: 2/4;
+      @media screen and (min-width: 451px) {
+        grid-row: 3/4;
+        grid-column: 1/4;
+      }
+      @media screen and (max-width: 450px) {
+        position: relative;
+        top: 5px;
+      }
+
+      img {
+        @include heightWidthSame(calc(4vw + 2.4vh));
+        position: relative;
+        bottom: 0.5vh;
+        transition: all 0.2s ease-out;
+      }
+      button.btn {
+        box-shadow: none;
+        &:before {
+          box-shadow: none;
+          background: none;
+        }
+      }
+    }
+  }
+}
+
+.firstpage-big {
+  height: 10rem;
+  width: 100%;
+  position: relative;
+  z-index: 3;
+  top: 3vh;
+
+  &--box {
+    &--img {
+      position: relative;
+      @include flexcenter;
+      width: 224px;
+      height: 66px;
+
+      &:before {
+        @include beforeTrick();
+        @include heightWidth100;
+        border-radius: 1.2rem;
+      }
+
+      img {
+        @include heightWidthSame(2rem);
+        position: relative;
+        z-index: 2;
+        right: 1.7vw;
+        padding: 0.1rem 0.2rem;
+        color: #53c9cc;
+      }
+
+      .uploadbtn-image-contain {
+        @include heightWidthSame(50%);
+      }
+    }
+    &--btn {
+      margin: 1rem;
+      border: 1px solid #181a1b;
+      @include heightWidthSame(3rem);
+      width: 14rem;
+      padding: 2rem 4.3rem;
+      position: absolute;
+      // left: 1.5rem;
+      filter: $drop2;
+      background: $color-white-2;
+      z-index: 3;
+      box-shadow: $shadow-new;
+      border-radius: 1.2rem;
+
+      div {
+        height: 100%;
+        width: 100%;
+        display: flex;
+        position: absolute;
+        align-items: center;
+        justify-content: flex-end;
+        border-radius: 1.2rem;
+
+        img {
+          color: #53c9cc;
+        }
+      }
+
+      &--shad {
+        @include beforeTrick;
+        content: "";
+        border-radius: 1.2rem;
+      }
+
+      span {
+        position: absolute;
+        @include heightWidth100;
+        font-weight: 700;
+        color: #3b4444;
+        font-family: $font-1;
+        font-size: 1rem;
+        text-transform: none;
+        justify-self: flex-start;
+        display: flex;
+        justify-content: flex-start;
+        left: 1.5rem;
+        transition: all 0.2s;
+      }
+      a {
+        text-decoration: none;
+        position: absolute;
+        @include heightWidth100;
+        font-weight: 500;
+        color: #efede6de;
+        font-family: $font-3;
+        font-size: 1rem;
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        left: 1.5rem;
+        z-index: 3;
+      }
+
+      &:before {
+        @include beforeTrick();
+        @include beforeShadow(1.2rem, #000000, $shadow-lightblue2, 0.0021);
+        border: 1px solid #bbdfdfee;
+        z-index: -1;
+      }
+      
+      
+      @media (hover: hover) and (pointer: fine) {
+        &:hover {
+          background-color: rgba(39, 177, 219, 0.623);
+          box-shadow: $shadow-new-2;
+          border: 1px solid rgba(30, 33, 34, 0.37);
+          span {
+            color: #efede6de;
+            transition: all 0.2s;
+          }
+        }
+      } 
+    }
+  }
+
+  &--2 {
+    grid-column: 1/3;
+    @include flexcenter;
+    width: 100%;
+    height: 10rem;
+    border-radius: 0.3rem;
+    border-radius: 0.4rem;
+    color: white;
+    position: relative;
+    top: -5rem;
+
+    &::before {
+      @include beforeTrick();
+      z-index: -1;
+      border-radius: 0.3rem;
+      position: absolute;
+      top: 0;
+      left: 0;
+      opacity: 0.08;
+
+      // height: 20vh;
+    }
+  }
+}
+
+.mainpage-lottie {
+  position: absolute;
+}
+
+.home-image {
+  @include heightWidth100;
+  width: 110vw;
+  background-color: none;
+  z-index: 2;
+  position: absolute;
+  top: 0;
+  left: -1rem;
+
+  &--img {
+    z-index: 1;
+    @include heightWidth100;
+    display: block;
+    position: relative;
+    z-index: 1;
+
+    background-size: 10%;
+    bottom: 0;
+    left: 0;
+    opacity: 0.034;
+    filter: brightness(2);
+    &::before {
+      @include beforeTrick;
+    }
+  }
+
+  .fade {
+    position: absolute;
+    bottom: 0vh;
+    width: 100%;
+    height: 2px;
+    z-index: 3;
+    background: rgba(26, 31, 32, 0)
+      linear-gradient(to bottom, #1e1f20 0%, #1b1f1f 80%) repeat scroll 0 0;
+  }
+}
+
+.main-text {
+  @include flexcenter;
+  width: 35%;
+  @media screen and (max-width: 1099px) {
+    width: 45%;
+  }
+  @media screen and (max-width: $bp-med) {
+    width: 40%;
+  }
+  @media screen and (max-width: $bp-small) {
+    width: 40%;
+  }
+  p {
+    color: $color-white-2;
+    font-size: 1.25rem;
+    font-family: $font-1;
+    @include flexcenter;
+    text-align: center;
+    font-weight: 400;
+    @media screen and (max-width: 1099px) {
+      font-size: 2rem;
+    }
+    @media screen and (max-width: $bp-med) {
+      font-size: 1.8rem;
+    }
+    @media screen and (max-width: $bp-small) {
+      font-size: 1.75rem;
+    }
+    @media screen and (min-width: $bp-large) and (max-height: 420px) {
+      font-size: 1.15rem;
+    }
+    @media screen and (max-width: 340px) {
+      font-size: 1.8rem;
+    }
+    @media screen and (max-width: 340px) {
+      font-size: 1.7rem;
+    }
+  }
+  position: relative;
+  top: 0vh;
+}
+
+.first-bottom-btns {
+  @include heightWidth100;
+  @include flexcenter;
+  position: absolute;
+  bottom: 5vh;
+  justify-content: center;
+  align-items: flex-end;
+
+  &--btnContainer {
+    @include flexcenter;
+    justify-content: center;
+    width: 100vw;
+    position: relative;
+    left: 2.4vw;
+  }
+
+  &--btn {
+    @include flexcenter;
+    z-index: 2;
+
+    button.btn.nohover {
+      font-family: $font-1;
+      outline: none;
+      background: none;
+      box-shadow: none;
+      width: 24vw;
+      pointer-events: stroke;
+      cursor: pointer;
+      font-weight: 500;
+      
+     
+      @media (hover: hover) and (pointer: fine) {
+        &:hover {
+          color: $color-light-blue;
+        }
+      } 
+      &:before {
+        outline: none;
+        background-color: none;
+        box-shadow: none;
+      }
+      display: flex;
+      position: relative;
+      justify-content: flex-start;
+      align-items: center;
+      span {
+        justify-self: flex-start;
+        position: absolute;
+        right: 2vw;
+        transition: all 0.2s;
+      }
+    }
+    &--span-active {
+      color: #53c9cc;
+      transition: all 0.2s;
+    }
+    &--active {
+      @include beforeTrick;
+      background-color: #53caccf5;
+      height: 2vh;
+      width: 2.1vh;
+      border-radius: 50%;
+      position: relative;
+      box-shadow: $shadow-new-3;
+      transform: scale(0.8);
+      left: -0.3vw;
+      @include flexcenter;
+
+      &--holder {
+        display: block;
+      }
+      &--dot {
+        background-color: #161718f5;
+        @include beforeTrick;
+        @include flexcenter;
+        position: relative;
+        border-radius: 50%;
+        box-shadow: $shadow-new;
+        div {
+          background-color: #161718f5;
+          @include beforeTrick;
+          @include heightWidthSame(0.4rem);
+          @include flexcenter;
+          position: relative;
+          border-radius: 50%;
+          box-shadow: $shadow-new-5;
+        }
+      }
+    }
+  }
+}
+
+div.firstpage-img-container-grid {
+  @include flexcenter;
+  @include heightWidth100;
+  justify-content: flex-end;
+  position: relative;
+  top: 1rem;
+}

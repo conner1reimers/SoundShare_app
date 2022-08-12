@@ -1,0 +1,1192 @@
+.feed-page {
+  grid-row: 2/-1;
+  position: relative;
+  top: 1.5vh;
+  display: grid;
+  padding: 5rem 0;
+  
+  @media screen and (min-width: $bp-large) {
+    grid-template-rows: 100%;
+    grid-template-columns: 13% 74% 13%;
+  }
+
+  &--middle {
+    grid-column: 2/3;
+    @include flexcenter;
+    flex-direction: column;
+    justify-content: flex-start;
+  }
+  &--head {
+    h1 {
+      color: $color-white;
+      font-size: 3.5rem;
+      font-weight: 500;
+    }
+  }
+
+  &--feed-list {
+    position: relative;
+    
+      @media screen and (max-width: 1099px) {
+        right: .5rem;
+
+        @include flexcenter;
+        padding: 0;
+        margin: 0;
+      }
+
+    &--item {
+      @include flexcenter;
+      height: 12vh;
+      width: 50vw;
+      background-color: rgba(108, 121, 124, 0.1);
+      min-height: 85px;
+
+      margin: 1.5rem 0.2rem;
+      padding: 0.4rem 0.5rem;
+      color: $color-white;
+      border-radius: 0.4rem;
+      display: grid;
+      grid-template-columns: 25% 75%;
+      grid-template-rows: 30% 30% 40%;
+      font-family: $font-1;
+      
+      
+      @media screen and (max-width: 900px) {
+        grid-template-columns: 20% 80%;
+
+      }
+      @media screen and (max-width: 900px) {
+        grid-template-columns: 27% 77%;
+    
+      }
+      @media screen and (min-width: $bp-large) {
+        min-width: 1000px;
+      }
+      @media screen and (max-width: 1099px) {
+        width: 95vw;
+      }
+      &--name-contain {
+        display: flex;
+        justify-self: flex-start;
+        align-items: flex-start;
+        justify-content: center;
+        grid-row: 1/4;
+        width: 100%;
+
+        @media screen and (max-width: 550px) {
+          grid-column: 2/3;
+      
+        }
+        
+
+        span {
+          font-size: 1rem;
+          @media screen and (max-width: 1099px) {
+            font-size: 2.2rem;
+          }
+        }
+
+        &--follow {
+          @include heightWidth100;
+          grid-column: 2/-1
+        }
+
+        &--follow-user {
+          @include heightWidth100;
+          display: grid;
+          grid-template-columns: 30% 20% 20% 20% 10%; 
+          grid-template-rows: 100%;
+          
+          &--img {
+            @include flexcenter;
+            grid-column: 1/2;
+            position: relative;
+            img {
+              @include heightWidthSame(5rem);
+              border-radius: 50%;
+              box-shadow: $shadow-new;
+              transform: scale(.8);
+              @media screen and (max-width: 1099px) {
+                @include heightWidthSame(11rem);
+              }
+              @media screen and (max-width: 750px) {
+                @include heightWidthSame(10rem);
+              }
+              @media screen and (max-width: 550px) {
+                @include heightWidthSame(8rem);
+              }
+            }
+            
+
+          }
+          &--username {
+            grid-column: 2/3;
+            @include flexcenter;
+            flex-direction: column;
+            align-items: flex-start;
+            position: relative;
+            @include heightWidth100;
+
+
+            @media screen and (max-width: 750px) {
+                position: relative;
+                margin-left: 3.25rem;
+            }
+            @media screen and (max-width: 550px) {
+              grid-column: 2/4;
+              left: 1rem;
+              top: 1rem;
+              // transform: translateX(1.5rem);
+              position: relative;
+            }
+            
+            @media screen and (min-width: $bp-large) {
+              left: 0rem;
+      
+            } 
+            span {
+              font-weight: 500;
+              text-transform: capitalize;
+
+              cursor: pointer;
+              @media screen and (max-width: 1099px) {
+                font-size: 1.9rem;
+              }
+            }
+            span.followerLength {
+              font-size: 0.7rem;
+              opacity: 0.8;
+              @media screen and (max-width: 1099px) {
+                font-size: 1.3rem;
+              }
+            }
+          }
+
+          &--btn {
+            @include flexcenter;
+            width: 100%;
+            justify-content: flex-end;
+            @include mainBTN;
+            grid-column: 4/6;
+            button.btn.nohover.upload-sound-button {
+              width: 11.5rem;
+              min-width: 170px;
+              min-height: 50px;
+              max-height: 90px;
+              padding: 0;
+
+              span {
+                @media screen and (max-width: 1099px) {
+                  font-size: 2.2rem;
+                }
+                @media screen and (max-width: 550px) {
+                  font-size: 1.85rem;
+                }
+
+              }
+              @media screen and (max-width: 550px) {
+                left: 0;
+                margin: 0;
+                min-width: 100px;
+                min-height: 28px;
+                max-height: 60px;
+                transform: scale(1);
+ 
+              }
+
+            }
+            @media screen and (max-width: 550px) {
+              transform: scale(1);
+              width: 100%;
+              height: 100%;
+              position: relative;
+              justify-content: flex-start;
+            }
+          }
+
+
+        }
+      }
+
+      &--user-contain {
+        @include flexcenter;
+        grid-row: 1/3;
+        justify-content: flex-start;
+
+
+        @media screen and (max-width: 550px) {
+          grid-row: 1/2;
+          margin-top: 2rem;
+        }
+        @media screen and (max-width: 900px) {
+          transform: translateX(2rem);
+          position: relative;
+          
+        }
+        @media screen and (max-width: 550px) {
+          transform: translateX(1.75rem);
+          position: relative;
+          
+        }
+        &--text {
+          display: flex;
+          flex-direction: column;
+          font-family: $font-1;
+          transform: translateX(1rem);
+
+          @media screen and (max-width: 385px) {
+            max-width: 100px;
+          }
+
+          span.action-username {
+            font-weight: 600;
+            opacity: 0.85;
+            text-transform: capitalize;
+            white-space: nowrap;
+            font-size: .9rem;
+            
+
+            @media screen and (max-width: 1099px) {
+              font-size: 1.5rem;
+            }
+            @media screen and (max-width: 750px) {
+              font-size: 1.35rem;
+     
+            }
+            @media screen and (max-width: 550px) {
+              font-size: 1.25rem;
+
+            }
+            @media screen and (max-width: 385px) {
+              white-space: normal;
+              max-width: 100px;
+            }
+            
+          }
+          span.action-date {
+            @include niceTxt;
+            font-weight: 500;
+            font-size: 0.7rem;
+            opacity: 0.6;
+            font-family: $font-1;
+            @media screen and (max-width: 1099px) {
+              font-size: 1.2rem;
+            }
+            @media screen and (max-width: 750px) {
+              font-size: 1rem;
+     
+            }
+          }
+          span.feed-comment-msg {
+            color: rgba(100, 199, 230, 0.562);
+            font-size: 1rem;
+            font-family: $font-1;
+            
+            @media screen and (max-width: 550px) {
+              white-space: nowrap;
+              max-width: 160px;
+              overflow: hidden;
+              text-overflow: ellipsis;
+            }
+            @media screen and (max-width: 340px) {
+              display: none;
+            }
+
+            
+          }
+          @media screen and (max-width: 550px) {
+            margin-bottom: 1rem;
+            margin-left: 1rem;
+          }
+        }
+
+        &--img {
+          @include flexcenter;
+          position: relative;
+          margin: 0;
+          box-shadow: $shadow-newer-2;
+          border-radius: 50%;
+          background-color: rgba(108, 121, 124, 0.2);
+          padding: 0.5rem;
+          opacity: .5;
+          bottom: .5rem;
+          min-height: 17px;
+          min-width: 17px;
+          
+          position: relative;
+          @media screen and (min-width: $bp-large) {
+            transform: translateY(.25rem);
+            
+          }
+          @media screen and (max-width: 1099px) {
+            padding: 1rem;
+
+          }
+          @media screen and (max-width: 650px) {
+            margin: 0 .5rem 0vh .25rem;
+          }
+          @media screen and (max-width: 550px) {
+            margin: 0 -.15rem 0vh -.5rem;
+            padding: .85rem;
+          }
+          
+          
+
+          img {
+            @include heightWidthSame(1rem);
+            filter: brightness(2.2);
+            @media screen and (max-width: 1099px) {
+              @include heightWidthSame(2.5rem);
+            }
+            @media screen and (max-width: 750px) {
+              @include heightWidthSame(2rem);
+            }
+            @media screen and (max-width: 550px) {
+              @include heightWidthSame(2rem);
+
+            }
+          }
+        }
+        span {
+          font-size: 1.1rem;
+          font-weight: 400;
+          font-family: $font-1;
+          position: relative;
+          @media screen and (max-width: 1099px) {
+            font-size: 2.1rem;
+          }
+        }
+      }
+
+      &--days {
+        position: absolute;
+        grid-row: 2/3;
+        span {
+          @include heightWidth100;
+        }
+      }
+    }
+  }
+}
+
+.feed-item {
+  &--fav {
+    min-height: 100px;
+    div.feedlist-item-playbtn-contain {
+      grid-column: 5/9;
+      grid-row: 5/-1;
+      transform: scale(.9);
+      @media screen and (max-width: 1099px) {
+        grid-row: 7/-1;
+        grid-column: 5/9;
+
+      }
+      @media screen and (max-width: 750px) {
+        grid-row: 6/-1;
+        grid-column: 5/9;
+        transform: scale(1.2);
+      }
+      @media screen and (max-width: 350px) {
+        grid-row: 6/-1;
+        grid-column: 6/-1;
+      }
+    }
+
+    div.user-page--loopList--item.feed-soundlist {
+      grid-template-columns: 30% 20% 20% 20% 10%;
+
+      @media screen and (max-width: 550px) {
+        transform: translateY(-1.5rem);
+          position: relative;
+
+        }
+
+      div.feedlist-img-contain {
+        @include heightWidth100;
+        justify-content: center;
+        position: relative;
+        justify-self: flex-start;
+       
+        @media screen and (max-width: 750px) {
+          justify-content: center;
+        } 
+      }
+      
+      div.user-page--loopList--item--name-contain.feed-soundlist--username {
+        grid-column: 2/3;
+        @include heightWidth100;
+        @include flexcenter;
+        align-items: flex-start;
+
+        
+      }
+    }
+    @media screen and (max-width: 550px) {
+      min-height: 115px;
+    }
+  }
+  
+  &--comment {
+    div.feedlist-item-playbtn-contain {
+      grid-column: 5/9;
+      @media screen and (max-width: 1099px) {
+        grid-row: 7/-1;
+        grid-column: 5/9;
+
+      }
+      @media screen and (max-width: 750px) {
+        grid-row: 6/-1;
+        grid-column: 5/9;
+        transform: scale(1.2);
+      }
+      @media screen and (max-width: 350px) {
+        grid-row: 6/-1;
+        grid-column: 6/-1;
+      }
+    }
+    div.user-page--loopList--item.feed-soundlist {
+      grid-template-columns: 30% 20% 20% 20% 10%;
+
+
+      @media screen and (max-width: 550px) {
+        transform: translateY(-1.75rem);
+      }
+      div.feedlist-img-contain {
+        @include heightWidth100;
+        justify-content: center;
+        position: relative;
+        right: 1rem;
+        @media screen and (max-width: 750px) {
+          justify-content: center;
+
+        } 
+        @media screen and (max-width: 350px) {
+          transform: translateX(1rem);
+        }
+        
+      }
+      div.user-page--loopList--item--name-contain.feed-soundlist--username {
+        grid-column: 2/3;
+        @include heightWidth100;
+        @include flexcenter;
+        align-items: flex-start;
+        @media screen and (min-width: $bp-large) {
+          left: 2.25rem;
+        } 
+        @media screen and (max-width: 550px) {
+          transform: translateY(.25rem);
+        }
+       
+        // @media screen and (max-width: 750px) {
+        //   transform: translateX(-2rem);
+        // }
+        
+      }
+      
+    }
+    div.feed-page--feed-list--item--user-contain--text {
+      margin-top: 25px;
+      bottom: .5rem;
+      position: relative;
+      @media screen and (max-width: 1099px) {
+        margin-top: 1.2rem;
+      }
+    }
+    
+    @media screen and (max-width: 550px) {
+      min-height: 120px;
+    }
+    
+  }
+
+  &--upload {
+    min-height: 180px;
+    div.user-page--loopList--item.feed-soundlist {
+
+      div.feedlist-img-contain {
+        @include heightWidth100;
+          justify-content: center;
+        position: relative;
+        right: 1rem;
+        @media screen and (max-width: 750px) {
+          justify-content: center;
+
+        } 
+      }
+      
+    }
+  }
+
+  &--repost {
+    min-height: 180px;
+    div.user-page--loopList--item.feed-soundlist {
+
+      div.feedlist-img-contain {
+        @include heightWidth100;
+        justify-content: center;
+        position: relative;
+        right: 0rem;
+        @media screen and (max-width: 750px) {
+          justify-content: center;
+
+        } 
+      }
+
+      
+    }
+    
+    
+  }
+
+  &--follow {
+    min-height: 115px;
+    @media screen and (max-width: 550px) {
+      padding-bottom: 2rem;
+    }
+    
+  }
+}
+
+.feed-soundlist {
+  display: grid;
+  grid-template-columns: 30% 20% 20% 20% 10%;
+  grid-template-rows: 20% 60% 10% 10%;
+  position: relative;
+  cursor: default;
+  @include heightWidth100;
+
+  
+ 
+  @media (hover: hover) and (pointer: fine) {
+    &:hover {
+      background: none;
+  
+      &--username {
+        span {
+          color: $color-white;
+          transition: all 0.2s;
+        }
+      }
+      div.user-page--loopList--item--name-contain {
+
+        span {
+          color: $color-white;
+          transition: all 0.2s;
+        }
+      }
+    }
+  } 
+
+  &--play {
+    position: absolute;
+    @include flexcenter;
+    right: 0.5vw;
+    z-index: 2;
+    top: 1.5vh;
+    transform: scaleX(0.84) scaleY(1) scale(1);
+    filter: brightness(0.8);
+
+    button.btn.nohover.user-loops-play {
+    }
+  }
+
+  &--img {
+    @include flexcenter;
+    grid-column: 1/2;
+    grid-row: 1/5;
+    position: relative;
+    bottom: .5rem;
+    display: grid;
+    grid-template-rows: repeat(10, 10%);
+    grid-template-columns: repeat(10, 10%);
+    @media screen and (max-width: 750px) {
+      left: 0;
+    }
+    img {
+      grid-row: 1/-1;
+      grid-column: 1/-1;
+      @include heightWidthSame(4.5rem);
+
+      border-radius: 50%;
+      box-shadow: $shadow-new;
+
+      @media screen and (max-width: 1099px) {
+        @include heightWidthSame(9.5rem);
+      }
+      @media screen and (max-width: 750px) {
+        @include heightWidthSame(7rem);
+      }
+    }
+    
+
+  }
+  &--username {
+    grid-column: 1/3;
+    grid-row: 2/3;
+    @include flexcenter;
+    @include heightWidth100;
+    flex-direction: column;
+    position: relative;
+    right: 2vw;
+
+    @media screen and (max-width: 550px) {
+      top: 2rem;
+
+    }
+    
+
+    span {
+      font-weight: 500;
+      text-transform: capitalize;
+      white-space: nowrap;
+      @include heightWidthSame(min-content);
+      width: 30%;
+      @media screen and (max-width: 600px) {
+        white-space: normal;
+        width: 175px;
+        font-size: 1.75rem;
+      }
+      @media screen and (max-width: 390px) {
+        white-space: normal;
+        width: 145px;
+        font-size: 1.75rem;
+      }
+    }
+    span.followerLength {
+      font-size: 0.7rem;
+      opacity: 0.8;
+      @media screen and (max-width: 1099px) {
+        font-size: 1.3rem;
+      }
+      @media screen and (max-width: 600px) {
+        white-space: nowrap;        
+      }
+    }
+
+    span.repost-username {
+      font-size: 0.7rem;
+      margin-bottom: 0.5vh;
+      opacity: 0.95;
+      @media screen and (max-width: 1099px) {
+        font-size: 1.3rem;
+      }
+
+      @media screen and (max-width: 350px) {
+        transform: translateX(2rem); 
+      }
+      
+    }
+  }
+
+  &--btn {
+    grid-column: 4/6;
+    grid-row: 2/3;
+    @include heightWidth100;
+    @include flexcenter;
+    // justify-content: flex-end;
+    @include mainBTN;
+    transform: scale(0.8);
+    z-index: 2;
+    left: -0.2rem;
+    top: 1.3vh;
+    &--actions-container {
+      @include flexcenter;
+      box-shadow: $shadow-new;
+      background-color: rgba(21, 22, 22, 0.26);
+      border: 0.2rem solid rgba(29, 33, 34, 0.199);
+      padding: 0.3rem 1rem;
+      width: 8.4vw;
+      border-radius: 0.5rem;
+      min-width: 140px;
+      margin: 0;
+
+      &--btn {
+        @include circleActionBtn;
+      }
+    }
+  }
+}
+
+div.feed-list {
+  grid-row: 1/4;
+  @include heightWidth100;
+
+
+  div.feed-soundlist {
+    &--play {
+      grid-row: 3/4;
+      position: relative;
+      transform: scaleX(0.84) scaleY(1) scale(1.5);
+
+      button.btn.nohover.user-loops-play {
+        bottom: -1vh;
+        right: 2vw;
+        position: absolute;
+        min-height: 46px;
+        min-width: 46px;
+        @media screen and (max-width: 1099px) {
+          transform: scaleY(0.38) scaleX(0.45) scale(1.5);
+          right: 4.5vw;
+          bottom: 0vh;
+        }
+      }
+    }
+    &--img {
+      img {
+        @include heightWidthSame(8rem);
+
+        border-radius: 50%;
+        @media screen and (max-width: 1099px) {
+          @include heightWidthSame(18rem);
+        }
+        @media screen and (max-width: 750px) {
+          @include heightWidthSame(12rem);
+        }
+      }
+      @media screen and (max-width: 750px) {
+        left: 0;
+    }
+      
+    }
+    &--username {
+      grid-column: 1/5;
+      grid-row: 1/5;
+      @include heightWidth100;
+      display: grid;
+      position: relative;
+      left: 3.5rem;
+      grid-template-rows: 10% 20% 25% 25% 10%;
+      grid-template-columns: 20% 7% 28% 25% 20%;
+      pointer-events: none;
+
+      @media screen and (max-width: 1560px) and (min-width: 751px) {
+        grid-template-columns: 20% 15% 28% 25% 20%;
+        left: 1.5rem;
+      }
+      @media screen and (max-width: 1300px) {
+        grid-template-columns: 20% 19% 28% 25% 20%;
+      }
+      @media screen and (max-width: 1200px) {
+        grid-template-columns: 20% 22% 28% 25% 20%;
+      }
+      @media screen and (max-width: 750px) {
+        grid-template-columns: 10% 22% 28% 25%;
+        
+      }
+      @media screen and (max-width: 400px) {
+        grid-template-rows: 10% 30% 25% 25% 10%;
+
+      }
+
+      
+      
+      @media (hover: hover) and (pointer: fine) {
+        &:hover {
+          p {
+            color: $color-white;
+          }
+        }
+      } 
+      div.feed-upload-name {
+        grid-row: 2/3;
+        grid-column: 3/6;
+        @include flexcenter;
+        position: relative;
+        flex-direction: column;
+        cursor: pointer;
+        @include heightWidth100;
+        left: 2vw;
+        span {
+          position: relative;
+          @include flexcenter;
+          justify-content: flex-start;
+          @include heightWidth100;
+          height: 32vh;
+          @media screen and (max-width: 1099px) {
+            font-size: 1.85rem;
+          }
+          @media screen and (max-width: 350px) {
+            font-size: 1.7rem;
+          }
+          
+        }
+        span.repost-username {
+          @media screen and (max-width: 1099px) {
+            font-size: 1.3rem;
+          }
+          @media screen and (max-width: 350px) {
+            font-size: 1.2rem;
+          }
+        }
+      }
+
+      div.feed-upload-info {
+        grid-row: 5/6;
+        grid-column: 3/6;
+        @include flexcenter;
+        justify-content: flex-start;
+        position: relative;
+        left: 2vw;
+        span {
+          position: relative;
+          @include flexcenter;
+          justify-content: flex-start;
+          @include heightWidth100;
+          width: min-content;
+          margin-right: 1vw;
+          font-size: 0.65rem;
+          @media screen and (max-width: 1099px) {
+            font-size: 1.3rem;
+          }
+          @media screen and (max-width: 350px) {
+            font-size: 1.1rem;
+            transform: translateX(2rem); 
+
+
+          }
+        }
+
+        span.info-likes {
+          position: relative;
+        }
+      }
+
+      div.feed-upload-description {
+        grid-column: 3/6;
+        grid-row: 3/5;
+        @include flexcenter;
+        flex-direction: column;
+        align-items: flex-start;
+
+        p {
+          font-size: 0.7rem;
+          @media screen and (max-width: 1099px) {
+            font-size: 1.5rem;
+          }
+          @media screen and (max-width: 425px) {
+            max-width: 150px;
+            max-height: 60px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+          }
+          @media screen and (max-width: 350px) {
+            font-size: 1.3rem;
+            max-width: 110px;
+            transform: translateX(2rem); 
+
+          }
+          
+        }
+        overflow: visible;
+
+        button.btn.nohover.profile-btn {
+          background: none;
+          box-shadow: none;
+          pointer-events: stroke;
+          width: min-content;
+          height: 2.5vh;
+          padding: 0;
+          font-size: 0.6rem;
+          white-space: nowrap;
+          overflow: visible;
+          cursor: pointer;
+          @media screen and (max-width: 1099px) {
+            font-size: 1.2rem;
+          }
+          &:before {
+            background: none;
+            box-shadow: none;
+          }
+          @media (hover: hover) and (pointer: fine) {
+            &:hover {
+              color: $color-light-blue;
+            }
+          } 
+          @media screen and (max-width: 425px) {
+            display: none;
+          }
+        }
+        
+        
+        
+      }
+    }
+
+    &--btn {
+      grid-row: 2/6;
+      align-items: flex-end;
+      transform: scale(0.8);
+      z-index: 2;
+      left: 1vw;
+      top: 1.3vh;
+
+      &--actions-container {
+        background-color: rgba(38, 54, 54, 0.021);
+      }
+    }
+  }
+}
+
+
+
+.feedlist-item-playbtn-contain {
+  grid-row: 5/-1;
+  right: .3rem;
+  grid-column: 7/-1;
+  @include heightWidth100;
+  @include flexcenter;
+  transform: scale(1);
+  div.recent-sounds--list--item--player.user-page--loopList--item--player.feed-soundlist--play {
+    @include heightWidth100;
+    height: 3rem;
+    transform: scale(1);
+
+    button.btn.nohover.user-loops-play {
+      @include heightWidthSame(3.5rem);
+      background-color: $color-darker;
+      border-radius: 50%;
+      transform: scale(1);
+      box-shadow: $shadow-newer-2;
+      opacity: .8;
+
+      img {
+        @include heightWidthSame(2rem);
+        border-radius: 0;
+        box-shadow: none;
+        background: none;
+        opacity: .9;
+        transform: scale(1);
+      }
+      @media screen and (max-width: 1099px) {
+        @include heightWidthSame(7.8rem);
+        img {
+          @include heightWidthSame(4rem);
+        }
+      }
+      
+      @media screen and (max-width: 750px) {
+        @include heightWidthSame(5rem);
+        img {
+          @include heightWidthSame(2.4rem);
+        }        
+      }
+      &:not(.feed-playbtn-repost) {
+        @include heightWidthSame(2.5rem);
+        img {
+          @include heightWidthSame(1.3rem);
+        }
+        @media screen and (max-width: 1099px) {
+          @include heightWidthSame(4.5rem);
+          img {
+            @include heightWidthSame(2.25rem);
+          }
+        }
+        @media screen and (max-width: 750px) {
+          @include heightWidthSame(3rem);
+          img {
+            @include heightWidthSame(1.3rem);
+          }        
+        }
+          
+      }
+    }
+  }
+
+  @media screen and (max-width: 1099px) {
+    grid-row: 7/-1;
+  }
+  @media screen and (max-width: 850px) {
+    grid-row: 7/-1;
+    grid-column: 7/-1;
+  }
+  @media screen and (min-height: 800px) {
+    grid-row: 3/-1;
+  }
+
+
+}
+
+.feedlist-img-contain {
+  grid-row: 1/-1;
+  grid-column: 1/-1;
+  @include flexcenter;
+
+  @media screen and (max-width: 750px) {
+    justify-content: center;
+
+  } 
+  
+}
+
+
+div.feed-page--feed-list--item--name-contain {
+  
+  // feed soundlist contain
+  div.user-page--loopList--item.feed-soundlist {
+    
+    // Feed username contain smaller
+    div.user-page--loopList--item--name-contain.feed-soundlist--username {
+      
+      @media screen and (min-width: 600px) and (max-width: 750px) {
+        left: 4.65rem;
+      }
+
+      @media screen and (max-width: 550px) {
+        grid-column: 2/4;
+        left: 4.45rem;
+        top: 2rem;
+        
+      }
+      @media screen and (max-width: 425px) {
+        left: 11vw;
+        span {
+          width: 100%;
+        }
+        
+      }
+      @media screen and (max-width: 400px) {
+        left: 11vw;
+      }
+    }
+
+    div.user-page--loopList--item--img.feed-soundlist--img {
+      @media screen and (max-width: 550px) {
+        
+        top: 2rem;
+        
+      }
+    }
+
+  }
+}
+
+
+
+
+// REPOST
+div.feed-page--feed-list--item--name-contain.feed-list.feed-list--repost {
+  // feed soundlist contain
+  div.user-page--loopList--item.feed-soundlist {
+    min-height: 180px;
+    // Feed username contain smaller
+    div.user-page--loopList--item--name-contain.feed-soundlist--username {
+
+      @media screen and (min-width: 600px) and (max-width: 750px) {
+        left: 3.78rem;
+      }
+      @media screen and (max-width: 550px) {
+        grid-column: 1/5;
+        left: 3.5rem;
+        top: 0;
+      }
+      @media screen and (max-width: 350px) {
+        transform: translateX(-1.5rem);
+      }
+      
+    }
+
+    div.user-page--loopList--item--days.feed-soundlist--btn.feed-list-btn-contain {
+      position: relative;
+      top: .5rem;
+      transform: scale(.8);
+      left: 0;
+      margin-left: 1.55rem;
+      
+    }
+
+    div.user-page--loopList--item--img.feed-soundlist--img {
+      @media screen and (max-width: 550px) {
+        transform: translateX(-.75rem);
+        position: relative;
+        min-width: 95px;
+
+      }
+    }
+    // @media screen and (max-width: 550px) {
+    //   transform: translateX(1.5rem);
+    //   position: relative;
+    // }
+    
+  }
+  
+  div.feedlist-item-playbtn-contain {
+    @media screen and (max-width: 750px) {
+      grid-column: 7/-1;
+      grid-row: 5/-1;
+      
+    }
+  }
+
+  span.feed-soundname {
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    @media screen and (max-width: 550px) {
+      max-width: 220px;
+    }
+    @media screen and (max-width: 350px) {
+      max-width: 110px;
+    }
+  }
+}
+
+div.user-page--loopList--item.feed-soundlist {
+  @media (hover: hover) and (pointer: fine) {
+    &:hover {
+      div.feed-upload-description {
+        p {
+          color: inherit;
+        }
+      }
+      
+    }
+  }
+
+  
+
+}
+
+span.feed-soundname {
+  cursor: pointer;
+  pointer-events: stroke;
+  @media screen and (max-width: 550px) {
+    max-height: 35px;
+    text-overflow: ellipsis;
+  }
+  @media (hover: hover) and (pointer: fine) {
+    &:hover {
+      color: $color-light-blue;
+    }
+  }
+
+}
+
+
+
+.feed-follower-ball-loader {
+  position: absolute;
+  right: 3rem;
+  transform: scale(.7);
+  @media screen and (max-width: 1099px) {
+    right: 40rem;
+
+  }
+  @media screen and (max-width: 750px) {
+    right: 35rem;
+
+  }
+  @media screen and (max-width: 550px) {
+    right: 15vw;
+    top: -2rem;
+
+  }
+
+}
+
+
+.feed-img-wrapper {
+  overflow: visible;
+  border-radius: 50%;
+
+}
+
