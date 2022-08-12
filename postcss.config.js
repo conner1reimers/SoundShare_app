@@ -1,5 +1,5 @@
 module.exports = {
-  plugins: [
+  "plugins": [
     "postcss-flexbugs-fixes",
     [
       "postcss-preset-env",
@@ -13,7 +13,8 @@ module.exports = {
         }
       }
     ],
-    '@fullhuman/postcss-purgecss',
+    [
+      '@fullhuman/postcss-purgecss',
       {
         content: [
             './pages/**/*.{js,jsx,ts,tsx}',
@@ -22,5 +23,6 @@ module.exports = {
         defaultExtractor: content => content.match(/[\w-/:]+(?<!:)/g) || [],
         safelist: ["html", "body"]
       }
+    ],
   ]
 }

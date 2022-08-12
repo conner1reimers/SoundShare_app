@@ -1,13 +1,10 @@
-const withPurgeCss = require("next-purgecss");
-const withPlugins = require('next-compose-plugins')
-
-module.exports = withPurgeCss({ 
+module.exports = { 
   reactStrictMode: true,
+  swcMinify: true, 
+
   images: {
     domains: ['soundshare-bucket.s3.us-east-2.amazonaws.com', 'licensebuttons.net']
   },
-  swcMinify: true, 
-  
 
   async redirects() {
     return [
@@ -57,4 +54,4 @@ module.exports = withPurgeCss({
   
 
 
-});
+};
