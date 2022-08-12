@@ -1,9 +1,9 @@
 import React, { useState, Fragment, useEffect, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useSelector } from "react-redux";
-import { UiState } from '../store/reducers/ui/uiStateReducer';
-import { aniVariants } from '../interfaces/animationInterface';
-import { transition } from '../interfaces/animationInterface';
+import { UiState } from '../../store/reducers/ui/uiStateReducer';
+import { aniVariants } from '../../types/interfaces/animationInterface';
+import { transition } from '../../types/interfaces/animationInterface';
 
 const optionsVariants = {
   initial: {
@@ -41,7 +41,8 @@ interface MouseOverProps {
   classname: string,
   variants?: any,
   transition?: transition,
-  children: React.ReactNode
+  children: React.ReactNode,
+  top?: boolean
 };
 
 interface RootStateConst {
@@ -50,7 +51,7 @@ interface RootStateConst {
 
 
 
-const MouseOverLabel: React.FC<MouseOverProps> = ({circle, singlesound, label, labelClass, children, classname, seemore, noSpan, variants, transition}) => {
+const MouseOverLabel: React.FC<MouseOverProps> = ({circle, singlesound, label, labelClass, children, classname, seemore, noSpan, variants, transition, top}) => {
   const [isVis, setIsVis] = useState<boolean>(false);
   const [isVisHold, setIsVisHold] = useState<boolean>(false);
   const [timer, setTimer] = useState<NodeJS.Timeout | undefined>();
@@ -120,6 +121,13 @@ const MouseOverLabel: React.FC<MouseOverProps> = ({circle, singlesound, label, l
   }, [isVisHold, isVis]);
 
 
+  const mouseOverclass =
+    `mouseOver ${classname} \
+    ${singlesound ? "circle-btn-mouseover--singlesound" : undefined} \
+    ${seemore ? "circle-btn-mouseover--singlesound--seemore" : undefined} \
+    ${top ? "mouseover-top-list" : undefined}`; 
+
+
   return (
     <Fragment>
       {gpuTier && (
@@ -134,13 +142,7 @@ const MouseOverLabel: React.FC<MouseOverProps> = ({circle, singlesound, label, l
           <AnimatePresence exitBeforeEnter>
             {isVis && !circle && (
               <motion.div
-                className={`mouseOver ${classname} ${
-                  singlesound ? "circle-btn-mouseover--singlesound" : ""
-                } ${
-                  seemore
-                    ? "circle-btn-mouseover--singlesound--seemore"
-                    : ""
-                }`}
+                className={mouseOverclass}
                 initial="initial"
                 animate="in"
                 exit="out"
@@ -159,13 +161,7 @@ const MouseOverLabel: React.FC<MouseOverProps> = ({circle, singlesound, label, l
             )}
             {isVisHold && circle && (
               <motion.div
-                className={`mouseOver ${classname} ${
-                  singlesound ? "circle-btn-mouseover--singlesound" : ""
-                } ${
-                  seemore
-                    ? "circle-btn-mouseover--singlesound--seemore"
-                    : ""
-                }`}
+                className={mouseOverclass}
                 initial="initial"
                 animate="in"
                 exit="out"

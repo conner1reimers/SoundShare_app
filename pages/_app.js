@@ -1,6 +1,6 @@
 import "../styles/base.scss";
 import Head from 'next/head'
-import MainHead from "../components/MainHead";
+import MainHead from "../components/global/MainHead";
 import GlobalSound from '../components/shared/Modals/GlobalSound';
 import React from 'react';
 import {wrapper} from '../store/wrapper';

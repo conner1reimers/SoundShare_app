@@ -1,11 +1,12 @@
 import React from 'react'
 import ReactDOM from 'react-dom';
+import Image from 'next/image'
 import { useSelector } from 'react-redux';
 import { AnimatePresence, motion } from 'framer-motion';
-import check from '../public/check.svg'
-import err from '../public/err.svg'
-import question_mark from '../public/question-mark.svg'
-import Image from 'next/image'
+import check from '../../public/check.svg';
+import err from '../../public/err.svg';
+import question_mark from '../../public/question-mark.svg';
+
 
 const msgVariants = {
     initial: {
@@ -64,6 +65,12 @@ const GlobalMsg: React.FC = (props: any) => {
         longest = true;
     }
 
+    const classname = `global-msg--contain 
+        ${(longer && !longest) ? 'global-msg--contain--longer'
+        : longest ? 'global-msg--contain--longest' : ''}`;
+    
+    
+
     const finalEl = typeof window != 'undefined' ? ReactDOM.createPortal(
         <AnimatePresence>
             {globalMsg.active && (
@@ -75,7 +82,7 @@ const GlobalMsg: React.FC = (props: any) => {
                 variants={msgVariants}
                 transition={msgTrans}
             >
-                <div className={`global-msg--contain ${(longer && !longest) ? 'global-msg--contain--longer' : longest ? 'global-msg--contain--longest' : ''}`}>
+                <div className={classname}>
                     <div>
                             <span>{globalMsg.msg}</span>
                             <div className="global-msg-img">

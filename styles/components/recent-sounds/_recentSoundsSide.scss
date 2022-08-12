@@ -99,10 +99,14 @@
       }
       max-height: 74px;
       min-height: 70px;
+
+      
       @media screen and (max-width: 1450px) {
         background-size: 30%;
         max-height: 65px;
       }
+
+
       &::before {
         @include beforeTrick();
         z-index: -1;
@@ -114,7 +118,7 @@
         top: -2vh;
         opacity: 0.08;
         background-color: #2d2e2e28;
-        background-image: url("../../public/pic.svg");
+        background-image: url("../../../public/pic.svg");
         background-size: 20%;
         filter: brightness(2.5);
         @media screen and (max-width: 1450px) {

@@ -1,8 +1,8 @@
 import React, { Fragment } from 'react'
-import GlobalMsg from '../components/GlobalMsg';
+import GlobalMsg from './GlobalMsg';
 import Media from 'react-media';
-import SideContain from '../components/shared/SideDrawer/SideContain'
-import TopNav from './shared/NavBar/TopNav'
+import SideContain from '../shared/SideDrawer/SideContain'
+import TopNav from '../shared/NavBar/TopNav'
 
 
 

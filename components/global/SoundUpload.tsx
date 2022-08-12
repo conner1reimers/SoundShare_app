@@ -1,12 +1,12 @@
 import React, { useRef, useState, useEffect, Fragment, useCallback } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { setUploadSound, setUploadBuffer } from '../store/actions';
+import { setUploadSound, setUploadBuffer } from '../../store/actions';
 import { Buffer } from 'tone';
-import musicDownload from '../public/music-downloads.svg';
+import musicDownload from '../../public/music-downloads.svg';
 import {useDropzone} from 'react-dropzone'
 // import { analyze, guess } from 'web-audio-beat-detector';
-import {useGlobalMsg} from '../util/hooks/useGlobalMsg'
-import CloseUpload from './shared/Modals/Upload/CloseUpload';
+import {useGlobalMsg} from '../../util/hooks/useGlobalMsg'
+import CloseUpload from '../shared/Modals/Upload/CloseUpload';
 import Image from 'next/image';
 
 interface Props {

@@ -12,7 +12,7 @@ import unknown from "/public/question3.jpg";
 import { isUserPageLoading } from "../../../store/selectors";
 import edit from "/public/edit.svg";
 import SocialFollow from "../SocialFollow";
-import MouseOverLabel from "../../../util/MouseOverLabel";
+import MouseOverLabel from "../../shared/MouseOverLabel";
 import EditSocial from "../EditComponents/EditSocial";
 import RepostList from "../UserpageComponents/RepostList";
 import FavList from "../UserpageComponents/LikeList";

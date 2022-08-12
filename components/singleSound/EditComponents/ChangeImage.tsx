@@ -5,7 +5,7 @@ import { useHttpClient } from '../../../util/hooks/http-hook'
 import { useForm } from '../../../util/hooks/useForm'
 import { UserState } from "../../../store/reducers/user/user";
 import BallLoader from '../../animatedLoaders/BallLoader/BallLoader'
-import ImageUpload from '../../ImageUpload'
+import ImageUpload from '../../global/ImageUpload'
 import EditImgModal from '../../shared/Modals/EditImgModal'
 import Image from 'next/image'
 import { SoundState } from '../../../store/reducers/sounds/soundPageReducer'

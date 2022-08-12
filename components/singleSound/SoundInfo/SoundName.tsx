@@ -2,7 +2,7 @@ import { AnimatePresence } from 'framer-motion'
 import Image from 'next/image'
 import React, { useCallback } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import MouseOverLabel from '../../../util/MouseOverLabel'
+import MouseOverLabel from '../../shared/MouseOverLabel'
 // import DropSinglesound from '../../common_reusable/DropdownOptions'
 import DropSinglesound from '../SingleSoundMain/DropSingleSound'
 import more from "../../../public/more2.svg";

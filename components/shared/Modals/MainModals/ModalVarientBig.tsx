@@ -1,6 +1,6 @@
 import { AnimatePresence, motion } from 'framer-motion'
 import React from 'react'
-import Backdrop from '../../../Backdrop';
+import Backdrop from '../../../global/Backdrop';
 import Backdrop2 from '../Backdrop2';
 
 

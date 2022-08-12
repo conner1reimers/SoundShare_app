@@ -1,6 +1,6 @@
 import Image from 'next/image'
 import React from 'react'
-import MouseOverLabel from '../../util/MouseOverLabel'
+import MouseOverLabel from '../shared/MouseOverLabel'
 
 interface Props {
   click?: any,

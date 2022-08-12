@@ -1,7 +1,7 @@
 import { AnimatePresence } from 'framer-motion';
 import React from 'react'
 import { useSelector } from 'react-redux';
-import Backdrop from '../../../Backdrop';
+import Backdrop from '../../../global/Backdrop';
 import Backdrop2 from '../Backdrop2';
 import SmallModal from './SmallModal'
 

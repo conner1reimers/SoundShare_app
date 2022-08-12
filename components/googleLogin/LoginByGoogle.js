@@ -17,7 +17,8 @@ const LoginByGoogle = () => {
         let response;
         let finalResponse;
         try {
-            response = await sendRequest(`https://www.googleapis.com/oauth2/v3/tokeninfo?id_token=${res.tokenId}`);
+            response = await fetch(`https://www.googleapis.com/oauth2/v3/tokeninfo?id_token=${res.tokenId}`);
+            response = await response.json();
             if (response.email) {
                 finalResponse = await sendRequest(
                     `/users/signin-google`, 

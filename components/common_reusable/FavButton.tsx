@@ -5,7 +5,7 @@ import { useGlobalMsg } from "../../util/hooks/useGlobalMsg";
 import heartItem from "../../public/item-heart.svg";
 import redHeart from "../../public/red-heart.svg";
 import { AnimatePresence, motion } from "framer-motion";
-import MouseOverLabel from "../../util/MouseOverLabel";
+import MouseOverLabel from "../shared/MouseOverLabel";
 import BallLoader from "../animatedLoaders/BallLoader/BallLoader";
 import Image from "next/image";
 

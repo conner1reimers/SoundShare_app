@@ -1,7 +1,7 @@
 import React from 'react'
 import { Fragment } from 'react'
 import ReactDOM from 'react-dom';
-import Backdrop from '../../../Backdrop';
+import Backdrop from '../../../global/Backdrop';
 import game_controller from '../../../../public/game-controller.svg';
 import microphone from '../../../../public/microphone.svg';
 import headphones from '../../../../public/headphones.svg';

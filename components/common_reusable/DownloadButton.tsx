@@ -5,7 +5,7 @@ import { RootState } from "../../store/reducers";
 import useDownloadFile from '../../util/functions/useDownloadFile';
 import { useGlobalMsg } from "../../util/hooks/useGlobalMsg";
 import download from "../../public/item-download.svg";
-import MouseOverLabel from "../../util/MouseOverLabel";
+import MouseOverLabel from "../shared/MouseOverLabel";
 
 
 interface DownloadBtnProps {

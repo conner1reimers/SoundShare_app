@@ -6,15 +6,13 @@ const NewPassword: React.FC = () => {
     
     useEffect(() => {
         document.body.style.overflow = 'hidden';
-          document.body.style.position = 'fixed';
-          document.body.style.height = '100vh';
-      
-          document.title = "Soundshare - Reset Password"
+        document.body.style.height = '100vh';
+        document.body.style.backgroundImage = "linear-gradient(45deg, #1b1f1f, #1b1f1f, #1b1f1f)";
+        document.title = "Soundshare - Reset Password"
       
           return () => {
               document.body.style.overflowY = 'visible';
               document.body.style.overflowX = 'hidden';
-              document.body.style.position = 'relative';
               document.body.style.height = '100%';
           }
       }, []);

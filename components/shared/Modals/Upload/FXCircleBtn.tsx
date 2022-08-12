@@ -1,5 +1,5 @@
 import React, { Fragment } from 'react'
-import MouseOverLabel from '../../../../util/MouseOverLabel'
+import MouseOverLabel from '../../MouseOverLabel'
 import save1 from '/public/save.svg';
 import Image from 'next/image';
 import back1 from '/public/back-arrow.svg';

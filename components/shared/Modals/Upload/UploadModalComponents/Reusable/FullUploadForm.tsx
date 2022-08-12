@@ -22,7 +22,7 @@ import { useGlobalMsg } from '../../../../../../util/hooks/useGlobalMsg'
 import { VALIDATOR_MAXLENGTH } from '../../../../../../util/validators'
 import LoadingAnimation from '../../../../../animatedLoaders/LoadingAnimation/LoadingAnimation'
 import PlayPauseBtns from '../../../../../common_reusable/playPauseBtn/PlayPauseBtns'
-import ImageUpload from '../../../../../ImageUpload'
+import ImageUpload from '../../../../../global/ImageUpload'
 import Input from '../../../../../common_reusable/Input'
 import UploadSubmit from '../UploadSubmit'
 

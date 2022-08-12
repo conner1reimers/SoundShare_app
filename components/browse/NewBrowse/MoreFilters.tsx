@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react'
-import MouseOverLabel from "../../../util/MouseOverLabel";
+import MouseOverLabel from "../../shared/MouseOverLabel";
 import more from "/public/search.svg";
 import { useForm } from "../../../util/hooks/useForm";
 import { VALIDATOR_REQUIRE } from "../../../util/validators";

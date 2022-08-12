@@ -304,14 +304,6 @@ div.sound-list-item--circle.circle-btn-single-sound {
   
 }
 
-div.user-page--nav.top-nav-big--links {
-  
-  a.top-nav-big--links--item.user-page--nav--link.user-page--nav--link--active {
-    color: $color-red;
-    text-decoration: underline;
-  }
-}
-
 div.uploadmodal-big--info-form--input--side {
   div.uploadmodal-big--preview {
     div.upload-playerbtns {
@@ -960,10 +952,19 @@ div.global-player--controls {
   min-height: 50px;
   @include flexcenter;
   position: relative;
+  @media screen and (max-width: 1099px) {
+    div.recent-sounds--list--item--player.globalPlay {
+      button {
+        img {
+          scale: .7;
+        }
+      }
+    }
+  }
+
 
   @media screen and (max-width: 1099px) and (min-width: 451px) {
     bottom: 2rem;
-
   }
   @media screen and (max-width: 450px) {
     position: relative;
@@ -1372,4 +1373,33 @@ div.modal--big.fx-modal-mobile-big.auth-modal.fx-modal-mobile-big {
 
     }
   }
+}
+
+button.global-player--hidebtn {
+  img {
+    @media screen and (max-width: 1099px) {
+      scale: .7;
+    }
+    @media screen and (max-width: 400px) {
+      transform: scale(.6) translateX(-2rem);
+    }
+  }
+}
+
+div.global-player--hidden--play {
+      span {
+        @media screen and (min-width: $bp-large) {
+          transform: scale(3.5);
+        }
+      }
+      button.rotate {
+        span {
+          @media screen and (min-width: $bp-large) {
+            transform: scale(.48);
+          }
+        }
+      }
+    
+  
+  
 }

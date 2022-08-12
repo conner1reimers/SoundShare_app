@@ -1,7 +1,7 @@
 import React from 'react'
 import back from '../../../../../../public/back-arrow.svg';
 import Image from 'next/image';
-import MouseOverLabel from '../../../../../../util/MouseOverLabel';
+import MouseOverLabel from '../../../../MouseOverLabel';
 
 interface Props {
   click: any,

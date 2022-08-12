@@ -3,13 +3,13 @@ import { useDispatch, useSelector } from 'react-redux'
 import { useRouter } from 'next/router'
 import { useCallback, useEffect } from "react";
 import { getGPUTier } from "detect-gpu";
-import * as ga from '../lib/ga'
-import { Media, MediaContextProvider } from "../util/media";
+import * as ga from '../../lib/ga'
+import { Media, MediaContextProvider } from "../../util/media";
 import loadable from '@loadable/component'
 
-const TopNav = loadable(() => import('./shared/NavBar/TopNav'))
-const SideContain = loadable(() => import('./shared/SideDrawer/SideContain'))
-const LoadingAnimation = loadable(() => import('./animatedLoaders/LoadingAnimation/LoadingAnimation'))
+const TopNav = loadable(() => import('../shared/NavBar/TopNav'))
+const SideContain = loadable(() => import('../shared/SideDrawer/SideContain'))
+const LoadingAnimation = loadable(() => import('../animatedLoaders/LoadingAnimation/LoadingAnimation'))
 const GlobalMsg = loadable(() => import('./GlobalMsg'))
 
 
@@ -49,15 +49,12 @@ const MainHead = () => {
 	useEffect(() => {
 		if (aModalIsOpen) {
 			document.body.style.overflow = 'hidden';
-			document.body.style.position = 'fixed';
 			document.body.style.height = '100vh';
-			
+			document.body.style.backgroundImage = "linear-gradient(45deg, #1b1f1f, #1b1f1f, #1b1f1f)";
 		} else if (!aModalIsOpen) {
 			document.body.style.overflowY = 'visible';
 			document.body.style.overflowX = 'hidden';
-			document.body.style.position = 'relative';
 			document.body.style.height = '100%';
-
 		}
 	}, [aModalIsOpen]);
 

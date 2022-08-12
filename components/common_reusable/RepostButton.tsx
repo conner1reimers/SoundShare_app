@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useHttpClient } from "../../util/hooks/http-hook";
 import repost from "../../public/item-repost.svg";
 import repostRed from "../../public/repost-red.svg";
-import MouseOverLabel from "../../util/MouseOverLabel";
+import MouseOverLabel from "../shared/MouseOverLabel";
 import BallLoader from "../animatedLoaders/BallLoader/BallLoader";
 
 const redVariants = {

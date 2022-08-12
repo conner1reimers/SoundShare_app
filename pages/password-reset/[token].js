@@ -5,7 +5,6 @@ import NewPassForm from '../../components/ResetPassword/NewPassForm'
 export default function Reset() {
     useEffect(() => {
         document.body.style.overflow = 'hidden';
-          document.body.style.position = 'fixed';
           document.body.style.height = '100vh';
       
           document.title = "Soundshare - Reset Password"
@@ -13,7 +12,6 @@ export default function Reset() {
           return () => {
               document.body.style.overflowY = 'visible';
               document.body.style.overflowX = 'hidden';
-              document.body.style.position = 'relative';
               document.body.style.height = '100%';
           }
       }, []);

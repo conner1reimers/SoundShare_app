@@ -1,6 +1,6 @@
 import React, { Fragment, useState } from 'react'
 import ReactDOM from 'react-dom';
-import Backdrop from '../../Backdrop';
+import Backdrop from '../../global/Backdrop';
 
 
 interface Props {

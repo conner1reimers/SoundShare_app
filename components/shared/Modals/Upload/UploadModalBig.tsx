@@ -10,7 +10,7 @@ import CategoryPage from './UploadModalComponents/CategoryPage';
 import UploadList from './UploadModalComponents/SoundList/UploadList';
 import FullUploadForm from './UploadModalComponents/Reusable/FullUploadForm';
 import LoadingAnimation from '../../../animatedLoaders/LoadingAnimation/LoadingAnimation';
-import SoundUpload from '../../../SoundUpload';
+import SoundUpload from '../../../global/SoundUpload';
 
 const pageStateReducer = (state: any, action: any) => {
     switch (action.type) {

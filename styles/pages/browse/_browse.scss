@@ -38,7 +38,7 @@
     }
     &::before {
       @include beforeTrick;
-      background-image: url("../../public/pic.svg");
+      background-image: url("../../../public/pic.svg");
       background-size: 5%;
       opacity: 0.2;
       filter: brightness(2) contrast(0.12);

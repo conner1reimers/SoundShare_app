@@ -6,7 +6,7 @@ import userImg from "/public/user.svg";
 import help from "/public/question.svg";
 import Notification from "./Notifications/Notification";
 import NotificationDropdown from "./Notifications/NotificationDropdown";
-import MouseOverLabel from "../../../util/MouseOverLabel";
+import MouseOverLabel from "../MouseOverLabel";
 import UploadModal from "../Modals/Upload/UploadModal";
 import useLogout from '../../../util/hooks/useLogout';
 import BrowseOptions from "../Modals/BrowseOptions/BrowseOptions";
