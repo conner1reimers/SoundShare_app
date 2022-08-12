@@ -503,14 +503,15 @@ div.form-control.auth-grid--inputSection--input--formcontrol {
 
 div.mouseOver.circle-btn-mouseover {
   background-color: #131414;
-  padding: 0.3vh 0.5vw;
-  height: 2.5vh;
-  right: -2vw;
-  top: -4.5vh;
+  padding: 15% 20%;
+  height: 30%;
+  right: -150%;
+  top: -120%;
   @include flexcenter;
   border-radius: 0.3rem;
   min-height: 25px;
   position: absolute;
+  
   span.mouseOver--label.circle-btn-mouseover--label {
     font-size: 0.75rem;
     columns: $color-white-2;
