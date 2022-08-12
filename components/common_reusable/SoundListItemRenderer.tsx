@@ -178,8 +178,7 @@ const SoundListItemRenderer: React.FC = (props: any) => {
                   {item.img_path && item.img_path !== "none" ? (
                   <div className="img-shine">
                     <Image
-                      width={35}
-                      height={35}
+                      layout="fill" 
                       className="img-shine"
                       src={`https://soundshare-bucket.s3.us-east-2.amazonaws.com/${item.img_path}`}
                       loader={myLoader}
@@ -276,7 +275,7 @@ const SoundListItemRenderer: React.FC = (props: any) => {
                 </div>
               ) : (
                 <div className="feedlist-img-contain">
-                  <Image  className="img-shine" src={music} alt="" layout="fill" />
+                  <Image className="img-shine" src={music} alt="" layout="fill" />
                 </div>
               )}
               <div className="feedlist-item-playbtn-contain">
